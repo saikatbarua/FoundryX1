@@ -61,7 +61,6 @@
 /// <reference path="../specNode/BlockTest_spec.js" />
 /// <reference path="../test/js/environment/jasmine_helper.js" />
 /// <reference path="../test/js/test_spec.js" />
-/// <reference path="../undefined/vendor/vender.js" />
 /// <reference path="dataService.js" />
 /// <reference path="extra/bar.js" />
 /// <reference path="extra/country.js" />
