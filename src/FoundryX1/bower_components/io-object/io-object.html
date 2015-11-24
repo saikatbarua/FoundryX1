@@ -1,0 +1,180 @@
+<link rel="import" href="../polymer/polymer.html">
+<!-- TODO: iron-list -->
+<!-- <link rel="import" href="../iron-list/iron-list.html"> -->
+<link rel="import" href="../io-object-to-array/io-object-to-array.html">
+<link rel="import" href="../io-boolean/io-boolean.html">
+<link rel="import" href="io-object-item.html">
+<!--
+`<io-object>` is a custom HTML element that can be used an editor for object/array values.
+
+Example:
+
+    <io-object
+        value="{{objectvalue}}">
+    </io-object>
+
+@demo demo/index.html Basic Demo
+-->
+<dom-module id="io-object">
+  <style>
+    :host {
+      display: inline-block;
+    }
+    #constructor {
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    #name {
+      font-style: italic;
+    }
+    #length::before {
+      content: '[';
+    }
+    #length::after {
+      content: ']';
+    }
+    #properties {
+      margin-left: 0.5em;
+    }
+  </style>
+  <template>
+    <span id="constructor">
+      <io-boolean icon id="expandicon" tabindex="-1" value="{{expanded}}" trueicon="expand-more" falseicon="chevron-right"></io-boolean>
+      <span id="name" on-click="toggleExpanded">{{_constructor}}</span>
+      <span id="length" on-click="toggleExpanded">{{_valuearray.length}}</span>
+    </span>
+    <template is="dom-if" if="{{expanded}}">
+      <div id="properties">
+        <template is="dom-repeat" id="repeat" items="{{_valuearray}}">
+          <io-object-item
+              object="{{value}}"
+              value="{{item.value}}"
+              key="{{item.key}}"
+              isarray="{{_isArray(value)}}"
+              disabled="{{disabled}}"
+              on-add-item-after="_onAddItemAfter"
+              on-io-value-set="_valueSet">
+          </io-object-item>
+        </template>
+      </div>
+    </template>
+  </template>
+</dom-module>
+
+<script>
+(function() {
+
+  // TODO: toggling boolean in array causes loss of focus.
+
+  var i, observedkeys, keys, newItem;
+  Polymer({
+    is: 'io-object',
+    properties: {
+      /**
+       * Object value
+       */
+      value: {
+        value: null,
+        observer: '_valueChanged'
+      },
+      /**
+       * Desables the element.
+       */
+      disabled: {
+        type: Boolean
+      },
+      /**
+       * Determines if editor is expanded
+       */
+      expanded: {
+        type: Boolean,
+        observer: '_expandedChangedJob'
+      },
+      _valuearray: {
+        computed: 'computeObservedMapArray(value, "_valuearray")'
+      },
+      _constructor: {
+        value: ''
+      }
+    },
+    behaviors: [
+      Polymer.ioObjectToArray
+    ],
+    hostAttributes: {
+      oncontextmenu: 'return false;',
+      role: 'tree'
+    },
+    _isArray: function (value) {
+      return value instanceof Array;
+    },
+    focus: function() {
+      this.$.expandicon.focus();
+    },
+    /**
+     * Expands/colapses object properties.
+     */
+    toggleExpanded: function () {
+      this.expanded = !this.expanded;
+    },
+    _valueSet: function (event) {
+      /**
+       * This event is fired when value is set by user action.
+       * This is a non-bubbling event.
+       * @event io-value-set
+       * @param {Object} detail value change data
+       * @param {Object} detail.value new value
+       * @param {Object} detail.oldValue old value
+       */
+      // TODO: consider adding old value
+      this.fire('io-value-set', {value: this.value}, {bubbles: false});
+    },
+    _valueChanged: function () {
+      // TODO: Cleanup
+      if (typeof this.value === 'object' && this.value !== null) {
+        if (this.value.constructor.name) {
+          this._constructor = this.value.constructor.name;
+        } else {
+          this._constructor = this._isArray(this.value) ? 'Array' : 'Object';
+        }
+      }
+    },
+    _expandedChanged: function() {
+      if (this._valuearray) {
+        if (this.expanded) {
+          if (this._valuearray.length === 0) {
+            // Add empty item if no items are present.
+            this._valuearray.addTempItem(0);
+          }
+        } else {
+          this._valuearray.removeTempItem();
+        }
+      }
+      if (this.expanded) {
+        this.setAttribute('aria-expanded', '');
+      } else {
+        this.removeAttribute('aria-expanded');
+      }
+    },
+    _expandedChangedJob: function () {
+      this.debounce('io-object-expanded-changed', this._expandedChanged, 1);
+    },
+    _onAddItemAfter: function (event) {
+      i = this._valuearray.findIndex(event.detail.key) + 1;
+      if (this.value instanceof Array) {
+        this.value.splice(i, 0, undefined);
+        this.async(function () {
+          newItem = this.querySelector('io-object-item[key="' + i + '"]');
+          newItem.$.key.focus();
+        }.bind(this), 10);
+
+      } else {
+        this._valuearray.addTempItem(i);
+        this.async(function () {
+          newItem = this.querySelector('io-object-item:not([key])');
+          newItem.$.key.focus();
+        }.bind(this), 10);
+      }
+    }
+  });
+}());
+</script>

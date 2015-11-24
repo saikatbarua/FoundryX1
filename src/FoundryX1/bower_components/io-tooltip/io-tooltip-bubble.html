@@ -1,0 +1,146 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="io-tooltip-bubble">
+  <style type="text/css">
+    :host {
+      display: none;
+      position: fixed;
+      pointer-events: none;
+      transition: opacity .25s ease-in-out;
+      -moz-transition: opacity .25s ease-in-out;
+      -webkit-transition: opacity .25s ease-in-out;
+      z-index: 100001;
+    }
+    #message::after {
+      position: absolute;
+      border: solid transparent;
+      pointer-events: none;
+      content: '';
+      height: 0;
+      width: 0;
+      border-width: 4px;
+    }
+    :host([side=bottom]) #message::after {
+      bottom: 100%;
+      left: calc(50% - 4px);
+      border-bottom-color: rgba(255, 255, 255, 1);
+    }
+    :host([side=left]) #message::after {
+      left: 100%;
+      top: calc(50% - 4px);
+      border-left-color: rgba(255, 255, 255, 1);
+    }
+    :host([side=top]) #message::after {
+      top: 100%;
+      left: calc(50% - 4px);
+      border-top-color: rgba(255, 255, 255, 1);
+    }
+    :host([side=right]) #message::after {
+      right: 100%;
+      top: calc(50% - 4px);
+      border-right-color: rgba(255, 255, 255, 1);
+    }
+
+    #message {
+      /*border: 1px solid rgba(0, 0, 0, 0.25);*/
+      border-radius: 0.2em;
+      background: #f9f9f9;
+      box-shadow: 0.2em 0.2em 0.1em rgba(0, 0, 0, 0.25);
+      color: #333;
+      padding: 0.25em;
+    }
+  </style>
+  <template>
+    <div id="message">{{message}}</div>
+  </template>
+</dom-module>
+<script>
+(function() {
+  var bubble = document.createElement('io-tooltip-bubble');
+  document.body.appendChild(bubble);
+  /*
+  `<io-tooltip-bubble>` is used by `<io-tooltip'>` to display tooltip bubbles. There is only one instance of this element and it is automatically added to document root.
+  @demo demo.html
+  */
+  Polymer({
+    is: 'io-tooltip-bubble',
+    properties: {
+      side: {
+        value: 'right',
+        type: String,
+        reflectToAttribute: true
+      },
+      message: {
+        value: '\u00A0',
+        type: String
+      }
+    },
+    ready: function() {
+      this._handleMessage = this.handleMessage.bind(this);
+    },
+    attached: function() {
+      document.addEventListener('io-tooltip', this._handleMessage);
+    },
+    detached: function() {
+      document.removeEventListener('io-tooltip', this._handleMessage);
+    },
+    handleMessage: function(event) {
+      if (event.detail.message) {
+        this.message = event.detail.message;
+        if (event.detail.width) {
+          this.style.maxWidth = event.detail.width + 'px';
+        } else {
+          this.style.maxWidth = 'inherit';
+        }
+        this.style.display = 'inline-block';
+        this.style.opacity = 0;
+
+        this.async(function() {
+          var bblRect = this.getBoundingClientRect();
+          var srcRect = event.target._parent.getBoundingClientRect();
+
+          this.side = event.detail.side || 'right';
+          
+          if (this.side === 'top' && srcRect.top - bblRect.height - 8 < 0) {
+            this.side = 'bottom';
+          } else if (this.side === 'right' && srcRect.right + bblRect.width + 8 > window.innerWidth) {
+            this.side = 'left';
+          } else if (this.side === 'bottom' && srcRect.bottom + bblRect.height + 8 > window.innerHeight) {
+            this.side = 'top';
+          } else if (this.side === 'left' && srcRect.left - bblRect.width - 8 < 0) {
+            this.side = 'right';
+          }
+
+          this.style.opacity = 1;
+
+          switch (this.side) {
+            case 'top':
+              this.style.left = srcRect.left + srcRect.width / 2 - bblRect.width / 2 + 'px';
+              this.style.top = srcRect.top - bblRect.height - 8 + 'px';
+              break;
+            case 'right':
+              this.style.left = srcRect.left + srcRect.width + 8 + 'px';
+              this.style.top = srcRect.top + srcRect.height / 2 - bblRect.height / 2 + 'px';
+              break;
+            case 'bottom':
+              this.style.left = srcRect.left + srcRect.width / 2 - bblRect.width / 2 + 'px';
+              this.style.top = srcRect.bottom + 8 + 'px';
+              break;
+            case 'left':
+              this.style.left = srcRect.left - bblRect.width - 8 + 'px';
+              this.style.top = srcRect.top + srcRect.height / 2 - bblRect.height / 2 + 'px';
+              break;
+            case 'center':
+              this.style.left = srcRect.left + srcRect.width / 2 - bblRect.width / 2 + 'px';
+              this.style.top = srcRect.top + srcRect.height / 2 - bblRect.height / 2 + 'px';
+              break;
+          }
+        });
+      } else {
+        this.style.display = 'none';
+        this.message = '\u00A0';
+      }
+    }
+  });
+}());
+</script>

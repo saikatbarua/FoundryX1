@@ -1,0 +1,323 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<!-- TODO: add deps? -->
+<link rel="import" href="../io-tooltip/io-tooltip.html">
+<link rel="import" href="../io-help/io-help.html">
+<link rel="import" href="../io-styles/io-styles.html">
+<link rel="import" href="io-menu-group.html">
+
+<dom-module id="io-menu-option">
+  <style>
+    :host {
+      position: relative;
+      @apply(--io-menu-option);
+    }
+    :host([opened]) {
+      @apply(--io-menu-highlight);
+    }
+    :host(:focus) {
+      outline: 0;
+    }
+    :host([opened]:focus) {
+      @apply(--io-menu-focus);
+    }
+    :host([inactive]),
+    :host([disabled]) {
+      opacity: 0.5;
+    }
+    :host([type=separator]) {
+      pointer-events: none;
+      @apply(--io-menu-separator);
+    }
+    :host([type=separator]) > * {
+      display: none;
+    }
+    iron-icon {
+      width: 1.1em;
+      height: 1.1em;
+      vertical-align: bottom;
+    }
+    .icon {
+      margin-left: var(--io-menu-spacing);
+      float: left;
+    }
+    .label {
+      margin: 0 var(--io-menu-spacing);
+      padding-right: var(--io-menu-spacing);
+      white-space: nowrap;
+      cursor: default;
+      float: left;
+    }
+    .info {
+      margin-right: var(--io-menu-spacing);
+      padding-right: var(--io-menu-spacing);
+      text-align: right;
+      white-space: nowrap;
+      cursor: default;
+      float: right;
+    }
+    .expandicon {
+      margin-right: var(--io-menu-spacing);
+      float: right;
+    }
+  </style>
+  <template>
+    <template is="dom-if" if="{{icon}}">
+      <iron-icon class="icon" icon="{{icon}}"></iron-icon>
+    </template>
+    <span class="label">{{label}}</span>
+    <template is="dom-if" if="{{options}}">
+      <iron-icon class="expandicon" icon="icons:chevron-right"></iron-icon>
+    </template>
+    <template is="dom-if" if="{{info}}">
+      <span class="info">{{info}}</span>
+    </template>
+    <template is="dom-if" if="{{tooltip}}" restamp>
+      <io-tooltip message="{{tooltip}}"></io-tooltip>
+    </template>
+    <template is="dom-if" if="{{help}}" restamp>
+      <io-help message="{{help}}"></io-help>
+    </template>
+    <div style="clear: both;"></div>
+  </template>
+</dom-module>
+<script>
+(function() {
+
+  var x = 0, y = 0, v = 0;
+  var previousOption;
+  var previousParent;
+  var timeoutOpen;
+  var timeoutReset;
+  var WAIT_TIME = 1000;
+
+  Polymer({
+    is: 'io-menu-option',
+    properties: {
+      opened: {
+        type: Boolean,
+        observer: '_openedChanged',
+        reflectToAttribute: true
+      },
+      /**
+       * Array of item objects.
+       */
+      options: {
+        type: Array
+      },
+      /**
+       * Label to be displayed with the option
+       */
+      label: {
+        type: String,
+      },
+      /**
+       * Secondary label/information to be displayed below the label.
+       */
+      info: {
+        type: String
+      },
+      /**
+       * Icon to be displayed with the option
+       */
+      icon: {
+        type: String,
+        notify: true
+      },
+      /**
+       * Function to be fired when option is selected
+       */
+      action: {
+        type: Function
+      },
+      /**
+       * value to be passed to action when invoked
+       */
+      value: {
+        type: Array
+      },
+      /**
+       * option is disabled if true
+       */
+      disabled: {
+        type: Boolean,
+        reflectToAttribute: true
+      },
+      /**
+       * Tooltip to be displayed with the option
+       */
+      tooltip: {
+        value: '',
+        type: String
+      },
+      /**
+       * option is disabled if true
+       */
+      type: {
+        value: '',
+        type: String,
+        reflectToAttribute: true
+      },
+      /**
+       * option is inactive is no action, options or value is set
+       */
+      inactive: {
+        type: Boolean,
+        reflectToAttribute: true
+      },
+      /**
+       * Reference to a button element in case the action requires button to be clicked.
+       */
+      // TODO
+      button: {
+        type: HTMLElement
+      },
+      //
+      _menuGroup: {
+        type: HTMLElement
+      }
+    },
+    hostAttributes: {
+      tabindex: 1
+    },
+    listeners: {
+      'mousemove': '_onMousemove',
+      'touchmove': '_onMousemove',
+      'mousedown': '_onMousedown',
+      'keydown': '_onKeydown',
+      'click': '_onClick'
+    },
+    created: function() {
+      this._menuGroup = document.createElement('io-menu-group');
+      this._menuGroup._parent = this;
+    },
+    ready: function() {
+      this.inactive = !this.action && !(this.value === undefined) && (!this.options || !this.options.length);
+    },
+    _onMousemove: function(event) {
+      if (event.changedTouches) event = event.changedTouches[0];
+      event.clientX = event.clientX;
+      event.clientY = event.clientY;
+      v = Math.abs(event.clientY - y) - Math.abs(event.clientX - x);
+      x = event.clientX;
+      y = event.clientY;
+      if (this !== previousOption) {
+        clearTimeout(timeoutOpen);
+        clearTimeout(timeoutReset);
+        if (v > 0 || this.parentNode !== previousParent) {
+          previousOption = this;
+          this._openGroup();
+        } else {
+          timeoutOpen = setTimeout(function() {
+            previousOption = this;
+            this._openGroup();
+          }.bind(this), WAIT_TIME);
+        }
+        previousParent = this.parentNode;
+        timeoutReset = setTimeout(function() {
+          previousOption = null;
+          previousParent = null;
+        }.bind(this), WAIT_TIME + 1);
+      }
+    },
+    _onMousedown: function(event) {
+      this._openGroup();
+    },
+    _onKeydown: function(event) {
+      var siblings = Array.prototype.slice.call(this.parentNode.querySelectorAll(
+              'io-menu-option:not([type=separator]):not([disabled]):not([inactive])'));
+
+      var index = siblings.indexOf(this);
+
+      if (event.which == 13) {
+        if (this.disabled) return;
+        event.preventDefault();
+        this._onClick(event); // TODO: test
+
+      } else if (event.which == 37) { // LEFT
+        event.preventDefault();
+        if (this.parentNode._parent) {
+          this.parentNode._parent._openGroup();
+        }
+
+      } else if (event.which == 38) { // UP
+        event.preventDefault();
+        if (this.parentNode.search && index === 0) {
+          this.parentNode.$$('input').focus();
+          // TODO: make work when first is inactive
+        } else {
+          siblings[(index + siblings.length - 1) % (siblings.length)]._openGroup();
+        }
+
+      } else if (event.which == 39) { // RIGHT
+        event.preventDefault();
+        if (this.options && this.options.length) {
+          this._menuGroup.querySelector('io-menu-option')._openGroup();
+          // TODO: if #1 is inactive/disabled, find first available option.
+        }
+
+      } else if (event.which == 40) { // DOWN
+        event.preventDefault();
+        if (this.parentNode.search && index === siblings.length - 1) {
+          this.parentNode.$$('input').focus();
+          // TODO: make work when last is inactive
+        } else {
+          siblings[(index + 1) % (siblings.length)]._openGroup();
+        }
+
+      } else if (event.which == 9) { // TAB
+        event.preventDefault();
+        if (this.options && this.options.length) {
+          this._menuGroup.querySelector('io-menu-option')._openGroup();
+        } else if (index < siblings.length - 1) {
+          siblings[(index + 1)]._openGroup();
+        } else if (this.parentNode._parent) {
+          //TODO: find first available option in sequence.
+        }
+
+      } else if (event.which == 27) { // ESC
+        event.preventDefault();
+        this.fire('io-menu-option-clicked', this);
+      }
+    },
+    _onClick: function(event) {
+      if (this.disabled) return;
+      if (this.button) {
+        // TODO: test
+        this.button.click();
+      }
+      if (typeof this.action === 'function') {
+        this.action.apply(null, [this.value]);
+        this.fire('io-menu-option-clicked', this);
+      }
+      if (typeof this.action === 'function' || this.value !== undefined || this.button) {
+        // TODO: doc
+        this.fire('io-menu-option-clicked', this);
+      }
+    },
+    _openGroup: function() {
+      this.parentNode._closeSubmenus();
+      if (!this.disabled && this.options && this.options.length && this.parentNode.opened) {
+        var rect = this.getBoundingClientRect();
+        this._menuGroup.x = rect.right + 1;
+        this._menuGroup.y = rect.top - 4;
+        this._menuGroup.options = this.options;
+        this.options._menuGroup = this._menuGroup;
+        this.fire('io-menu-open-group', this._menuGroup);
+      }
+      if (!this.disabled && !this.inactive) {
+        this.opened = true;
+        this.focus();
+      }
+    },
+    _openedChanged: function() {
+      if (this.opened) {
+        this.setAttribute('tabindex', 1);
+      } else {
+        this.removeAttribute('tabindex');
+      }
+    }
+  });
+}());
+</script>

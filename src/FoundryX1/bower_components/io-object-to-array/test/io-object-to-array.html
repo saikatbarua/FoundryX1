@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+  <head>
+
+    <title>io-object-to-array tests</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+    <link rel="import" href="../../test-fixture/test-fixture.html">
+    <link rel="import" href="../io-object-to-array.html">
+
+  </head>
+  <body>
+
+    <dom-module id="test-app"></dom-module>
+    <script>
+      Polymer({
+        is: 'test-app',
+        properties: {
+          obj: {
+            value: {
+              'boolean': true,
+              'number': 1337,
+              'string': 'hello string',
+              'emptyObject': {},
+              'undefined': undefined,
+              'null': null,
+              'func': function() {}
+            }
+          },
+          objmaparray: {
+            computed: 'computeObservedMapArray(obj, "objmaparray")'
+          }
+        },
+        behaviors: [
+          Polymer.ioObjectToArray
+        ]
+      });
+    </script>
+
+
+    <test-fixture id="testapp">
+      <template>
+        <test-app></test-app>
+      </template>
+    </test-fixture>
+
+    <script>
+
+      suite('<io-object-to-array>', function() {
+        var testapp;
+
+        setup(function() {
+          testapp = fixture('testapp');
+        });
+
+        test('io-object-to-array compute map array values.', function() {
+          assert.equal(testapp.objmaparray.length, 7, 'observed array map length');
+          assert.equal(testapp.objmaparray[0].value, true, 'observed array map value');
+          assert.equal(testapp.objmaparray[1].value, 1337, 'observed array map value');
+          assert.equal(testapp.objmaparray[2].value, 'hello string', 'observed array map value');
+          assert.equal(JSON.stringify(testapp.objmaparray[3].value), '{}', 'observed array map value');
+          assert.equal(testapp.objmaparray[4].value, undefined, 'observed array map value');
+          assert.equal(testapp.objmaparray[5].value, null, 'observed array map value');
+          assert.equal(typeof testapp.objmaparray[6].value, 'function', 'observed array map value');
+        });
+
+        test('io-object-to-array object mutations are reflected to map array.', function(done) {
+          testapp.obj.boolean = false;
+          assert.equal(testapp.objmaparray[0].value, false, 'observed array map value');
+          delete testapp.obj.number;
+          assert.equal(testapp.objmaparray[1].value, undefined, 'observed array map value');
+          setTimeout(function () {
+            assert.equal(testapp.objmaparray.length, 6, 'observed array map length');
+            testapp.obj.new = 'new';
+            setTimeout(function () {
+              assert.equal(testapp.objmaparray[6].value, 'new', 'observed array map value');
+              assert.equal(testapp.objmaparray.length, 7, 'observed array map length');
+              done();
+            }, 1);
+          }, 1);
+        });
+
+        test('io-object-to-array map array mutations are reflected to object.', function(done) {
+          testapp.objmaparray[0].value = true;
+          testapp.objmaparray[0].key = 'newboolean';
+          testapp.objmaparray[1].value = 'string';
+
+          setTimeout(function () {
+            assert.equal(testapp.obj.boolean, undefined, 'observed array map length');
+            assert.equal(testapp.obj.newboolean, true, 'observed array map length');
+            assert.equal(testapp.obj.string, 'string', 'observed array map length');
+            done();
+          }, 1);
+        });
+
+      });
+
+    </script>
+
+  </body>
+</html>

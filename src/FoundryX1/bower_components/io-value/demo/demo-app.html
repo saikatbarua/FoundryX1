@@ -1,0 +1,173 @@
+<link rel="import" href="../../polymer/polymer.html">
+
+<link rel="import" href="../../io-boolean/io-boolean.html">
+<link rel="import" href="../../io-input/io-input.html">
+<link rel="import" href="../../io-object/io-object.html">
+
+<link rel="import" href="../io-value.html">
+
+<dom-module id="demo-app">
+  <template>
+
+    <span class="label"></span>
+    <span class="label">boolean</span>
+    <span class="label">string</span>
+    <span class="label">number</span>
+    <span class="label">undef.</span>
+    <span class="label">null</span>
+    <span class="label">NaN</span>
+    <span class="label">object</span>
+    <span class="label">array</span>
+    <span class="label">funct.</span>
+
+    <br />
+
+    <span class="label">boolean</span>
+    <io-boolean class="demo" value="{{boolvalue}}"></io-boolean>
+    <io-boolean class="demo" value="{{strvalue}}"></io-boolean>
+    <io-boolean class="demo" value="{{numvalue}}"></io-boolean>
+    <io-boolean class="demo" value="{{undefvalue}}"></io-boolean>
+    <io-boolean class="demo" value="{{nullvalue}}"></io-boolean>
+    <io-boolean class="demo" value="{{nanvalue}}"></io-boolean>
+    <io-boolean class="demo" value="{{objvalue}}"></io-boolean>
+    <io-boolean class="demo" value="{{arrayvalue}}"></io-boolean>
+    <io-boolean class="demo" value="{{funcvalue}}"></io-boolean>
+
+    <br />
+
+    <span class="label">any</span>
+    <io-input class="demo" value="{{boolvalue}}"></io-input>
+    <io-input class="demo" value="{{strvalue}}"></io-input>
+    <io-input class="demo" value="{{numvalue}}"></io-input>
+    <io-input class="demo" value="{{undefvalue}}"></io-input>
+    <io-input class="demo" value="{{nullvalue}}"></io-input>
+    <io-input class="demo" value="{{nanvalue}}"></io-input>
+    <io-input class="demo" value="{{objvalue}}"></io-input>
+    <io-input class="demo" value="{{arrayvalue}}"></io-input>
+    <io-input class="demo" value="{{funcvalue}}"></io-input>
+
+    <br />
+
+    <span class="label">string</span>
+    <io-input class="demo" value="{{boolvalue}}" type="string"></io-input>
+    <io-input class="demo" value="{{strvalue}}" type="string"></io-input>
+    <io-input class="demo" value="{{numvalue}}" type="string"></io-input>
+    <io-input class="demo" value="{{undefvalue}}" type="string"></io-input>
+    <io-input class="demo" value="{{nullvalue}}" type="string"></io-input>
+    <io-input class="demo" value="{{nanvalue}}" type="string"></io-input>
+    <io-input class="demo" value="{{objvalue}}" type="string"></io-input>
+    <io-input class="demo" value="{{arrayvalue}}" type="string"></io-input>
+    <io-input class="demo" value="{{funcvalue}}" type="string"></io-input>
+
+    <br />
+
+    <span class="label">float</span>
+    <io-input class="demo" value="{{boolvalue}}" type="float"></io-input>
+    <io-input class="demo" value="{{strvalue}}" type="float"></io-input>
+    <io-input class="demo" value="{{numvalue}}" type="float"></io-input>
+    <io-input class="demo" value="{{undefvalue}}" type="float"></io-input>
+    <io-input class="demo" value="{{nullvalue}}" type="float"></io-input>
+    <io-input class="demo" value="{{nanvalue}}" type="float"></io-input>
+    <io-input class="demo" value="{{objvalue}}" type="float"></io-input>
+    <io-input class="demo" value="{{arrayvalue}}" type="float"></io-input>
+    <io-input class="demo" value="{{funcvalue}}" type="float"></io-input>
+
+    <br />
+
+    <span class="label">integer</span>
+    <io-input class="demo" value="{{boolvalue}}" type="integer"></io-input>
+    <io-input class="demo" value="{{strvalue}}" type="integer"></io-input>
+    <io-input class="demo" value="{{numvalue}}" type="integer"></io-input>
+    <io-input class="demo" value="{{undefvalue}}" type="integer"></io-input>
+    <io-input class="demo" value="{{nullvalue}}" type="integer"></io-input>
+    <io-input class="demo" value="{{nanvalue}}" type="integer"></io-input>
+    <io-input class="demo" value="{{objvalue}}" type="integer"></io-input>
+    <io-input class="demo" value="{{arrayvalue}}" type="integer"></io-input>
+    <io-input class="demo" value="{{funcvalue}}" type="integer"></io-input>
+
+    <br />
+
+    <span class="label">io-value</span>
+    <io-value class="demo" value="{{boolvalue}}"></io-value>
+    <io-value class="demo" value="{{strvalue}}"></io-value>
+    <io-value class="demo" value="{{numvalue}}"></io-value>
+    <io-value class="demo" value="{{undefvalue}}"></io-value>
+    <io-value class="demo" value="{{nullvalue}}"></io-value>
+    <io-value class="demo" value="{{nanvalue}}"></io-value>
+    <io-value class="demo" value="{{objvalue}}"></io-value>
+    <io-value class="demo" value="{{arrayvalue}}"></io-value>
+    <io-value class="demo" value="{{funcvalue}}"></io-value>
+
+    <br />
+    <br />
+
+    <io-value value="{{boolvalue}}"></io-value>
+    <io-value value="{{strvalue}}"></io-value>
+    <io-value value="{{numvalue}}"></io-value>
+    <io-value value="{{undefvalue}}"></io-value>
+    <io-value value="{{nullvalue}}"></io-value>
+    <io-value value="{{nanvalue}}"></io-value>
+    <io-value value="{{objvalue}}"></io-value>
+    <io-value value="{{arrayvalue}}"></io-value>
+    <io-value value="{{funcvalue}}"></io-value>
+
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'demo-app',
+    properties: {
+      boolvalue: {
+        value: true,
+        notify: true
+      },
+      strvalue: {
+        value: "Hello String",
+        notify: true
+      },
+      numvalue: {
+        value: 1337,
+        notify: true
+      },
+      undefvalue: {
+        value: undefined,
+        notify: true
+      },
+      nullvalue: {
+        value: null,
+        notify: true
+      },
+      nanvalue: {
+        value: NaN,
+        notify: true
+      },
+      objvalue: {
+        value: {
+          'boolean': true,
+          'number': 1337,
+          'string': 'hello string',
+          'object': {answer: 42},
+          'array': [],
+          'emptyObject': {},
+          'emptyArray': [],
+          'undefined': undefined,
+          'null': null,
+          'func': function() {}
+        },
+        notify: true
+      },
+      arrayvalue: {
+        value: [true, 1337, 'hello string', {answer: 42}, {}, [], undefined, null, function() {}],
+        notify: true
+      },
+      funcvalue: {
+        value: function() { return function() {}; },
+        notify: true
+      }
+    },
+    ready: function () {
+      this.objvalue.array = this.arrayvalue;
+      this.arrayvalue[3] = this.objvalue;
+    }
+  });
+</script>

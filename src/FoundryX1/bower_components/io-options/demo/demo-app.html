@@ -1,0 +1,33 @@
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../io-options.html">
+
+<dom-module id="demo-app">
+  <template>
+
+    <span class="label">value</span><span>{{selectedval}}</span>
+
+    <br />
+
+    <span class="label">options</span> asd <io-options class="demo" value="{{selectedval}}" options="{{options}}"></io-options>
+
+    <br />
+
+    <span class="label">value</span><span>{{selectedval}}</span>
+
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'demo-app',
+    properties: {
+      options: {
+        value: [
+          {value: 1, label: 1},
+          {value: 2, label: 2},
+          {value: 3, label: 'three'},
+          {value: 4, label: 'four'}
+        ]
+      }
+    }
+  });
+</script>

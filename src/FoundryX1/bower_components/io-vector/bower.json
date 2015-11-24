@@ -1,0 +1,23 @@
+{
+  "name": "io-vector",
+  "version": "1.2.1",
+  "homepage": "https://github.com/arodic/io-vector",
+  "authors": [
+    "Aleksandar Rodic <aleksandar.xyz@gmail.com>"
+  ],
+  "description": "Custom HTML element that can be used as input/output for string and number variables.",
+  "main": "io-vector.html",
+  "keywords": [
+    "io-vector", "input", "output", "i/o", "io", "ui", "polymer", "element", "web-components"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.2.1",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.0.5",
+    "io-object-to-array": "arodic/io-object-to-array#^1.2.1",
+    "io-value": "arodic/io-value#~1.2.1"
+  }
+}

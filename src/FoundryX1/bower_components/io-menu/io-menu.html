@@ -1,0 +1,118 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="io-menu-layer.html">
+<link rel="import" href="io-menu-group.html">
+
+<!--
+`<io-menu>` is a custom Polymer element for context menus.
+
+Example:
+
+    <io-menu options="{{options}}"></io-menu>
+
+@demo demo/index.html Basic Demo
+-->
+
+<dom-module id="io-menu"></dom-module>
+<script>
+(function() {
+  Polymer({
+    is: 'io-menu',
+    properties: {
+      /**
+       * Array of items.
+       *
+       *     [{label: "Option", options: [
+       *       {label: "Suboption1", action: function() {}},
+       *       {label: "Suboption2", action: someFunction,
+       *       {label: "Suboption3", action: otherFunction, arguments: ['argument']}]}]
+       */
+      options: {
+        value: null,
+        type: Array
+      },
+      /**
+       * If disabled, menu cannot be expanded.
+       */
+      disabled: {
+        type: Boolean
+      },
+      /**
+       * Event to listen on parent to open the menu.
+       */
+      listener: {
+        value: 'click',
+        type: String
+      },
+      /**
+       * Position of the menu in relation to its parent element
+       * 'top', 'bottom', 'right' and 'pointer'
+       */
+      position: {
+        value: 'pointer',
+        type: String
+      },
+      /**
+       * If true, a search box appears at the top of the menu group.
+       */
+      search: {
+        type: Boolean
+      },
+      _menuGroup: {
+        value: null,
+        type: HTMLElement
+      }
+    },
+    created: function() {
+      this.__openGroup = this._openGroup.bind(this);
+      this._menuGroup = document.createElement('io-menu-group');
+    },
+    attached: function() {
+      this._parent = this.parentNode;
+      if (this.listener) {
+        this._parent.addEventListener(this.listener, this.__openGroup);
+      }
+    },
+    detached: function() {
+      this._parent.removeEventListener(this.listener, this.__openGroup);
+    },
+    _openGroup: function(event) {
+      if (this.disabled) return;
+      event.preventDefault();
+      var rect = this._parent.getBoundingClientRect();
+      var x, y;
+      switch (this.position) {
+        case 'pointer':
+          x = event.clientX + 4;
+          y = event.clientY - 1;
+          break;
+        case 'bottom':
+          x = rect.left;
+          y = rect.bottom;
+          break;
+        case 'right':
+          x = rect.right;
+          y = rect.top;
+          break;
+        case 'top':
+          break;
+        default:
+          x = rect.left;
+          y = rect.top;
+          break;
+      }
+      this._menuGroup.x = x;
+      this._menuGroup.y = y;
+      this._menuGroup.options = this.options;
+      this._menuGroup.search = this.search;
+      this._menuGroup.sort = this.sort;
+
+      // reset search
+      this._menuGroup._searchString = '';
+      if (this._menuGroup.$$('#searchinput')) this._menuGroup.$$('#searchinput').value = '';
+
+      this.options._menuGroup = this._menuGroup;
+      this.fire('io-menu-open-group', this._menuGroup);
+    }
+  });
+}());
+</script>

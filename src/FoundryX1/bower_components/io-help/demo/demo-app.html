@@ -1,0 +1,36 @@
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../io-help.html">
+
+<dom-module id="demo-app">
+  <template>
+	  <span class="demo">
+	    <span>
+	      hover
+	    </span>
+	    <io-help message="Help message."></io-help>
+	  </span>
+	  <span class="demo">
+	    <span class="demo">
+	      hover
+	      <io-help message="Deeper message."></io-help>
+	    </span>
+	    <io-help message="with io-help in its DOM."></io-help>
+	  </span>
+	  <span class="demo">
+	    <span>
+	      hover
+	    </span>
+	    <io-help persist message="Persistant message."></io-help>
+	  </span>
+	  <io-help-line class="line"></io-help-line>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'demo-app',
+    properties: {
+    },
+    ready: function() {
+    }
+  });
+</script>

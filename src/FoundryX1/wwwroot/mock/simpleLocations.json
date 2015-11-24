@@ -1,0 +1,7003 @@
+[
+  
+  {
+    "id": 1,
+    "countryCode": "RU",
+    "city": "Kosaya Gora",
+    "lat": "54.11896",
+    "lng": "37.54459"
+  },
+  {
+    "id": 2,
+    "countryCode": "CN",
+    "city": "Hong’an Chengguanzhen",
+    "lat": "31.36208",
+    "lng": "114.63689"
+  },
+  {
+    "id": 3,
+    "countryCode": "BR",
+    "city": "Medeiros Neto",
+    "lat": "-17.37389",
+    "lng": "-40.22056"
+  },
+  {
+    "id": 4,
+    "countryCode": "RU",
+    "city": "Nevel’sk",
+    "lat": "46.67902",
+    "lng": "141.8563"
+  },
+  {
+    "id": 5,
+    "countryCode": "PH",
+    "city": "Balud",
+    "lat": "10.1476",
+    "lng": "123.6953"
+  },
+  {
+    "id": 6,
+    "countryCode": "CA",
+    "city": "Omemee",
+    "lat": "44.29897",
+    "lng": "-78.55989"
+  },
+  {
+    "id": 7,
+    "countryCode": "VE",
+    "city": "Casigua El Cubo",
+    "lat": "8.74493",
+    "lng": "-72.51967"
+  },
+  {
+    "id": 8,
+    "countryCode": "TD",
+    "city": "Ngama",
+    "lat": "11.78333",
+    "lng": "17.16667"
+  },
+  {
+    "id": 9,
+    "countryCode": "AR",
+    "city": "Morteros",
+    "lat": "-30.71164",
+    "lng": "-61.99862"
+  },
+  {
+    "id": 10,
+    "countryCode": "FR",
+    "city": "Blois",
+    "lat": "47.5833",
+    "lng": "1.3333"
+  },
+  {
+    "id": 11,
+    "countryCode": "YE",
+    "city": "Ḑubāh",
+    "lat": "14.49052",
+    "lng": "44.13108"
+  },
+  {
+    "id": 12,
+    "countryCode": "CN",
+    "city": "Jifeng",
+    "lat": "35.61347",
+    "lng": "110.95854"
+  },
+  {
+    "id": 13,
+    "countryCode": "RU",
+    "city": "Sovetskaya",
+    "lat": "44.77694",
+    "lng": "41.17222"
+  },
+  {
+    "id": 14,
+    "countryCode": "ID",
+    "city": "Lanpelan",
+    "lat": "-6.9819",
+    "lng": "113.5989"
+  },
+  {
+    "id": 15,
+    "countryCode": "PL",
+    "city": "Krosno",
+    "lat": "52.22357",
+    "lng": "16.83251"
+  },
+  {
+    "id": 16,
+    "countryCode": "BR",
+    "city": "Riolândia",
+    "lat": "-19.98083",
+    "lng": "-49.68194"
+  },
+  {
+    "id": 17,
+    "countryCode": "ID",
+    "city": "Palangan",
+    "lat": "-7.0049",
+    "lng": "112.4451"
+  },
+  {
+    "id": 18,
+    "countryCode": "PS",
+    "city": "Kufayrit",
+    "lat": "32.4438",
+    "lng": "35.20184"
+  },
+  {
+    "id": 19,
+    "countryCode": "CN",
+    "city": "Chenda",
+    "lat": "26.31421",
+    "lng": "117.6447"
+  },
+  {
+    "id": 20,
+    "countryCode": "CN",
+    "city": "Zhendu",
+    "lat": "28.20348",
+    "lng": "114.59964"
+  },
+  {
+    "id": 21,
+    "countryCode": "ID",
+    "city": "Jorowaru Daya",
+    "lat": "-8.7872",
+    "lng": "116.4814"
+  },
+  {
+    "id": 22,
+    "countryCode": "JP",
+    "city": "Ōnojō",
+    "lat": "33.53567",
+    "lng": "130.47861"
+  },
+  {
+    "id": 23,
+    "countryCode": "CN",
+    "city": "Xiayang",
+    "lat": "26.48885",
+    "lng": "113.76796"
+  },
+  {
+    "id": 24,
+    "countryCode": "CN",
+    "city": "Dadamtu",
+    "lat": "43.98028",
+    "lng": "81.31417"
+  },
+  {
+    "id": 25,
+    "countryCode": "CN",
+    "city": "Chengdu",
+    "lat": "30.66667",
+    "lng": "104.06667"
+  },
+  {
+    "id": 26,
+    "countryCode": "PH",
+    "city": "Masiga",
+    "lat": "13.3607",
+    "lng": "121.8278"
+  },
+  {
+    "id": 27,
+    "countryCode": "CN",
+    "city": "Sansheng",
+    "lat": "29.89058",
+    "lng": "106.62049"
+  },
+  {
+    "id": 28,
+    "countryCode": "ID",
+    "city": "Krajan Jabungcandi",
+    "lat": "-7.7342",
+    "lng": "113.4815"
+  },
+  {
+    "id": 29,
+    "countryCode": "CN",
+    "city": "Dongpu",
+    "lat": "23.74626",
+    "lng": "114.68498"
+  },
+  {
+    "id": 30,
+    "countryCode": "BR",
+    "city": "Armação de Búzios",
+    "lat": "-22.74694",
+    "lng": "-41.88167"
+  },
+  {
+    "id": 31,
+    "countryCode": "CN",
+    "city": "Dabagou",
+    "lat": "46.06946",
+    "lng": "121.91632"
+  },
+  {
+    "id": 32,
+    "countryCode": "CN",
+    "city": "Yaozhanzi",
+    "lat": "40.47657",
+    "lng": "96.72098"
+  },
+  {
+    "id": 33,
+    "countryCode": "MY",
+    "city": "Seremban",
+    "lat": "2.7186",
+    "lng": "101.949"
+  },
+  {
+    "id": 34,
+    "countryCode": "TZ",
+    "city": "Rulenge",
+    "lat": "-2.7175",
+    "lng": "30.6325"
+  },
+  {
+    "id": 35,
+    "countryCode": "PL",
+    "city": "Suwałki",
+    "lat": "54.11175",
+    "lng": "22.93087"
+  },
+  {
+    "id": 36,
+    "countryCode": "PL",
+    "city": "Połomia",
+    "lat": "49.90475",
+    "lng": "21.89198"
+  },
+  {
+    "id": 37,
+    "countryCode": "NG",
+    "city": "Ugep",
+    "lat": "5.80854",
+    "lng": "8.08159"
+  },
+  {
+    "id": 38,
+    "countryCode": "FR",
+    "city": "Dieppe",
+    "lat": "49.9333",
+    "lng": "1.0833"
+  },
+  {
+    "id": 39,
+    "countryCode": "SE",
+    "city": "Kalmar",
+    "lat": "56.6616",
+    "lng": "16.3616"
+  },
+  {
+    "id": 40,
+    "countryCode": "CN",
+    "city": "Yuekou",
+    "lat": "30.51199",
+    "lng": "113.07417"
+  },
+  {
+    "id": 41,
+    "countryCode": "TH",
+    "city": "Phuket",
+    "lat": "7.89059",
+    "lng": "98.3981"
+  },
+  {
+    "id": 42,
+    "countryCode": "PL",
+    "city": "Rudna",
+    "lat": "51.50981",
+    "lng": "16.26363"
+  },
+  {
+    "id": 43,
+    "countryCode": "CA",
+    "city": "New-Richmond",
+    "lat": "48.16059",
+    "lng": "-65.85823"
+  },
+  {
+    "id": 44,
+    "countryCode": "AM",
+    "city": "Hrazdan",
+    "lat": "40.49748",
+    "lng": "44.7662"
+  },
+  {
+    "id": 45,
+    "countryCode": "BR",
+    "city": "Descalvado",
+    "lat": "-21.90389",
+    "lng": "-47.61944"
+  },
+  {
+    "id": 46,
+    "countryCode": "NL",
+    "city": "Amsterdam Nieuw West",
+    "lat": "52.3666",
+    "lng": "4.9027"
+  },
+  {
+    "id": 47,
+    "countryCode": "PY",
+    "city": "San Juan Bautista",
+    "lat": "-26.66944",
+    "lng": "-57.14583"
+  },
+  {
+    "id": 48,
+    "countryCode": "PE",
+    "city": "Coishco",
+    "lat": "-9.02306",
+    "lng": "-78.61556"
+  },
+  {
+    "id": 49,
+    "countryCode": "NI",
+    "city": "Niquinohomo",
+    "lat": "11.90518",
+    "lng": "-86.09446"
+  },
+  {
+    "id": 50,
+    "countryCode": "PH",
+    "city": "Santo Domingo",
+    "lat": "17.63528",
+    "lng": "120.41083"
+  },
+  {
+    "id": 51,
+    "countryCode": "LU",
+    "city": "Hesperange",
+    "lat": "49.56806",
+    "lng": "6.15139"
+  },
+  {
+    "id": 52,
+    "countryCode": "CN",
+    "city": "Xucheng",
+    "lat": "20.32917",
+    "lng": "110.16712"
+  },
+  {
+    "id": 53,
+    "countryCode": "FI",
+    "city": "Kihniö",
+    "lat": "62.2",
+    "lng": "23.18333"
+  },
+  {
+    "id": 54,
+    "countryCode": "LU",
+    "city": "Eschweiler",
+    "lat": "49.99778",
+    "lng": "5.94889"
+  },
+  {
+    "id": 55,
+    "countryCode": "PH",
+    "city": "Palayan City",
+    "lat": "15.5415",
+    "lng": "121.0848"
+  },
+  {
+    "id": 56,
+    "countryCode": "SL",
+    "city": "Potoru",
+    "lat": "7.50722",
+    "lng": "-11.47861"
+  },
+  {
+    "id": 57,
+    "countryCode": "BO",
+    "city": "San Francisco",
+    "lat": "-20.71667",
+    "lng": "-64.7"
+  },
+  {
+    "id": 58,
+    "countryCode": "VE",
+    "city": "Tía Juana",
+    "lat": "10.25838",
+    "lng": "-71.36865"
+  },
+  {
+    "id": 59,
+    "countryCode": "BW",
+    "city": "Ghanzi",
+    "lat": "-21.56667",
+    "lng": "21.78333"
+  },
+  {
+    "id": 60,
+    "countryCode": "ID",
+    "city": "Jabon",
+    "lat": "-8.0347",
+    "lng": "111.8731"
+  },
+  {
+    "id": 61,
+    "countryCode": "ID",
+    "city": "Kebunkelapa",
+    "lat": "-7.0437",
+    "lng": "113.9281"
+  },
+  {
+    "id": 62,
+    "countryCode": "PL",
+    "city": "Kwidzyn",
+    "lat": "53.72495",
+    "lng": "18.93114"
+  },
+  {
+    "id": 63,
+    "countryCode": "ID",
+    "city": "Sindanghayu",
+    "lat": "-6.2683",
+    "lng": "106.1046"
+  },
+  {
+    "id": 64,
+    "countryCode": "BR",
+    "city": "Mirandopólis",
+    "lat": "-21.13361",
+    "lng": "-51.10167"
+  },
+  {
+    "id": 65,
+    "countryCode": "CN",
+    "city": "Qingshan",
+    "lat": "36.15472",
+    "lng": "120.68333"
+  },
+  {
+    "id": 66,
+    "countryCode": "GM",
+    "city": "Bakadagy",
+    "lat": "13.3",
+    "lng": "-14.38333"
+  },
+  {
+    "id": 67,
+    "countryCode": "CN",
+    "city": "Lefengzhen",
+    "lat": "28.86343",
+    "lng": "116.77889"
+  },
+  {
+    "id": 68,
+    "countryCode": "ZM",
+    "city": "Namwala",
+    "lat": "-15.75042",
+    "lng": "26.43839"
+  },
+  {
+    "id": 69,
+    "countryCode": "PH",
+    "city": "Victoria",
+    "lat": "12.44722",
+    "lng": "124.31111"
+  },
+  {
+    "id": 70,
+    "countryCode": "NL",
+    "city": "Dordrecht",
+    "lat": "51.81",
+    "lng": "4.6736"
+  },
+  {
+    "id": 71,
+    "countryCode": "PH",
+    "city": "San Alejandro",
+    "lat": "15.56098",
+    "lng": "120.84896"
+  },
+  {
+    "id": 72,
+    "countryCode": "CN",
+    "city": "Yinkeng",
+    "lat": "29.19913",
+    "lng": "118.39873"
+  },
+  {
+    "id": 73,
+    "countryCode": "MX",
+    "city": "Antonio Toledo Corro",
+    "lat": "24.6167",
+    "lng": "-107.3717"
+  },
+  {
+    "id": 74,
+    "countryCode": "KZ",
+    "city": "Baykonyr",
+    "lat": "45.61667",
+    "lng": "63.31667"
+  },
+  {
+    "id": 75,
+    "countryCode": "BD",
+    "city": "Cox’s Bāzār",
+    "lat": "21.45388",
+    "lng": "91.96765"
+  },
+  {
+    "id": 76,
+    "countryCode": "TG",
+    "city": "Badou",
+    "lat": "7.58333",
+    "lng": "0.6"
+  },
+  {
+    "id": 77,
+    "countryCode": "AF",
+    "city": "Chimtāl",
+    "lat": "36.67818",
+    "lng": "66.80325"
+  },
+  {
+    "id": 78,
+    "countryCode": "CN",
+    "city": "Chenxikou",
+    "lat": "29.81805",
+    "lng": "121.0522"
+  },
+  {
+    "id": 79,
+    "countryCode": "RU",
+    "city": "Shagonar",
+    "lat": "51.53333",
+    "lng": "92.8"
+  },
+  {
+    "id": 80,
+    "countryCode": "BR",
+    "city": "Piraquara",
+    "lat": "-25.44227",
+    "lng": "-49.06795"
+  },
+  {
+    "id": 81,
+    "countryCode": "CN",
+    "city": "Bao’an",
+    "lat": "30.17291",
+    "lng": "114.73596"
+  },
+  {
+    "id": 82,
+    "countryCode": "ID",
+    "city": "Kayan Hulu",
+    "lat": "3.82572",
+    "lng": "115.86671"
+  },
+  {
+    "id": 83,
+    "countryCode": "FR",
+    "city": "La Garde",
+    "lat": "43.1228",
+    "lng": "6.0075"
+  },
+  {
+    "id": 84,
+    "countryCode": "CN",
+    "city": "Shangpai",
+    "lat": "31.74565",
+    "lng": "117.16109"
+  },
+  {
+    "id": 85,
+    "countryCode": "PH",
+    "city": "Iligan City",
+    "lat": "8.25",
+    "lng": "124.4"
+  },
+  {
+    "id": 86,
+    "countryCode": "CZ",
+    "city": "Trhové Sviny",
+    "lat": "48.84231",
+    "lng": "14.63924"
+  },
+  {
+    "id": 87,
+    "countryCode": "ID",
+    "city": "Tutup",
+    "lat": "-6.9705",
+    "lng": "111.3901"
+  },
+  {
+    "id": 88,
+    "countryCode": "PK",
+    "city": "Hāla",
+    "lat": "25.81308",
+    "lng": "68.42273"
+  },
+  {
+    "id": 89,
+    "countryCode": "FR",
+    "city": "Niort",
+    "lat": "46.3231",
+    "lng": "-0.4588"
+  },
+  {
+    "id": 90,
+    "countryCode": "BW",
+    "city": "Bokaa",
+    "lat": "-24.45",
+    "lng": "26.01667"
+  },
+  {
+    "id": 91,
+    "countryCode": "RU",
+    "city": "Sel’tso",
+    "lat": "53.36831",
+    "lng": "34.10328"
+  },
+  {
+    "id": 92,
+    "countryCode": "CN",
+    "city": "Shangdundu",
+    "lat": "27.93827",
+    "lng": "116.29269"
+  },
+  {
+    "id": 93,
+    "countryCode": "TH",
+    "city": "Pho Thong",
+    "lat": "14.66731",
+    "lng": "100.40878"
+  },
+  {
+    "id": 94,
+    "countryCode": "AF",
+    "city": "Sangar Sarāy",
+    "lat": "34.40744",
+    "lng": "70.63937"
+  },
+  {
+    "id": 95,
+    "countryCode": "CO",
+    "city": "Florencia",
+    "lat": "1.61438",
+    "lng": "-75.60623"
+  },
+  {
+    "id": 96,
+    "countryCode": "IT",
+    "city": "Verona",
+    "lat": "45.4299",
+    "lng": "10.9844"
+  },
+  {
+    "id": 97,
+    "countryCode": "PL",
+    "city": "Książ Wielkopolski",
+    "lat": "52.06167",
+    "lng": "17.23952"
+  },
+  {
+    "id": 98,
+    "countryCode": "US",
+    "city": "Tacoma",
+    "lat": "47.3081",
+    "lng": "-122.4185"
+  },
+  {
+    "id": 99,
+    "countryCode": "ID",
+    "city": "Ngreco",
+    "lat": "-8.1408",
+    "lng": "112.4491"
+  },
+  {
+    "id": 100,
+    "countryCode": "NO",
+    "city": "Haugesund",
+    "lat": "59.3951",
+    "lng": "5.334"
+  },
+  {
+    "id": 101,
+    "countryCode": "ID",
+    "city": "Cigembong",
+    "lat": "-7.1432",
+    "lng": "106.5101"
+  },
+  {
+    "id": 102,
+    "countryCode": "RU",
+    "city": "Voskresenskoye",
+    "lat": "56.83806",
+    "lng": "45.43167"
+  },
+  {
+    "id": 103,
+    "countryCode": "SI",
+    "city": "Vuzenica",
+    "lat": "46.59639",
+    "lng": "15.16722"
+  },
+  {
+    "id": 104,
+    "countryCode": "PH",
+    "city": "Ransang",
+    "lat": "8.96028",
+    "lng": "117.58278"
+  },
+  {
+    "id": 105,
+    "countryCode": "CN",
+    "city": "Toutuo",
+    "lat": "28.63074",
+    "lng": "121.14208"
+  },
+  {
+    "id": 106,
+    "countryCode": "PT",
+    "city": "Pigeiros",
+    "lat": "41.0167",
+    "lng": "-8.5333"
+  },
+  {
+    "id": 107,
+    "countryCode": "PE",
+    "city": "Sausa",
+    "lat": "-11.79319",
+    "lng": "-75.48414"
+  },
+  {
+    "id": 108,
+    "countryCode": "AL",
+    "city": "Kastrat",
+    "lat": "42.3525",
+    "lng": "19.48917"
+  },
+  {
+    "id": 109,
+    "countryCode": "CN",
+    "city": "Changdai",
+    "lat": "32.03611",
+    "lng": "120.21667"
+  },
+  {
+    "id": 110,
+    "countryCode": "RU",
+    "city": "Novopodrezkovo",
+    "lat": "55.93972",
+    "lng": "37.34417"
+  },
+  {
+    "id": 111,
+    "countryCode": "ID",
+    "city": "Banjar Delodrurung",
+    "lat": "-8.5003",
+    "lng": "115.0188"
+  },
+  {
+    "id": 112,
+    "countryCode": "AR",
+    "city": "Rafaela",
+    "lat": "-31.25033",
+    "lng": "-61.4867"
+  },
+  {
+    "id": 113,
+    "countryCode": "US",
+    "city": "Minneapolis",
+    "lat": "45.0159",
+    "lng": "-93.4719"
+  },
+  {
+    "id": 114,
+    "countryCode": "CN",
+    "city": "Shanghudi",
+    "lat": "44.53224",
+    "lng": "85.8729"
+  },
+  {
+    "id": 115,
+    "countryCode": "GR",
+    "city": "Néos Oropós",
+    "lat": "39.15064",
+    "lng": "20.73636"
+  },
+  {
+    "id": 116,
+    "countryCode": "SE",
+    "city": "Sölvesborg",
+    "lat": "56.0521",
+    "lng": "14.5753"
+  },
+  {
+    "id": 117,
+    "countryCode": "CN",
+    "city": "Hor",
+    "lat": "35.23235",
+    "lng": "100.98662"
+  },
+  {
+    "id": 118,
+    "countryCode": "RU",
+    "city": "Novomoskovsk",
+    "lat": "54.0105",
+    "lng": "38.2846"
+  },
+  {
+    "id": 119,
+    "countryCode": "RU",
+    "city": "Ossora",
+    "lat": "59.24781",
+    "lng": "163.07034"
+  },
+  {
+    "id": 120,
+    "countryCode": "TD",
+    "city": "Goundi",
+    "lat": "9.36267",
+    "lng": "17.36597"
+  },
+  {
+    "id": 121,
+    "countryCode": "CN",
+    "city": "Wanquan",
+    "lat": "30.02916",
+    "lng": "113.38583"
+  },
+  {
+    "id": 122,
+    "countryCode": "CN",
+    "city": "Changshan",
+    "lat": "21.79621",
+    "lng": "110.00514"
+  },
+  {
+    "id": 123,
+    "countryCode": "ID",
+    "city": "Kesamben",
+    "lat": "-8.1462",
+    "lng": "112.3658"
+  },
+  {
+    "id": 124,
+    "countryCode": "CN",
+    "city": "Ronglong",
+    "lat": "29.43589",
+    "lng": "105.44865"
+  },
+  {
+    "id": 125,
+    "countryCode": "SE",
+    "city": "Enskede",
+    "lat": "59.2833",
+    "lng": "18.0667"
+  },
+  {
+    "id": 126,
+    "countryCode": "AZ",
+    "city": "Ağdam",
+    "lat": "39.99096",
+    "lng": "46.92736"
+  },
+  {
+    "id": 127,
+    "countryCode": "CZ",
+    "city": "Sobotín",
+    "lat": "50.01039",
+    "lng": "17.09129"
+  },
+  {
+    "id": 128,
+    "countryCode": "MX",
+    "city": "Guadalupe",
+    "lat": "18.0361",
+    "lng": "-91.9211"
+  },
+  {
+    "id": 129,
+    "countryCode": "AR",
+    "city": "Rada Tilly",
+    "lat": "-45.93333",
+    "lng": "-67.53333"
+  },
+  {
+    "id": 130,
+    "countryCode": "CN",
+    "city": "Shouzhan",
+    "lat": "25.93821",
+    "lng": "119.47973"
+  },
+  {
+    "id": 131,
+    "countryCode": "PT",
+    "city": "Sebadelhe",
+    "lat": "41.1333",
+    "lng": "-7.3"
+  },
+  {
+    "id": 132,
+    "countryCode": "LY",
+    "city": "Zalţan",
+    "lat": "32.94701",
+    "lng": "11.86647"
+  },
+  {
+    "id": 133,
+    "countryCode": "CL",
+    "city": "Victoria",
+    "lat": "-38.23291",
+    "lng": "-72.33292"
+  },
+  {
+    "id": 134,
+    "countryCode": "LV",
+    "city": "Zilupe",
+    "lat": "56.38616",
+    "lng": "28.12165"
+  },
+  {
+    "id": 135,
+    "countryCode": "KG",
+    "city": "Kant",
+    "lat": "42.89106",
+    "lng": "74.85077"
+  },
+  {
+    "id": 136,
+    "countryCode": "PL",
+    "city": "Rychwał",
+    "lat": "52.07149",
+    "lng": "18.1651"
+  },
+  {
+    "id": 137,
+    "countryCode": "IE",
+    "city": "Watergrasshill",
+    "lat": "52.01139",
+    "lng": "-8.34417"
+  },
+  {
+    "id": 138,
+    "countryCode": "CN",
+    "city": "Zhencheng",
+    "lat": "21.61004",
+    "lng": "110.84856"
+  },
+  {
+    "id": 139,
+    "countryCode": "RU",
+    "city": "Nikolayevsk",
+    "lat": "50.02824",
+    "lng": "45.45953"
+  },
+  {
+    "id": 140,
+    "countryCode": "HN",
+    "city": "Corquín",
+    "lat": "14.56667",
+    "lng": "-88.86667"
+  },
+  {
+    "id": 141,
+    "countryCode": "CN",
+    "city": "Puqian",
+    "lat": "20.02627",
+    "lng": "110.57754"
+  },
+  {
+    "id": 142,
+    "countryCode": "JP",
+    "city": "Kurayoshi",
+    "lat": "35.43333",
+    "lng": "133.81667"
+  },
+  {
+    "id": 143,
+    "countryCode": "RU",
+    "city": "Pridonskoy",
+    "lat": "51.68406",
+    "lng": "39.0727"
+  },
+  {
+    "id": 144,
+    "countryCode": "VE",
+    "city": "Santa María de Caparo",
+    "lat": "7.71412",
+    "lng": "-71.46466"
+  },
+  {
+    "id": 145,
+    "countryCode": "CN",
+    "city": "Songhu",
+    "lat": "27.90805",
+    "lng": "116.47421"
+  },
+  {
+    "id": 146,
+    "countryCode": "PT",
+    "city": "Torrão",
+    "lat": "38.2546",
+    "lng": "-8.4905"
+  },
+  {
+    "id": 147,
+    "countryCode": "BR",
+    "city": "Nazaré da Mata",
+    "lat": "-7.74167",
+    "lng": "-35.22778"
+  },
+  {
+    "id": 148,
+    "countryCode": "AM",
+    "city": "Hoktember",
+    "lat": "40.13206",
+    "lng": "44.00969"
+  },
+  {
+    "id": 149,
+    "countryCode": "PL",
+    "city": "Bielice",
+    "lat": "53.20022",
+    "lng": "14.7276"
+  },
+  {
+    "id": 150,
+    "countryCode": "PL",
+    "city": "Wilamowice",
+    "lat": "49.91701",
+    "lng": "19.15237"
+  },
+  {
+    "id": 151,
+    "countryCode": "PH",
+    "city": "Bukal Sur",
+    "lat": "13.93806",
+    "lng": "121.38556"
+  },
+  {
+    "id": 152,
+    "countryCode": "JP",
+    "city": "Annaka",
+    "lat": "36.3301",
+    "lng": "138.89585"
+  },
+  {
+    "id": 153,
+    "countryCode": "ID",
+    "city": "Ponggeok",
+    "lat": "-8.7229",
+    "lng": "120.4146"
+  },
+  {
+    "id": 154,
+    "countryCode": "CN",
+    "city": "Yonglong",
+    "lat": "25.4174",
+    "lng": "115.93117"
+  },
+  {
+    "id": 155,
+    "countryCode": "FR",
+    "city": "La Roche-sur-Yon",
+    "lat": "46.6667",
+    "lng": "-1.4333"
+  },
+  {
+    "id": 156,
+    "countryCode": "CN",
+    "city": "Loufan",
+    "lat": "38.0918",
+    "lng": "111.80721"
+  },
+  {
+    "id": 157,
+    "countryCode": "CN",
+    "city": "Quanshang",
+    "lat": "26.41922",
+    "lng": "116.96236"
+  },
+  {
+    "id": 158,
+    "countryCode": "PT",
+    "city": "Pedome",
+    "lat": "41.6022",
+    "lng": "-8.3303"
+  },
+  {
+    "id": 159,
+    "countryCode": "PE",
+    "city": "Colca",
+    "lat": "-12.3",
+    "lng": "-75.21667"
+  },
+  {
+    "id": 160,
+    "countryCode": "AF",
+    "city": "Shīnḏanḏ",
+    "lat": "33.30294",
+    "lng": "62.1474"
+  },
+  {
+    "id": 161,
+    "countryCode": "PL",
+    "city": "Golub-Dobrzyń",
+    "lat": "53.11087",
+    "lng": "19.05381"
+  },
+  {
+    "id": 162,
+    "countryCode": "CN",
+    "city": "Beilun",
+    "lat": "29.91917",
+    "lng": "121.83778"
+  },
+  {
+    "id": 163,
+    "countryCode": "PH",
+    "city": "Maluno Sur",
+    "lat": "16.99885",
+    "lng": "121.96434"
+  },
+  {
+    "id": 164,
+    "countryCode": "CN",
+    "city": "Yanjiang",
+    "lat": "28.74373",
+    "lng": "121.23596"
+  },
+  {
+    "id": 165,
+    "countryCode": "PT",
+    "city": "Farinheiras",
+    "lat": "38.6167",
+    "lng": "-9.1"
+  },
+  {
+    "id": 166,
+    "countryCode": "JP",
+    "city": "Yanai",
+    "lat": "33.96667",
+    "lng": "132.11667"
+  },
+  {
+    "id": 167,
+    "countryCode": "RU",
+    "city": "Shebekino",
+    "lat": "50.40967",
+    "lng": "36.9136"
+  },
+  {
+    "id": 168,
+    "countryCode": "MA",
+    "city": "Abadou",
+    "lat": "31.57917",
+    "lng": "-7.31308"
+  },
+  {
+    "id": 169,
+    "countryCode": "FR",
+    "city": "Tournan-en-Brie",
+    "lat": "48.7415",
+    "lng": "2.772"
+  },
+  {
+    "id": 170,
+    "countryCode": "ID",
+    "city": "Kangin",
+    "lat": "-8.8322",
+    "lng": "115.1255"
+  },
+  {
+    "id": 171,
+    "countryCode": "CA",
+    "city": "Saint-Bruno-de-Guigues",
+    "lat": "47.46685",
+    "lng": "-79.43296"
+  },
+  {
+    "id": 172,
+    "countryCode": "CN",
+    "city": "Changshengqiao",
+    "lat": "29.50889",
+    "lng": "106.66083"
+  },
+  {
+    "id": 173,
+    "countryCode": "IR",
+    "city": "Bāft",
+    "lat": "29.2331",
+    "lng": "56.6022"
+  },
+  {
+    "id": 174,
+    "countryCode": "CN",
+    "city": "Renxian",
+    "lat": "30.66092",
+    "lng": "107.67895"
+  },
+  {
+    "id": 175,
+    "countryCode": "SE",
+    "city": "Stockholm",
+    "lat": "59.3326",
+    "lng": "18.0649"
+  },
+  {
+    "id": 176,
+    "countryCode": "MX",
+    "city": "El Aguacate",
+    "lat": "18.3942",
+    "lng": "-100.5351"
+  },
+  {
+    "id": 177,
+    "countryCode": "NL",
+    "city": "Breda",
+    "lat": "51.5866",
+    "lng": "4.776"
+  },
+  {
+    "id": 178,
+    "countryCode": "CN",
+    "city": "Jinhe",
+    "lat": "27.71694",
+    "lng": "109.60472"
+  },
+  {
+    "id": 179,
+    "countryCode": "ES",
+    "city": "Lugo",
+    "lat": "43.0099",
+    "lng": "-7.556"
+  },
+  {
+    "id": 180,
+    "countryCode": "CN",
+    "city": "Dongchengyuan",
+    "lat": "30.34709",
+    "lng": "113.90901"
+  },
+  {
+    "id": 181,
+    "countryCode": "IR",
+    "city": "Dārāb",
+    "lat": "28.75194",
+    "lng": "54.54444"
+  },
+  {
+    "id": 182,
+    "countryCode": "KZ",
+    "city": "Ilyich",
+    "lat": "40.84782",
+    "lng": "68.50643"
+  },
+  {
+    "id": 183,
+    "countryCode": "NZ",
+    "city": "Waihi",
+    "lat": "-37.38333",
+    "lng": "175.83333"
+  },
+  {
+    "id": 184,
+    "countryCode": "PL",
+    "city": "Aleksandrów",
+    "lat": "51.27126",
+    "lng": "19.99005"
+  },
+  {
+    "id": 185,
+    "countryCode": "PH",
+    "city": "Santa Monica",
+    "lat": "10.02",
+    "lng": "126.03833"
+  },
+  {
+    "id": 186,
+    "countryCode": "CN",
+    "city": "Tianmen",
+    "lat": "45.88167",
+    "lng": "128.66488"
+  },
+  {
+    "id": 187,
+    "countryCode": "PH",
+    "city": "Silvino Lobos",
+    "lat": "12.3",
+    "lng": "124.83333"
+  },
+  {
+    "id": 188,
+    "countryCode": "ID",
+    "city": "Beaung Tengah",
+    "lat": "-8.4215",
+    "lng": "115.161"
+  },
+  {
+    "id": 189,
+    "countryCode": "RU",
+    "city": "Koz’modem’yansk",
+    "lat": "56.3419",
+    "lng": "46.56353"
+  },
+  {
+    "id": 190,
+    "countryCode": "CN",
+    "city": "Zhongying",
+    "lat": "29.98303",
+    "lng": "109.97126"
+  },
+  {
+    "id": 191,
+    "countryCode": "CZ",
+    "city": "Morávka",
+    "lat": "49.59607",
+    "lng": "18.52471"
+  },
+  {
+    "id": 192,
+    "countryCode": "ID",
+    "city": "Ongabelen",
+    "lat": "-8.3346",
+    "lng": "123.2015"
+  },
+  {
+    "id": 193,
+    "countryCode": "RU",
+    "city": "Salmi",
+    "lat": "61.36971",
+    "lng": "31.85185"
+  },
+  {
+    "id": 194,
+    "countryCode": "PH",
+    "city": "Ani-e",
+    "lat": "8.61361",
+    "lng": "124.87056"
+  },
+  {
+    "id": 195,
+    "countryCode": "BR",
+    "city": "Ilhéus",
+    "lat": "-14.79364",
+    "lng": "-39.03949"
+  },
+  {
+    "id": 196,
+    "countryCode": "JP",
+    "city": "Iyo",
+    "lat": "33.75139",
+    "lng": "132.70139"
+  },
+  {
+    "id": 197,
+    "countryCode": "ID",
+    "city": "Mandala",
+    "lat": "-6.9866",
+    "lng": "113.8753"
+  },
+  {
+    "id": 198,
+    "countryCode": "MW",
+    "city": "Mzuzu",
+    "lat": "-11.46556",
+    "lng": "34.02071"
+  },
+  {
+    "id": 199,
+    "countryCode": "BR",
+    "city": "Marataizes",
+    "lat": "-21.04333",
+    "lng": "-40.82444"
+  },
+  {
+    "id": 200,
+    "countryCode": "ID",
+    "city": "Belawang",
+    "lat": "-3.0715",
+    "lng": "114.6604"
+  },
+  {
+    "id": 201,
+    "countryCode": "MW",
+    "city": "Mzimba",
+    "lat": "-11.9",
+    "lng": "33.6"
+  },
+  {
+    "id": 202,
+    "countryCode": "ZA",
+    "city": "Kathu",
+    "lat": "-27.69569",
+    "lng": "23.04929"
+  },
+  {
+    "id": 203,
+    "countryCode": "CO",
+    "city": "Corozal",
+    "lat": "9.31505",
+    "lng": "-75.29283"
+  },
+  {
+    "id": 204,
+    "countryCode": "ID",
+    "city": "Ampelgading",
+    "lat": "-8.0467",
+    "lng": "112.4457"
+  },
+  {
+    "id": 205,
+    "countryCode": "FI",
+    "city": "Haukivuori",
+    "lat": "62.01667",
+    "lng": "27.21667"
+  },
+  {
+    "id": 206,
+    "countryCode": "RU",
+    "city": "Novobeysugskaya",
+    "lat": "45.47195",
+    "lng": "39.88614"
+  },
+  {
+    "id": 207,
+    "countryCode": "ID",
+    "city": "Panjir",
+    "lat": "-10.025",
+    "lng": "120.4072"
+  },
+  {
+    "id": 208,
+    "countryCode": "CN",
+    "city": "Zhaoxiang",
+    "lat": "31.15194",
+    "lng": "121.19203"
+  },
+  {
+    "id": 209,
+    "countryCode": "KM",
+    "city": "Nioumamilima",
+    "lat": "-11.85111",
+    "lng": "43.43722"
+  },
+  {
+    "id": 210,
+    "countryCode": "AR",
+    "city": "Tres Arroyos",
+    "lat": "-38.37394",
+    "lng": "-60.27978"
+  },
+  {
+    "id": 211,
+    "countryCode": "RU",
+    "city": "Sannikovo",
+    "lat": "53.3448",
+    "lng": "83.9749"
+  },
+  {
+    "id": 212,
+    "countryCode": "CN",
+    "city": "Fuxing",
+    "lat": "28.63694",
+    "lng": "109.56408"
+  },
+  {
+    "id": 213,
+    "countryCode": "RU",
+    "city": "Tyoply Stan",
+    "lat": "55.62047",
+    "lng": "37.49338"
+  },
+  {
+    "id": 214,
+    "countryCode": "CN",
+    "city": "Tawa",
+    "lat": "35.49447",
+    "lng": "102.28121"
+  },
+  {
+    "id": 215,
+    "countryCode": "PL",
+    "city": "Tomice",
+    "lat": "49.89773",
+    "lng": "19.48357"
+  },
+  {
+    "id": 216,
+    "countryCode": "CN",
+    "city": "Wuma",
+    "lat": "33.0635",
+    "lng": "105.44253"
+  },
+  {
+    "id": 217,
+    "countryCode": "AR",
+    "city": "Puerto Rico",
+    "lat": "-26.79598",
+    "lng": "-55.02402"
+  },
+  {
+    "id": 218,
+    "countryCode": "CN",
+    "city": "Heba",
+    "lat": "33.93624",
+    "lng": "105.21625"
+  },
+  {
+    "id": 219,
+    "countryCode": "RU",
+    "city": "Chemodanovka",
+    "lat": "53.23162",
+    "lng": "45.24738"
+  },
+  {
+    "id": 220,
+    "countryCode": "BR",
+    "city": "Mucuri",
+    "lat": "-18.08639",
+    "lng": "-39.55083"
+  },
+  {
+    "id": 221,
+    "countryCode": "BG",
+    "city": "Pleven",
+    "lat": "43.41667",
+    "lng": "24.61667"
+  },
+  {
+    "id": 222,
+    "countryCode": "PL",
+    "city": "Niebocko",
+    "lat": "49.67774",
+    "lng": "22.10484"
+  },
+  {
+    "id": 223,
+    "countryCode": "SE",
+    "city": "Bagarmossen",
+    "lat": "59.26",
+    "lng": "18.1167"
+  },
+  {
+    "id": 224,
+    "countryCode": "UA",
+    "city": "Pidhaytsi",
+    "lat": "49.26854",
+    "lng": "25.13341"
+  },
+  {
+    "id": 225,
+    "countryCode": "PH",
+    "city": "San Juan",
+    "lat": "15.0231",
+    "lng": "120.67714"
+  },
+  {
+    "id": 226,
+    "countryCode": "RU",
+    "city": "Suzëmka",
+    "lat": "52.31834",
+    "lng": "34.07899"
+  },
+  {
+    "id": 227,
+    "countryCode": "MA",
+    "city": "Larache",
+    "lat": "35.19321",
+    "lng": "-6.15572"
+  },
+  {
+    "id": 228,
+    "countryCode": "SY",
+    "city": "Khān Shaykhūn",
+    "lat": "35.44208",
+    "lng": "36.65095"
+  },
+  {
+    "id": 229,
+    "countryCode": "CN",
+    "city": "Huaqiao",
+    "lat": "27.70806",
+    "lng": "110.14194"
+  },
+  {
+    "id": 230,
+    "countryCode": "RU",
+    "city": "Zhemtala",
+    "lat": "43.28408",
+    "lng": "43.65586"
+  },
+  {
+    "id": 231,
+    "countryCode": "BR",
+    "city": "São Jerônimo",
+    "lat": "-29.95917",
+    "lng": "-51.72222"
+  },
+  {
+    "id": 232,
+    "countryCode": "ZA",
+    "city": "Kroonstad",
+    "lat": "-27.65036",
+    "lng": "27.23488"
+  },
+  {
+    "id": 233,
+    "countryCode": "CN",
+    "city": "Nanning",
+    "lat": "22.81667",
+    "lng": "108.31667"
+  },
+  {
+    "id": 234,
+    "countryCode": "ID",
+    "city": "Narukan",
+    "lat": "-6.6943",
+    "lng": "111.5826"
+  },
+  {
+    "id": 235,
+    "countryCode": "AR",
+    "city": "Los Juríes",
+    "lat": "-28.46539",
+    "lng": "-62.10862"
+  },
+  {
+    "id": 236,
+    "countryCode": "CN",
+    "city": "Jishan",
+    "lat": "25.95709",
+    "lng": "117.31814"
+  },
+  {
+    "id": 237,
+    "countryCode": "RU",
+    "city": "Zhiryatino",
+    "lat": "53.2228",
+    "lng": "33.7306"
+  },
+  {
+    "id": 238,
+    "countryCode": "FR",
+    "city": "Colombes",
+    "lat": "48.9188",
+    "lng": "2.254"
+  },
+  {
+    "id": 239,
+    "countryCode": "RU",
+    "city": "Peterhof",
+    "lat": "59.88333",
+    "lng": "29.9"
+  },
+  {
+    "id": 240,
+    "countryCode": "CU",
+    "city": "Santo Domingo",
+    "lat": "22.58667",
+    "lng": "-80.24361"
+  },
+  {
+    "id": 241,
+    "countryCode": "SY",
+    "city": "كاف الجاع",
+    "lat": "35.08638",
+    "lng": "36.20605"
+  },
+  {
+    "id": 242,
+    "countryCode": "PE",
+    "city": "Tacna",
+    "lat": "-18.01465",
+    "lng": "-70.25362"
+  },
+  {
+    "id": 243,
+    "countryCode": "PT",
+    "city": "Sarrazola",
+    "lat": "40.6802",
+    "lng": "-8.6156"
+  },
+  {
+    "id": 244,
+    "countryCode": "ID",
+    "city": "Cigalontang",
+    "lat": "-7.3224",
+    "lng": "108.0052"
+  },
+  {
+    "id": 245,
+    "countryCode": "ID",
+    "city": "Sinarbakti",
+    "lat": "-7.2758",
+    "lng": "106.9909"
+  },
+  {
+    "id": 246,
+    "countryCode": "BR",
+    "city": "Itapaci",
+    "lat": "-14.95083",
+    "lng": "-49.54944"
+  },
+  {
+    "id": 247,
+    "countryCode": "CN",
+    "city": "Ningxi",
+    "lat": "23.21722",
+    "lng": "113.65489"
+  },
+  {
+    "id": 248,
+    "countryCode": "CN",
+    "city": "Bao’an",
+    "lat": "25.72778",
+    "lng": "112.08167"
+  },
+  {
+    "id": 249,
+    "countryCode": "KG",
+    "city": "Batken",
+    "lat": "40.06259",
+    "lng": "70.81939"
+  },
+  {
+    "id": 250,
+    "countryCode": "BR",
+    "city": "Jales",
+    "lat": "-20.26889",
+    "lng": "-50.54583"
+  },
+  {
+    "id": 251,
+    "countryCode": "CN",
+    "city": "Dengjia",
+    "lat": "25.91654",
+    "lng": "116.83873"
+  },
+  {
+    "id": 252,
+    "countryCode": "SE",
+    "city": "Stockholm",
+    "lat": "59.3326",
+    "lng": "18.0649"
+  },
+  {
+    "id": 253,
+    "countryCode": "HN",
+    "city": "San Esteban",
+    "lat": "15.21231",
+    "lng": "-85.76996"
+  },
+  {
+    "id": 254,
+    "countryCode": "CA",
+    "city": "Ladysmith",
+    "lat": "48.99016",
+    "lng": "-123.81699"
+  },
+  {
+    "id": 255,
+    "countryCode": "BR",
+    "city": "Gavea",
+    "lat": "-26.90967",
+    "lng": "-49.36547"
+  },
+  {
+    "id": 256,
+    "countryCode": "ID",
+    "city": "Riangderi",
+    "lat": "-8.3628",
+    "lng": "123.3026"
+  },
+  {
+    "id": 257,
+    "countryCode": "CN",
+    "city": "Longtan",
+    "lat": "27.41139",
+    "lng": "110.53639"
+  },
+  {
+    "id": 258,
+    "countryCode": "MX",
+    "city": "5 de Mayo",
+    "lat": "24.0167",
+    "lng": "-98.75"
+  },
+  {
+    "id": 259,
+    "countryCode": "UA",
+    "city": "Merefa",
+    "lat": "49.82302",
+    "lng": "36.05069"
+  },
+  {
+    "id": 260,
+    "countryCode": "RU",
+    "city": "Bratsk",
+    "lat": "56.1325",
+    "lng": "101.61417"
+  },
+  {
+    "id": 261,
+    "countryCode": "RU",
+    "city": "Ivanovo",
+    "lat": "56.99719",
+    "lng": "40.97139"
+  },
+  {
+    "id": 262,
+    "countryCode": "GR",
+    "city": "Plagiári",
+    "lat": "40.47276",
+    "lng": "22.9579"
+  },
+  {
+    "id": 263,
+    "countryCode": "CN",
+    "city": "Songmuping",
+    "lat": "30.13323",
+    "lng": "111.47902"
+  },
+  {
+    "id": 264,
+    "countryCode": "CZ",
+    "city": "Brodek u Přerova",
+    "lat": "49.48419",
+    "lng": "17.33825"
+  },
+  {
+    "id": 265,
+    "countryCode": "CN",
+    "city": "Sanli",
+    "lat": "30.77545",
+    "lng": "118.25476"
+  },
+  {
+    "id": 266,
+    "countryCode": "CN",
+    "city": "Jiaxian Chengguanzhen",
+    "lat": "33.96833",
+    "lng": "113.20806"
+  },
+  {
+    "id": 267,
+    "countryCode": "FI",
+    "city": "Pyhäranta",
+    "lat": "60.95",
+    "lng": "21.45"
+  },
+  {
+    "id": 268,
+    "countryCode": "LU",
+    "city": "Steinfort",
+    "lat": "49.66139",
+    "lng": "5.91917"
+  },
+  {
+    "id": 269,
+    "countryCode": "ID",
+    "city": "Pagatan",
+    "lat": "-3.6075",
+    "lng": "115.9381"
+  },
+  {
+    "id": 270,
+    "countryCode": "CN",
+    "city": "Gaoyao",
+    "lat": "23.02432",
+    "lng": "112.44555"
+  },
+  {
+    "id": 271,
+    "countryCode": "CN",
+    "city": "Shizong",
+    "lat": "32.19303",
+    "lng": "121.12161"
+  },
+  {
+    "id": 272,
+    "countryCode": "MM",
+    "city": "Thanatpin",
+    "lat": "17.21194",
+    "lng": "96.30333"
+  },
+  {
+    "id": 273,
+    "countryCode": "RU",
+    "city": "Zheleznovodsk",
+    "lat": "44.13944",
+    "lng": "43.01972"
+  },
+  {
+    "id": 274,
+    "countryCode": "AM",
+    "city": "Arevashogh",
+    "lat": "40.86039",
+    "lng": "44.27438"
+  },
+  {
+    "id": 275,
+    "countryCode": "US",
+    "city": "Tacoma",
+    "lat": "47.1441",
+    "lng": "-122.4434"
+  },
+  {
+    "id": 276,
+    "countryCode": "ID",
+    "city": "Kotingnatagete",
+    "lat": "-8.6816",
+    "lng": "122.193"
+  },
+  {
+    "id": 277,
+    "countryCode": "AR",
+    "city": "Cutral-Có",
+    "lat": "-38.93424",
+    "lng": "-69.23052"
+  },
+  {
+    "id": 278,
+    "countryCode": "PE",
+    "city": "Santa",
+    "lat": "-8.98861",
+    "lng": "-78.61194"
+  },
+  {
+    "id": 279,
+    "countryCode": "PL",
+    "city": "Jastrowie",
+    "lat": "53.42048",
+    "lng": "16.81756"
+  },
+  {
+    "id": 280,
+    "countryCode": "CN",
+    "city": "Beichengqu",
+    "lat": "40.43944",
+    "lng": "113.15361"
+  },
+  {
+    "id": 281,
+    "countryCode": "PL",
+    "city": "Dobrzeń Wielki",
+    "lat": "50.76844",
+    "lng": "17.84652"
+  },
+  {
+    "id": 282,
+    "countryCode": "MN",
+    "city": "Buyant",
+    "lat": "48.57967",
+    "lng": "89.5475"
+  },
+  {
+    "id": 283,
+    "countryCode": "SE",
+    "city": "Överkalix",
+    "lat": "66.3275",
+    "lng": "22.8441"
+  },
+  {
+    "id": 284,
+    "countryCode": "VN",
+    "city": "Thị Trấn Quán Lào",
+    "lat": "19.97153",
+    "lng": "105.65106"
+  },
+  {
+    "id": 285,
+    "countryCode": "RU",
+    "city": "Pesochnoye",
+    "lat": "58.00597",
+    "lng": "39.17717"
+  },
+  {
+    "id": 286,
+    "countryCode": "CO",
+    "city": "San Carlos",
+    "lat": "7.79177",
+    "lng": "-74.77316"
+  },
+  {
+    "id": 287,
+    "countryCode": "ID",
+    "city": "Argotirto Krajan",
+    "lat": "-8.2885",
+    "lng": "112.6884"
+  },
+  {
+    "id": 288,
+    "countryCode": "CZ",
+    "city": "Přibyslav",
+    "lat": "49.57684",
+    "lng": "15.73855"
+  },
+  {
+    "id": 289,
+    "countryCode": "AL",
+    "city": "Gurra e Vogël",
+    "lat": "41.53611",
+    "lng": "19.99083"
+  },
+  {
+    "id": 290,
+    "countryCode": "PT",
+    "city": "Seixo da Beira",
+    "lat": "40.4",
+    "lng": "-7.9167"
+  },
+  {
+    "id": 291,
+    "countryCode": "JP",
+    "city": "Funabashi",
+    "lat": "35.69306",
+    "lng": "139.98333"
+  },
+  {
+    "id": 292,
+    "countryCode": "ID",
+    "city": "Klampis",
+    "lat": "-6.8938",
+    "lng": "112.9041"
+  },
+  {
+    "id": 293,
+    "countryCode": "TN",
+    "city": "Qal‘at al Andalus",
+    "lat": "37.0629",
+    "lng": "10.11829"
+  },
+  {
+    "id": 294,
+    "countryCode": "MY",
+    "city": "Ipoh",
+    "lat": "4.6118",
+    "lng": "101.1135"
+  },
+  {
+    "id": 295,
+    "countryCode": "BG",
+    "city": "Veliko Tŭrnovo",
+    "lat": "42.61667",
+    "lng": "25.4"
+  },
+  {
+    "id": 296,
+    "countryCode": "CN",
+    "city": "Shuibian",
+    "lat": "27.60805",
+    "lng": "115.32636"
+  },
+  {
+    "id": 297,
+    "countryCode": "CZ",
+    "city": "Dýšina",
+    "lat": "49.77735",
+    "lng": "13.4915"
+  },
+  {
+    "id": 298,
+    "countryCode": "TZ",
+    "city": "Chanika",
+    "lat": "-5.41667",
+    "lng": "38.01667"
+  },
+  {
+    "id": 299,
+    "countryCode": "PL",
+    "city": "Paniówki",
+    "lat": "50.23139",
+    "lng": "18.78104"
+  },
+  {
+    "id": 300,
+    "countryCode": "SE",
+    "city": "Göteborg",
+    "lat": "57.7072",
+    "lng": "11.9668"
+  },
+  {
+    "id": 301,
+    "countryCode": "ID",
+    "city": "Randudongkal",
+    "lat": "-7.0981",
+    "lng": "109.3243"
+  },
+  {
+    "id": 302,
+    "countryCode": "RU",
+    "city": "Siverskiy",
+    "lat": "59.35444",
+    "lng": "30.07833"
+  },
+  {
+    "id": 303,
+    "countryCode": "SE",
+    "city": "Fagersta",
+    "lat": "60.0042",
+    "lng": "15.7932"
+  },
+  {
+    "id": 304,
+    "countryCode": "PT",
+    "city": "Regueiro",
+    "lat": "42.0133",
+    "lng": "-8.47"
+  },
+  {
+    "id": 305,
+    "countryCode": "KG",
+    "city": "At-Bashi",
+    "lat": "41.17017",
+    "lng": "75.81058"
+  },
+  {
+    "id": 306,
+    "countryCode": "JP",
+    "city": "Tatsuno",
+    "lat": "35.98426",
+    "lng": "137.99721"
+  },
+  {
+    "id": 307,
+    "countryCode": "CA",
+    "city": "Barrie",
+    "lat": "44.40011",
+    "lng": "-79.66634"
+  },
+  {
+    "id": 308,
+    "countryCode": "AR",
+    "city": "Rufino",
+    "lat": "-34.26827",
+    "lng": "-62.71262"
+  },
+  {
+    "id": 309,
+    "countryCode": "GE",
+    "city": "T’et’ri Tsqaro",
+    "lat": "41.54448",
+    "lng": "44.46153"
+  },
+  {
+    "id": 310,
+    "countryCode": "PT",
+    "city": "Campo",
+    "lat": "41.7",
+    "lng": "-8.3333"
+  },
+  {
+    "id": 311,
+    "countryCode": "CN",
+    "city": "Ganquan",
+    "lat": "40.96426",
+    "lng": "122.85418"
+  },
+  {
+    "id": 312,
+    "countryCode": "UA",
+    "city": "Troyits’ke",
+    "lat": "49.9145",
+    "lng": "38.29277"
+  },
+  {
+    "id": 313,
+    "countryCode": "PH",
+    "city": "Bulasa",
+    "lat": "9.93206",
+    "lng": "123.61802"
+  },
+  {
+    "id": 314,
+    "countryCode": "SE",
+    "city": "Norrköping",
+    "lat": "58.5942",
+    "lng": "16.1826"
+  },
+  {
+    "id": 315,
+    "countryCode": "RS",
+    "city": "Bački Petrovac",
+    "lat": "45.36056",
+    "lng": "19.59167"
+  },
+  {
+    "id": 316,
+    "countryCode": "PL",
+    "city": "Przesmyki",
+    "lat": "52.26816",
+    "lng": "22.58394"
+  },
+  {
+    "id": 317,
+    "countryCode": "ID",
+    "city": "Haruman",
+    "lat": "-7.072",
+    "lng": "107.9265"
+  },
+  {
+    "id": 318,
+    "countryCode": "MX",
+    "city": "San Isidro",
+    "lat": "19.5423",
+    "lng": "-99.6316"
+  },
+  {
+    "id": 319,
+    "countryCode": "EG",
+    "city": "Rosetta",
+    "lat": "31.40444",
+    "lng": "30.41639"
+  },
+  {
+    "id": 320,
+    "countryCode": "ID",
+    "city": "Nunhala",
+    "lat": "-9.6218",
+    "lng": "124.4923"
+  },
+  {
+    "id": 321,
+    "countryCode": "JM",
+    "city": "Mocho",
+    "lat": "18.04",
+    "lng": "-77.33"
+  },
+  {
+    "id": 322,
+    "countryCode": "CN",
+    "city": "Sanying",
+    "lat": "36.28154",
+    "lng": "106.15546"
+  },
+  {
+    "id": 323,
+    "countryCode": "PE",
+    "city": "Salaverry",
+    "lat": "-8.221",
+    "lng": "-78.97698"
+  },
+  {
+    "id": 324,
+    "countryCode": "CN",
+    "city": "Baiyang",
+    "lat": "28.8072",
+    "lng": "109.73363"
+  },
+  {
+    "id": 325,
+    "countryCode": "PH",
+    "city": "Bitanjuan",
+    "lat": "10.5955",
+    "lng": "124.7663"
+  },
+  {
+    "id": 326,
+    "countryCode": "ID",
+    "city": "Tamianglayang",
+    "lat": "-2.1236",
+    "lng": "115.1958"
+  },
+  {
+    "id": 327,
+    "countryCode": "CN",
+    "city": "Weifen",
+    "lat": "38.48064",
+    "lng": "111.16664"
+  },
+  {
+    "id": 328,
+    "countryCode": "CN",
+    "city": "Tiepu",
+    "lat": "23.61535",
+    "lng": "116.75398"
+  },
+  {
+    "id": 329,
+    "countryCode": "CN",
+    "city": "Wugong",
+    "lat": "33.33412",
+    "lng": "113.56956"
+  },
+  {
+    "id": 330,
+    "countryCode": "FR",
+    "city": "Draguignan",
+    "lat": "43.5333",
+    "lng": "6.4667"
+  },
+  {
+    "id": 331,
+    "countryCode": "BR",
+    "city": "Tupaciguara",
+    "lat": "-18.59222",
+    "lng": "-48.705"
+  },
+  {
+    "id": 332,
+    "countryCode": "CN",
+    "city": "Qifang",
+    "lat": "32.20368",
+    "lng": "112.56284"
+  },
+  {
+    "id": 333,
+    "countryCode": "ID",
+    "city": "Gunungtua",
+    "lat": "1.51274",
+    "lng": "99.62628"
+  },
+  {
+    "id": 334,
+    "countryCode": "KR",
+    "city": "Hajeom",
+    "lat": "37.77419",
+    "lng": "126.41226"
+  },
+  {
+    "id": 335,
+    "countryCode": "JP",
+    "city": "Tanabe",
+    "lat": "33.73333",
+    "lng": "135.36667"
+  },
+  {
+    "id": 336,
+    "countryCode": "BR",
+    "city": "Rio Formoso",
+    "lat": "-8.66877",
+    "lng": "-35.16277"
+  },
+  {
+    "id": 337,
+    "countryCode": "US",
+    "city": "Richmond",
+    "lat": "37.5313",
+    "lng": "-77.4161"
+  },
+  {
+    "id": 338,
+    "countryCode": "GR",
+    "city": "Eloúnda",
+    "lat": "35.265",
+    "lng": "25.72127"
+  },
+  {
+    "id": 339,
+    "countryCode": "PH",
+    "city": "Villasis",
+    "lat": "15.90167",
+    "lng": "120.58833"
+  },
+  {
+    "id": 340,
+    "countryCode": "ID",
+    "city": "Lembang",
+    "lat": "-6.81167",
+    "lng": "107.6175"
+  },
+  {
+    "id": 341,
+    "countryCode": "CN",
+    "city": "Huangdimiao",
+    "lat": "33.76757",
+    "lng": "113.98567"
+  },
+  {
+    "id": 342,
+    "countryCode": "GR",
+    "city": "Rodolívos",
+    "lat": "40.92055",
+    "lng": "23.97489"
+  },
+  {
+    "id": 343,
+    "countryCode": "SE",
+    "city": "Eskilstuna",
+    "lat": "59.3666",
+    "lng": "16.5077"
+  },
+  {
+    "id": 344,
+    "countryCode": "TN",
+    "city": "El Mida",
+    "lat": "36.72556",
+    "lng": "10.85528"
+  },
+  {
+    "id": 345,
+    "countryCode": "CZ",
+    "city": "Dolní Dvořiště",
+    "lat": "48.65642",
+    "lng": "14.45221"
+  },
+  {
+    "id": 346,
+    "countryCode": "CZ",
+    "city": "Zubří",
+    "lat": "49.46603",
+    "lng": "18.09249"
+  },
+  {
+    "id": 347,
+    "countryCode": "CN",
+    "city": "Liqiao",
+    "lat": "31.22112",
+    "lng": "118.92023"
+  },
+  {
+    "id": 348,
+    "countryCode": "LU",
+    "city": "Beaufort",
+    "lat": "49.83583",
+    "lng": "6.29167"
+  },
+  {
+    "id": 349,
+    "countryCode": "CN",
+    "city": "Lubu",
+    "lat": "23.17233",
+    "lng": "112.28298"
+  },
+  {
+    "id": 350,
+    "countryCode": "CM",
+    "city": "Manjo",
+    "lat": "4.8428",
+    "lng": "9.8217"
+  },
+  {
+    "id": 351,
+    "countryCode": "ID",
+    "city": "Pakis",
+    "lat": "-6.9492",
+    "lng": "113.698"
+  },
+  {
+    "id": 352,
+    "countryCode": "CN",
+    "city": "Yulin",
+    "lat": "46.10995",
+    "lng": "126.27798"
+  },
+  {
+    "id": 353,
+    "countryCode": "PH",
+    "city": "Balaoang",
+    "lat": "15.6633",
+    "lng": "120.5147"
+  },
+  {
+    "id": 354,
+    "countryCode": "CN",
+    "city": "Hengjing",
+    "lat": "32.9169",
+    "lng": "119.69214"
+  },
+  {
+    "id": 355,
+    "countryCode": "JP",
+    "city": "Kitami",
+    "lat": "43.80306",
+    "lng": "143.89083"
+  },
+  {
+    "id": 356,
+    "countryCode": "ID",
+    "city": "Cibinong",
+    "lat": "-7.2037",
+    "lng": "106.5251"
+  },
+  {
+    "id": 357,
+    "countryCode": "SE",
+    "city": "Kista",
+    "lat": "59.4032",
+    "lng": "17.9448"
+  },
+  {
+    "id": 358,
+    "countryCode": "ID",
+    "city": "Jumpangdua",
+    "lat": "5.19669",
+    "lng": "96.78446"
+  },
+  {
+    "id": 359,
+    "countryCode": "FR",
+    "city": "Caen",
+    "lat": "49.1859",
+    "lng": "-0.3591"
+  },
+  {
+    "id": 360,
+    "countryCode": "FI",
+    "city": "Muurame",
+    "lat": "62.13333",
+    "lng": "25.66667"
+  },
+  {
+    "id": 361,
+    "countryCode": "PT",
+    "city": "Cabo de Vila",
+    "lat": "41.0667",
+    "lng": "-8.6333"
+  },
+  {
+    "id": 362,
+    "countryCode": "CN",
+    "city": "Beixiaoying",
+    "lat": "40.19791",
+    "lng": "116.71997"
+  },
+  {
+    "id": 363,
+    "countryCode": "UA",
+    "city": "Pavlysh",
+    "lat": "48.91762",
+    "lng": "33.35691"
+  },
+  {
+    "id": 364,
+    "countryCode": "PH",
+    "city": "Santo Domingo",
+    "lat": "15.07289",
+    "lng": "120.75703"
+  },
+  {
+    "id": 365,
+    "countryCode": "PL",
+    "city": "Domaniewice",
+    "lat": "52.00623",
+    "lng": "19.80294"
+  },
+  {
+    "id": 366,
+    "countryCode": "PL",
+    "city": "Latowicz",
+    "lat": "52.02636",
+    "lng": "21.80829"
+  },
+  {
+    "id": 367,
+    "countryCode": "BG",
+    "city": "Vidin",
+    "lat": "43.99",
+    "lng": "22.8725"
+  },
+  {
+    "id": 368,
+    "countryCode": "PH",
+    "city": "San Pascual",
+    "lat": "13.12972",
+    "lng": "122.97917"
+  },
+  {
+    "id": 369,
+    "countryCode": "CN",
+    "city": "Weizheng",
+    "lat": "23.65075",
+    "lng": "112.73136"
+  },
+  {
+    "id": 370,
+    "countryCode": "CN",
+    "city": "Fuzhiping",
+    "lat": "28.89556",
+    "lng": "109.92333"
+  },
+  {
+    "id": 371,
+    "countryCode": "ID",
+    "city": "Caloue",
+    "lat": "5.31494",
+    "lng": "95.9706"
+  },
+  {
+    "id": 372,
+    "countryCode": "PL",
+    "city": "Ostrowsko",
+    "lat": "49.47616",
+    "lng": "20.10052"
+  },
+  {
+    "id": 373,
+    "countryCode": "PH",
+    "city": "Babo-Pangulo",
+    "lat": "15.08333",
+    "lng": "120.51667"
+  },
+  {
+    "id": 374,
+    "countryCode": "FR",
+    "city": "La Roche-sur-Yon",
+    "lat": "46.6667",
+    "lng": "-1.4333"
+  },
+  {
+    "id": 375,
+    "countryCode": "PL",
+    "city": "Zawichost",
+    "lat": "50.80743",
+    "lng": "21.85408"
+  },
+  {
+    "id": 376,
+    "countryCode": "CN",
+    "city": "Wanlongshan",
+    "lat": "27.60142",
+    "lng": "114.16794"
+  },
+  {
+    "id": 377,
+    "countryCode": "JP",
+    "city": "Hikone",
+    "lat": "35.25",
+    "lng": "136.25"
+  },
+  {
+    "id": 378,
+    "countryCode": "CM",
+    "city": "Dizangué",
+    "lat": "3.76667",
+    "lng": "9.98333"
+  },
+  {
+    "id": 379,
+    "countryCode": "BR",
+    "city": "Boa Viagem",
+    "lat": "-5.1275",
+    "lng": "-39.73222"
+  },
+  {
+    "id": 380,
+    "countryCode": "ID",
+    "city": "Weepangali",
+    "lat": "-9.4266",
+    "lng": "119.2635"
+  },
+  {
+    "id": 381,
+    "countryCode": "CN",
+    "city": "Qingtaiping",
+    "lat": "30.48335",
+    "lng": "110.2172"
+  },
+  {
+    "id": 382,
+    "countryCode": "JP",
+    "city": "Kan’onjichō",
+    "lat": "34.1276",
+    "lng": "133.64598"
+  },
+  {
+    "id": 383,
+    "countryCode": "CU",
+    "city": "Bartolomé Masó",
+    "lat": "20.16303",
+    "lng": "-76.94443"
+  },
+  {
+    "id": 384,
+    "countryCode": "HN",
+    "city": "El Triunfo de la Cruz",
+    "lat": "15.76667",
+    "lng": "-87.43333"
+  },
+  {
+    "id": 385,
+    "countryCode": "CZ",
+    "city": "Sedlice",
+    "lat": "48.77401",
+    "lng": "14.39115"
+  },
+  {
+    "id": 386,
+    "countryCode": "KZ",
+    "city": "Balpyk Bī",
+    "lat": "44.90225",
+    "lng": "78.23157"
+  },
+  {
+    "id": 387,
+    "countryCode": "CN",
+    "city": "Wufeng",
+    "lat": "32.82737",
+    "lng": "110.3693"
+  },
+  {
+    "id": 388,
+    "countryCode": "CZ",
+    "city": "Břasy",
+    "lat": "49.837",
+    "lng": "13.57833"
+  },
+  {
+    "id": 389,
+    "countryCode": "CN",
+    "city": "Raofeng",
+    "lat": "28.95639",
+    "lng": "116.81944"
+  },
+  {
+    "id": 390,
+    "countryCode": "CN",
+    "city": "Meishan",
+    "lat": "25.95568",
+    "lng": "117.91718"
+  },
+  {
+    "id": 391,
+    "countryCode": "PH",
+    "city": "Payapa",
+    "lat": "13.99804",
+    "lng": "120.89206"
+  },
+  {
+    "id": 392,
+    "countryCode": "RU",
+    "city": "Buzdyak",
+    "lat": "54.58333",
+    "lng": "54.55"
+  },
+  {
+    "id": 393,
+    "countryCode": "CN",
+    "city": "Xiamao",
+    "lat": "23.41911",
+    "lng": "112.65979"
+  },
+  {
+    "id": 394,
+    "countryCode": "PT",
+    "city": "Campo Maior",
+    "lat": "39.0167",
+    "lng": "-7.0667"
+  },
+  {
+    "id": 395,
+    "countryCode": "ID",
+    "city": "Kopen",
+    "lat": "-8.3621",
+    "lng": "114.1487"
+  },
+  {
+    "id": 396,
+    "countryCode": "BA",
+    "city": "Bosanski Novi",
+    "lat": "45.04643",
+    "lng": "16.37782"
+  },
+  {
+    "id": 397,
+    "countryCode": "MK",
+    "city": "Gradec",
+    "lat": "41.84806",
+    "lng": "22.50944"
+  },
+  {
+    "id": 398,
+    "countryCode": "CN",
+    "city": "Sui’an",
+    "lat": "24.08698",
+    "lng": "117.60912"
+  },
+  {
+    "id": 399,
+    "countryCode": "UA",
+    "city": "Dobropillya",
+    "lat": "48.46147",
+    "lng": "37.08524"
+  },
+  {
+    "id": 400,
+    "countryCode": "PT",
+    "city": "Silveiros",
+    "lat": "41.3667",
+    "lng": "-8.5667"
+  },
+  {
+    "id": 401,
+    "countryCode": "CN",
+    "city": "Machikou",
+    "lat": "40.18231",
+    "lng": "116.16134"
+  },
+  {
+    "id": 402,
+    "countryCode": "ID",
+    "city": "Magepanda",
+    "lat": "-8.5487",
+    "lng": "122.0486"
+  },
+  {
+    "id": 403,
+    "countryCode": "ID",
+    "city": "Sumenep",
+    "lat": "-7.01667",
+    "lng": "113.86667"
+  },
+  {
+    "id": 404,
+    "countryCode": "BR",
+    "city": "Ouro Branco",
+    "lat": "-20.52083",
+    "lng": "-43.69194"
+  },
+  {
+    "id": 405,
+    "countryCode": "PE",
+    "city": "Yuyapichis",
+    "lat": "-9.62732",
+    "lng": "-74.97658"
+  },
+  {
+    "id": 406,
+    "countryCode": "US",
+    "city": "Dallas",
+    "lat": "32.7673",
+    "lng": "-96.7776"
+  },
+  {
+    "id": 407,
+    "countryCode": "CO",
+    "city": "Aquitania",
+    "lat": "5.51972",
+    "lng": "-72.8875"
+  },
+  {
+    "id": 408,
+    "countryCode": "PT",
+    "city": "Carreira",
+    "lat": "41.3833",
+    "lng": "-8.4333"
+  },
+  {
+    "id": 409,
+    "countryCode": "RU",
+    "city": "Cherëmukhovo",
+    "lat": "60.34842",
+    "lng": "59.98507"
+  },
+  {
+    "id": 410,
+    "countryCode": "CN",
+    "city": "Tangxian",
+    "lat": "31.97931",
+    "lng": "113.1144"
+  },
+  {
+    "id": 411,
+    "countryCode": "CN",
+    "city": "Heqing",
+    "lat": "19.52831",
+    "lng": "109.63279"
+  },
+  {
+    "id": 412,
+    "countryCode": "TH",
+    "city": "Hat Yai",
+    "lat": "7.00836",
+    "lng": "100.47668"
+  },
+  {
+    "id": 413,
+    "countryCode": "US",
+    "city": "Danbury",
+    "lat": "41.3089",
+    "lng": "-73.3637"
+  },
+  {
+    "id": 414,
+    "countryCode": "US",
+    "city": "High Point",
+    "lat": "36.0807",
+    "lng": "-80.0244"
+  },
+  {
+    "id": 415,
+    "countryCode": "MG",
+    "city": "Ambatondrazaka",
+    "lat": "-17.83333",
+    "lng": "48.41667"
+  },
+  {
+    "id": 416,
+    "countryCode": "JP",
+    "city": "Hitachi",
+    "lat": "36.6",
+    "lng": "140.65"
+  },
+  {
+    "id": 417,
+    "countryCode": "ID",
+    "city": "Cingambul",
+    "lat": "-7.0449",
+    "lng": "108.3532"
+  },
+  {
+    "id": 418,
+    "countryCode": "CN",
+    "city": "Zhongdeng",
+    "lat": "39.59056",
+    "lng": "117.35306"
+  },
+  {
+    "id": 419,
+    "countryCode": "NL",
+    "city": "Waalwijk",
+    "lat": "51.6825",
+    "lng": "5.0708"
+  },
+  {
+    "id": 420,
+    "countryCode": "RS",
+    "city": "Kuršumlija",
+    "lat": "43.13826",
+    "lng": "21.27339"
+  },
+  {
+    "id": 421,
+    "countryCode": "JP",
+    "city": "Atsugi",
+    "lat": "35.43889",
+    "lng": "139.35972"
+  },
+  {
+    "id": 422,
+    "countryCode": "ID",
+    "city": "Sadabumi",
+    "lat": "-7.2137",
+    "lng": "108.7505"
+  },
+  {
+    "id": 423,
+    "countryCode": "PL",
+    "city": "Trzebunia",
+    "lat": "49.79146",
+    "lng": "19.84715"
+  },
+  {
+    "id": 424,
+    "countryCode": "RU",
+    "city": "Zheleznodorozhnyy",
+    "lat": "55.744",
+    "lng": "38.01684"
+  },
+  {
+    "id": 425,
+    "countryCode": "ID",
+    "city": "Mlawe",
+    "lat": "-7.051",
+    "lng": "112.4232"
+  },
+  {
+    "id": 426,
+    "countryCode": "PT",
+    "city": "Telhado",
+    "lat": "41.5042",
+    "lng": "-8.2375"
+  },
+  {
+    "id": 427,
+    "countryCode": "KR",
+    "city": "Goyang-si",
+    "lat": "37.65639",
+    "lng": "126.835"
+  },
+  {
+    "id": 428,
+    "countryCode": "JP",
+    "city": "Nirasaki",
+    "lat": "35.7",
+    "lng": "138.45"
+  },
+  {
+    "id": 429,
+    "countryCode": "PH",
+    "city": "Bayombong",
+    "lat": "16.4812",
+    "lng": "121.1497"
+  },
+  {
+    "id": 430,
+    "countryCode": "JP",
+    "city": "Yonago",
+    "lat": "35.43333",
+    "lng": "133.33333"
+  },
+  {
+    "id": 431,
+    "countryCode": "ID",
+    "city": "Tanggulangin",
+    "lat": "-6.7628",
+    "lng": "111.6133"
+  },
+  {
+    "id": 432,
+    "countryCode": "RU",
+    "city": "Zavolzh’ye",
+    "lat": "56.64051",
+    "lng": "43.39446"
+  },
+  {
+    "id": 433,
+    "countryCode": "ID",
+    "city": "Tugusirna",
+    "lat": "-7.3441",
+    "lng": "108.2158"
+  },
+  {
+    "id": 434,
+    "countryCode": "CN",
+    "city": "Sancha",
+    "lat": "36.0511",
+    "lng": "107.0454"
+  },
+  {
+    "id": 435,
+    "countryCode": "RU",
+    "city": "Ovsyanka",
+    "lat": "55.9583",
+    "lng": "92.572"
+  },
+  {
+    "id": 436,
+    "countryCode": "CZ",
+    "city": "Potštát",
+    "lat": "49.63693",
+    "lng": "17.65174"
+  },
+  {
+    "id": 437,
+    "countryCode": "CO",
+    "city": "Anolaima",
+    "lat": "4.83362",
+    "lng": "-74.4995"
+  },
+  {
+    "id": 438,
+    "countryCode": "PK",
+    "city": "Vihāri",
+    "lat": "30.03333",
+    "lng": "72.35"
+  },
+  {
+    "id": 439,
+    "countryCode": "ID",
+    "city": "Tanjungbalai",
+    "lat": "2.96667",
+    "lng": "99.8"
+  },
+  {
+    "id": 440,
+    "countryCode": "AM",
+    "city": "Kotayk’",
+    "lat": "40.27534",
+    "lng": "44.66036"
+  },
+  {
+    "id": 441,
+    "countryCode": "GE",
+    "city": "Bolnisi",
+    "lat": "41.44794",
+    "lng": "44.53838"
+  },
+  {
+    "id": 442,
+    "countryCode": "UA",
+    "city": "Zahvizdya",
+    "lat": "48.91836",
+    "lng": "24.65275"
+  },
+  {
+    "id": 443,
+    "countryCode": "PS",
+    "city": "Zaytā Jammā‘īn",
+    "lat": "32.13698",
+    "lng": "35.18595"
+  },
+  {
+    "id": 444,
+    "countryCode": "PH",
+    "city": "Concordia",
+    "lat": "10.50767",
+    "lng": "122.5496"
+  },
+  {
+    "id": 445,
+    "countryCode": "RS",
+    "city": "Kraljevo",
+    "lat": "43.72583",
+    "lng": "20.68944"
+  },
+  {
+    "id": 446,
+    "countryCode": "ID",
+    "city": "Merik",
+    "lat": "-6.9021",
+    "lng": "112.0493"
+  },
+  {
+    "id": 447,
+    "countryCode": "SY",
+    "city": "Shahbā",
+    "lat": "32.85514",
+    "lng": "36.62896"
+  },
+  {
+    "id": 448,
+    "countryCode": "ID",
+    "city": "Sasar",
+    "lat": "-7.0827",
+    "lng": "113.7343"
+  },
+  {
+    "id": 449,
+    "countryCode": "RU",
+    "city": "Ust’-Kut",
+    "lat": "56.7938",
+    "lng": "105.7672"
+  },
+  {
+    "id": 450,
+    "countryCode": "ID",
+    "city": "Nggesa",
+    "lat": "-8.6028",
+    "lng": "121.8186"
+  },
+  {
+    "id": 451,
+    "countryCode": "CN",
+    "city": "Dayangqi",
+    "lat": "51",
+    "lng": "124.08333"
+  },
+  {
+    "id": 452,
+    "countryCode": "US",
+    "city": "Anchorage",
+    "lat": "61.1872",
+    "lng": "-149.8804"
+  },
+  {
+    "id": 453,
+    "countryCode": "PT",
+    "city": "Vale",
+    "lat": "40.9973",
+    "lng": "-8.4664"
+  },
+  {
+    "id": 454,
+    "countryCode": "ID",
+    "city": "Cukanguncal",
+    "lat": "-7.256",
+    "lng": "108.3155"
+  },
+  {
+    "id": 455,
+    "countryCode": "ID",
+    "city": "Kubangkondang",
+    "lat": "-6.4219",
+    "lng": "105.9089"
+  },
+  {
+    "id": 456,
+    "countryCode": "ID",
+    "city": "Legok",
+    "lat": "-7.0189",
+    "lng": "106.9553"
+  },
+  {
+    "id": 457,
+    "countryCode": "DJ",
+    "city": "Obock",
+    "lat": "11.96306",
+    "lng": "43.29056"
+  },
+  {
+    "id": 458,
+    "countryCode": "CN",
+    "city": "Najiaying",
+    "lat": "24.18252",
+    "lng": "102.73886"
+  },
+  {
+    "id": 459,
+    "countryCode": "SE",
+    "city": "Norrköping",
+    "lat": "58.5942",
+    "lng": "16.1826"
+  },
+  {
+    "id": 460,
+    "countryCode": "ID",
+    "city": "Ciwaru",
+    "lat": "-6.93272",
+    "lng": "106.24502"
+  },
+  {
+    "id": 461,
+    "countryCode": "TH",
+    "city": "Kaset Sombun",
+    "lat": "16.28053",
+    "lng": "101.95422"
+  },
+  {
+    "id": 462,
+    "countryCode": "ID",
+    "city": "Kebunkelapa",
+    "lat": "-7.0437",
+    "lng": "113.9281"
+  },
+  {
+    "id": 463,
+    "countryCode": "TN",
+    "city": "Al ‘Āliyah",
+    "lat": "37.1691",
+    "lng": "10.03478"
+  },
+  {
+    "id": 464,
+    "countryCode": "CZ",
+    "city": "Netvořice",
+    "lat": "49.81569",
+    "lng": "14.51827"
+  },
+  {
+    "id": 465,
+    "countryCode": "MN",
+    "city": "Duut",
+    "lat": "47.51667",
+    "lng": "91.63333"
+  },
+  {
+    "id": 466,
+    "countryCode": "ID",
+    "city": "Batangan",
+    "lat": "-6.7094",
+    "lng": "111.2295"
+  },
+  {
+    "id": 467,
+    "countryCode": "ID",
+    "city": "Banjarsari",
+    "lat": "-7.1508",
+    "lng": "108.1902"
+  },
+  {
+    "id": 468,
+    "countryCode": "PL",
+    "city": "Niedrzwica Duża",
+    "lat": "51.11462",
+    "lng": "22.38911"
+  },
+  {
+    "id": 469,
+    "countryCode": "ID",
+    "city": "Karangsari",
+    "lat": "-7.0993",
+    "lng": "107.9342"
+  },
+  {
+    "id": 470,
+    "countryCode": "PT",
+    "city": "Amadora",
+    "lat": "38.75",
+    "lng": "-9.2333"
+  },
+  {
+    "id": 471,
+    "countryCode": "CN",
+    "city": "Qiandian",
+    "lat": "41.89462",
+    "lng": "124.00238"
+  },
+  {
+    "id": 472,
+    "countryCode": "CN",
+    "city": "Tiandeng",
+    "lat": "23.12658",
+    "lng": "107.09369"
+  },
+  {
+    "id": 473,
+    "countryCode": "FR",
+    "city": "Angers",
+    "lat": "47.4667",
+    "lng": "-0.55"
+  },
+  {
+    "id": 474,
+    "countryCode": "RU",
+    "city": "Frolovo",
+    "lat": "49.77133",
+    "lng": "43.66222"
+  },
+  {
+    "id": 475,
+    "countryCode": "HR",
+    "city": "Soljani",
+    "lat": "44.95028",
+    "lng": "18.97028"
+  },
+  {
+    "id": 476,
+    "countryCode": "NL",
+    "city": "Ede",
+    "lat": "52.0333",
+    "lng": "5.6583"
+  },
+  {
+    "id": 477,
+    "countryCode": "ID",
+    "city": "Sidem",
+    "lat": "-8.0966",
+    "lng": "111.5831"
+  },
+  {
+    "id": 478,
+    "countryCode": "ID",
+    "city": "Umbuldamar",
+    "lat": "-8.1796",
+    "lng": "112.3563"
+  },
+  {
+    "id": 479,
+    "countryCode": "GR",
+    "city": "Korisós",
+    "lat": "40.5049",
+    "lng": "21.37703"
+  },
+  {
+    "id": 480,
+    "countryCode": "MX",
+    "city": "Parque Industrial",
+    "lat": "28.3653",
+    "lng": "-111.3386"
+  },
+  {
+    "id": 481,
+    "countryCode": "CN",
+    "city": "Yingchuan",
+    "lat": "27.85306",
+    "lng": "119.31528"
+  },
+  {
+    "id": 482,
+    "countryCode": "CN",
+    "city": "Badu",
+    "lat": "27.45271",
+    "lng": "115.25974"
+  },
+  {
+    "id": 483,
+    "countryCode": "PH",
+    "city": "Macayug",
+    "lat": "16.09376",
+    "lng": "120.43201"
+  },
+  {
+    "id": 484,
+    "countryCode": "CN",
+    "city": "Chengxiang",
+    "lat": "24.74636",
+    "lng": "114.52491"
+  },
+  {
+    "id": 485,
+    "countryCode": "CN",
+    "city": "Huilong",
+    "lat": "27.48073",
+    "lng": "118.40753"
+  },
+  {
+    "id": 486,
+    "countryCode": "PE",
+    "city": "Urpay",
+    "lat": "-8.34722",
+    "lng": "-77.38944"
+  },
+  {
+    "id": 487,
+    "countryCode": "PL",
+    "city": "Jastrowie",
+    "lat": "53.42048",
+    "lng": "16.81756"
+  },
+  {
+    "id": 488,
+    "countryCode": "AR",
+    "city": "San Antonio Oeste",
+    "lat": "-40.73193",
+    "lng": "-64.94769"
+  },
+  {
+    "id": 489,
+    "countryCode": "ID",
+    "city": "Cigintung",
+    "lat": "-7.4857",
+    "lng": "107.9158"
+  },
+  {
+    "id": 490,
+    "countryCode": "ID",
+    "city": "Banjar Jagasatru",
+    "lat": "-8.5611",
+    "lng": "115.1391"
+  },
+  {
+    "id": 491,
+    "countryCode": "AR",
+    "city": "Dalmacio Vélez Sársfield",
+    "lat": "-32.61072",
+    "lng": "-63.58038"
+  },
+  {
+    "id": 492,
+    "countryCode": "FR",
+    "city": "Colmar",
+    "lat": "48.0833",
+    "lng": "7.3667"
+  },
+  {
+    "id": 493,
+    "countryCode": "IR",
+    "city": "Bastak",
+    "lat": "27.19908",
+    "lng": "54.36676"
+  },
+  {
+    "id": 494,
+    "countryCode": "CN",
+    "city": "Daxing",
+    "lat": "39.74025",
+    "lng": "116.32693"
+  },
+  {
+    "id": 495,
+    "countryCode": "US",
+    "city": "Des Moines",
+    "lat": "41.5487",
+    "lng": "-93.5827"
+  },
+  {
+    "id": 496,
+    "countryCode": "CN",
+    "city": "Poxin",
+    "lat": "21.64194",
+    "lng": "111.0045"
+  },
+  {
+    "id": 497,
+    "countryCode": "PT",
+    "city": "Flor da Rosa",
+    "lat": "39.3",
+    "lng": "-7.7333"
+  },
+  {
+    "id": 498,
+    "countryCode": "CZ",
+    "city": "Červená Voda",
+    "lat": "50.04029",
+    "lng": "16.74268"
+  },
+  {
+    "id": 499,
+    "countryCode": "PT",
+    "city": "Belos Ares",
+    "lat": "41.2028",
+    "lng": "-8.4444"
+  },
+  {
+    "id": 500,
+    "countryCode": "CN",
+    "city": "Wutun",
+    "lat": "34.63768",
+    "lng": "109.29512"
+  },
+  {
+    "id": 501,
+    "countryCode": "JP",
+    "city": "Karasuyama",
+    "lat": "36.65",
+    "lng": "140.15"
+  },
+  {
+    "id": 502,
+    "countryCode": "SE",
+    "city": "Floda",
+    "lat": "57.8",
+    "lng": "12.3667"
+  },
+  {
+    "id": 503,
+    "countryCode": "KE",
+    "city": "Isiolo",
+    "lat": "0.35462",
+    "lng": "37.58218"
+  },
+  {
+    "id": 504,
+    "countryCode": "CN",
+    "city": "Gulou",
+    "lat": "40.36997",
+    "lng": "116.83352"
+  },
+  {
+    "id": 505,
+    "countryCode": "PT",
+    "city": "Gondar",
+    "lat": "41.5366",
+    "lng": "-8.3317"
+  },
+  {
+    "id": 506,
+    "countryCode": "CN",
+    "city": "Linquan",
+    "lat": "29.4608",
+    "lng": "115.72709"
+  },
+  {
+    "id": 507,
+    "countryCode": "BR",
+    "city": "Cametá",
+    "lat": "-2.24444",
+    "lng": "-49.49583"
+  },
+  {
+    "id": 508,
+    "countryCode": "VN",
+    "city": "Thị Trấn Bắc Yên",
+    "lat": "21.24626",
+    "lng": "104.43281"
+  },
+  {
+    "id": 509,
+    "countryCode": "UZ",
+    "city": "Salor",
+    "lat": "41.37222",
+    "lng": "69.38167"
+  },
+  {
+    "id": 510,
+    "countryCode": "TH",
+    "city": "Wang Sai Phun",
+    "lat": "16.3885",
+    "lng": "100.53801"
+  },
+  {
+    "id": 511,
+    "countryCode": "VN",
+    "city": "Nam Đàn",
+    "lat": "18.69799",
+    "lng": "105.49881"
+  },
+  {
+    "id": 512,
+    "countryCode": "CO",
+    "city": "Facatativá",
+    "lat": "4.81367",
+    "lng": "-74.35453"
+  },
+  {
+    "id": 513,
+    "countryCode": "CN",
+    "city": "Xiong’erzhai",
+    "lat": "40.27796",
+    "lng": "117.12416"
+  },
+  {
+    "id": 514,
+    "countryCode": "AR",
+    "city": "Corzuela",
+    "lat": "-26.95374",
+    "lng": "-60.96928"
+  },
+  {
+    "id": 515,
+    "countryCode": "ID",
+    "city": "Rancanyenang",
+    "lat": "-6.3376",
+    "lng": "106.0164"
+  },
+  {
+    "id": 516,
+    "countryCode": "CN",
+    "city": "Taizi",
+    "lat": "30.03333",
+    "lng": "115.18333"
+  },
+  {
+    "id": 517,
+    "countryCode": "CN",
+    "city": "Gaohe",
+    "lat": "30.74173",
+    "lng": "116.84259"
+  },
+  {
+    "id": 518,
+    "countryCode": "RU",
+    "city": "Krasnyy Oktyabr’",
+    "lat": "51.54018",
+    "lng": "45.70382"
+  },
+  {
+    "id": 519,
+    "countryCode": "PL",
+    "city": "Gostyń",
+    "lat": "51.88247",
+    "lng": "17.01226"
+  },
+  {
+    "id": 520,
+    "countryCode": "US",
+    "city": "Newport Beach",
+    "lat": "33.6062",
+    "lng": "-117.8931"
+  },
+  {
+    "id": 521,
+    "countryCode": "BR",
+    "city": "Uruçuca",
+    "lat": "-14.59306",
+    "lng": "-39.28444"
+  },
+  {
+    "id": 522,
+    "countryCode": "ID",
+    "city": "Bagu",
+    "lat": "-6.7262",
+    "lng": "111.1295"
+  },
+  {
+    "id": 523,
+    "countryCode": "FR",
+    "city": "Sens",
+    "lat": "48.2",
+    "lng": "3.2833"
+  },
+  {
+    "id": 524,
+    "countryCode": "TJ",
+    "city": "Qŭrghonteppa",
+    "lat": "37.83399",
+    "lng": "68.78186"
+  },
+  {
+    "id": 525,
+    "countryCode": "AU",
+    "city": "Sydney",
+    "lat": "-33.8678",
+    "lng": "151.2073"
+  },
+  {
+    "id": 526,
+    "countryCode": "SE",
+    "city": "Stocksund",
+    "lat": "59.3833",
+    "lng": "18.0667"
+  },
+  {
+    "id": 527,
+    "countryCode": "CN",
+    "city": "Huichang",
+    "lat": "24.74056",
+    "lng": "102.59484"
+  },
+  {
+    "id": 528,
+    "countryCode": "TJ",
+    "city": "Farkhor",
+    "lat": "37.49219",
+    "lng": "69.40356"
+  },
+  {
+    "id": 529,
+    "countryCode": "BF",
+    "city": "Kombissiri",
+    "lat": "12.06095",
+    "lng": "-1.33355"
+  },
+  {
+    "id": 530,
+    "countryCode": "JP",
+    "city": "Chōfugaoka",
+    "lat": "35.65924",
+    "lng": "139.54837"
+  },
+  {
+    "id": 531,
+    "countryCode": "CO",
+    "city": "Antioquia",
+    "lat": "6.55687",
+    "lng": "-75.82806"
+  },
+  {
+    "id": 532,
+    "countryCode": "TH",
+    "city": "Ban Thaen",
+    "lat": "16.40506",
+    "lng": "102.34239"
+  },
+  {
+    "id": 533,
+    "countryCode": "AR",
+    "city": "Lapachito",
+    "lat": "-27.15998",
+    "lng": "-59.38604"
+  },
+  {
+    "id": 534,
+    "countryCode": "CO",
+    "city": "Cunday",
+    "lat": "4.06004",
+    "lng": "-74.69212"
+  },
+  {
+    "id": 535,
+    "countryCode": "MX",
+    "city": "Tierra y Libertad",
+    "lat": "19.2269",
+    "lng": "-103.6864"
+  },
+  {
+    "id": 536,
+    "countryCode": "KP",
+    "city": "Kapsan-ŭp",
+    "lat": "41.09028",
+    "lng": "128.29333"
+  },
+  {
+    "id": 537,
+    "countryCode": "NG",
+    "city": "Gembu",
+    "lat": "6.7",
+    "lng": "11.26667"
+  },
+  {
+    "id": 538,
+    "countryCode": "EC",
+    "city": "Atuntaqui",
+    "lat": "0.33247",
+    "lng": "-78.21371"
+  },
+  {
+    "id": 539,
+    "countryCode": "MN",
+    "city": "Chonogol",
+    "lat": "45.9",
+    "lng": "115.36667"
+  },
+  {
+    "id": 540,
+    "countryCode": "FR",
+    "city": "Narbonne",
+    "lat": "43.1833",
+    "lng": "3"
+  },
+  {
+    "id": 541,
+    "countryCode": "US",
+    "city": "Seattle",
+    "lat": "47.4497",
+    "lng": "-122.3076"
+  },
+  {
+    "id": 542,
+    "countryCode": "CZ",
+    "city": "Konice",
+    "lat": "49.5903",
+    "lng": "16.88911"
+  },
+  {
+    "id": 543,
+    "countryCode": "PL",
+    "city": "Luboń",
+    "lat": "52.34705",
+    "lng": "16.89267"
+  },
+  {
+    "id": 544,
+    "countryCode": "HR",
+    "city": "Lepoglava",
+    "lat": "46.21056",
+    "lng": "16.03556"
+  },
+  {
+    "id": 545,
+    "countryCode": "PH",
+    "city": "San Jose",
+    "lat": "9.80056",
+    "lng": "118.75694"
+  },
+  {
+    "id": 546,
+    "countryCode": "US",
+    "city": "New Orleans",
+    "lat": "29.9686",
+    "lng": "-90.0646"
+  },
+  {
+    "id": 547,
+    "countryCode": "ID",
+    "city": "Rancapare",
+    "lat": "-7.1568",
+    "lng": "107.9439"
+  },
+  {
+    "id": 548,
+    "countryCode": "CA",
+    "city": "Kirkland Lake",
+    "lat": "48.14461",
+    "lng": "-80.03767"
+  },
+  {
+    "id": 549,
+    "countryCode": "PT",
+    "city": "Paraíso",
+    "lat": "41.0333",
+    "lng": "-8.2333"
+  },
+  {
+    "id": 550,
+    "countryCode": "MM",
+    "city": "Myitkyina",
+    "lat": "25.38641",
+    "lng": "97.39439"
+  },
+  {
+    "id": 551,
+    "countryCode": "PL",
+    "city": "Rogóźno",
+    "lat": "50.46417",
+    "lng": "23.39041"
+  },
+  {
+    "id": 552,
+    "countryCode": "BR",
+    "city": "Rio Negro",
+    "lat": "-26.10583",
+    "lng": "-49.7975"
+  },
+  {
+    "id": 553,
+    "countryCode": "YE",
+    "city": "Ghayl Bā Wazīr",
+    "lat": "14.77611",
+    "lng": "49.36611"
+  },
+  {
+    "id": 554,
+    "countryCode": "NG",
+    "city": "Ibadan",
+    "lat": "7.38778",
+    "lng": "3.89639"
+  },
+  {
+    "id": 555,
+    "countryCode": "ID",
+    "city": "Bunisari",
+    "lat": "-7.64748",
+    "lng": "107.71235"
+  },
+  {
+    "id": 556,
+    "countryCode": "CN",
+    "city": "Bailianhe",
+    "lat": "30.59856",
+    "lng": "115.43579"
+  },
+  {
+    "id": 557,
+    "countryCode": "PH",
+    "city": "Cabanbanan",
+    "lat": "10.0852",
+    "lng": "122.9579"
+  },
+  {
+    "id": 558,
+    "countryCode": "PH",
+    "city": "Camp Flora",
+    "lat": "13.3508",
+    "lng": "122.6641"
+  },
+  {
+    "id": 559,
+    "countryCode": "AO",
+    "city": "Camacupa",
+    "lat": "-12.01667",
+    "lng": "17.48333"
+  },
+  {
+    "id": 560,
+    "countryCode": "US",
+    "city": "Saint Paul",
+    "lat": "45.0059",
+    "lng": "-93.1059"
+  },
+  {
+    "id": 561,
+    "countryCode": "CN",
+    "city": "Jiling",
+    "lat": "30.72816",
+    "lng": "94.37118"
+  },
+  {
+    "id": 562,
+    "countryCode": "ZW",
+    "city": "Mazowe",
+    "lat": "-17.50404",
+    "lng": "30.97388"
+  },
+  {
+    "id": 563,
+    "countryCode": "CN",
+    "city": "Longtang",
+    "lat": "29.06816",
+    "lng": "107.98681"
+  },
+  {
+    "id": 564,
+    "countryCode": "CN",
+    "city": "Bayart Huxu",
+    "lat": "45.1",
+    "lng": "120.35"
+  },
+  {
+    "id": 565,
+    "countryCode": "ID",
+    "city": "Tutut",
+    "lat": "-8.039",
+    "lng": "112.6429"
+  },
+  {
+    "id": 566,
+    "countryCode": "SN",
+    "city": "Richard-Toll",
+    "lat": "16.4625",
+    "lng": "-15.70083"
+  },
+  {
+    "id": 567,
+    "countryCode": "RU",
+    "city": "Olovyannaya",
+    "lat": "50.95",
+    "lng": "115.56667"
+  },
+  {
+    "id": 568,
+    "countryCode": "AU",
+    "city": "Sydney",
+    "lat": "-33.8678",
+    "lng": "151.2073"
+  },
+  {
+    "id": 569,
+    "countryCode": "CN",
+    "city": "Jinshan",
+    "lat": "41.91667",
+    "lng": "118.66667"
+  },
+  {
+    "id": 570,
+    "countryCode": "PH",
+    "city": "Burgos",
+    "lat": "17.3324",
+    "lng": "120.4954"
+  },
+  {
+    "id": 571,
+    "countryCode": "AR",
+    "city": "General Lavalle",
+    "lat": "-36.40633",
+    "lng": "-56.94329"
+  },
+  {
+    "id": 572,
+    "countryCode": "AM",
+    "city": "Malishka",
+    "lat": "39.73758",
+    "lng": "45.39004"
+  },
+  {
+    "id": 573,
+    "countryCode": "UA",
+    "city": "Inkerman",
+    "lat": "44.6139",
+    "lng": "33.6098"
+  },
+  {
+    "id": 574,
+    "countryCode": "ID",
+    "city": "Sumberrejo",
+    "lat": "-7.2",
+    "lng": "111.4347"
+  },
+  {
+    "id": 575,
+    "countryCode": "PT",
+    "city": "Carregal",
+    "lat": "40.5833",
+    "lng": "-8.55"
+  },
+  {
+    "id": 576,
+    "countryCode": "ID",
+    "city": "Langnga",
+    "lat": "-3.8459",
+    "lng": "119.5222"
+  },
+  {
+    "id": 577,
+    "countryCode": "KE",
+    "city": "Moyale",
+    "lat": "3.5216",
+    "lng": "39.05472"
+  },
+  {
+    "id": 578,
+    "countryCode": "CA",
+    "city": "Drummondville",
+    "lat": "45.88336",
+    "lng": "-72.48241"
+  },
+  {
+    "id": 579,
+    "countryCode": "ID",
+    "city": "Krajan Alasdowo",
+    "lat": "-6.47729",
+    "lng": "111.03794"
+  },
+  {
+    "id": 580,
+    "countryCode": "FR",
+    "city": "Saint-Denis",
+    "lat": "48.9333",
+    "lng": "2.3667"
+  },
+  {
+    "id": 581,
+    "countryCode": "PT",
+    "city": "Porto Alto",
+    "lat": "38.9809",
+    "lng": "-8.7963"
+  },
+  {
+    "id": 582,
+    "countryCode": "BR",
+    "city": "Guanambi",
+    "lat": "-14.22333",
+    "lng": "-42.78139"
+  },
+  {
+    "id": 583,
+    "countryCode": "RU",
+    "city": "Cherkasskoye",
+    "lat": "52.42895",
+    "lng": "47.21048"
+  },
+  {
+    "id": 584,
+    "countryCode": "CN",
+    "city": "Guantang",
+    "lat": "23.62208",
+    "lng": "116.72657"
+  },
+  {
+    "id": 585,
+    "countryCode": "CN",
+    "city": "Changning",
+    "lat": "31.21739",
+    "lng": "121.42105"
+  },
+  {
+    "id": 586,
+    "countryCode": "NZ",
+    "city": "Whakatane",
+    "lat": "-37.95855",
+    "lng": "176.98545"
+  },
+  {
+    "id": 587,
+    "countryCode": "ID",
+    "city": "Nangkaruka",
+    "lat": "-7.4331",
+    "lng": "107.6462"
+  },
+  {
+    "id": 588,
+    "countryCode": "AL",
+    "city": "Maliq",
+    "lat": "40.70583",
+    "lng": "20.69972"
+  },
+  {
+    "id": 589,
+    "countryCode": "MU",
+    "city": "Grand Bois",
+    "lat": "-20.41889",
+    "lng": "57.54417"
+  },
+  {
+    "id": 590,
+    "countryCode": "FI",
+    "city": "Nastola",
+    "lat": "60.95",
+    "lng": "25.93333"
+  },
+  {
+    "id": 591,
+    "countryCode": "PH",
+    "city": "Tagakpan",
+    "lat": "7.11278",
+    "lng": "125.42917"
+  },
+  {
+    "id": 592,
+    "countryCode": "LV",
+    "city": "Vecpiebalga",
+    "lat": "57.0609",
+    "lng": "25.81624"
+  },
+  {
+    "id": 593,
+    "countryCode": "PT",
+    "city": "Louriceira",
+    "lat": "39.4667",
+    "lng": "-8.75"
+  },
+  {
+    "id": 594,
+    "countryCode": "RU",
+    "city": "Mochishche",
+    "lat": "55.1586",
+    "lng": "83.1229"
+  },
+  {
+    "id": 595,
+    "countryCode": "PT",
+    "city": "Portalegre",
+    "lat": "39.2167",
+    "lng": "-7.4067"
+  },
+  {
+    "id": 596,
+    "countryCode": "ZM",
+    "city": "Lusaka",
+    "lat": "-15.40669",
+    "lng": "28.28713"
+  },
+  {
+    "id": 597,
+    "countryCode": "LU",
+    "city": "Sandweiler",
+    "lat": "49.61333",
+    "lng": "6.21889"
+  },
+  {
+    "id": 598,
+    "countryCode": "GT",
+    "city": "Sacapulas",
+    "lat": "15.28667",
+    "lng": "-91.08722"
+  },
+  {
+    "id": 599,
+    "countryCode": "RS",
+    "city": "Gardinovci",
+    "lat": "45.20359",
+    "lng": "20.13558"
+  },
+  {
+    "id": 600,
+    "countryCode": "BR",
+    "city": "Rio das Ostras",
+    "lat": "-22.52694",
+    "lng": "-41.945"
+  },
+  {
+    "id": 601,
+    "countryCode": "ID",
+    "city": "Cibungur",
+    "lat": "-7.2913",
+    "lng": "107.5324"
+  },
+  {
+    "id": 602,
+    "countryCode": "BR",
+    "city": "Rio das Pedras",
+    "lat": "-22.84333",
+    "lng": "-47.60611"
+  },
+  {
+    "id": 603,
+    "countryCode": "PH",
+    "city": "Dampol",
+    "lat": "14.90128",
+    "lng": "120.82186"
+  },
+  {
+    "id": 604,
+    "countryCode": "US",
+    "city": "Frankfort",
+    "lat": "38.2341",
+    "lng": "-84.8748"
+  },
+  {
+    "id": 605,
+    "countryCode": "ID",
+    "city": "Karangdawa Barat",
+    "lat": "-6.13181",
+    "lng": "106.11094"
+  },
+  {
+    "id": 606,
+    "countryCode": "CN",
+    "city": "Chengbei",
+    "lat": "30.72106",
+    "lng": "107.7847"
+  },
+  {
+    "id": 607,
+    "countryCode": "ID",
+    "city": "Poja",
+    "lat": "-6.962",
+    "lng": "114.0351"
+  },
+  {
+    "id": 608,
+    "countryCode": "ID",
+    "city": "Pulosari",
+    "lat": "-8.0928",
+    "lng": "111.989"
+  },
+  {
+    "id": 609,
+    "countryCode": "PH",
+    "city": "Del Pilar",
+    "lat": "15.03601",
+    "lng": "120.69935"
+  },
+  {
+    "id": 610,
+    "countryCode": "JO",
+    "city": "Al Mazār",
+    "lat": "31.06556",
+    "lng": "35.69611"
+  },
+  {
+    "id": 611,
+    "countryCode": "PK",
+    "city": "Khairpur Nathan Shāh",
+    "lat": "27.09359",
+    "lng": "67.73366"
+  },
+  {
+    "id": 612,
+    "countryCode": "ID",
+    "city": "Kuala Bintang",
+    "lat": "4.575",
+    "lng": "96.96282"
+  },
+  {
+    "id": 613,
+    "countryCode": "FI",
+    "city": "Pyhäsalmi",
+    "lat": "63.68333",
+    "lng": "25.98333"
+  },
+  {
+    "id": 614,
+    "countryCode": "HR",
+    "city": "Sali",
+    "lat": "43.93972",
+    "lng": "15.16333"
+  },
+  {
+    "id": 615,
+    "countryCode": "CN",
+    "city": "Hongwansi",
+    "lat": "38.83514",
+    "lng": "99.59865"
+  },
+  {
+    "id": 616,
+    "countryCode": "CN",
+    "city": "Ganchazi",
+    "lat": "49.47244",
+    "lng": "128.26654"
+  },
+  {
+    "id": 617,
+    "countryCode": "PT",
+    "city": "Vila Chã de Ourique",
+    "lat": "39.1563",
+    "lng": "-8.7823"
+  },
+  {
+    "id": 618,
+    "countryCode": "PE",
+    "city": "El Tambo",
+    "lat": "-12.06667",
+    "lng": "-75.21667"
+  },
+  {
+    "id": 619,
+    "countryCode": "CN",
+    "city": "Daliang",
+    "lat": "39.53944",
+    "lng": "117.095"
+  },
+  {
+    "id": 620,
+    "countryCode": "JP",
+    "city": "Makurazaki",
+    "lat": "31.26667",
+    "lng": "130.31667"
+  },
+  {
+    "id": 621,
+    "countryCode": "ID",
+    "city": "Ngulakan",
+    "lat": "-6.7761",
+    "lng": "111.2248"
+  },
+  {
+    "id": 622,
+    "countryCode": "PL",
+    "city": "Baćkowice",
+    "lat": "50.79194",
+    "lng": "21.23211"
+  },
+  {
+    "id": 623,
+    "countryCode": "PL",
+    "city": "Żarów",
+    "lat": "50.94116",
+    "lng": "16.49466"
+  },
+  {
+    "id": 624,
+    "countryCode": "PA",
+    "city": "Sioguí Abajo",
+    "lat": "8.5",
+    "lng": "-82.66667"
+  },
+  {
+    "id": 625,
+    "countryCode": "RU",
+    "city": "Yoshkar-Ola",
+    "lat": "56.63877",
+    "lng": "47.89078"
+  },
+  {
+    "id": 626,
+    "countryCode": "PT",
+    "city": "Vales",
+    "lat": "39.4083",
+    "lng": "-8.5167"
+  },
+  {
+    "id": 627,
+    "countryCode": "FR",
+    "city": "Orly",
+    "lat": "48.7479",
+    "lng": "2.3925"
+  },
+  {
+    "id": 628,
+    "countryCode": "PH",
+    "city": "Dinahican",
+    "lat": "14.71667",
+    "lng": "121.71667"
+  },
+  {
+    "id": 629,
+    "countryCode": "DK",
+    "city": "København",
+    "lat": "55.6759",
+    "lng": "12.5655"
+  },
+  {
+    "id": 630,
+    "countryCode": "CN",
+    "city": "Linpu",
+    "lat": "30.04406",
+    "lng": "120.24493"
+  },
+  {
+    "id": 631,
+    "countryCode": "FI",
+    "city": "Muonio",
+    "lat": "67.95",
+    "lng": "23.7"
+  },
+  {
+    "id": 632,
+    "countryCode": "PE",
+    "city": "Tapacocha",
+    "lat": "-10.01667",
+    "lng": "-77.58333"
+  },
+  {
+    "id": 633,
+    "countryCode": "FR",
+    "city": "Albertville",
+    "lat": "45.6745",
+    "lng": "6.3906"
+  },
+  {
+    "id": 634,
+    "countryCode": "NL",
+    "city": "Alkmaar",
+    "lat": "52.6317",
+    "lng": "4.7486"
+  },
+  {
+    "id": 635,
+    "countryCode": "PH",
+    "city": "Pulong Gubat",
+    "lat": "14.85938",
+    "lng": "120.90599"
+  },
+  {
+    "id": 636,
+    "countryCode": "CN",
+    "city": "Zihu",
+    "lat": "28.90562",
+    "lng": "118.15458"
+  },
+  {
+    "id": 637,
+    "countryCode": "ID",
+    "city": "Kawengan",
+    "lat": "-7.0711",
+    "lng": "111.6806"
+  },
+  {
+    "id": 638,
+    "countryCode": "ID",
+    "city": "Lojigawaran",
+    "lat": "-6.7422",
+    "lng": "111.3587"
+  },
+  {
+    "id": 639,
+    "countryCode": "ID",
+    "city": "Dampol",
+    "lat": "-6.9131",
+    "lng": "113.2513"
+  },
+  {
+    "id": 640,
+    "countryCode": "CN",
+    "city": "Changtang",
+    "lat": "27.19188",
+    "lng": "114.96811"
+  },
+  {
+    "id": 641,
+    "countryCode": "CF",
+    "city": "Ouadda",
+    "lat": "8.07771",
+    "lng": "22.40075"
+  },
+  {
+    "id": 642,
+    "countryCode": "ID",
+    "city": "Saripin",
+    "lat": "-7.3325",
+    "lng": "108.2455"
+  },
+  {
+    "id": 643,
+    "countryCode": "TJ",
+    "city": "Norak",
+    "lat": "38.38917",
+    "lng": "69.32272"
+  },
+  {
+    "id": 644,
+    "countryCode": "EC",
+    "city": "Portoviejo",
+    "lat": "-1.05458",
+    "lng": "-80.45445"
+  },
+  {
+    "id": 645,
+    "countryCode": "ID",
+    "city": "Banjar Beratan",
+    "lat": "-8.1321",
+    "lng": "115.0993"
+  },
+  {
+    "id": 646,
+    "countryCode": "CR",
+    "city": "Puntarenas",
+    "lat": "9.97625",
+    "lng": "-84.83836"
+  },
+  {
+    "id": 647,
+    "countryCode": "BR",
+    "city": "Londrina",
+    "lat": "-23.31028",
+    "lng": "-51.16278"
+  },
+  {
+    "id": 648,
+    "countryCode": "CN",
+    "city": "Xinhua",
+    "lat": "23.38121",
+    "lng": "113.20744"
+  },
+  {
+    "id": 649,
+    "countryCode": "CO",
+    "city": "Toluviejo",
+    "lat": "9.45082",
+    "lng": "-75.43864"
+  },
+  {
+    "id": 650,
+    "countryCode": "US",
+    "city": "Clearwater",
+    "lat": "27.9139",
+    "lng": "-82.7157"
+  },
+  {
+    "id": 651,
+    "countryCode": "PK",
+    "city": "Sohbatpur",
+    "lat": "28.52017",
+    "lng": "68.54344"
+  },
+  {
+    "id": 652,
+    "countryCode": "AF",
+    "city": "Sangar Sarāy",
+    "lat": "34.40744",
+    "lng": "70.63937"
+  },
+  {
+    "id": 653,
+    "countryCode": "IR",
+    "city": "Gorgān",
+    "lat": "36.84165",
+    "lng": "54.44361"
+  },
+  {
+    "id": 654,
+    "countryCode": "CN",
+    "city": "Jugezhuang",
+    "lat": "40.37619",
+    "lng": "116.95086"
+  },
+  {
+    "id": 655,
+    "countryCode": "CN",
+    "city": "Jiangkou",
+    "lat": "29.7329",
+    "lng": "121.40367"
+  },
+  {
+    "id": 656,
+    "countryCode": "LI",
+    "city": "Schaan",
+    "lat": "47.16498",
+    "lng": "9.50867"
+  },
+  {
+    "id": 657,
+    "countryCode": "PH",
+    "city": "Mayapusi",
+    "lat": "9.6241",
+    "lng": "123.0188"
+  },
+  {
+    "id": 658,
+    "countryCode": "PT",
+    "city": "Silvares",
+    "lat": "40.6333",
+    "lng": "-7.9167"
+  },
+  {
+    "id": 659,
+    "countryCode": "CN",
+    "city": "Chenfang",
+    "lat": "28.05225",
+    "lng": "117.54029"
+  },
+  {
+    "id": 660,
+    "countryCode": "CN",
+    "city": "Qindu",
+    "lat": "34.34186",
+    "lng": "108.70824"
+  },
+  {
+    "id": 661,
+    "countryCode": "JP",
+    "city": "Namioka",
+    "lat": "40.71069",
+    "lng": "140.59048"
+  },
+  {
+    "id": 662,
+    "countryCode": "ZM",
+    "city": "Chadiza",
+    "lat": "-14.06779",
+    "lng": "32.43917"
+  },
+  {
+    "id": 663,
+    "countryCode": "CI",
+    "city": "Bouaflé",
+    "lat": "6.99041",
+    "lng": "-5.7442"
+  },
+  {
+    "id": 664,
+    "countryCode": "PH",
+    "city": "Bagumbayan",
+    "lat": "18.1939",
+    "lng": "121.66302"
+  },
+  {
+    "id": 665,
+    "countryCode": "RU",
+    "city": "Log",
+    "lat": "49.48437",
+    "lng": "43.86126"
+  },
+  {
+    "id": 666,
+    "countryCode": "DO",
+    "city": "Villa Altagracia",
+    "lat": "18.67297",
+    "lng": "-70.17095"
+  },
+  {
+    "id": 667,
+    "countryCode": "CA",
+    "city": "Sainte-Sophie",
+    "lat": "45.81678",
+    "lng": "-73.89919"
+  },
+  {
+    "id": 668,
+    "countryCode": "PH",
+    "city": "Liboran",
+    "lat": "8.35472",
+    "lng": "124.64889"
+  },
+  {
+    "id": 669,
+    "countryCode": "RU",
+    "city": "Venëv",
+    "lat": "54.35533",
+    "lng": "38.26843"
+  },
+  {
+    "id": 670,
+    "countryCode": "BR",
+    "city": "Farroupilha",
+    "lat": "-29.225",
+    "lng": "-51.34778"
+  },
+  {
+    "id": 671,
+    "countryCode": "CA",
+    "city": "Port Moody",
+    "lat": "49.28297",
+    "lng": "-122.85263"
+  },
+  {
+    "id": 672,
+    "countryCode": "FR",
+    "city": "Bordeaux",
+    "lat": "44.8404",
+    "lng": "-0.5805"
+  },
+  {
+    "id": 673,
+    "countryCode": "VE",
+    "city": "Tinaco",
+    "lat": "9.69871",
+    "lng": "-68.43348"
+  },
+  {
+    "id": 674,
+    "countryCode": "RU",
+    "city": "Lokosovo",
+    "lat": "61.13333",
+    "lng": "74.81667"
+  },
+  {
+    "id": 675,
+    "countryCode": "KG",
+    "city": "Iradan",
+    "lat": "40.26667",
+    "lng": "72.1"
+  },
+  {
+    "id": 676,
+    "countryCode": "PH",
+    "city": "Caridad",
+    "lat": "10.8315",
+    "lng": "124.7518"
+  },
+  {
+    "id": 677,
+    "countryCode": "AZ",
+    "city": "Ağdaş",
+    "lat": "40.64699",
+    "lng": "47.4738"
+  },
+  {
+    "id": 678,
+    "countryCode": "PH",
+    "city": "Diadi",
+    "lat": "16.7262",
+    "lng": "121.3589"
+  },
+  {
+    "id": 679,
+    "countryCode": "RU",
+    "city": "Pankovka",
+    "lat": "58.50004",
+    "lng": "31.1999"
+  },
+  {
+    "id": 680,
+    "countryCode": "CA",
+    "city": "Kugluktuk",
+    "lat": "67.82743",
+    "lng": "-115.09649"
+  },
+  {
+    "id": 681,
+    "countryCode": "ID",
+    "city": "Beskolen",
+    "lat": "-9.6883",
+    "lng": "124.2784"
+  },
+  {
+    "id": 682,
+    "countryCode": "EG",
+    "city": "Al Bājūr",
+    "lat": "30.43026",
+    "lng": "31.03681"
+  },
+  {
+    "id": 683,
+    "countryCode": "LY",
+    "city": "Zalţan",
+    "lat": "32.94701",
+    "lng": "11.86647"
+  },
+  {
+    "id": 684,
+    "countryCode": "GR",
+    "city": "Mílos",
+    "lat": "36.74392",
+    "lng": "24.42263"
+  },
+  {
+    "id": 685,
+    "countryCode": "AU",
+    "city": "Adelaide Mail Centre",
+    "lat": "-34.9287",
+    "lng": "138.5986"
+  },
+  {
+    "id": 686,
+    "countryCode": "RU",
+    "city": "Sergeyevka",
+    "lat": "43.34909",
+    "lng": "133.35972"
+  },
+  {
+    "id": 687,
+    "countryCode": "PH",
+    "city": "Concordia",
+    "lat": "10.50767",
+    "lng": "122.5496"
+  },
+  {
+    "id": 688,
+    "countryCode": "AZ",
+    "city": "Yelenendorf",
+    "lat": "40.58584",
+    "lng": "46.3189"
+  },
+  {
+    "id": 689,
+    "countryCode": "PF",
+    "city": "Tiarei",
+    "lat": "-17.53333",
+    "lng": "-149.33333"
+  },
+  {
+    "id": 690,
+    "countryCode": "PT",
+    "city": "Agrela",
+    "lat": "41.2167",
+    "lng": "-8.6333"
+  },
+  {
+    "id": 691,
+    "countryCode": "ID",
+    "city": "Baun",
+    "lat": "-10.29393",
+    "lng": "123.72513"
+  },
+  {
+    "id": 692,
+    "countryCode": "PL",
+    "city": "Drezdenko",
+    "lat": "52.83831",
+    "lng": "15.83078"
+  },
+  {
+    "id": 693,
+    "countryCode": "ID",
+    "city": "Luan Balu",
+    "lat": "2.52582",
+    "lng": "96.33172"
+  },
+  {
+    "id": 694,
+    "countryCode": "MX",
+    "city": "Nueva Esperanza",
+    "lat": "26.2569",
+    "lng": "-101.9496"
+  },
+  {
+    "id": 695,
+    "countryCode": "CN",
+    "city": "Dahuaishu",
+    "lat": "36.26556",
+    "lng": "111.67528"
+  },
+  {
+    "id": 696,
+    "countryCode": "BR",
+    "city": "Piraquara",
+    "lat": "-25.44227",
+    "lng": "-49.06795"
+  },
+  {
+    "id": 697,
+    "countryCode": "CN",
+    "city": "Xuexi",
+    "lat": "27.39624",
+    "lng": "119.91636"
+  },
+  {
+    "id": 698,
+    "countryCode": "BR",
+    "city": "Barra Bonita",
+    "lat": "-22.49472",
+    "lng": "-48.55806"
+  },
+  {
+    "id": 699,
+    "countryCode": "CN",
+    "city": "Gaofeng",
+    "lat": "30.71277",
+    "lng": "108.34187"
+  },
+  {
+    "id": 700,
+    "countryCode": "JP",
+    "city": "Kamigyō-ku",
+    "lat": "35.02954",
+    "lng": "135.75666"
+  },
+  {
+    "id": 701,
+    "countryCode": "CA",
+    "city": "Amos",
+    "lat": "48.56688",
+    "lng": "-78.11624"
+  },
+  {
+    "id": 702,
+    "countryCode": "LK",
+    "city": "Kalutara",
+    "lat": "6.5831",
+    "lng": "79.9593"
+  },
+  {
+    "id": 703,
+    "countryCode": "CN",
+    "city": "Sanzhou",
+    "lat": "25.59261",
+    "lng": "116.37868"
+  },
+  {
+    "id": 704,
+    "countryCode": "CN",
+    "city": "Mafang",
+    "lat": "34.78576",
+    "lng": "108.16252"
+  },
+  {
+    "id": 705,
+    "countryCode": "ID",
+    "city": "Padangbai",
+    "lat": "-8.5317",
+    "lng": "115.5072"
+  },
+  {
+    "id": 706,
+    "countryCode": "ID",
+    "city": "Duko",
+    "lat": "-6.9189",
+    "lng": "113.6224"
+  },
+  {
+    "id": 707,
+    "countryCode": "RU",
+    "city": "Sinyavino",
+    "lat": "59.90781",
+    "lng": "31.0711"
+  },
+  {
+    "id": 708,
+    "countryCode": "NO",
+    "city": "Moss",
+    "lat": "59.434",
+    "lng": "10.6577"
+  },
+  {
+    "id": 709,
+    "countryCode": "SE",
+    "city": "Sollefteå",
+    "lat": "63.1667",
+    "lng": "17.2667"
+  },
+  {
+    "id": 710,
+    "countryCode": "CZ",
+    "city": "Karolinka",
+    "lat": "49.35128",
+    "lng": "18.24006"
+  },
+  {
+    "id": 711,
+    "countryCode": "UA",
+    "city": "Nuyno",
+    "lat": "51.54628",
+    "lng": "24.91018"
+  },
+  {
+    "id": 712,
+    "countryCode": "MV",
+    "city": "Eydhafushi",
+    "lat": "5.10327",
+    "lng": "73.07078"
+  },
+  {
+    "id": 713,
+    "countryCode": "ID",
+    "city": "Praya",
+    "lat": "-8.70536",
+    "lng": "116.27036"
+  },
+  {
+    "id": 714,
+    "countryCode": "SE",
+    "city": "Stockholm",
+    "lat": "59.3326",
+    "lng": "18.0649"
+  },
+  {
+    "id": 715,
+    "countryCode": "NG",
+    "city": "Dankama",
+    "lat": "13.29782",
+    "lng": "7.79492"
+  },
+  {
+    "id": 716,
+    "countryCode": "TH",
+    "city": "Phichit",
+    "lat": "16.44184",
+    "lng": "100.34879"
+  },
+  {
+    "id": 717,
+    "countryCode": "EC",
+    "city": "Ventanas",
+    "lat": "-1.44158",
+    "lng": "-79.45943"
+  },
+  {
+    "id": 718,
+    "countryCode": "RU",
+    "city": "Odintsovo",
+    "lat": "55.67798",
+    "lng": "37.27773"
+  },
+  {
+    "id": 719,
+    "countryCode": "PE",
+    "city": "San Miguel de Cauri",
+    "lat": "-10.13818",
+    "lng": "-76.62288"
+  },
+  {
+    "id": 720,
+    "countryCode": "PH",
+    "city": "Panaytayon",
+    "lat": "9.95",
+    "lng": "123.98333"
+  },
+  {
+    "id": 721,
+    "countryCode": "CN",
+    "city": "Dingdian",
+    "lat": "30.98376",
+    "lng": "118.86152"
+  },
+  {
+    "id": 722,
+    "countryCode": "SV",
+    "city": "Santiago de María",
+    "lat": "13.48333",
+    "lng": "-88.46667"
+  },
+  {
+    "id": 723,
+    "countryCode": "US",
+    "city": "Topeka",
+    "lat": "39.1271",
+    "lng": "-95.6384"
+  },
+  {
+    "id": 724,
+    "countryCode": "CN",
+    "city": "Shijie",
+    "lat": "30.94257",
+    "lng": "119.21997"
+  },
+  {
+    "id": 725,
+    "countryCode": "ID",
+    "city": "Danauparis",
+    "lat": "2.41096",
+    "lng": "98.08537"
+  },
+  {
+    "id": 726,
+    "countryCode": "GT",
+    "city": "Pajapita",
+    "lat": "14.72152",
+    "lng": "-92.03521"
+  },
+  {
+    "id": 727,
+    "countryCode": "NL",
+    "city": "Lelystad",
+    "lat": "52.5083",
+    "lng": "5.475"
+  },
+  {
+    "id": 728,
+    "countryCode": "US",
+    "city": "Louisville",
+    "lat": "38.2467",
+    "lng": "-85.6853"
+  },
+  {
+    "id": 729,
+    "countryCode": "CO",
+    "city": "Íquira",
+    "lat": "2.64867",
+    "lng": "-75.63457"
+  },
+  {
+    "id": 730,
+    "countryCode": "MN",
+    "city": "Bodĭ",
+    "lat": "45.41171",
+    "lng": "100.574"
+  },
+  {
+    "id": 731,
+    "countryCode": "CN",
+    "city": "Wantian",
+    "lat": "25.94148",
+    "lng": "115.72088"
+  },
+  {
+    "id": 732,
+    "countryCode": "PH",
+    "city": "Bacnotan",
+    "lat": "16.72222",
+    "lng": "120.3525"
+  },
+  {
+    "id": 733,
+    "countryCode": "GR",
+    "city": "Próchoma",
+    "lat": "40.79826",
+    "lng": "22.66659"
+  },
+  {
+    "id": 734,
+    "countryCode": "SE",
+    "city": "Luleå",
+    "lat": "65.5842",
+    "lng": "22.1546"
+  },
+  {
+    "id": 735,
+    "countryCode": "PL",
+    "city": "Zwierzyń",
+    "lat": "52.83212",
+    "lng": "15.56763"
+  },
+  {
+    "id": 736,
+    "countryCode": "NG",
+    "city": "Anka",
+    "lat": "12.11381",
+    "lng": "5.92427"
+  },
+  {
+    "id": 737,
+    "countryCode": "LK",
+    "city": "Valvedditturai",
+    "lat": "9.81667",
+    "lng": "80.16667"
+  },
+  {
+    "id": 738,
+    "countryCode": "FR",
+    "city": "Montpellier",
+    "lat": "43.6109",
+    "lng": "3.8772"
+  },
+  {
+    "id": 739,
+    "countryCode": "CA",
+    "city": "Maskinongé",
+    "lat": "46.2286",
+    "lng": "-73.01917"
+  },
+  {
+    "id": 740,
+    "countryCode": "FR",
+    "city": "Cannes",
+    "lat": "43.5513",
+    "lng": "7.0128"
+  },
+  {
+    "id": 741,
+    "countryCode": "RU",
+    "city": "Nyagan",
+    "lat": "62.14056",
+    "lng": "65.39361"
+  },
+  {
+    "id": 742,
+    "countryCode": "LU",
+    "city": "Bous",
+    "lat": "49.55389",
+    "lng": "6.32917"
+  },
+  {
+    "id": 743,
+    "countryCode": "VN",
+    "city": "Ấp Tân Ngãi",
+    "lat": "10.23333",
+    "lng": "106.28333"
+  },
+  {
+    "id": 744,
+    "countryCode": "IE",
+    "city": "Valleymount",
+    "lat": "53.10389",
+    "lng": "-6.55361"
+  },
+  {
+    "id": 745,
+    "countryCode": "TH",
+    "city": "Bangkok",
+    "lat": "13.75398",
+    "lng": "100.50144"
+  },
+  {
+    "id": 746,
+    "countryCode": "CZ",
+    "city": "Doubravice nad Svitavou",
+    "lat": "49.43664",
+    "lng": "16.62937"
+  },
+  {
+    "id": 747,
+    "countryCode": "ZA",
+    "city": "Cofimvaba",
+    "lat": "-32.00115",
+    "lng": "27.58045"
+  },
+  {
+    "id": 748,
+    "countryCode": "SY",
+    "city": "Talldaww",
+    "lat": "34.92357",
+    "lng": "36.48598"
+  },
+  {
+    "id": 749,
+    "countryCode": "TJ",
+    "city": "Khovaling",
+    "lat": "38.34194",
+    "lng": "69.97531"
+  },
+  {
+    "id": 750,
+    "countryCode": "PH",
+    "city": "Bolinao",
+    "lat": "16.3883",
+    "lng": "119.8923"
+  },
+  {
+    "id": 751,
+    "countryCode": "LY",
+    "city": "Gharyan",
+    "lat": "32.17222",
+    "lng": "13.02028"
+  },
+  {
+    "id": 752,
+    "countryCode": "SE",
+    "city": "Sundsvall",
+    "lat": "62.3913",
+    "lng": "17.3063"
+  },
+  {
+    "id": 753,
+    "countryCode": "BA",
+    "city": "Glamoč",
+    "lat": "44.04583",
+    "lng": "16.84861"
+  },
+  {
+    "id": 754,
+    "countryCode": "ID",
+    "city": "Wadung",
+    "lat": "-8.0454",
+    "lng": "112.5923"
+  },
+  {
+    "id": 755,
+    "countryCode": "ID",
+    "city": "Pasolapida",
+    "lat": "-9.64",
+    "lng": "119.1631"
+  },
+  {
+    "id": 756,
+    "countryCode": "CN",
+    "city": "Dongchuan",
+    "lat": "37.36797",
+    "lng": "101.83565"
+  },
+  {
+    "id": 757,
+    "countryCode": "PT",
+    "city": "Póvoa",
+    "lat": "41.3107",
+    "lng": "-8.2155"
+  },
+  {
+    "id": 758,
+    "countryCode": "CN",
+    "city": "Huangyang",
+    "lat": "32.2388",
+    "lng": "106.36868"
+  },
+  {
+    "id": 759,
+    "countryCode": "BR",
+    "city": "Rio Preto da Eva",
+    "lat": "-2.69795",
+    "lng": "-59.70172"
+  },
+  {
+    "id": 760,
+    "countryCode": "ID",
+    "city": "Ujung Gading",
+    "lat": "0.27293",
+    "lng": "99.55762"
+  },
+  {
+    "id": 761,
+    "countryCode": "TN",
+    "city": "Thala",
+    "lat": "35.57244",
+    "lng": "8.67031"
+  },
+  {
+    "id": 762,
+    "countryCode": "ID",
+    "city": "Nangerang",
+    "lat": "-7.2357",
+    "lng": "107.921"
+  },
+  {
+    "id": 763,
+    "countryCode": "VE",
+    "city": "Tacarigua",
+    "lat": "10.08621",
+    "lng": "-67.91982"
+  },
+  {
+    "id": 764,
+    "countryCode": "IE",
+    "city": "Naas",
+    "lat": "53.21583",
+    "lng": "-6.66694"
+  },
+  {
+    "id": 765,
+    "countryCode": "XK",
+    "city": "Kamenica",
+    "lat": "42.57806",
+    "lng": "21.58028"
+  },
+  {
+    "id": 766,
+    "countryCode": "PH",
+    "city": "Napoles",
+    "lat": "10.504",
+    "lng": "122.8979"
+  },
+  {
+    "id": 767,
+    "countryCode": "PL",
+    "city": "Siemianowice Śląskie",
+    "lat": "50.32738",
+    "lng": "19.02901"
+  },
+  {
+    "id": 768,
+    "countryCode": "PL",
+    "city": "Kaczory",
+    "lat": "53.10348",
+    "lng": "16.88169"
+  },
+  {
+    "id": 769,
+    "countryCode": "PL",
+    "city": "Hajnówka",
+    "lat": "52.74328",
+    "lng": "23.58122"
+  },
+  {
+    "id": 770,
+    "countryCode": "TH",
+    "city": "Prakhon Chai",
+    "lat": "14.60592",
+    "lng": "103.12081"
+  },
+  {
+    "id": 771,
+    "countryCode": "CL",
+    "city": "Tocopilla",
+    "lat": "-22.09198",
+    "lng": "-70.19792"
+  },
+  {
+    "id": 772,
+    "countryCode": "IR",
+    "city": "Shādegān",
+    "lat": "30.64972",
+    "lng": "48.66472"
+  },
+  {
+    "id": 773,
+    "countryCode": "ID",
+    "city": "Kebloran",
+    "lat": "-6.7065",
+    "lng": "111.6346"
+  },
+  {
+    "id": 774,
+    "countryCode": "KG",
+    "city": "Tokmok",
+    "lat": "42.84194",
+    "lng": "75.30149"
+  },
+  {
+    "id": 775,
+    "countryCode": "DM",
+    "city": "Salisbury",
+    "lat": "15.43333",
+    "lng": "-61.45"
+  },
+  {
+    "id": 776,
+    "countryCode": "CN",
+    "city": "Jiamachi",
+    "lat": "29.50798",
+    "lng": "108.97531"
+  },
+  {
+    "id": 777,
+    "countryCode": "ID",
+    "city": "Sumberrejo",
+    "lat": "-8.1802",
+    "lng": "112.2379"
+  },
+  {
+    "id": 778,
+    "countryCode": "ID",
+    "city": "Sukoanyar",
+    "lat": "-8.0979",
+    "lng": "112.7161"
+  },
+  {
+    "id": 779,
+    "countryCode": "CA",
+    "city": "Okanagan",
+    "lat": "50.36386",
+    "lng": "-119.34997"
+  },
+  {
+    "id": 780,
+    "countryCode": "CN",
+    "city": "Mahekou",
+    "lat": "29.29833",
+    "lng": "112.28139"
+  },
+  {
+    "id": 781,
+    "countryCode": "BR",
+    "city": "Marabá",
+    "lat": "-5.36861",
+    "lng": "-49.11778"
+  },
+  {
+    "id": 782,
+    "countryCode": "RS",
+    "city": "Kamenica",
+    "lat": "44.343",
+    "lng": "19.72333"
+  },
+  {
+    "id": 783,
+    "countryCode": "RS",
+    "city": "Tomaševac",
+    "lat": "45.26855",
+    "lng": "20.62272"
+  },
+  {
+    "id": 784,
+    "countryCode": "RS",
+    "city": "Aleksandrovac",
+    "lat": "43.45861",
+    "lng": "21.0525"
+  },
+  {
+    "id": 785,
+    "countryCode": "CN",
+    "city": "Qianguo",
+    "lat": "45.11712",
+    "lng": "124.85676"
+  },
+  {
+    "id": 786,
+    "countryCode": "AM",
+    "city": "Tsovazard",
+    "lat": "40.4709",
+    "lng": "45.05879"
+  },
+  {
+    "id": 787,
+    "countryCode": "PL",
+    "city": "Mokotów",
+    "lat": "52.1934",
+    "lng": "21.03487"
+  },
+  {
+    "id": 788,
+    "countryCode": "UA",
+    "city": "Nyzhni Sirohozy",
+    "lat": "46.84842",
+    "lng": "34.38044"
+  },
+  {
+    "id": 789,
+    "countryCode": "JP",
+    "city": "Motomiya",
+    "lat": "37.51391",
+    "lng": "140.40063"
+  },
+  {
+    "id": 790,
+    "countryCode": "VE",
+    "city": "Maripa",
+    "lat": "7.41537",
+    "lng": "-65.18961"
+  },
+  {
+    "id": 791,
+    "countryCode": "CN",
+    "city": "Keluke",
+    "lat": "37.32129",
+    "lng": "97.13457"
+  },
+  {
+    "id": 792,
+    "countryCode": "JP",
+    "city": "Katsuta",
+    "lat": "36.38333",
+    "lng": "140.53333"
+  },
+  {
+    "id": 793,
+    "countryCode": "PT",
+    "city": "Barqueiro",
+    "lat": "39.85",
+    "lng": "-8.35"
+  },
+  {
+    "id": 794,
+    "countryCode": "ID",
+    "city": "Siluman",
+    "lat": "-7.3421",
+    "lng": "108.2365"
+  },
+  {
+    "id": 795,
+    "countryCode": "PF",
+    "city": "Hitiaa",
+    "lat": "-17.6",
+    "lng": "-149.3"
+  },
+  {
+    "id": 796,
+    "countryCode": "GB",
+    "city": "Milton",
+    "lat": "57.6746",
+    "lng": "-2.9278"
+  },
+  {
+    "id": 797,
+    "countryCode": "CN",
+    "city": "Litian",
+    "lat": "27.21122",
+    "lng": "114.72949"
+  },
+  {
+    "id": 798,
+    "countryCode": "US",
+    "city": "New York City",
+    "lat": "40.7628",
+    "lng": "-73.9785"
+  },
+  {
+    "id": 799,
+    "countryCode": "BR",
+    "city": "Santa Cecília",
+    "lat": "-26.96083",
+    "lng": "-50.42694"
+  },
+  {
+    "id": 800,
+    "countryCode": "SO",
+    "city": "Buurhakaba",
+    "lat": "2.80257",
+    "lng": "44.07806"
+  },
+  {
+    "id": 801,
+    "countryCode": "RU",
+    "city": "Aleksandrovsk-Sakhalinskiy",
+    "lat": "50.89926",
+    "lng": "142.16215"
+  },
+  {
+    "id": 802,
+    "countryCode": "CN",
+    "city": "Zhenshan",
+    "lat": "23.33581",
+    "lng": "112.67483"
+  },
+  {
+    "id": 803,
+    "countryCode": "MY",
+    "city": "Kota Kinabalu",
+    "lat": "5.9765",
+    "lng": "116.1158"
+  },
+  {
+    "id": 804,
+    "countryCode": "PL",
+    "city": "Sadowie",
+    "lat": "50.85261",
+    "lng": "21.36884"
+  },
+  {
+    "id": 805,
+    "countryCode": "PL",
+    "city": "Łącko",
+    "lat": "49.55757",
+    "lng": "20.43586"
+  },
+  {
+    "id": 806,
+    "countryCode": "ID",
+    "city": "Nagrog Wetan",
+    "lat": "-7.2071",
+    "lng": "107.9469"
+  },
+  {
+    "id": 807,
+    "countryCode": "AR",
+    "city": "Wenceslao Escalante",
+    "lat": "-33.17303",
+    "lng": "-62.77078"
+  },
+  {
+    "id": 808,
+    "countryCode": "SN",
+    "city": "Kaffrine",
+    "lat": "14.10594",
+    "lng": "-15.5508"
+  },
+  {
+    "id": 809,
+    "countryCode": "CN",
+    "city": "Altunemil",
+    "lat": "46.11923",
+    "lng": "83.09014"
+  },
+  {
+    "id": 810,
+    "countryCode": "ID",
+    "city": "Kedungbacin",
+    "lat": "-6.8669",
+    "lng": "111.2256"
+  },
+  {
+    "id": 811,
+    "countryCode": "PH",
+    "city": "San Jacinto",
+    "lat": "12.5677",
+    "lng": "123.7337"
+  },
+  {
+    "id": 812,
+    "countryCode": "MY",
+    "city": "Klang",
+    "lat": "3.0431",
+    "lng": "101.4407"
+  },
+  {
+    "id": 813,
+    "countryCode": "FI",
+    "city": "Ylöjärvi",
+    "lat": "61.55632",
+    "lng": "23.59606"
+  },
+  {
+    "id": 814,
+    "countryCode": "CN",
+    "city": "Ditang",
+    "lat": "29.60539",
+    "lng": "108.21712"
+  },
+  {
+    "id": 815,
+    "countryCode": "GT",
+    "city": "Almolonga",
+    "lat": "14.81667",
+    "lng": "-91.5"
+  },
+  {
+    "id": 816,
+    "countryCode": "CN",
+    "city": "Guocun",
+    "lat": "29.55727",
+    "lng": "118.63297"
+  },
+  {
+    "id": 817,
+    "countryCode": "CO",
+    "city": "Chiquinquirá",
+    "lat": "5.61637",
+    "lng": "-73.81748"
+  },
+  {
+    "id": 818,
+    "countryCode": "FR",
+    "city": "Limoges",
+    "lat": "45.8315",
+    "lng": "1.2578"
+  },
+  {
+    "id": 819,
+    "countryCode": "OM",
+    "city": "Barkā’",
+    "lat": "23.70739",
+    "lng": "57.88908"
+  },
+  {
+    "id": 820,
+    "countryCode": "ID",
+    "city": "Mislak",
+    "lat": "-1.72806",
+    "lng": "105.45325"
+  },
+  {
+    "id": 821,
+    "countryCode": "PH",
+    "city": "Magsaysay",
+    "lat": "7.39667",
+    "lng": "125.635"
+  },
+  {
+    "id": 822,
+    "countryCode": "ID",
+    "city": "Dawuhan",
+    "lat": "-7.60417",
+    "lng": "109.0825"
+  },
+  {
+    "id": 823,
+    "countryCode": "HN",
+    "city": "Cane",
+    "lat": "14.28333",
+    "lng": "-87.66667"
+  },
+  {
+    "id": 824,
+    "countryCode": "NI",
+    "city": "Juigalpa",
+    "lat": "12.10629",
+    "lng": "-85.36452"
+  },
+  {
+    "id": 825,
+    "countryCode": "GR",
+    "city": "Próchoma",
+    "lat": "40.79826",
+    "lng": "22.66659"
+  },
+  {
+    "id": 826,
+    "countryCode": "PH",
+    "city": "Suay",
+    "lat": "10.0533",
+    "lng": "122.8423"
+  },
+  {
+    "id": 827,
+    "countryCode": "CZ",
+    "city": "Hrádek",
+    "lat": "49.71316",
+    "lng": "13.65296"
+  },
+  {
+    "id": 828,
+    "countryCode": "RU",
+    "city": "Ust’-Kut",
+    "lat": "56.7938",
+    "lng": "105.7672"
+  },
+  {
+    "id": 829,
+    "countryCode": "UA",
+    "city": "Tomakivka",
+    "lat": "47.81569",
+    "lng": "34.74137"
+  },
+  {
+    "id": 830,
+    "countryCode": "CN",
+    "city": "Shoushan",
+    "lat": "45.44632",
+    "lng": "128.43944"
+  },
+  {
+    "id": 831,
+    "countryCode": "CN",
+    "city": "Xinhuang",
+    "lat": "28.71354",
+    "lng": "117.60138"
+  },
+  {
+    "id": 832,
+    "countryCode": "MX",
+    "city": "Emiliano Zapata",
+    "lat": "25.2793",
+    "lng": "-100.7655"
+  },
+  {
+    "id": 833,
+    "countryCode": "UA",
+    "city": "Komsomolsk",
+    "lat": "49.01018",
+    "lng": "33.63567"
+  },
+  {
+    "id": 834,
+    "countryCode": "TH",
+    "city": "Songkhla",
+    "lat": "7.19882",
+    "lng": "100.5951"
+  },
+  {
+    "id": 835,
+    "countryCode": "PL",
+    "city": "Kutno",
+    "lat": "52.23064",
+    "lng": "19.36409"
+  },
+  {
+    "id": 836,
+    "countryCode": "PT",
+    "city": "São João de Caparica",
+    "lat": "38.6667",
+    "lng": "-9.2"
+  },
+  {
+    "id": 837,
+    "countryCode": "ID",
+    "city": "Klapagading",
+    "lat": "-7.51861",
+    "lng": "109.06944"
+  },
+  {
+    "id": 838,
+    "countryCode": "CN",
+    "city": "Zhujiachang",
+    "lat": "27.3575",
+    "lng": "108.93833"
+  },
+  {
+    "id": 839,
+    "countryCode": "JM",
+    "city": "Point Hill",
+    "lat": "18.08988",
+    "lng": "-77.10759"
+  },
+  {
+    "id": 840,
+    "countryCode": "CN",
+    "city": "Tatrang",
+    "lat": "38.46667",
+    "lng": "85.63333"
+  },
+  {
+    "id": 841,
+    "countryCode": "CN",
+    "city": "Zhushan Chengguanzhen",
+    "lat": "32.22179",
+    "lng": "110.23614"
+  },
+  {
+    "id": 842,
+    "countryCode": "LB",
+    "city": "El Hermel",
+    "lat": "34.39417",
+    "lng": "36.38472"
+  },
+  {
+    "id": 843,
+    "countryCode": "ID",
+    "city": "Ambian",
+    "lat": "-8.1999",
+    "lng": "114.9687"
+  },
+  {
+    "id": 844,
+    "countryCode": "CL",
+    "city": "Calbuco",
+    "lat": "-41.77338",
+    "lng": "-73.13049"
+  },
+  {
+    "id": 845,
+    "countryCode": "IR",
+    "city": "Lordegān",
+    "lat": "31.51025",
+    "lng": "50.8294"
+  },
+  {
+    "id": 846,
+    "countryCode": "CN",
+    "city": "Shazhuang",
+    "lat": "23.1333",
+    "lng": "113.83506"
+  },
+  {
+    "id": 847,
+    "countryCode": "BR",
+    "city": "Salinas",
+    "lat": "-16.17028",
+    "lng": "-42.29028"
+  },
+  {
+    "id": 848,
+    "countryCode": "VN",
+    "city": "Long Thành",
+    "lat": "10.78909",
+    "lng": "106.9503"
+  },
+  {
+    "id": 849,
+    "countryCode": "MX",
+    "city": "El Aguacate",
+    "lat": "18.3942",
+    "lng": "-100.5351"
+  },
+  {
+    "id": 850,
+    "countryCode": "TN",
+    "city": "Manouba",
+    "lat": "36.80803",
+    "lng": "10.0972"
+  },
+  {
+    "id": 851,
+    "countryCode": "MX",
+    "city": "Reforma",
+    "lat": "19.0671",
+    "lng": "-103.8141"
+  },
+  {
+    "id": 852,
+    "countryCode": "TZ",
+    "city": "Igurubi",
+    "lat": "-4",
+    "lng": "33.7"
+  },
+  {
+    "id": 853,
+    "countryCode": "ID",
+    "city": "Hauhena",
+    "lat": "-10.2322",
+    "lng": "123.9182"
+  },
+  {
+    "id": 854,
+    "countryCode": "SE",
+    "city": "Gustavsberg",
+    "lat": "59.3268",
+    "lng": "18.3898"
+  },
+  {
+    "id": 855,
+    "countryCode": "FI",
+    "city": "Hollola",
+    "lat": "61",
+    "lng": "25.5"
+  },
+  {
+    "id": 856,
+    "countryCode": "KM",
+    "city": "Chironkamba",
+    "lat": "-12.19111",
+    "lng": "44.3525"
+  },
+  {
+    "id": 857,
+    "countryCode": "UA",
+    "city": "Yelyzavethradka",
+    "lat": "48.80381",
+    "lng": "32.4046"
+  },
+  {
+    "id": 858,
+    "countryCode": "JP",
+    "city": "Hitachi-Naka",
+    "lat": "36.39659",
+    "lng": "140.53479"
+  },
+  {
+    "id": 859,
+    "countryCode": "RU",
+    "city": "Dinskaya",
+    "lat": "45.21516",
+    "lng": "39.2265"
+  },
+  {
+    "id": 860,
+    "countryCode": "RU",
+    "city": "Orichi",
+    "lat": "58.40356",
+    "lng": "49.05719"
+  },
+  {
+    "id": 861,
+    "countryCode": "ID",
+    "city": "Cikeusal",
+    "lat": "-7.4328",
+    "lng": "108.1149"
+  },
+  {
+    "id": 862,
+    "countryCode": "JP",
+    "city": "Itoigawa",
+    "lat": "37.03333",
+    "lng": "137.85"
+  },
+  {
+    "id": 863,
+    "countryCode": "SY",
+    "city": "Al Khushnīyah",
+    "lat": "32.99941",
+    "lng": "35.81084"
+  },
+  {
+    "id": 864,
+    "countryCode": "TH",
+    "city": "Det Udom",
+    "lat": "14.90598",
+    "lng": "105.07836"
+  },
+  {
+    "id": 865,
+    "countryCode": "FR",
+    "city": "Paris 13",
+    "lat": "48.8322",
+    "lng": "2.3561"
+  },
+  {
+    "id": 866,
+    "countryCode": "PE",
+    "city": "Huaquirca",
+    "lat": "-14.33139",
+    "lng": "-72.89028"
+  },
+  {
+    "id": 867,
+    "countryCode": "CN",
+    "city": "Yinchuan",
+    "lat": "38.46806",
+    "lng": "106.27306"
+  },
+  {
+    "id": 868,
+    "countryCode": "FR",
+    "city": "Caen",
+    "lat": "49.1859",
+    "lng": "-0.3591"
+  },
+  {
+    "id": 869,
+    "countryCode": "CI",
+    "city": "Korhogo",
+    "lat": "9.45803",
+    "lng": "-5.62961"
+  },
+  {
+    "id": 870,
+    "countryCode": "YE",
+    "city": "Al Ḩusayn",
+    "lat": "13.79199",
+    "lng": "44.76886"
+  },
+  {
+    "id": 871,
+    "countryCode": "CZ",
+    "city": "Stará Ves nad Ondřejnicí",
+    "lat": "49.72775",
+    "lng": "18.1885"
+  },
+  {
+    "id": 872,
+    "countryCode": "CN",
+    "city": "Yuanguping",
+    "lat": "29.01583",
+    "lng": "110.72454"
+  },
+  {
+    "id": 873,
+    "countryCode": "CN",
+    "city": "Luoxi",
+    "lat": "29.08981",
+    "lng": "114.98255"
+  },
+  {
+    "id": 874,
+    "countryCode": "PH",
+    "city": "Aurora",
+    "lat": "13.2322",
+    "lng": "121.1203"
+  },
+  {
+    "id": 875,
+    "countryCode": "PH",
+    "city": "Tipaz",
+    "lat": "13.83196",
+    "lng": "121.42256"
+  },
+  {
+    "id": 876,
+    "countryCode": "PT",
+    "city": "Paços de Ferreira",
+    "lat": "41.3",
+    "lng": "-8.3667"
+  },
+  {
+    "id": 877,
+    "countryCode": "ID",
+    "city": "Tanggulangin",
+    "lat": "-8.085",
+    "lng": "111.9257"
+  },
+  {
+    "id": 878,
+    "countryCode": "ID",
+    "city": "Tanjung",
+    "lat": "-8.356",
+    "lng": "116.1565"
+  },
+  {
+    "id": 879,
+    "countryCode": "PH",
+    "city": "Tinambacan",
+    "lat": "12.0943",
+    "lng": "124.5025"
+  },
+  {
+    "id": 880,
+    "countryCode": "PL",
+    "city": "Grabica",
+    "lat": "51.47989",
+    "lng": "19.53137"
+  },
+  {
+    "id": 881,
+    "countryCode": "NG",
+    "city": "Ore",
+    "lat": "6.74569",
+    "lng": "4.87748"
+  },
+  {
+    "id": 882,
+    "countryCode": "PH",
+    "city": "Barili",
+    "lat": "10.115",
+    "lng": "123.5103"
+  },
+  {
+    "id": 883,
+    "countryCode": "VN",
+    "city": "Tô Hạp",
+    "lat": "12.00582",
+    "lng": "108.94868"
+  },
+  {
+    "id": 884,
+    "countryCode": "BR",
+    "city": "São Luís",
+    "lat": "-2.52972",
+    "lng": "-44.30278"
+  },
+  {
+    "id": 885,
+    "countryCode": "CN",
+    "city": "Gaomi",
+    "lat": "36.38333",
+    "lng": "119.75278"
+  },
+  {
+    "id": 886,
+    "countryCode": "CZ",
+    "city": "Roudnice nad Labem",
+    "lat": "50.42528",
+    "lng": "14.26175"
+  },
+  {
+    "id": 887,
+    "countryCode": "PH",
+    "city": "Libas",
+    "lat": "13.24167",
+    "lng": "121.95555"
+  },
+  {
+    "id": 888,
+    "countryCode": "ID",
+    "city": "Pagelaran",
+    "lat": "-6.433",
+    "lng": "105.8572"
+  },
+  {
+    "id": 889,
+    "countryCode": "ID",
+    "city": "Mojorejo",
+    "lat": "-7.2405",
+    "lng": "111.521"
+  },
+  {
+    "id": 890,
+    "countryCode": "PH",
+    "city": "Polo",
+    "lat": "16.1963",
+    "lng": "119.9491"
+  },
+  {
+    "id": 891,
+    "countryCode": "ZW",
+    "city": "Hwange",
+    "lat": "-18.36927",
+    "lng": "26.50194"
+  },
+  {
+    "id": 892,
+    "countryCode": "CN",
+    "city": "Gushan",
+    "lat": "26.07393",
+    "lng": "119.3436"
+  },
+  {
+    "id": 893,
+    "countryCode": "GR",
+    "city": "Arísvi",
+    "lat": "41.07",
+    "lng": "25.59041"
+  },
+  {
+    "id": 894,
+    "countryCode": "AL",
+    "city": "Zall-Dardhë",
+    "lat": "41.80667",
+    "lng": "20.33611"
+  },
+  {
+    "id": 895,
+    "countryCode": "GR",
+    "city": "Rizári",
+    "lat": "40.78373",
+    "lng": "22.088"
+  },
+  {
+    "id": 896,
+    "countryCode": "MM",
+    "city": "Nyaunglebin",
+    "lat": "17.95363",
+    "lng": "96.72247"
+  },
+  {
+    "id": 897,
+    "countryCode": "VE",
+    "city": "Santa Bárbara",
+    "lat": "9.60886",
+    "lng": "-63.61003"
+  },
+  {
+    "id": 898,
+    "countryCode": "CZ",
+    "city": "Sudoměřice",
+    "lat": "48.86723",
+    "lng": "17.25676"
+  },
+  {
+    "id": 899,
+    "countryCode": "UA",
+    "city": "Brusyliv",
+    "lat": "50.28449",
+    "lng": "29.52626"
+  },
+  {
+    "id": 900,
+    "countryCode": "CN",
+    "city": "Qiewa",
+    "lat": "29.32607",
+    "lng": "89.74078"
+  },
+  {
+    "id": 901,
+    "countryCode": "AZ",
+    "city": "Sabunçu",
+    "lat": "40.4425",
+    "lng": "49.94806"
+  },
+  {
+    "id": 902,
+    "countryCode": "CN",
+    "city": "Sanquan",
+    "lat": "35.67528",
+    "lng": "111.15806"
+  },
+  {
+    "id": 903,
+    "countryCode": "BR",
+    "city": "Santa Helena",
+    "lat": "-2.23111",
+    "lng": "-45.3"
+  },
+  {
+    "id": 904,
+    "countryCode": "BR",
+    "city": "Itaporanga",
+    "lat": "-7.30444",
+    "lng": "-38.15028"
+  },
+  {
+    "id": 905,
+    "countryCode": "ID",
+    "city": "Sukamulya",
+    "lat": "-7.1859",
+    "lng": "107.1028"
+  },
+  {
+    "id": 906,
+    "countryCode": "RU",
+    "city": "Krasnoye",
+    "lat": "54.6068",
+    "lng": "85.3899"
+  },
+  {
+    "id": 907,
+    "countryCode": "CH",
+    "city": "Thun",
+    "lat": "46.7405",
+    "lng": "7.6207"
+  },
+  {
+    "id": 908,
+    "countryCode": "ID",
+    "city": "Pamoyanan",
+    "lat": "-7.3066",
+    "lng": "107.1798"
+  },
+  {
+    "id": 909,
+    "countryCode": "PT",
+    "city": "Cruzeiro",
+    "lat": "40.9167",
+    "lng": "-8.5"
+  },
+  {
+    "id": 910,
+    "countryCode": "HN",
+    "city": "La Labor",
+    "lat": "14.48333",
+    "lng": "-89"
+  },
+  {
+    "id": 911,
+    "countryCode": "US",
+    "city": "Savannah",
+    "lat": "32.0175",
+    "lng": "-80.997"
+  },
+  {
+    "id": 912,
+    "countryCode": "ID",
+    "city": "Gesing",
+    "lat": "-6.9646",
+    "lng": "112.1092"
+  },
+  {
+    "id": 913,
+    "countryCode": "VE",
+    "city": "Puerto Ayacucho",
+    "lat": "5.66389",
+    "lng": "-67.62361"
+  },
+  {
+    "id": 914,
+    "countryCode": "PT",
+    "city": "Cabanas",
+    "lat": "38.6",
+    "lng": "-9"
+  },
+  {
+    "id": 915,
+    "countryCode": "NG",
+    "city": "Abuja",
+    "lat": "9.05785",
+    "lng": "7.49508"
+  },
+  {
+    "id": 916,
+    "countryCode": "ID",
+    "city": "Mangaran",
+    "lat": "-7.6668",
+    "lng": "114.0406"
+  },
+  {
+    "id": 917,
+    "countryCode": "RU",
+    "city": "Nartkala",
+    "lat": "43.5575",
+    "lng": "43.85083"
+  },
+  {
+    "id": 918,
+    "countryCode": "LK",
+    "city": "Ja Ela",
+    "lat": "7.0744",
+    "lng": "79.8919"
+  },
+  {
+    "id": 919,
+    "countryCode": "PL",
+    "city": "Skrzyszów",
+    "lat": "49.99373",
+    "lng": "21.06139"
+  },
+  {
+    "id": 920,
+    "countryCode": "HK",
+    "city": "Sok Kwu Wan",
+    "lat": "22.2",
+    "lng": "114.13333"
+  },
+  {
+    "id": 921,
+    "countryCode": "IE",
+    "city": "Cork",
+    "lat": "51.89797",
+    "lng": "-8.47061"
+  },
+  {
+    "id": 922,
+    "countryCode": "ID",
+    "city": "Kadugadung",
+    "lat": "-6.3832",
+    "lng": "106.018"
+  },
+  {
+    "id": 923,
+    "countryCode": "FR",
+    "city": "Montauban",
+    "lat": "44.0167",
+    "lng": "1.35"
+  },
+  {
+    "id": 924,
+    "countryCode": "PH",
+    "city": "Pananaw",
+    "lat": "5.98111",
+    "lng": "121.21472"
+  },
+  {
+    "id": 925,
+    "countryCode": "SE",
+    "city": "Luleå",
+    "lat": "65.5842",
+    "lng": "22.1546"
+  },
+  {
+    "id": 926,
+    "countryCode": "CN",
+    "city": "Dasheng",
+    "lat": "32.1414",
+    "lng": "119.9827"
+  },
+  {
+    "id": 927,
+    "countryCode": "MX",
+    "city": "Guadalupe",
+    "lat": "19.404",
+    "lng": "-98.9245"
+  },
+  {
+    "id": 928,
+    "countryCode": "MA",
+    "city": "El Hajeb",
+    "lat": "33.68786",
+    "lng": "-5.371"
+  },
+  {
+    "id": 929,
+    "countryCode": "CN",
+    "city": "Gaoyao",
+    "lat": "23.02432",
+    "lng": "112.44555"
+  },
+  {
+    "id": 930,
+    "countryCode": "PT",
+    "city": "Mosteiro",
+    "lat": "41.0833",
+    "lng": "-7.9667"
+  },
+  {
+    "id": 931,
+    "countryCode": "RU",
+    "city": "Saskylakh",
+    "lat": "71.96347",
+    "lng": "114.09199"
+  },
+  {
+    "id": 932,
+    "countryCode": "ID",
+    "city": "Anjirserapat",
+    "lat": "-3.0391",
+    "lng": "114.3845"
+  },
+  {
+    "id": 933,
+    "countryCode": "CN",
+    "city": "Suncun",
+    "lat": "30.31606",
+    "lng": "118.41349"
+  },
+  {
+    "id": 934,
+    "countryCode": "NL",
+    "city": "Delft",
+    "lat": "52.0067",
+    "lng": "4.3556"
+  },
+  {
+    "id": 935,
+    "countryCode": "PE",
+    "city": "Huancapi",
+    "lat": "-13.75667",
+    "lng": "-74.06667"
+  },
+  {
+    "id": 936,
+    "countryCode": "CN",
+    "city": "Longsha",
+    "lat": "30.13471",
+    "lng": "108.18394"
+  },
+  {
+    "id": 937,
+    "countryCode": "MY",
+    "city": "Kuching",
+    "lat": "1.531",
+    "lng": "110.3442"
+  },
+  {
+    "id": 938,
+    "countryCode": "CN",
+    "city": "Jiaoyuan",
+    "lat": "30.02093",
+    "lng": "109.44169"
+  },
+  {
+    "id": 939,
+    "countryCode": "BR",
+    "city": "Itanhaém",
+    "lat": "-24.18306",
+    "lng": "-46.78889"
+  },
+  {
+    "id": 940,
+    "countryCode": "ID",
+    "city": "Cibatu",
+    "lat": "-7.6327",
+    "lng": "108.2008"
+  },
+  {
+    "id": 941,
+    "countryCode": "CN",
+    "city": "Fujiayan",
+    "lat": "30.30955",
+    "lng": "110.47855"
+  },
+  {
+    "id": 942,
+    "countryCode": "RU",
+    "city": "Pospelikha",
+    "lat": "51.95",
+    "lng": "81.76667"
+  },
+  {
+    "id": 943,
+    "countryCode": "CN",
+    "city": "Qindu",
+    "lat": "34.34186",
+    "lng": "108.70824"
+  },
+  {
+    "id": 944,
+    "countryCode": "ID",
+    "city": "Siluman",
+    "lat": "-7.3421",
+    "lng": "108.2365"
+  },
+  {
+    "id": 945,
+    "countryCode": "RU",
+    "city": "Pushkino",
+    "lat": "56.01722",
+    "lng": "37.86667"
+  },
+  {
+    "id": 946,
+    "countryCode": "RU",
+    "city": "Verkhnyaya Toyma",
+    "lat": "62.2347",
+    "lng": "45.0009"
+  },
+  {
+    "id": 947,
+    "countryCode": "CN",
+    "city": "Lingdi",
+    "lat": "28.28591",
+    "lng": "120.9483"
+  },
+  {
+    "id": 948,
+    "countryCode": "BR",
+    "city": "Arcoverde",
+    "lat": "-8.41889",
+    "lng": "-37.05389"
+  },
+  {
+    "id": 949,
+    "countryCode": "CN",
+    "city": "Luoyang",
+    "lat": "23.16244",
+    "lng": "114.27342"
+  },
+  {
+    "id": 950,
+    "countryCode": "ID",
+    "city": "Banjar Kampungbugis",
+    "lat": "-8.1055",
+    "lng": "115.0865"
+  },
+  {
+    "id": 951,
+    "countryCode": "RU",
+    "city": "Presnenskiy",
+    "lat": "55.75",
+    "lng": "37.55"
+  },
+  {
+    "id": 952,
+    "countryCode": "ID",
+    "city": "Ponggeok",
+    "lat": "-8.7229",
+    "lng": "120.4146"
+  },
+  {
+    "id": 953,
+    "countryCode": "BR",
+    "city": "Barras",
+    "lat": "-4.24444",
+    "lng": "-42.29444"
+  },
+  {
+    "id": 954,
+    "countryCode": "LB",
+    "city": "Baalbek",
+    "lat": "34.00583",
+    "lng": "36.21806"
+  },
+  {
+    "id": 955,
+    "countryCode": "TH",
+    "city": "Su-ngai Kolok",
+    "lat": "6.02977",
+    "lng": "101.96586"
+  },
+  {
+    "id": 956,
+    "countryCode": "PE",
+    "city": "San Miguel de Cauri",
+    "lat": "-10.13818",
+    "lng": "-76.62288"
+  },
+  {
+    "id": 957,
+    "countryCode": "RS",
+    "city": "Klek",
+    "lat": "45.42254",
+    "lng": "20.48049"
+  },
+  {
+    "id": 958,
+    "countryCode": "NZ",
+    "city": "Kawakawa",
+    "lat": "-35.38333",
+    "lng": "174.06667"
+  },
+  {
+    "id": 959,
+    "countryCode": "FR",
+    "city": "Évry",
+    "lat": "48.6333",
+    "lng": "2.45"
+  },
+  {
+    "id": 960,
+    "countryCode": "SE",
+    "city": "Umeå",
+    "lat": "63.8284",
+    "lng": "20.2597"
+  },
+  {
+    "id": 961,
+    "countryCode": "PH",
+    "city": "Salimbalan",
+    "lat": "8.27417",
+    "lng": "124.72194"
+  },
+  {
+    "id": 962,
+    "countryCode": "PH",
+    "city": "Tandayag",
+    "lat": "9.4547",
+    "lng": "123.2299"
+  },
+  {
+    "id": 963,
+    "countryCode": "SE",
+    "city": "Köping",
+    "lat": "59.514",
+    "lng": "15.9926"
+  },
+  {
+    "id": 964,
+    "countryCode": "CN",
+    "city": "Yungaisi",
+    "lat": "33.48917",
+    "lng": "109.10528"
+  },
+  {
+    "id": 965,
+    "countryCode": "CG",
+    "city": "Nkayi",
+    "lat": "-4.18396",
+    "lng": "13.2859"
+  },
+  {
+    "id": 966,
+    "countryCode": "ID",
+    "city": "Karangsari",
+    "lat": "-7.0993",
+    "lng": "107.9342"
+  },
+  {
+    "id": 967,
+    "countryCode": "PH",
+    "city": "Montecillo",
+    "lat": "13.89067",
+    "lng": "121.47575"
+  },
+  {
+    "id": 968,
+    "countryCode": "FR",
+    "city": "Vagney",
+    "lat": "48.0063",
+    "lng": "6.7174"
+  },
+  {
+    "id": 969,
+    "countryCode": "RU",
+    "city": "Vyatskiye Polyany",
+    "lat": "56.22602",
+    "lng": "51.06557"
+  },
+  {
+    "id": 970,
+    "countryCode": "PL",
+    "city": "Niemodlin",
+    "lat": "50.642",
+    "lng": "17.61932"
+  },
+  {
+    "id": 971,
+    "countryCode": "VN",
+    "city": "Tân Sơn",
+    "lat": "11.77521",
+    "lng": "108.7848"
+  },
+  {
+    "id": 972,
+    "countryCode": "RU",
+    "city": "Dal’nerechensk",
+    "lat": "45.93149",
+    "lng": "133.73906"
+  },
+  {
+    "id": 973,
+    "countryCode": "CZ",
+    "city": "Jablonec nad Jizerou",
+    "lat": "50.70347",
+    "lng": "15.42959"
+  },
+  {
+    "id": 974,
+    "countryCode": "SI",
+    "city": "Šentilj v Slov. Goricah",
+    "lat": "46.68167",
+    "lng": "15.64806"
+  },
+  {
+    "id": 975,
+    "countryCode": "AR",
+    "city": "La Cocha",
+    "lat": "-27.77729",
+    "lng": "-65.57035"
+  },
+  {
+    "id": 976,
+    "countryCode": "ID",
+    "city": "Watunggong",
+    "lat": "-8.5418",
+    "lng": "120.6733"
+  },
+  {
+    "id": 977,
+    "countryCode": "FR",
+    "city": "Woippy",
+    "lat": "49.1495",
+    "lng": "6.1491"
+  },
+  {
+    "id": 978,
+    "countryCode": "FR",
+    "city": "Angers",
+    "lat": "47.4667",
+    "lng": "-0.55"
+  },
+  {
+    "id": 979,
+    "countryCode": "FR",
+    "city": "Lille",
+    "lat": "50.633",
+    "lng": "3.0586"
+  },
+  {
+    "id": 980,
+    "countryCode": "CO",
+    "city": "Aracataca",
+    "lat": "10.59181",
+    "lng": "-74.18983"
+  },
+  {
+    "id": 981,
+    "countryCode": "PE",
+    "city": "Sinchao",
+    "lat": "-5.41667",
+    "lng": "-80.66667"
+  },
+  {
+    "id": 982,
+    "countryCode": "FR",
+    "city": "Lyon",
+    "lat": "45.7485",
+    "lng": "4.8467"
+  },
+  {
+    "id": 983,
+    "countryCode": "US",
+    "city": "Norfolk",
+    "lat": "36.9312",
+    "lng": "-76.2397"
+  },
+  {
+    "id": 984,
+    "countryCode": "BR",
+    "city": "Santa Cruz das Palmeiras",
+    "lat": "-21.82694",
+    "lng": "-47.24861"
+  },
+  {
+    "id": 985,
+    "countryCode": "PS",
+    "city": "Bayt Līd",
+    "lat": "32.26089",
+    "lng": "35.13169"
+  },
+  {
+    "id": 986,
+    "countryCode": "SD",
+    "city": "Al Lagowa",
+    "lat": "11.4",
+    "lng": "29.13333"
+  },
+  {
+    "id": 987,
+    "countryCode": "BW",
+    "city": "Kanye",
+    "lat": "-24.96675",
+    "lng": "25.33274"
+  },
+  {
+    "id": 988,
+    "countryCode": "TZ",
+    "city": "Mwembe",
+    "lat": "-4.15",
+    "lng": "37.85"
+  },
+  {
+    "id": 989,
+    "countryCode": "CN",
+    "city": "Zhanghua",
+    "lat": "33.66851",
+    "lng": "113.6227"
+  },
+  {
+    "id": 990,
+    "countryCode": "CN",
+    "city": "Yanhu",
+    "lat": "28.31034",
+    "lng": "121.00418"
+  },
+  {
+    "id": 991,
+    "countryCode": "RU",
+    "city": "Nizhneivkino",
+    "lat": "58.19398",
+    "lng": "49.52137"
+  },
+  {
+    "id": 992,
+    "countryCode": "MA",
+    "city": "Martil",
+    "lat": "35.61662",
+    "lng": "-5.27522"
+  },
+  {
+    "id": 993,
+    "countryCode": "CN",
+    "city": "Luoyuan",
+    "lat": "34.20014",
+    "lng": "109.81728"
+  },
+  {
+    "id": 994,
+    "countryCode": "BR",
+    "city": "Lago da Pedra",
+    "lat": "-4.28674",
+    "lng": "-45.23824"
+  },
+  {
+    "id": 995,
+    "countryCode": "PL",
+    "city": "Ryczów",
+    "lat": "49.98103",
+    "lng": "19.55017"
+  },
+  {
+    "id": 996,
+    "countryCode": "MK",
+    "city": "Могила",
+    "lat": "41.10833",
+    "lng": "21.37861"
+  },
+  {
+    "id": 997,
+    "countryCode": "US",
+    "city": "Greensboro",
+    "lat": "36.0777",
+    "lng": "-79.9086"
+  },
+  {
+    "id": 998,
+    "countryCode": "CN",
+    "city": "Jiuxian",
+    "lat": "31.12062",
+    "lng": "111.60744"
+  },
+  {
+    "id": 999,
+    "countryCode": "EE",
+    "city": "Rakvere",
+    "lat": "59.34639",
+    "lng": "26.35583"
+  },
+  {
+    "id": 1000,
+    "countryCode": "MN",
+    "city": "Saynshand",
+    "lat": "44.88239",
+    "lng": "110.11631"
+  }
+]

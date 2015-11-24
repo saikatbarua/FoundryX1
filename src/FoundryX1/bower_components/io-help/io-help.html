@@ -1,0 +1,90 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="io-help-line.html">
+
+<!--
+Custom Polymer element for help messages.
+
+`<io-help>` element broadcasts a message via `io-help` event when it's parent is hovered.
+
+The easiest way to display the message is to use `<io-help-line>` element.
+Otherwise you can catch messages by listening the `io-help` event on `window.document`.
+
+Example:
+
+    <div id="parent">
+      <span>hover me</span>
+      <io-help
+          message="This message is broadcast when you hover #parent element.">
+      </io-help>
+    </div>
+    <io-help-line></io-help-line>
+
+By default, an empty message is broadcast when pointer leaves the parent element, thus clearing the message.
+To persist the message set the persist attribute on either `<io-help>` or `<io-help-line>`.
+
+@demo demo/index.html Basic Demo
+-->
+
+<dom-module id="io-help"></dom-module>
+<script>
+  Polymer({
+    is: 'io-help',
+    properties: {
+      /**
+       * Message to be broadcast when parent element is hovered.
+       */
+      message: {
+        value: '',
+        type: String
+      },
+      /**
+       * If persist flag is true, the message will remain visible in io-message-line
+       * until new message is recieved.
+       */
+      persist: {
+        value: false,
+        type: Boolean
+      }
+    },
+    ready: function() {
+      this.__onMouseenter = this._onMouseenter.bind(this);
+      this.__onMouseout = this._onMouseout.bind(this);
+    },
+    attached: function() {
+      this._parent = this.parentNode;
+      this._parent.addEventListener('mouseenter', this.__onMouseenter);
+      this._parent.addEventListener('mouseout', this.__onMouseout);
+    },
+    detached: function() {
+      this._parent.removeEventListener('mouseenter', this.__onMouseenter);
+      this._parent.removeEventListener('mouseout', this.__onMouseout);
+    },
+    _onMouseenter: function(event) {
+      if (event.target === this._parent) {
+        this._sendMessage();
+      }
+    },
+    _onMouseout: function(event) {
+      // TODO: profile
+      var rect = this._parent.getBoundingClientRect();
+      if (event.clientX <= (rect.left + 1) || event.clientX >= (rect.right - 1) ||
+            event.clientY <= (rect.top + 1) || event.clientY >= (rect.bottom - 1)) {
+        this._clearMessage();
+      }
+    },
+    _sendMessage: function() {
+      /**
+       * Fired when parent element is hovered.
+       *
+       * @event io-help
+       * @param {Object} detail message
+       * @param {Object} detail.message message payload
+       * @param {Object} detail.persist message persist flag
+       */
+      this.fire('io-help', {message: this.message, persist: this.persist});
+    },
+    _clearMessage: function() {
+      this.fire('io-help', {message: null, persist: this.persist});
+    }
+  });
+</script>

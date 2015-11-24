@@ -1,0 +1,26 @@
+<link rel="import" href="../../polymer/polymer.html">
+
+<link rel="import" href="../io-vector.html">
+
+<dom-module id="demo-app">
+  <template>
+
+    <io-vector class="demo" value="{{vec3}}"></io-vector>
+    <io-vector class="demo" value="{{vec3obj}}"></io-vector>
+    <io-vector class="demo" value="{{vec3obj}}"></io-vector>
+
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'demo-app',
+    properties: {
+      vec3: {
+        value: [0, 1, 2]
+      },
+      vec3obj: {
+        value: {x: 2, y: 3, z: '4'}
+      }
+    }
+  });
+</script>

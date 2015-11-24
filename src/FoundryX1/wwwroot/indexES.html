@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>learn es6</title>
+    <script src="foundry.trace.js"></script>
+</head>
+<body>
+    <h1>Hello index page</h1>
+    <a href="https://github.com/lukehoban/es6features">es6</a>
+    <script type="text/javascript" >
+
+(function (fo, t, undefined) {
+
+    fo.traceOn();
+
+    var expr = ["A", "B", "C"];
+
+ 
+        class steve {
+            constructor(properties) {
+                this.type = 'steve';
+                this.xxx = '7';
+
+                for (var i = 0; i < expr.length; i++) {
+
+                }
+
+            }
+
+            get latest() {
+                return 'the latest';
+            }
+
+
+            get[expr[0]]()
+                {
+                return "bar " + expr[0] + '  ' + 0;
+                };
+            }
+
+
+    function f(x, ...y) {
+        // y is an Array
+        return x * y.length;
+    }
+
+    var f1 = f(3, "hello", true);
+    var f1a = f1 == 6;
+
+    var f2 = f(3, "hello", true, 'e', 5);
+    var f2a = f2 == 12;
+
+        var xxx = (x) => x * x;
+
+        var yyy = (x) => xxx(x) * x;
+
+        var zzz = (x) => xxx(x) * yyy(x);
+
+        t.p('xxx(2) =' + xxx(2));
+        t.p('zzz(2) =' + zzz(2));
+
+        //var aaa = new steve();
+
+
+        var sss = new steve();
+        t.p('sss =' + JSON.stringify(sss, null, 3));
+        t.p('sss.latest =' + sss.latest);
+        t.p('sss.A =' + sss.A);
+
+
+}(Foundry, Foundry.trace));
+
+    </script>
+</body>
+</html>

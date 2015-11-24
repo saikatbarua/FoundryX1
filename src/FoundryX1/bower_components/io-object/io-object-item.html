@@ -1,0 +1,121 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../io-value/io-value.html">
+<link rel="import" href="../io-input/io-input.html">
+
+<!--
+`<io-object-item>` is used by `<io-object>` element to display element key-value pairs.
+
+TODO: WORK IN PROGRESS
+
+@demo demo/index.html Basic Demo
+-->
+
+<dom-module id="io-object-item">
+  <style>
+    :host {
+      display: block;
+      white-space: nowrap;
+    }
+    #key, #value, #tail {
+      display: inline-block;
+      vertical-align: top;
+    }
+    #key {
+      color: rgb(140, 13, 150);
+    }
+    #key::shadow > * {
+      display: inline-block;
+    }
+    #key:after {
+      content: ':';
+    }
+    #value {
+      padding-left: 0.25em;
+    }
+    #value::shadow > io-input[type=string] {
+      color: rgb(198, 22, 5);
+    }
+    #value::shadow > io-input[type=float],
+    #value::shadow > io-input[type=integer] {
+      color: rgb(25, 0, 211);
+    }
+    #value::shadow > io-boolean {
+      color: rgb(25, 0, 211);
+    }
+    #tail:not(:focus),
+    #tail:not(:hover) {
+      width: 0.5em;
+      cursor: pointer;
+    }
+    #tail:focus {
+      outline: 0;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    }
+    #tail:focus:after,
+    #tail:hover:after {
+      content: ',';
+    }
+  </style>
+  <template>
+    <io-input id="key"
+        type="{{_getType(isarray)}}"
+        value="{{key}}"
+        aria-label="key"
+        disabled="{{disabled}}"
+        on-io-value-set="_valueSet">
+    </io-input><io-value id="value"
+        value="{{value}}"
+        key="{{key}}"
+        parent="{{object}}"
+        disabled="{{disabled}}"
+        on-io-value-set="_valueSet">
+    </io-value><span id="tail" tabindex="0"
+        on-keyup="_onTailKeyUp">&nbsp;</span>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: 'io-object-item',
+    properties: {
+      object: {
+        type: Object
+      },
+      value: {
+        notify: true
+      },
+      key: {
+        notify: true,
+        reflectToAttribute: true
+      },
+      disabled: {
+        type: Boolean,
+      },
+      isarray: {
+        type: Boolean,
+      }
+    },
+    hostAttributes: {
+      role: 'treeitem'
+    },
+    _valueSet: function (event) {
+      /**
+       * This event is fired when value is set by user action.
+       * This is a non-bubbling event.
+       * @event io-value-set
+       * @param {Object} detail value change data
+       * @param {Object} detail.value new value
+       * @param {Object} detail.oldValue old value
+       */
+      this.fire('io-value-set', {value: event.detail.value, oldValue: event.detail.oldValue}, {bubbles: false});
+    },
+    _onTailKeyUp: function (event) {
+      if (event.which == 13) {
+        this.fire('add-item-after', {key: this.key}, {bubbles: false});
+      }
+    },
+    _getType: function (isarray) {
+      return isarray ? 'integer' : 'string';
+    }
+  });
+</script>

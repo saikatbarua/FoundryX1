@@ -1,0 +1,39 @@
+{
+  "name": "io-boolean",
+  "version": "1.2.1",
+  "homepage": "https://github.com/arodic/io-boolean",
+  "authors": [
+    "Aleksandar Rodic <aleksandar.xyz@gmail.com>"
+  ],
+  "description": "Custom HTML element that can be used as input/output for boolean variables.",
+  "main": "io-boolean.html",
+  "keywords": [
+    "io-boolean",
+    "input",
+    "output",
+    "i/o",
+    "io",
+    "ui",
+    "polymer",
+    "element",
+    "web-components"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.2.1",
+    "iron-icons": "PolymerElements/iron-icons#~1.0.4",
+    "io-styles": "arodic/io-styles#~1.2.1"
+  },
+  "_release": "1.2.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.1",
+    "commit": "b8adbeff6bf0dedde0e3e3ba85198faae0594e27"
+  },
+  "_source": "git://github.com/arodic/io-boolean.git",
+  "_target": "~1.2.1",
+  "_originalSource": "arodic/io-boolean"
+}

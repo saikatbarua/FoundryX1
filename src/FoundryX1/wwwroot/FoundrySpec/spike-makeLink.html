@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html ng-app="foApp">
+<head>
+    <meta charset="utf-8" />
+    <title>Foundry</title>
+    <link href="../vendor/vender.css" rel="stylesheet" />
+    <script src="../vendor/vender.js"></script>
+
+    <script src="../foundry/version.js"></script>
+    <script src="../foundry/foundry.core.tools.js"></script>
+    <script src="../foundry/foundry.core.node.js"></script>
+    <script src="../foundry/foundry.core.link.js"></script>
+
+    <script src="spike-makeLink.js"></script>
+
+</head>
+<body class="container well" ng-controller="workspaceController as ws">
+    <h1>{{ws.title}}</h1>
+    <h1>{{ws.spike}}</h1>
+
+    <pre>{{ws.answer1}}</pre>
+    <pre>{{ws.answer2}}</pre>
+    <pre>{{ws.answer3}}</pre>
+
+</body>
+</html>

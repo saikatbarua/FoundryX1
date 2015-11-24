@@ -1,0 +1,376 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../io-styles/io-styles.html">
+
+<!--
+Custom HTML element that can be used as input/output for string and number variables.
+
+Example:
+
+    <io-input value="Hello World"></io-input>
+    <io-input value="1337" type="float"></io-input>
+    <io-input value="1337" type="integer"></io-input>
+
+@demo demo/index.html Basic Demo
+-->
+
+<dom-module id="io-input">
+  <style>
+  :host {
+    @apply(--io-base);
+    text-overflow: ellipsis;
+  }
+  :host(.focused) {
+    @apply(--io-focused);
+    text-overflow: inherit;
+  }
+  :host([disabled]) {
+    @apply(--io-disabled);
+  }
+  :host([invalid]) {
+    @apply(--io-invalid);
+  }
+  input {
+    font: inherit;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    color: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -moz-appearance: textfield;
+    cursor: inherit;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    /* TODO: test in Edge */
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input:focus {
+    outline: 0;
+  }
+  /* TODO: IE */
+  #display {
+    vertical-align: bottom;
+    /*vertical-align: top;*/
+    white-space: pre;
+    pointer-events: none;
+  }
+  :host(:not(.focused)) > input,
+  :host(.focused) > #display{
+    opacity: 0;
+  }
+  :host(.focused) > input,
+  :host(:not(.focused)) > #display {
+    opacity: 1;
+  }
+  :host(:not(.focused).empty) > #display {
+    opacity: 0.5;
+  }
+  </style>
+  <template>
+    <input id="input"
+        on-focus="_onFocus"
+        on-blur="_onBlur"
+        on-keydown="_onKeyDown"
+        placeholder="{{_placeholder}}"
+        spellcheck="false">
+    </input>
+    <span id="display">{{_displayValue}}</span>
+  </template>
+</dom-module>
+<script>
+(function() {
+  var rect, value, rootStyle, rootWidth;
+  var isNumberString = function(str) {
+    if (str.slice(0, 1) === '0' && (str.length > 1 && str.slice(1, 2) !== '.')) {
+      return false;
+    }
+    if (!isNaN(str)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  Polymer({
+    is: 'io-input',
+    properties: {
+      /**
+       * Element's value.
+       */
+      value: {
+        notify: true,
+        observer: '_valueChangedJob'
+      },
+      /**
+       * Element's immediate value.
+       */
+      immediatevalue: {
+        notify: true,
+        observer: '_immediatevalueChanged'
+      },
+      /**
+       * Desables the element.
+       */
+      disabled: {
+        type: Boolean,
+        observer: '_disabledChanged',
+        reflectToAttribute: true
+      },
+      /**
+       * True when element value is invalid.
+       */
+      invalid: {
+        value: false,
+        type: Boolean,
+        notify: true,
+        reflectToAttribute: true
+      },
+      /**
+       * Placeholder displayed in the input field when empty.
+       */
+      placeholder: {
+        type: String
+      },
+      /**
+       * Sets input type such as 'string', float' and 'integer'.
+       */
+      type: {
+        value: 'any',
+        type: String,
+        reflectToAttribute: true,
+        observer: '_valueChangedJob'
+      },
+      _placeholder: {
+        value: 'string',
+        type: String
+      },
+      _displayValue: {
+        value: 'string',
+        type: String
+      }
+    },
+    listeners: {
+      'click': 'focus'
+    },
+    hostAttributes: {
+      role: 'input'
+    },
+    ready: function() {
+      if (this.value === undefined) this._valueChangedJob();
+    },
+    /**
+     * Used to set value by user action.
+     * Fires non-bubbling event io-value-set
+     * @param {*} value new value to be set.
+     */
+    setValue: function(value) {
+      if (this.disabled) return;
+      if (value === this.value) return;
+      var oldValue = this.value;
+      this.value = value;
+      /**
+       * This event is fired when value is set by user action.
+       * This is a non-bubbling event.
+       * @event io-value-set
+       * @param {Object} detail value change data
+       * @param {Object} detail.value new value
+       * @param {Object} detail.oldValue old value
+       */
+      this.fire('io-value-set', {value: value, oldValue: oldValue}, {bubbles: false});
+    },
+    /**
+     * Passes focus to internal input value editor
+     */
+    focus: function() {
+      if (this.$$('input')) {
+        this.$$('input').focus();
+        this.$$('input').select();
+      }
+    },
+    _disabledChanged: function() {
+      this.$.input.disabled = this.disabled;
+      if (this.disabled) {
+        this.setAttribute('aria-disabled', '');
+      } else {
+        this.removeAttribute('aria-disabled');
+      }
+    },
+    _valueChanged: function() {
+      this.immediatevalue = this.value;
+      this._updateInputValue();
+      this._updateDisplayValue();
+      this._placeholder = this.placeholder || this._placeholder;
+    },
+    _valueChangedJob: function() {
+      this.debounce('io-input-value-change', this._valueChanged);
+    },
+    _immediatevalueChanged: function() {
+      if (document.activeElement !== this.$.input) {
+        this.value = this.immediatevalue;
+      }
+    },
+    _updateDisplayValue: function() {
+      value = this.$.input.value;
+      if (value || value === 0) {
+        this._displayValue = String(value);
+      } else {
+        this._displayValue = this._placeholder;
+      }
+    },
+    _updateInputWidth: function () {
+      this.async(function() {
+        if (!this.$.input.validity.badInput) {
+          rect = this.$.display.getBoundingClientRect();
+          this.$.input.style.width = rect.width + 1 + 'px';
+        }
+      }.bind(this));
+    },
+    _updateImmediateValue: function() {
+      this._updateDisplayValue();
+      this._updateInputWidth();
+      value = this.$.input.value;
+
+      // Set type conversion target if type property is set.
+      switch(this.type) {
+        case 'any':
+          if (value === '') {
+            if (this.immediatevalue !== undefined &&
+                (typeof this.immediatevalue === 'number' && !isNaN(this.immediatevalue)) &&
+                typeof this.immediatevalue !== 'function') {
+              this.immediatevalue = null;
+            }
+
+          } else if (isNumberString(value)) {
+            this.immediatevalue = Number(value);
+
+          } else if (value === 'true') {
+            this.immediatevalue = true;
+
+          } else if (value === 'false') {
+            this.immediatevalue = false;
+
+          } else if (value === 'undefined') {
+            this.immediatevalue = undefined;
+
+          } else if (value === 'NaN') {
+            this.immediatevalue = NaN;
+
+          } else {
+            try {
+              this.immediatevalue = JSON.parse(value);
+            } catch (e) {
+              this.immediatevalue = value;
+            }
+          }
+          break;
+
+        case 'string':
+          if (typeof this.immediatevalue === 'string' || value !== '') {
+            this.immediatevalue = String(value);
+          }
+          break;
+
+        case 'float':
+        case 'integer':
+          if ((typeof this.immediatevalue === 'number' && !isNaN(this.immediatevalue)) || value !== '') {
+            if (this.$.input.validity.badInput) {
+              this.$.input.value = String(this.immediatevalue);
+              this._updateDisplayValue();
+            } else if (value === '') {
+              this.immediatevalue = null;
+            } else if (isNumberString(value)) {
+              // TODO: Validate integer and prevent edit if invalid.
+              this.immediatevalue = this.type === 'integer' ?  Math.floor(Number(value)) : Number(value);
+              if (String(this.immediatevalue) !== String(Number(value))) {
+                this.$.input.value = String(this.immediatevalue);
+              }
+            }
+          }
+          break;
+      }
+    },
+    _updateInputValue: function () {
+      // Clear value and placeholder.
+      this.$.input.removeAttribute('type');
+      this.$.input.removeAttribute('step');
+      this.$.input.disabled = this.disabled;
+      this.$.input.value = '';
+      this.invalid = false;
+
+      // Set placeholder.
+      this._placeholder = typeof this.value;
+      if (typeof this.value === 'number' && isNaN(this.value)) {
+        this._placeholder = 'NaN';
+      } else if (this.value === null) {
+        this._placeholder = 'null';
+      } else if (this.value instanceof Array) {
+        this._placeholder = 'array';
+      }
+
+      // Set editor value.
+      if (typeof this.value === 'string') {
+        this.$.input.value = this.value;
+
+      } else if (typeof this.value === 'number' && !isNaN(this.value)) {
+        this.$.input.value = String(this.value);
+
+      } else if (this.type === 'any' && typeof this.value === 'boolean') {
+        this.$.input.value = String(this.value);
+
+      } else if (this.type === 'any' && typeof this.value === 'object' && this.value !== null) {
+        try {
+          this.$.input.value = JSON.stringify(this.value);
+        } catch (e) {}
+      }
+
+      // Set explicit input type and invalid state.
+      // string
+      if (this.type === 'string') {
+        this.$.input.setAttribute('type', 'text');
+        if (typeof this.value !== 'string' &&
+          this.value !== null && this.value !== undefined) {
+            this.invalid = true;
+            this.$.input.disabled = true;
+        }
+      // float
+      } else if (this.type === 'float') {
+        this.$.input.setAttribute('type', 'number');
+        this.$.input.setAttribute('step', 'any');
+        if (typeof this.value !== 'number' &&
+          this.value !== null && this.value !== undefined) {
+            this.invalid = true;
+            this.$.input.disabled = true;
+        }
+      // integer
+      } else if (this.type === 'integer') {
+        this.$.input.setAttribute('type', 'number');
+        this.$.input.setAttribute('step', 1);
+        if (typeof this.value !== 'number' &&
+          this.value !== null && this.value !== undefined) {
+            this.invalid = true;
+            this.$.input.disabled = true;
+        }
+      }
+      this.toggleClass('empty', this.$.input.value === '');
+    },
+    _onKeyDown: function(event) {
+      this.debounce('io-input-resize', this._updateImmediateValue, 1);
+    },
+    _onFocus: function() {
+      this.toggleClass('focused', true);
+      this._updateInputWidth();
+      this._updateInputValue();
+    },
+    _onBlur: function() {
+      this.toggleClass('focused', false);
+      this.setValue(this.immediatevalue);
+      this.scrollLeft = 0;
+    }
+
+  });
+}());
+</script>

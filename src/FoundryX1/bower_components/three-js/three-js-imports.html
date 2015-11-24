@@ -1,0 +1,90 @@
+<!-- JavaScript files copied from three.js repository -->
+<script src="js/build/three.min.js"></script>
+<script src="js/examples/js/Detector.js"></script>
+<script src="js/examples/js/controls/Control.js"></script>
+<script src="js/examples/js/controls/Selection.js"></script>
+<script src="js/examples/js/controls/ViewportControl.js"></script>
+<script src="js/examples/js/tools/GeometryTool.js"></script>
+<script src="js/examples/js/tools/SelectionTool.js"></script>
+<script src="js/examples/js/tools/TransformTool.js"></script>
+<script src="js/examples/js/tools/TransformToolGeometry.js"></script>
+<script src="js/examples/js/curves/NURBSCurve.js"></script>
+<script src="js/examples/js/curves/NURBSSurface.js"></script>
+<script src="js/examples/js/curves/NURBSUtils.js"></script>
+<script src="js/examples/js/helpers/CompassHelper.js"></script>
+<script src="js/examples/js/helpers/ViewportHelper.js"></script>
+<script src="js/examples/js/renderers/Projector.js"></script>
+<script src="js/examples/js/renderers/WebGLSharedRenderer.js"></script>
+<script src="js/examples/js/loaders/ColladaLoader.js"></script>
+<script src="js/examples/js/libs/pnltri.min.js"></script>
+<!-- replace built-in triangulation with PnlTri.js -->
+
+<link rel="import" href="_io-config.html">
+
+<script>
+/**
+ * HTML imports three.js library
+ * @element three-js
+ * @homepage https://github.com/arodic/three-js
+ * @demo http://akirodic.com/components/three-js/demo.html
+ */
+THREE.Shape.Utils.triangulateShape = (function() {
+	var pnlTriangulator = new PNLTRI.Triangulator();
+	return function(contour, holes) {
+		// console.log("new Triangulation: PnlTri.js " + PNLTRI.REVISION );
+		return pnlTriangulator.triangulate_polygon([contour].concat(holes));
+	};
+})();
+
+Object.defineProperty( THREE.Camera, 'name', { value: 'Camera' } );
+Object.defineProperty( THREE.CubeCamera, 'name', { value: 'CubeCamera' } );
+Object.defineProperty( THREE.OrthographicCamera, 'name', { value: 'OrthographicCamera' } );
+Object.defineProperty( THREE.PerspectiveCamera, 'name', { value: 'PerspectiveCamera' } );
+Object.defineProperty( THREE.BufferGeometry, 'name', { value: 'BufferGeometry' } );
+Object.defineProperty( THREE.Object3D, 'name', { value: 'Object3D' } );
+Object.defineProperty( THREE.BoxGeometry, 'name', { value: 'BoxGeometry' } );
+Object.defineProperty( THREE.CircleGeometry, 'name', { value: 'CircleGeometry' } );
+Object.defineProperty( THREE.CylinderGeometry, 'name', { value: 'CylinderGeometry' } );
+Object.defineProperty( THREE.ExtrudeGeometry, 'name', { value: 'ExtrudeGeometry' } );
+Object.defineProperty( THREE.IcosahedronGeometry, 'name', { value: 'IcosahedronGeometry' } );
+Object.defineProperty( THREE.LatheGeometry, 'name', { value: 'LatheGeometry' } );
+Object.defineProperty( THREE.PolyhedronGeometry, 'name', { value: 'PolyhedronGeometry' } );
+Object.defineProperty( THREE.ParametricGeometry, 'name', { value: 'ParametricGeometry' } );
+Object.defineProperty( THREE.PlaneGeometry, 'name', { value: 'PlaneGeometry' } );
+Object.defineProperty( THREE.PolyhedronGeometry, 'name', { value: 'PolyhedronGeometry' } );
+Object.defineProperty( THREE.RingGeometry, 'name', { value: 'RingGeometry' } );
+Object.defineProperty( THREE.ShapeGeometry, 'name', { value: 'ShapeGeometry' } );
+Object.defineProperty( THREE.SphereGeometry, 'name', { value: 'SphereGeometry' } );
+Object.defineProperty( THREE.TetrahedronGeometry, 'name', { value: 'TetrahedronGeometry' } );
+Object.defineProperty( THREE.TextGeometry, 'name', { value: 'TextGeometry' } );
+Object.defineProperty( THREE.TorusGeometry, 'name', { value: 'TorusGeometry' } );
+Object.defineProperty( THREE.TorusKnotGeometry, 'name', { value: 'TorusKnotGeometry' } );
+Object.defineProperty( THREE.TubeGeometry, 'name', { value: 'TubeGeometry' } );
+Object.defineProperty( THREE.Light, 'name', { value: 'Light' } );
+Object.defineProperty( THREE.AmbientLight, 'name', { value: 'AmbientLight' } );
+Object.defineProperty( THREE.DirectionalLight, 'name', { value: 'DirectionalLight' } );
+Object.defineProperty( THREE.HemisphereLight, 'name', { value: 'HemisphereLight' } );
+Object.defineProperty( THREE.PointLight, 'name', { value: 'PointLight' } );
+Object.defineProperty( THREE.SpotLight, 'name', { value: 'SpotLight' } );
+Object.defineProperty( THREE.Material, 'name', { value: 'Material' } );
+Object.defineProperty( THREE.LineBasicMaterial, 'name', { value: 'LineBasicMaterial' } );
+Object.defineProperty( THREE.LineDashedMaterial, 'name', { value: 'LineDashedMaterial' } );
+Object.defineProperty( THREE.MeshBasicMaterial, 'name', { value: 'MeshBasicMaterial' } );
+Object.defineProperty( THREE.MeshDepthMaterial, 'name', { value: 'MeshDepthMaterial' } );
+Object.defineProperty( THREE.MeshFaceMaterial, 'name', { value: 'MeshFaceMaterial' } );
+Object.defineProperty( THREE.MeshLambertMaterial, 'name', { value: 'MeshLambertMaterial' } );
+Object.defineProperty( THREE.MeshNormalMaterial, 'name', { value: 'MeshNormalMaterial' } );
+Object.defineProperty( THREE.MeshPhongMaterial, 'name', { value: 'MeshPhongMaterial' } );
+Object.defineProperty( THREE.PointCloudMaterial, 'name', { value: 'PointCloudMaterial' } );
+Object.defineProperty( THREE.RawShaderMaterial, 'name', { value: 'RawShaderMaterial' } );
+Object.defineProperty( THREE.ShaderMaterial, 'name', { value: 'ShaderMaterial' } );
+Object.defineProperty( THREE.SpriteMaterial, 'name', { value: 'SpriteMaterial' } );
+Object.defineProperty( THREE.Group, 'name', { value: 'Group' } );
+Object.defineProperty( THREE.Line, 'name', { value: 'Line' } );
+Object.defineProperty( THREE.Mesh, 'name', { value: 'Mesh' } );
+Object.defineProperty( THREE.PointCloud, 'name', { value: 'PointCloud' } );
+Object.defineProperty( THREE.SkinnedMesh, 'name', { value: 'SkinnedMesh' } );
+Object.defineProperty( THREE.Sprite, 'name', { value: 'Sprite' } );
+Object.defineProperty( THREE.Scene, 'name', { value: 'Scene' } );
+
+</script>

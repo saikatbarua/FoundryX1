@@ -1,0 +1,197 @@
+<!--
+ioObjectToArray is a custom filter that allows use of template-repeat on objects.
+
+Custom filter used to return an array of keys from an object.
+
+Once Polymer adds support for object iteration, this should be depricated.
+GitHub issue: https://github.com/Polymer/polymer-expressions/issues/11
+
+__Note__: Note this is a hack with potential memory leaks. **Use at your own risk**!
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../observe-js/observe-js.html">
+
+<script type="text/javascript">
+(function() {
+  var i, k, val, keys, key, index, tempItem;
+
+  var performCheck = function () {
+      Platform.performMicrotaskCheckpoint();
+      setTimeout(function(){ requestAnimationFrame(performCheck); }, 60);
+  };
+
+  if (Object.observe === undefined) {
+    performCheck();
+  }
+
+  var preventMutation = false;
+
+  var ObservedMap = function (k, object) {
+    var isArray = object instanceof Array;
+    return {
+      get key () {
+        if (isArray) {
+          return k === null ? null : parseInt(k);
+        } else {
+          return k;
+        }
+      },
+      set key (value) {
+        if (isArray) {
+          if (preventMutation) {
+            k = parseInt(value);
+            return;
+          }
+          if (!isNaN(value)) {
+            if (k !== null) {
+              val = object[k];
+              object.splice(parseInt(k), 1);
+            } else {
+              val = undefined;
+            }
+            if (value !== null) {
+              object.length = Math.max(object.length, parseInt(value));
+              object.splice(parseInt(value), 0, val);
+              k = parseInt(value);
+            }
+          }
+        } else {
+          if (value === '') {
+            delete object[k];
+          } else if (typeof value === 'string') {
+            val = object[k];
+            delete object[k];
+            object[value] = val;
+            k = value;
+          }
+        }
+      },
+      get value () {
+        return object[k];
+      },
+      set value (value) {
+        object[k] = value;
+      }
+    };
+  };
+  /**
+  Polymer.ioObjectToArray adds a method that computes observed key/value array from an object.
+
+  Object mutations are observed and applied to resulting array.
+  Mutations of the array elements are also applied to the original object.
+
+  Example:
+
+      {a: 1, b: 2}
+
+  Becomes:
+
+      [{key: a, value: 1}, {key: b, value: 2}]
+
+  @demo demo/index.html
+  @polymerBehavior
+  */
+  Polymer.ioObjectToArray = {
+    /**
+     * Computes an observed key/value array from an object.
+     * @method computeObservedMapArray
+     * @param {object} object The object to be computed as observed key/value array.
+     * @param {string} targetProperty Name of the target computed property.
+     */
+    computeObservedMapArray: function(object, targetProperty) {
+      if (!object || typeof object != 'object') return;
+
+      var array = [];
+
+      if (object instanceof Array) {
+
+        for (i = 0; i < object.length; i++) {
+          array.push(ObservedMap(parseInt(i), object));
+        }
+
+        array.observer = new ArrayObserver(object);
+        array.observer.open(function(splices) {
+          array.removeTempItem();
+          splices.forEach(function(splice) {
+            this.splice(targetProperty, splice.index, splice.removed.length);
+            for (i = splice.index; i < splice.index + splice.addedCount; i++) {
+              this.splice(targetProperty, i, 0, ObservedMap(parseInt(i), object));
+            }
+          }.bind(this));
+          // TODO: hack to prevent infinite mutation with the ObservedMap setter.
+          preventMutation = true;
+          for (i = 0; i < object.length; i++) {
+            this.set(targetProperty + '.' + i + '.key', parseInt(i));
+          }
+          preventMutation = false;
+        }, this);
+
+      } else if (typeof object == 'object') {
+
+        var _object;
+        if (object instanceof HTMLElement && object.__data__) {
+          keys = Object.keys(object.__data__);
+          _object = object.__data__;
+        } else {
+          keys = Object.keys(object);
+          _object = object;
+        }
+
+
+        for (key in keys) {
+          array.push(ObservedMap(keys[key], object));
+        }
+
+        array.observer = new ObjectObserver(_object);
+        array.observer.open(function(added, removed, changed, getOldValueFn) {
+          array.removeTempItem();
+          for (key in added) {
+            index = array.findIndex(key);
+            if (index === -1) {
+              this.push(targetProperty, ObservedMap(key, object));
+            }
+          }
+          for (key in removed) {
+            index = array.findIndex(key);
+            if (index !== -1) {
+              this.splice(targetProperty, index, 1);
+            }
+          }
+          for (key in changed) {
+            index = array.findIndex(key);
+            if (index !== -1) {
+              this.set(targetProperty + '.' + index + '.value', changed[key]);
+            }
+          }
+        }, this);
+
+      }
+
+      array.removeTempItem = function() {
+        if (array._tempItem) {
+          this.splice(targetProperty, array.indexOf(array._tempItem), 1);
+          delete array._tempItem;
+        }
+      }.bind(this);
+
+      array.addTempItem = function(index, value) {
+        array.removeTempItem();
+        array._tempItem = ObservedMap(value === undefined ? null : value, object);
+        this.splice(targetProperty, index, 0, array._tempItem);
+      }.bind(this);
+
+      array.findIndex = function(key) {
+        for (i = 0; i < array.length; i++) {
+          if (array[i].key === key) {
+            return i;
+          }
+        }
+        return -1;
+      };
+
+      return array;
+    }
+  };
+}());
+</script>

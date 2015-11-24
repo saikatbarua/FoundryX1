@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html ng-app="paris">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <title>paris attacks</title>
+
+    <link href="vendor/vender.css" rel="stylesheet" />
+    <script src="vendor/vender.js"></script>
+    <link href="vendor/leaflet.css" rel="stylesheet" />
+    <script src="vendor/leaflet-src.js"></script>
+
+    <!--<link href="../bower_components/leaflet/dist/leaflet.css" rel="stylesheet" />
+    <link href='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+    <script src="../bower_components/leaflet/dist/leaflet.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>-->
+
+    <script src="foundry/version.js"></script>
+    <script src="foundry/foundry.core.tools.js"></script>
+    <script src="foundry/foundry.core.dto.js"></script>
+    <script src="foundry/foundry.core.node.js"></script>
+    <script src="foundry/foundry.core.link.js"></script>
+
+    <script src="foundry/foundry.core.component.js"></script>
+    <script src="foundry/foundry.code.pubsub.js"></script>
+    <script src="foundry/foundry.core.property.js"></script>
+    <script src="foundry/foundry.core.collection.js"></script>
+
+
+    <script src="foundry/foundry.core.meta.js"></script>
+    <script src="foundry/foundry.core.factory.js"></script>
+    <script src="foundry/foundry.core.factoryrelate.js"></script>
+    <script src="foundry/foundry.core.entitydb.js"></script>
+    <script src="foundry/foundry.core.listops.js"></script>
+
+    <script src="indexParisAttacks.js"></script>
+    <script src="dataservice.js"></script>
+    <script src="ontologyLocationModel.js"></script>
+    <script src="render3dservice.js"></script>
+
+    <script src="vendor/three.js"></script>
+    <script src="vendor/orbitcontrols.js"></script>
+
+    <style>
+        #map {
+            height: 980px;
+        }
+        #earth {
+            height: 500px;
+        }
+        .box {
+            margin: 10px;
+        }
+    </style>
+
+</head>
+<body ng-controller="workspaceController as ws">
+    <div class="container well">
+        <h1>{{ws.title}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-1">
+            <button class="btn btn-default" ng-click="ws.addNode()">Add</button>
+            <div ng-repeat="node in ws.nodeDB.items">
+                <div class="box" ng-click="ws.selectedNode(node)">
+                    <div>{{node.id}} - {{node.dateTimeUtc}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div ng-repeat="node in ws.nodeDB.items">
+                <div class="box" ng-click="ws.selectedNode(node)">
+                    <div>{{node.id}} - {{node.place.name}} - {{node.dateTimeUtc}}</div>
+                    <div>{{node.description}}</div>
+                </div>
+            </div>
+            
+            <h1>Add timeline here</h1>
+        </div>
+        <div  class="col-lg-6">
+            <div id="map"></div>
+            <div id="earth" ></div>
+       </div>
+
+    </div>
+
+
+
+
+</body>
+</html>

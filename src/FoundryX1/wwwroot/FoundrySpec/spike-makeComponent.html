@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html ng-app="foApp">
+<head>
+    <meta charset="utf-8" />
+    <title>Foundry</title>
+    <link href="../vendor/vender.css" rel="stylesheet" />
+    <script src="../vendor/vender.js"></script>
+    <script src="../vendor/three.js"></script>
+    <script src="../vendor/OrbitControls.js"></script>
+
+    <script src="../foundry/version.js"></script>
+    <script src="../foundry/foundry.core.tools.js"></script>
+    <script src="../foundry/foundry.core.meta.js"></script>
+    <script src="../foundry/foundry.core.node.js"></script>
+    <script src="../foundry/foundry.core.factory.js"></script>
+
+
+    <script src="../foundry/foundry.core.component.js"></script>
+    <script src="../foundry/foundry.code.pubsub.js"></script>
+    <script src="../foundry/foundry.core.property.js"></script>
+    <script src="../foundry/foundry.core.collection.js"></script>
+
+
+    <script src="spike-makeComponent.js"></script>
+
+</head>
+<body class="container well" ng-controller="workspaceController as ws">
+    <h1>{{ws.title}}</h1>
+    <h1>{{ws.spike}}</h1>
+ 
+
+    <div class="row">
+        <form name="appForm" novalidate class="app-form">
+            <label>width</label> : <input type="number" name="width" ng-model="ws.input.width"  required><br />
+            <label>height</label> : <input type="number" name="height" ng-model="ws.input.height"  required><br />
+            <label>depth</label> : <input type="number" name="depth" ng-model="ws.input.depth"  required><br />
+            <button ng-click="ws.doUpdate()">Apply</button>
+        </form>
+    </div>
+
+    <div id="scene"></div>
+    <pre>{{ws.answer1}}</pre>
+
+
+</body>
+</html>

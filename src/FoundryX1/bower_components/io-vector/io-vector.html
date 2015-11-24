@@ -1,0 +1,95 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../io-object-to-array/io-object-to-array.html">
+<link rel="import" href="../io-value/io-value.html">
+
+<!--
+Custom HTML element that can be used as input/output for vectors.
+
+Example:
+
+    <io-vector value="Hello World"></io-vector>
+
+@demo demo/index.html Basic Demo
+-->
+
+<dom-module id="io-vector">
+  <style>
+  :host {
+    @apply(--layout-horizontal);
+  }
+  :host > io-value {
+    display: block;
+    @apply(--layout-flex);
+  }
+  :host > io-value:nth-child(even) {
+    margin: 0 0.4em;
+    background: rgba(0, 0, 0, 0.05);
+  }
+  </style>
+  <template>
+    <template is="dom-repeat" items="{{_valuearray}}" filter="{{filter}}" sort="{{sort}}">
+      <io-value
+          parent="{{value}}"
+          value="{{item.value}}"
+          key="{{item.key}}"
+          on-io-value-set="_onValueSet"
+          disabled="{{disabled}}">
+      </io-value>
+    </template>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'io-vector',
+    properties: {
+      /**
+       * Element's value.
+       */
+      value: {
+        type: Array
+      },
+      /**
+       * Desables the element.
+       */
+      disabled: {
+        type: Boolean
+      },
+      _valuearray: {
+        computed: 'computeObservedMapArray(value, "_valuearray")'
+      }
+    },
+    behaviors: [
+      Polymer.ioObjectToArray
+    ],
+    /**
+     * Used to set value by user action.
+     * Fires non-bubbling event io-value-set
+     * @param {*} value new value to be set.
+     */
+    _onValueSet: function(event) {
+      if (this.disabled) return;
+      var oldValue = JSON.parse(JSON.stringify(this.value));
+      oldValue[event.path[0].key] = event.detail.oldValue;
+      /**
+       * This event is fired when value is set by user action.
+       * This is a non-bubbling event.
+       * @event io-value-set
+       * @param {Object} detail value change data
+       * @param {Object} detail.value new value
+       * @param {Object} detail.oldValue old value
+       */
+      this.fire('io-value-set', {value: this.value, oldValue: oldValue}, {bubbles: false});
+    },
+    /**
+     * Passes focus to internal input value editor
+     */
+    focus: function() {
+      // TODO: fix
+      if (this.$$('io-input')) {
+        this.$$('io-input').focus();
+      }
+    },
+
+  });
+</script>

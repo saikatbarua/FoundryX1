@@ -1,0 +1,105 @@
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../../io-help/io-help-line.html">
+<link rel="import" href="../io-menu.html">
+
+<dom-module id="demo-app">
+  <style>
+    :host {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    :host > io-help-line {
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      background: white;
+    }
+  </style>
+  <template>
+
+    <io-help-line message="Click or tap anywhere!"></io-help-line>
+
+    <io-menu id="menu" search options="{{options}}"></io-menu>
+
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'demo-app',
+    properties: {
+      options: {
+        value: function() {
+
+          var actionOptions = [
+                {
+                  label: 'Action',
+                  action: function() {alert('This is an action!');},
+                  help: 'You can pass any function as an action.',
+                  tooltip: 'Click me!'
+                },
+                {
+                  label: 'Arguments',
+                  action: function(msg) {alert(msg);},
+                  value: 'This option has value that is passed as action argument',
+                  help: 'You can pass value as arguments to any action.'
+                }
+              ];
+
+          var suboptions2 = [
+            {label: 'Suboption7', action: actionOptions[0].action},
+            {label: 'Suboption8', action: actionOptions[0].action},
+            {label: 'Suboption9', action: actionOptions[0].action}
+          ];
+          var suboptions1 = [
+            {label: 'Suboption4', options: suboptions2},
+            {label: 'Suboption5', options: suboptions2},
+            {label: 'Suboption6', options: suboptions2}
+          ];
+          var suboptions0 = [
+            {label: 'Suboption1', options: suboptions1},
+            {label: 'Suboption2', options: suboptions1},
+            {label: 'Suboption3', options: suboptions1}
+          ];
+
+          var longOptions = [];
+          for (var i = 0; i < 128; i++) {
+            var number = String(Math.random());
+            longOptions.push({
+              label: number,
+              action: function(num) {console.log('You clicked', num);},
+              value: number
+            });
+          }
+
+          return [
+            {label: 'Actions', icon: 'icons:list', info: '', options: actionOptions},
+            {label: 'Suboptions', icon: 'icons:check', options: suboptions0},
+            {label: 'empty options', options: [], help: 'This item has an empty array as options.'},
+            {label: 'Long', options: longOptions, help: 'This item has a very long list of options.'},
+            {type: 'separator'},
+            {label: 'empty', help: 'This is an option with no data.'},
+            {label: 'disabled', disabled: true},
+            {label: 'tooltip', tooltip: 'Hey, I am a tooltip!'},
+            {label: 'help', help: 'Broadcasts an io-help message'},
+            {label: 'Cut', icon: 'icons:content-cut', info: '⌘X'},
+            {label: 'Paste', icon: 'icons:content-paste', info: '⌘V'},
+            {label: 'Undo', info: '⌘Z', options: suboptions0}
+          ];
+
+        }
+      }
+    },
+    ready: function () {
+      this.async(function () {
+        // Fake click
+        this.$.menu._openGroup({
+          preventDefault: function () {},
+          clientX: 50,
+          clientY: 100
+        });
+      }, 100);
+    }
+  });
+</script>

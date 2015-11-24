@@ -1,0 +1,88 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="io-tooltip-bubble.html">
+
+<dom-module id="io-tooltip"></dom-module>
+<script>
+  /*
+  `<io-tooltip>` element displays a tooltip when its parent is hovered. The tooltip is broadcast via 'io-tooltip' event and picked up by `<io-tooltip-bubble'>` in document root.
+
+  Example:
+
+      <div id="parent">
+        <span>hover me</span>
+        <io-tooltip
+            message="The message is displayed when you hover #parent element.">
+        </io-tooltip>
+      </div>
+
+  By default, tooltips are displayed on the right side of the parent element. You can change this with the "side" attribute.
+      
+  @demo demo.html
+  */
+  Polymer({
+    is: 'io-tooltip',
+      properties: {
+        /**
+         * Message to whow in tooltip when parent element is hovered.
+         */
+        message: {
+          value: '',
+          type: String
+        },
+        /**
+         * Determines on which side of the parent the tooltip will show up.
+         */
+        side: {
+          value: 'right',
+          type: String
+        },
+        /**
+         * Tooltip width in pixels
+         */
+        width: {
+          value: 260,
+          type: Number
+        }
+      },
+      ready: function() {
+        this.__onMouseenter = this._onMouseenter.bind(this);
+        this.__onMouseout = this._onMouseout.bind(this);
+      },
+      attached: function() {
+        this._parent = this.parentNode;
+        this._parent.addEventListener('mouseenter', this.__onMouseenter);
+        this._parent.addEventListener('mouseout', this.__onMouseout);
+      },
+      detached: function() {
+        this._parent.removeEventListener('mouseenter', this.__onMouseenter);
+        this._parent.removeEventListener('mouseout', this.__onMouseout);
+      },
+      _onMouseenter: function(event) {
+        if (event.target === this._parent) {
+          this._showTooltip();
+        }
+      },
+      _onMouseout: function(event) {
+        // TODO: profile
+        var rect = this._parent.getBoundingClientRect();
+        if (event.clientX <= rect.left || event.clientX >= (rect.left + rect.width) ||
+              event.clientY <= rect.top || event.clientY >= (rect.top + rect.height)) {
+          this._hideTooltip();
+        }
+      },
+      _showTooltip: function() {
+        /**
+         * Fired when parent element is hovered.
+         * @event io-tooltip
+         * @param {Object} detail message payload
+         * @param {Object} detail.message tooltip message payload
+         * @param {Object} detail.side tooltip position in relation to tooltip's parent element
+         * @param {Object} detail.width tooltip width in pixels
+         */
+        this.fire('io-tooltip', {message: this.message, side: this.side, width: this.width});
+      },
+      _hideTooltip: function() {
+        this.fire('io-tooltip', {message: null});
+      }
+  });
+</script>

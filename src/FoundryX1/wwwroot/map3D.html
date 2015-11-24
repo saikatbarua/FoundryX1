@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <!--http://cesiumjs.org/2013/04/12/Cesium-up-and-running/-->
+    <script src="cesium/cesium.js"></script>
+    <style>
+        @import url(Cesium/Widgets/widgets.css);
+
+        #cesiumContainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            overflow: hidden;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cesiumContainer"></div>
+    <script>
+        var viewer = new Cesium.Viewer('cesiumContainer');
+
+        var wyoming = viewer.entities.add({
+            name: 'Wyoming',
+            polygon: {
+                hierarchy: Cesium.Cartesian3.fromDegreesArray([
+                                          -109.080842, 45.002073,
+                                          -105.91517, 45.002073,
+                                          -104.058488, 44.996596,
+                                          -104.053011, 43.002989,
+                                          -104.053011, 41.003906,
+                                          -105.728954, 40.998429,
+                                          -107.919731, 41.003906,
+                                          -109.04798, 40.998429,
+                                          -111.047063, 40.998429,
+                                          -111.047063, 42.000709,
+                                          -111.047063, 44.476286,
+                                          -111.05254, 45.002073]),
+                material: Cesium.Color.RED.withAlpha(0.5),
+                outline: true,
+                outlineColor: Cesium.Color.BLACK
+            }
+        });
+
+        viewer.zoomTo(wyoming);
+
+        var entity = viewer.entities.add({
+            position: Cesium.Cartesian3.fromDegrees(-103.0, 40.0),
+            ellipse: {
+                semiMinorAxis: 250000.0,
+                semiMajorAxis: 400000.0,
+                material: Cesium.Color.BLUE.withAlpha(0.5)
+            }
+        });
+        viewer.zoomTo(viewer.entities);
+
+        var ellipse = entity.ellipse; // For upcoming examples
+
+        var entity = viewer.entities.add({
+            polyline: {
+                positions: Cesium.Cartesian3.fromDegreesArray([-77, 35,
+                                                               -77.1, 35]),
+                width: 5,
+                material: Cesium.Color.RED
+            }
+        });
+        viewer.zoomTo(viewer.entities);
+    </script>
+
+</body>
+</html>

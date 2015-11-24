@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>VaaS: Labs</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!--<link href="styles/vendor.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/CBP-responsive.css">
+    <link rel="stylesheet" href="styles/CBP-global-classes.css">-->
+
+    <link href="vendor/vender.css" rel="stylesheet" />
+    <link href="css/default-responsive.css" rel="stylesheet" />
+    <link href="css/global-classes.css" rel="stylesheet" />
+    <script src="vendor/vender.js"></script>
+
+
+    <script src="foundry/version.js"></script>
+    <script src="foundry/foundry.core.tools.js"></script>
+    <script src="foundry/foundry.core.dto.js"></script>
+    <script src="foundry/foundry.core.node.js"></script>
+    <script src="foundry/foundry.core.link.js"></script>
+
+    <script src="foundry/foundry.code.pubsub.js"></script>
+    <script src="foundry/foundry.core.property.js"></script>
+    <script src="foundry/foundry.core.collection.js"></script>
+    <script src="foundry/foundry.core.component.js"></script>
+
+    <script src="foundry/foundry.core.meta.js"></script>
+    <script src="foundry/foundry.core.factory.js"></script>
+    <script src="foundry/foundry.core.factoryrelate.js"></script>
+    <script src="foundry/foundry.core.entitydb.js"></script>
+    <script src="foundry/foundry.core.listops.js"></script>
+    <script src="foundry/foundry.core.workspace.js"></script>
+
+</head>
+
+<body ng-app='foApp' >
+    
+    <!--<header style="background-color:cornflowerblue">
+        <h1 style="text-align:center;color:black"><em>some examples</em></h1>
+    </header>-->
+        <div class="main" ng-controller="workspaceController as labs">
+            <div class="container">
+                <div ng-repeat="group in labs.groups" class="tile-container">
+                    <div ng-click="labs.toggleIsCollapsed(group)" class="app-group-title cursor-pointer">{{group.groupName}}</div>
+                    <div ng-hide="group.isCollapsed" class="vaas-launch-tile" data-ng-repeat="item in group.subcomponents">
+                        <a href="{{item.appUrl}}" class="hover-from-this"><img ng-src="{{item.imageUrl}}" title="{{item.title}}" alt="" /></a>
+                        <div class="tile-label">
+                            <span class="app-title"><a href="{{item.appUrl}}" class="app-title-a">{{item.title}}</a></span><br>
+                            <span class="sub-title">{{item.subTitle}}</span><br>
+                            <span class="font-size-72pct margin-top-6px" data-ng-repeat="link in item.links"><a href="{{link.url}}" target="_blank">{{link.title}}</a><br /></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="index.js"></script>
+
+</body>
+</html>

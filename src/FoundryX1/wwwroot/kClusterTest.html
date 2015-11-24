@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>k Cluster</title>
+    <link href="vendor/vender.css" rel="stylesheet" />
+    <script src="vendor/vender.js"></script>
+
+    <script src="foundry/version.js"></script>
+    <script src="foundry/foundry.code.dom.js"></script>
+    <script src="foundry/foundry.core.tools.js"></script>
+    <script src="foundry/foundry.core.dto.js"></script>
+    <script src="foundry/foundry.core.node.js"></script>
+    <script src="foundry/foundry.core.link.js"></script>
+
+    <script src="foundry/foundry.core.component.js"></script>
+    <script src="foundry/foundry.code.pubsub.js"></script>
+    <script src="foundry/foundry.core.property.js"></script>
+    <script src="foundry/foundry.core.collection.js"></script>
+
+
+    <script src="foundry/foundry.core.meta.js"></script>
+    <script src="foundry/foundry.core.factory.js"></script>
+    <script src="foundry/foundry.core.entitydb.js"></script>
+    <script src="foundry/foundry.core.listops.js"></script>
+
+</head>
+<body>
+    <button id="withComponents" style="position:absolute;left:10px">with Components</button>
+    <button id="withAdapter" style="position:absolute;left:210px">with Adapter</button>
+    <canvas id="canvas" height="10" width="10"></canvas>
+
+    <script type="text/javascript">
+
+        var pointSpec = {
+            x: 0,
+            y: 0,
+            color: 'blue',
+            radius: 8,
+        }
+
+        var canvasWidth = 1200;
+        var canvasHeight = 700;
+        var nodeCount = 1450;
+
+        document.getElementById('canvas').setAttribute('width', canvasWidth);
+        document.getElementById('canvas').setAttribute('height', canvasHeight);
+
+
+        var clusterSpec = fo.tools.union(pointSpec, {
+            x: function () {
+                return this.Subcomponents.sumAll('x') / this.Subcomponents.count;
+            },
+            y: function () {
+                return this.Subcomponents.sumAll('y') / this.Subcomponents.count;
+            },
+            radius: function () {
+                return 8 + 0.1 * this.Subcomponents.count;
+            },
+            color: 'yellow',
+        });
+
+        function distance(obj1, obj2) {
+            var dx = obj1.x - obj2.x;
+            var dy = obj1.y - obj2.y;
+            return Math.sqrt((dx * dx) + (dy * dy));
+        }
+
+
+        var model = fo.makeComponent();
+        model.withDependencies = false;
+        for (var i = 0; i < nodeCount; i++) {
+            pointSpec.x = Math.floor(Math.random() * canvasWidth) - 1;
+            pointSpec.y = Math.floor(Math.random() * canvasHeight) - 1;
+            model.createAdaptor(pointSpec);
+        }
+
+        // Get a reference to the canvas
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        model.Subcomponents.map(function (item) {
+            ctx.beginPath();
+            ctx.arc(item.x, item.y, item.radius, 0, 2 * Math.PI, false);
+            ctx.fillStyle = item.color;
+            ctx.fill();
+            ctx.closePath();
+        });
+
+        function renderComponentClusters() {
+            var clusters = fo.makeComponent();
+            clusters.withDependencies = false;
+
+            //create clusters
+            var clusterRadius = 200;
+            model.Subcomponents.map(function (item) {
+                var cluster = undefined;
+                for (var i = 0; i < clusters.Subcomponents.count; i++) {
+                    var node = clusters.Subcomponents.item(i);
+                    var dist = distance(item, node);
+                    if (dist < clusterRadius) {
+                        cluster = node;
+                        //cluster.addSubcomponent(item); more complete but costly
+                        cluster.pushSubcomponent(item);
+                        break;
+                    }
+                }
+
+                if (!cluster) {
+                    cluster = clusters.createSubcomponent(clusterSpec);
+                    //cluster.addSubcomponent(item);
+                    cluster.pushSubcomponent(item);
+                }
+
+                //draw line that shows item joining the cluster
+                ctx.beginPath();
+                ctx.moveTo(item.x, item.y);
+                ctx.lineTo(cluster.x, cluster.y);
+                ctx.closePath();
+                ctx.stroke();
+
+
+                if (cluster) {
+                    ctx.beginPath();
+                    ctx.arc(cluster.x, cluster.y, cluster.radius, 0, 2 * Math.PI, false);
+                    ctx.fillStyle = 'red';
+                    ctx.fill();
+                    ctx.closePath();
+                }
+
+            });
+
+            clusters.Subcomponents.map(function (item) {
+                ctx.beginPath();
+                ctx.arc(item.x, item.y, 5, 0, 2 * Math.PI, false);
+                ctx.fillStyle = item.color;
+                ctx.fill();
+            });
+        }
+
+
+       // $('#withComponents').click(function () {
+            var time = fo.trace.timerStart('with Components: nodes =' + nodeCount);
+            renderComponentClusters();
+            fo.trace.timerReport(time);
+       // });
+
+
+        function renderAdapterClusters() {
+            var clusters = fo.makeComponent();
+            clusters.withDependencies = false;
+
+            //create clusters
+            var clusterRadius = 200;
+            model.Subcomponents.map(function (item) {
+                var cluster = undefined;
+                for (var i = 0; i < clusters.Subcomponents.count; i++) {
+                    var node = clusters.Subcomponents.item(i);
+                    var dist = distance(item, node);
+                    if (dist < clusterRadius) {
+                        cluster = node;
+                        cluster.Subcomponents.push(item);
+                        break;
+                    }
+                }
+
+                if (!cluster) {
+                    cluster = clusters.createSubcomponent(clusterSpec);
+                    cluster.Subcomponents.push(item);
+                }
+
+                //draw line that shows item joining the cluster
+                ctx.beginPath();
+                ctx.moveTo(item.x, item.y);
+                ctx.lineTo(cluster.x, cluster.y);
+                ctx.closePath();
+                ctx.stroke();
+
+
+                if (cluster) {
+                    ctx.beginPath();
+                    ctx.arc(cluster.x, cluster.y, cluster.radius, 0, 2 * Math.PI, false);
+                    ctx.fillStyle = 'red';
+                    ctx.fill();
+                    ctx.closePath();
+                }
+
+            });
+
+            clusters.Subcomponents.map(function (item) {
+                ctx.beginPath();
+                ctx.arc(item.x, item.y, 5, 0, 2 * Math.PI, false);
+                ctx.fillStyle = item.color;
+                ctx.fill();
+            });
+        }
+
+
+        $('#withAdapter').click(function () {
+            var time = fo.trace.timerStart('with Adapter: nodes =' + nodeCount);
+            renderAdapterClusters();
+            fo.trace.timerReport(time);
+        });
+
+    </script>
+</body>
+</html>

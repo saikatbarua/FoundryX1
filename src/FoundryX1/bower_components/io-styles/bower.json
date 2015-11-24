@@ -1,0 +1,20 @@
+{
+  "name": "io-styles",
+  "version": "1.2.1",
+  "homepage": "https://github.com/arodic/io-styles",
+  "authors": [
+    "Aleksandar Rodic <aleksandar.xyz@gmail.com>"
+  ],
+  "description": "Shared styles for io-* elements.",
+  "main": "io-styles.html",
+  "keywords": [
+    "io-styles", "css", "style", "i/o", "io", "ui", "polymer", "element", "web-components"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.2.1"
+  }
+}

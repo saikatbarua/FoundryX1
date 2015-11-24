@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <title>io-tooltip demo</title>
+  <script src="../webcomponentsjs/webcomponents.js"></script>
+  <link rel="import" href="io-tooltip.html">
+  <style type="text/css">
+    html {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+    body{
+      font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: #ddd;
+    }
+    .hitarea {
+      display: inline-block;
+      width: 2em;
+      height: 2em;
+      padding: 2em;
+      margin: 0.25em;
+      background: gray;
+    }
+  </style>
+</head>
+<body unresolved fullbleed> 
+
+  <div>
+    <span class="hitarea">
+      <span>right</span>
+      <io-tooltip
+          width="160"
+          side="right"
+          message="This tooltip is on right side of the parent element.">
+      </io-tooltip>
+    </span>
+    <span class="hitarea">
+      <span>bottom</span>
+      <io-tooltip
+          width="160"
+          side="bottom"
+          message="This tooltip is on bottom side of the parent element.">
+      </io-tooltip>
+    </span>
+    <span class="hitarea">
+      <span>top</span>
+      <io-tooltip
+          width="160"
+          side="top"
+          message="This tooltip is on top side of the parent element.">
+      </io-tooltip>
+    </span>
+    <span class="hitarea">
+      <span>left</span>
+      <io-tooltip
+          width="160"
+          side="left"
+          message="This tooltip is on left side of the parent element.">
+      </io-tooltip>
+    </span>
+    <span class="hitarea">
+      <span>center</span>
+      <io-tooltip
+          width="160"
+          side="center"
+          message="This tooltip is on center side of the parent element.">
+      </io-tooltip>
+    </span>
+  </div>
+
+</body>
+</html>

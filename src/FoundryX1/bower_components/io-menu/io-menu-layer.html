@@ -1,0 +1,89 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="io-menu-layer">
+  <style>
+    :host {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 100000;
+      /*background: rgba(0, 0, 0, 0.2);*/
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+      overflow: hidden;
+    }
+    :host([opened]) {
+      display: block;
+    }
+  </style>
+  <template></template>
+</dom-module>
+<script>
+(function() {
+  document.body.appendChild(document.createElement('io-menu-layer'));
+  Polymer({
+    is: 'io-menu-layer',
+    properties: {
+      opened: {
+        type: Boolean,
+        reflectToAttribute: true
+      },
+      _groups: {
+        value: []
+      }
+    },
+    listeners: {
+      'mouseup': '_onMouseup'
+    },
+    created: function() {
+      var stopper = function(event) {
+        event.stopPropagation();
+        if (event.target === this) {
+          event.preventDefault();
+        }
+      }.bind(this);
+      this.addEventListener('click', stopper);
+      this.addEventListener('dblclick', stopper);
+      this.addEventListener('contextmenu', stopper);
+      this.addEventListener('mouseup', stopper);
+      this.addEventListener('mousedown', stopper);
+      this.addEventListener('touchstart', stopper);
+      this.addEventListener('touchend', stopper);
+    },
+    attached: function() {
+      document.body.addEventListener('io-menu-open-group', this._onOpen.bind(this));
+      document.body.addEventListener('io-menu-option-clicked', this._onMenuClose.bind(this));
+    },
+    _onOpen: function(event) {
+      this.opened = true;
+      if (event.detail) {
+        event.detail.opened = true;
+        this.appendChild(event.detail);
+        this._groups.push(event.detail);
+      }
+    },
+    _onMenuClose: function(event) {
+      this._closeAll();
+    },
+    _onMouseup: function(event) {
+      if (event.target === this) {
+        event.stopPropagation();
+        event.preventDefault();
+        this._closeAll();
+      }
+    },
+    _closeAll: function() {
+      this.opened = false;
+      for (var i = 0; i < this._groups.length; i++) {
+        this._groups[i].opened = false;
+      }
+    }
+  });
+}());
+</script>

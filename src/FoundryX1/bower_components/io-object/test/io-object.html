@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+
+    <title>io-object tests</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+    <link rel="import" href="../../test-fixture/test-fixture.html">
+    <link rel="import" href="../io-object.html">
+
+  </head>
+  <body>
+
+    <test-fixture id="ioobject">
+      <template>
+        <io-object></io-object>
+      </template>
+    </test-fixture>
+
+    <script>
+
+
+      suite('<io-object>', function() {
+        var ioobject;
+
+        // function timePasses(ms) {
+        //   return new Promise(function(resolve) {
+        //     window.setTimeout(function() {
+        //       resolve();
+        //     }, ms);
+        //   });
+        // }
+
+        setup(function() {
+          ioobject = fixture('ioobject');
+          ioobject.value = {
+            'boolean': true,
+            'number': 1337,
+            'string': 'hello string',
+            'object': {answer: 42},
+            'array': [true, 1337, 'hello string', {answer: 42}, {}, undefined, null, function() {}],
+            'emptyObject': {},
+            'undefined': undefined,
+            'null': null,
+            'func': function() {}
+          };
+        });
+
+        test('io-object should have _valuearray of length 9.', function() {
+          assert.equal(ioobject._valuearray.length, 9, '_valuearray');
+        });
+
+        // TODO: test more, mutations etc.
+
+      });
+
+    </script>
+
+  </body>
+</html>

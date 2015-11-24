@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+
+    <title>io-input tests</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+    <link rel="import" href="../../test-fixture/test-fixture.html">
+    <link rel="import" href="../io-input.html">
+
+  </head>
+  <body>
+
+    <test-fixture id="stringInput">
+      <template>
+        <io-input type="string" value="123"></io-input>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="floatInput">
+      <template>
+        <io-input type="float" value="123"></io-input>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="integerInput">
+      <template>
+        <io-input type="integer" value="1.23"></io-input>
+      </template>
+    </test-fixture>
+
+    <script>
+
+      suite('<io-input>', function() {
+        var stringInput, floatInput, integerInput;
+
+        setup(function() {
+          stringInput = fixture('stringInput');
+          floatInput = fixture('floatInput');
+          integerInput = fixture('integerInput');
+        });
+
+        test('io-input[type=string] should have value property of "string" type type when edited.', function() {
+          // Simulate user edit.
+          stringInput._updateInputValue();
+          stringInput._updateImmediateValue();
+          assert.equal(typeof stringInput.value, 'string', 'value property type');
+        });
+
+        test('io-input[type=float] should have value property of "number" type type when edited.', function() {
+          // Simulate user edit.
+          floatInput._updateInputValue();
+          floatInput._updateImmediateValue();
+          assert.equal(typeof floatInput.value, 'number', 'value property type');
+        });
+
+        test('io-input[type=integer] should have integer value property of "number" type when edited.', function() {
+          // Simulate user edit.
+          integerInput._updateInputValue();
+          integerInput._updateImmediateValue();
+          assert.equal(typeof integerInput.value, 'number', 'value property type');
+          assert.equal(integerInput.value, 1, 'float value property');
+        });
+
+        test('io-input should not change when disabled attribute is set.', function() {
+          stringInput.disabled = true;
+          stringInput.setValue("hello");
+          assert.equal(stringInput.value, '123', 'value property');
+        });
+
+        test('io-input should fire "io-value-set" event when new value is set by user action.', function(done) {
+          stringInput.addEventListener('io-value-set', function(event) {
+            assert.equal(stringInput.value, 'goodbye', 'value property');
+            assert.equal(event.detail.oldValue, '123', 'event.detail.oldValue');
+            assert.equal(event.detail.value, 'goodbye', 'event.detail.value');
+            done();
+          });
+          stringInput.setValue("goodbye");
+        });
+
+      });
+
+    </script>
+
+  </body>
+</html>

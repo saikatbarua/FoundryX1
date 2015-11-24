@@ -1,0 +1,74 @@
+﻿  @charset "UTF-8";
+/* CSS Document */
+
+html {width: 100%; height: 100%;}
+
+/* ########## SET TAG MRGN & PADS TO ZERO   ############## */
+body, p, form, div, span, table, td, img, input, a, label, h1, h2, h3, h4, ul, li, section, .ng-scope, .ng-binding { margin: 0; padding: 0; background-color: none;}
+ul {list-style: none;}
+a { color: #1354d8!important; text-decoration: none; border: 0;}
+img {border: 0;}
+a:hover {text-decoration: underline!important;}
+.ng-scope, .ng-binding { background-color: none; }
+label { cursor: pointer; }
+
+body {
+    font-family: 'Segoe UI', Arial;
+    font-size: 100%;
+    color: #313131;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    background-image: url('../images/bg-launch-screen.png');
+    background-repeat: repeat-x;
+    color: #fff;
+    overflow: auto;
+    }
+    header { margin: 0px auto 0px auto; }
+         header h1 { color: #bdccd4; font-weight: normal; }
+         header .lab-logo { position: absolute; right: 72px; top: 12px; width: 118px; height: 64px; }
+    .main { margin: 0px auto 0px auto; height: 100%; min-height: 100%; color: #313131; vertical-align: top;}
+	   h2 { color: #737373; font-family: Arial; margin: 8px 0px 8px 0px;}
+        .section-left {  padding: 18px 18px 18px 36px; float: left;}
+            .vaas-launch-tile { float: left; width: 300px; height: 110px; margin: 0px 12px 12px 0px; position: relative; }
+                .vaas-launch-tile img { width: 70px; height: 70px; margin: 1px 0px 0px 12px; position: absolute; top: 12px; left: 12px;}
+                .tile-label { color: #313131;  position: absolute; top: 10px;  left: 106px; line-height: 108%;}
+				.app-title { font-size: 108%; font-weight: bold; text-transform: uppercase; color: #808080; }
+				    .app-title a { color: #313131!important;}
+				.sub-title { color: #b5b5b5; font-size: 84%; }
+        .section-right { color: #4d4d4d; border-left: 1px solid #cdcdcd; float: left;}
+	   .section { float: left; width: 376px; margin-right: 18px; padding: 12px; min-height: 420px;}
+        
+
+/* #################################################### */
+/* ############ DESKTOP > 1024PX WIDTH ################ */
+/* #################################################### */
+@media only screen and (min-width : 769px) {
+
+    header { width: 1280px; height: 136px; position: relative; }
+         #logo-DHS { width: 248px; height: 72px; margin: 12px 4px 0px 4px; }
+         header h1 { position: absolute; bottom: 21px; left: 4px; font-size: 90%; }
+    .main { width: 1280px; vertical-align: top; }
+        .section-left { width: 58%; min-height: 100%; }
+		  .app-group-title { border-bottom: 1px solid #ccc; color: #afafaf; font-size: 132%; letter-spacing: .04em; padding: 6px 6px 6px 0px; margin: 4px 0px 12px 0px; clear: both; text-transform: uppercase;}
+        .section-right { width: 36%; min-height: 100%; }
+        .section-left-lab { width: 65%; min-height: 100%; }
+        .section-right-lab { width: 24%; min-height: 100%; }
+
+} /* END DESKTOP STYLES */
+
+/* ######################################################################### */
+/* ############ DESKTOP & MOBILE BETWEEN 768PX & 1024 WIDTH ################ */
+/* ######################################################################### */
+@media only screen and (min-width : 768px) and (max-width : 1023px) {
+
+
+} /* END MIDDLE STYLES */
+
+/* ############################################################ */
+/* ############ MOBILE, TABLETS < 767PX WIDTH ################ */
+/* ########################################################### */
+@media only screen and (max-width : 767px) {
+ }
+
+} /* END MOBILE STYLES */

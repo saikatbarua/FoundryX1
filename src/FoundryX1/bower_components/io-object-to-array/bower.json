@@ -1,0 +1,21 @@
+{
+  "name": "io-object-to-array",
+  "version": "1.2.1",
+  "homepage": "https://github.com/arodic/io-object-to-array",
+  "authors": [
+    "Aleksandar Rodic <aleksandar.xyz@gmail.com>"
+  ],
+  "description": "Custom filter that allows use of template-repeat on objects.",
+  "main": "io-object-to-array.html",
+  "keywords": [
+    "io-object-to-array", "filter", "polymer", "element", "web-components"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.2.1",
+    "observe-js": "Polymer/observe-js#~0.5.6"
+  }
+}

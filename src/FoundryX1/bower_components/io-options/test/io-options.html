@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+
+    <title>io-options tests</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+    <link rel="import" href="../../test-fixture/test-fixture.html">
+    <link rel="import" href="../io-options.html">
+
+  </head>
+  <body>
+
+    <test-fixture id="options">
+      <template>
+        <io-options></io-options>
+      </template>
+    </test-fixture>
+
+    <script>
+
+      suite('<io-options>', function() {
+        var options;
+
+        function timePasses(ms) {
+          return new Promise(function(resolve) {
+            window.setTimeout(function() {
+              resolve();
+            }, ms);
+          });
+        }
+
+        setup(function() {
+          options = fixture('options');
+          options.options = [
+            {value: 1, label: 1},
+            {value: 2, label: 2},
+            {value: 3, label: 'three'},
+            {value: 4, label: 'FOUR'}
+          ];
+        });
+
+        test('io-options should display option labels when value is set', function(done) {
+          options.value = options.options[3].value;
+          timePasses(1).then(function() {
+            assert.equal(options.$.value.innerHTML, options.options[3].label, 'Value label');
+            done();
+          }).catch(function(e) {
+            done(e);
+          });
+        });
+
+        test('io-options should display "Select" string when no value is set', function(done) {
+          delete options.value;
+          timePasses(1).then(function() {
+            assert.equal(options.$.value.innerHTML, 'Select', 'Undefined value');
+            done();
+          }).catch(function(e) {
+            done(e);
+          });
+        });
+
+      });
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+
+    <title>io-help tests</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+    <link rel="import" href="../../test-fixture/test-fixture.html">
+    <link rel="import" href="../io-help.html">
+
+  </head>
+  <body>
+
+    <test-fixture id="help">
+      <template>
+        <io-help persist message="help message"></io-help>
+      </template>
+    </test-fixture>
+
+    <script>
+
+      suite('<io-help>', function() {
+        var help;
+
+        setup(function() {
+          help = fixture('help');
+        });
+
+        test('io-help should broadcast io-help message', function(done) {
+          help.addEventListener('io-help', function(event) {
+            assert.equal(event.detail.message, 'help message', 'io-help message');
+            assert.equal(event.detail.persist, help.persist, 'io-help message persist');
+            done();
+          });
+          help._sendMessage();
+        });
+
+        test('io-help should broadcast empty io-help message when cleared', function(done) {
+          help.addEventListener('io-help', function(event) {
+            assert.equal(event.detail.message, null, 'clear io-help message');
+            done();
+          });
+          help._clearMessage();
+        });
+
+      });
+
+    </script>
+
+  </body>
+</html>

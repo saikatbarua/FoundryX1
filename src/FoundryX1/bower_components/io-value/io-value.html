@@ -1,0 +1,175 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<link rel="import" href="../io-boolean/io-boolean.html">
+<link rel="import" href="../io-input/io-input.html">
+<link rel="import" href="../io-object/io-object.html">
+<link rel="import" href="../io-options/io-options.html">
+
+<link rel="import" href="io-value-config.html">
+
+<!--
+`<io-value>` is a custom HTML element that can be used as input/output for variables of various data types such as boolean, string, number or object. The element will instantiate a type-specific value editor when value type changes.
+
+Example:
+
+    <io-value value="{{valueofanytype}}"></io-value>
+
+This element is reliant on a set of type-specific such as `<io-boolean>`, `<io-iput>` and `<io-object>`. You can use these elements when you need an editor for a specific type.
+
+Example:
+
+    <io-boolean value="{{booleanvalue}}"></io-boolean>
+    <io-input value="{{stringvalue}}"></io-input>
+    <io-input type="float" value="{{numbervalue}}"></io-input>
+    <io-object value="{{objectvalue}}"></io-object>
+
+@demo demo/index.html Basic Demo
+-->
+
+<dom-module id="io-value">
+  <style>
+  :host {
+    display: inline-block;
+  }
+  :host * {
+    vertical-align: top;
+    width: 100%;
+  }
+  </style>
+  <template></template>
+</polymer-element>
+<script>
+
+  Polymer({
+    is: 'io-value',
+    properties: {
+      /**
+       * value
+       */
+      value: {
+        notify: true,
+        observer: '_valueChanged'
+      },
+      /**
+       * If value attribute is a property of an object,
+       * this attribute should correspond to its key.
+       */
+      key: {
+        value: null,
+      },
+      /**
+       * If value attribute is a property of an object,
+       * this attribute should reference to its parent obect.
+       */
+      parent: {
+        value: null,
+      },
+      /**
+       * Optional configuration for custom editor.
+       * If not set, configration is automatically picked from
+       * global Polymer.ioValueConfig array.
+       */
+      config: {
+        value: null,
+      },
+      /**
+       * If disabled, value cannot be changed by user action.
+       */
+      disabled: {
+        type: Boolean,
+        observer: '_disabledChanged'
+      },
+      /**
+       * Type-specific editor instance.
+       */
+      _editor: {
+        type: HTMLElement
+      }
+    },
+    ready: function() {
+      if (this.value === undefined) {
+        this._valueChanged();
+      }
+    },
+    /**
+     * Passes focus to internal input value editor
+     */
+    focus: function() {
+      if (this._editor) {
+        this._editor.focus();
+      }
+    },
+    _valueChanged: function() {
+      this._setEditorJob();
+    },
+    _disabledChanged: function() {
+      if (this._editor) this._editor.disabled = this.disabled;
+    },
+    _valueSet: function(event) {
+      /**
+       * This event is fired when value is set by user action.
+       * This is a non-bubbling event.
+       * @event io-value-set
+       * @param {Object} detail value change data
+       * @param {Object} detail.value new value
+       * @param {Object} detail.oldValue old value
+       */
+      this.fire('io-value-set', {value: event.detail.value, oldValue: event.detail.oldValue}, {bubbles: false});
+    },
+    _setEditor: function() {
+      var config = this.config ||
+        Polymer.ioValueConfig.getConfig(this.value, this.key, this.parent);
+
+      // if (!config.editor) {
+      //   if (typeof this.value === 'string') {
+      //     config.editor = 'io-input';
+      //   } else if (this.value === undefined) {
+      //     config.editor = 'io-input';
+      //   } else if (this.value === null) {
+      //     config.editor = 'io-input';
+      //   } else if (this.value === NaN) {
+      //     config.editor = 'io-input';
+      //   } else if (typeof this.value === 'object') {
+      //     config.editor = 'io-object';
+      //   } else if (typeof this.value === 'function') {
+      //     config.editor = 'io-input';
+      //   } else if (typeof this.value === 'boolean') {
+      //     config.editor = 'io-boolean';
+      //   } else if (typeof this.value === 'number') {
+      //     config.editor = 'io-input';
+      //   }
+      // }
+
+      // Set editor
+      if (!this._editor || this._editor.localName !== config.editor) {
+
+        this.innerHTML = '';
+
+        this._editor = document.createElement(config.editor);
+        this.toggleClass('io-value', true, this._editor);
+        if (typeof this.value === 'number') {
+          this._editor.type = 'float';
+        }
+        this.appendChild(this._editor);
+
+        this._editor.addEventListener('value-changed', function(event) {
+          this.value = event.detail.value;
+        }.bind(this));
+        this._editor.addEventListener('io-value-set', this._valueSet.bind(this));
+      }
+
+      this._editor.value = this.value;
+      this._editor.disabled = this.disabled;
+
+      if (config.properties) {
+        for (var i in config.properties) {
+          this._editor[i] = config.properties[i];
+        }
+      }
+
+    },
+    _setEditorJob: function() {
+      this.debounce('io-value-set-editor', this._setEditor);
+    }
+  });
+</script>

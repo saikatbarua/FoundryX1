@@ -1,0 +1,76 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`<io-help-line>` element displays messages broadcast by `<io-help>` element.
+
+Example:
+
+    <div id="parent">
+      <span>hover me</span>
+      <io-help
+          message="This message is broadcast when you hover #parent element.">
+      </io-help>
+    </div>
+    <io-help-line></io-help-line>
+
+By default, an empty message is broadcast when pointer leaves the parent element, thus clearing the message. To persist the message set the persist attribute on either `<io-help>` or `<io-help-line>`.
+
+@demo demo/index.html Basic Demo
+-->
+
+<dom-module id="io-help-line">
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+  <template>{{message}}</template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'io-help-line',
+    properties: {
+      /**
+       * Message to be displayed inside the element.
+       */
+      message: {
+        value: '\u00A0',
+        type: String
+      },
+      /**
+       * If persist flag is true, the message will remain visible in io-message-line
+       * until new message is recieved.
+       */
+      persist: {
+        value: false,
+        type: Boolean
+      }
+    },
+    ready: function() {
+      this._messageStack = [];
+      this.__handleMessage = this._handleMessage.bind(this);
+    },
+    attached: function() {
+      document.addEventListener('io-help', this.__handleMessage);
+    },
+    detached: function() {
+      document.removeEventListener('io-help', this.__handleMessage);
+    },
+    _handleMessage: function(event) {
+      if (event.detail.message) {
+        this.message = event.detail.message;
+        this._messageStack.push(this.message);
+      } else {
+        this._messageStack.pop();
+        if (!event.detail.persist && !this.persist) {
+          this.message = this._messageStack.pop();
+          if (this.message) {
+            this._messageStack.push(this.message);
+          } else {
+            this.message = '\u00A0';
+          }
+        }
+      }
+    },
+  });
+</script>

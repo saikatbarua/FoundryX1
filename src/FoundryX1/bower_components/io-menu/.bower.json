@@ -1,0 +1,41 @@
+{
+  "name": "io-menu",
+  "version": "1.2.1",
+  "homepage": "https://github.com/arodic/io-menu",
+  "authors": [
+    "Aleksandar Rodic <aleksandar.xyz@gmail.com>"
+  ],
+  "description": "A custom Polymer menu with a simple API and lots of customization options.",
+  "main": "io-menu.html",
+  "keywords": [
+    "io-menu",
+    "menu",
+    "context menu",
+    "io",
+    "ui",
+    "polymer",
+    "element",
+    "web-components"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.2.1",
+    "iron-icons": "PolymerElements/iron-icons#~1.0.4",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.0.5",
+    "io-tooltip": "arodic/io-tooltip#~1.2.1",
+    "io-help": "arodic/io-help#~1.2.1",
+    "io-styles": "arodic/io-styles#~1.2.1"
+  },
+  "_release": "1.2.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.1",
+    "commit": "8cd8815b64c39c2698070a2ec977bb5323d4df28"
+  },
+  "_source": "git://github.com/arodic/io-menu.git",
+  "_target": "~1.2.1",
+  "_originalSource": "arodic/io-menu"
+}

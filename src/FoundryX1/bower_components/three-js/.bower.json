@@ -1,0 +1,38 @@
+{
+  "name": "three-js",
+  "version": "1.2.1",
+  "homepage": "https://github.com/arodic/three-js",
+  "authors": [
+    "Aleksandar Rodic <aleksandar.xyz@gmail.com>"
+  ],
+  "description": "HTML imports three.js library",
+  "main": "three.html",
+  "keywords": [
+    "three-js",
+    "threejs",
+    "three",
+    "three.js",
+    "3d",
+    "webgl",
+    "polymer",
+    "element",
+    "web-components"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.2.1",
+    "io-vector": "arodic/io-vector#~1.2.1"
+  },
+  "_release": "1.2.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.1",
+    "commit": "0dc249b316c3c79dd3294c4b62491e52460f761f"
+  },
+  "_source": "git://github.com/arodic/three-js.git",
+  "_target": "1.2.1",
+  "_originalSource": "three-js"
+}

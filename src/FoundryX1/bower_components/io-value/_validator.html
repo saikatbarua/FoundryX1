@@ -1,0 +1,62 @@
+<link rel="import" href="../polymer/polymer.html">
+<script>
+
+// TODO: depricated
+
+(function() {
+  var navigationKeys = [9 /*tab*/, 37 /*left*/, 38 /*up*/, 39 /*right*/, 40 /*down*/];
+  var metaKeys = [65 /*a*/, 82 /*r*/, 88 /*x*/, 67 /*c*/, 86 /*v*/, 90 /*z*/, 89 /*y*/];
+  var numberKeys = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 189 /*-*/, 190 /*.*/];
+  var editKeys = [8 /*backspace*/, 46 /*del*/];
+  /* @polymerBehavior Polymer.IoInputValidator */
+  Polymer.IoInputValidator = {
+    isNavigationKey: function(event) {
+      if (navigationKeys.indexOf(event.which) !== -1) {
+        return true;
+      }
+    },
+    isMetaKey: function(event) {
+      if (event.metaKey && metaKeys.indexOf(event.which) !== -1) {
+        return true;
+      }
+      return false;
+    },
+    isNumberKey: function(event, integer) {
+      if (event.which === 190 && integer) return false;
+      if (numberKeys.indexOf(event.which) !== -1) {
+        return true;
+      }
+      return false;
+    },
+    isEditKey: function(event) {
+      if (editKeys.indexOf(event.which) !== -1) {
+        return true;
+      }
+      return false;
+    },
+    isEnterKey: function(event) {
+      return event.which === 13;
+    },
+    isJsonString: function(str) {
+      try {
+        JSON.parse(str);
+      } catch (e) {
+        return false;
+      }
+      return true;
+    },
+    isNumberString: function(str) {
+      if (typeof str !== 'string') return false;
+      if (str === '') return false;
+      if (str.slice(0, 1) === '0' && (str.length > 1 && str.slice(1, 2) !== '.')) {
+        return false;
+      }
+      if (!isNaN(str)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  };
+}());
+</script>

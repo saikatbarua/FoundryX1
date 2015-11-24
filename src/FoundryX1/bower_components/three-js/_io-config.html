@@ -1,0 +1,182 @@
+<link rel="import" href="../io-vector/io-vector.html">
+
+<script type="text/javascript">
+(function() {
+
+  Polymer.ioInspectorConfig = Polymer.ioInspectorConfig || [];
+  Polymer.ioInspectorConfig.unshift(
+    // TODO: move this is a test.
+    function (value) {
+      if (value instanceof THREE.Object3D) {
+        var transformKeys = ['position', 'rotation', 'scale', 'up'];
+        var renderingKeys = ['material', 'visible', 'castShadow', 'receiveShadow', 'frustumCulled', 'renderOrder'];
+        var topologyKeys = ['geometry', 'type'];
+        return {
+          name: 'THREE.Object3D',
+          groups: [
+            {
+              name: 'Transformations',
+              filter: function(item){ return filterKeys(item, transformKeys); },
+              sort: function(a, b){  return sortKeys(a, b, transformKeys); }
+            },
+            {
+              name: 'Rendering',
+              filter: function(item){ return filterKeys(item, renderingKeys); },
+              sort: function(a, b){  return sortKeys(a, b, renderingKeys); }
+            },
+            {
+              name: 'Topology',
+              filter: function(item){ return filterKeys(item, topologyKeys); },
+              sort: function(a, b){  return sortKeys(a, b, topologyKeys); }
+            },
+            {
+              name: 'Advanced',
+              filter: function(item){
+                return !filterKeys(item, transformKeys) &&
+                       !filterKeys(item, renderingKeys) &&
+                       !filterKeys(item, topologyKeys);
+              }
+            }
+          ]
+        };
+      }
+    }
+  );
+
+  Polymer.ioValueConfig = Polymer.ioValueConfig || [];
+  Polymer.ioValueConfig.unshift(
+    // TODO: move this is a test.
+    function (value, key, parent) {
+      if (value instanceof THREE.Vector2 ||
+          value instanceof THREE.Vector3 ||
+          value instanceof THREE.Color ||
+          value instanceof THREE.Vector4 ||
+          value instanceof THREE.Quaternion ||
+          value instanceof THREE.Euler) {
+        return {
+          editor: 'io-vector'
+        };
+      }
+    },
+    function (value, key, parent) {
+      if (parent instanceof THREE.Euler &&
+          key === '_order') {
+        return {
+          editor: 'io-options',
+          properties: {
+            options: [
+              {value: 'XYZ', label: 'XYZ'},
+              {value: 'XZY', label: 'XZY'},
+              {value: 'YXZ', label: 'YXZ'},
+              {value: 'YZX', label: 'YZX'},
+              {value: 'ZXY', label: 'ZXY'},
+              {value: 'ZYX', label: 'ZYX'}
+            ]
+          }
+        };
+      }
+    },
+    function (value, key, parent) {
+      if(parent instanceof THREE.Material && key === 'side') {
+        return {
+          editor: 'io-options',
+          properties: {
+            options: [
+              {value: 0, label: 'FrontSide'},
+              {value: 1, label: 'BackSide'},
+              {value: 2, label: 'DoubleSide'}
+            ]
+          }
+        };
+      }
+    },
+    function (value, key, parent) {
+      if(parent instanceof THREE.Material && key === 'shading') {
+        return {
+          editor: 'io-options',
+          properties: {
+            options: [
+              {value: 0, label: 'NoShading'},
+              {value: 1, label: 'FlatShading'},
+              {value: 2, label: 'SmoothShading'}
+            ]
+          }
+        };
+      }
+    },
+    function (value, key, parent) {
+      if(parent instanceof THREE.Material && key === 'blending') {
+        return {
+          editor: 'io-options',
+          properties: {
+            options: [
+              {value: 0, label: 'NoBlending'},
+              {value: 1, label: 'NormalBlending'},
+              {value: 2, label: 'AdditiveBlending'},
+              {value: 3, label: 'SubtractiveBlending'},
+              {value: 4, label: 'MultiplyBlending'},
+              {value: 5, label: 'CustomBlending'}
+            ]
+          }
+        };
+      }
+    },
+    function (value, key, parent) {
+      if(parent instanceof THREE.Material && key === 'blendEquation') {
+        return {
+          editor: 'io-options',
+          properties: {
+            options: [
+              {value: 100, label: 'AddEquation'},
+              {value: 101, label: 'SubtractEquation'},
+              {value: 102, label: 'ReverseSubtractEquation'},
+              {value: 103, label: 'MinEquation'},
+              {value: 104, label: 'MaxEquation'}
+            ]
+          }
+        };
+      }
+    },
+    function (value, key, parent) {
+      if(parent instanceof THREE.Material && key === 'blendSrc') {
+        return {
+          editor: 'io-options',
+          properties: {
+            options: [
+              {value: 200, label: 'ZeroFactor'},
+              {value: 201, label: 'OneFactor'},
+              {value: 202, label: 'SrcColorFactor'},
+              {value: 203, label: 'OneMinusSrcColorFactor'},
+              {value: 204, label: 'SrcAlphaFactor'},
+              {value: 205, label: 'OneMinusSrcAlphaFactor'},
+              {value: 206, label: 'DstAlphaFactor'},
+              {value: 207, label: 'OneMinusDstAlphaFactor'}
+            ]
+          }
+        };
+      }
+    },
+    function (value, key, parent) {
+      if(parent instanceof THREE.Material && key === 'blendDst') {
+        return {
+          editor: 'io-options',
+          properties: {
+            options: [
+              {value: 200, label: 'ZeroFactor'},
+              {value: 201, label: 'OneFactor'},
+              {value: 204, label: 'SrcAlphaFactor'},
+              {value: 205, label: 'OneMinusSrcAlphaFactor'},
+              {value: 206, label: 'DstAlphaFactor'},
+              {value: 207, label: 'OneMinusDstAlphaFactor'},
+              {value: 208, label: 'DstColorFactor'},
+              {value: 209, label: 'OneMinusDstColorFactor'},
+              {value: 210, label: 'SrcAlphaSaturateFactor'}
+            ]
+          }
+        };
+      }
+    }
+  );
+
+}());
+</script>

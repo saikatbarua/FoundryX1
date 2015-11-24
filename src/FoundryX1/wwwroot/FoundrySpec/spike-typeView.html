@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html ng-app="foApp" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <title>Foundry</title>
+    <link href="../vendor/vender.css" rel="stylesheet" />
+    <script src="../vendor/vender.js"></script>
+
+
+    <script src="../foundry/version.js"></script>
+    <script src="../foundry/foundry.core.tools.js"></script>
+    <script src="../foundry/foundry.core.dto.js"></script>
+    <script src="../foundry/foundry.core.node.js"></script>
+    <script src="../foundry/foundry.core.link.js"></script>
+      
+    <script src="../foundry/foundry.core.component.js"></script>
+    <script src="../foundry/foundry.code.pubsub.js"></script>
+    <script src="../foundry/foundry.core.property.js"></script>
+    <script src="../foundry/foundry.core.collection.js"></script>
+  
+    <script src="../foundry/foundry.core.meta.js"></script>
+    <script src="../foundry/foundry.core.factory.js"></script>
+    <script src="../foundry/foundry.core.factoryrelate.js"></script>
+    <script src="../foundry/foundry.core.entitydb.js"></script>
+    <script src="../foundry/foundry.core.listops.js"></script>
+
+    <script src="spike-typeView.js"></script>
+    <script src="spike-typeviewflightmodel.js"></script>
+    <script src="spike-typeviewmetamodel.js"></script>
+    <script src="spike-typeviewlocationmodel.js"></script>
+</head>
+
+<body data-ng-controller="workspaceController as ws">
+
+    <div id="container" class="container">
+        <div class="jumbotron">
+            <p class="lead">Foundry Type Definitions</p>
+        </div>
+
+        <div class="body-content">
+            <div class="row" ng-repeat="item in ws.types">
+                <h2>TYPE: {{item.myType}}</h2>
+                <!--<pre ng-show="item.type" style="background-color:ActiveCaption">{{item.type}} </pre><br />-->
+                <pre ng-show="item.spec" style="background-color:lavender">{{item.spec | prettyJSON}} </pre><br />
+                <pre ng-show="item.computedSpec" style="background-color:lavender">{{item.computedSpec | prettyJSON}} </pre><br />
+                <pre ng-show="item.ex" style="background-color:red">{{item.ex | prettyJSON}} </pre><br />
+            </div>
+
+            <div class="row" ng-repeat="item in ws.relations">
+                <h2>RELATION: {{item.myType}}</h2>
+                <div ng-repeat="member in item.members">
+                    <h3><em>{{member.myType}}</em> </h3>
+                    <pre ng-show="member.spec" style="background-color:lavender">{{member.spec | prettyJSON}} </pre><br />
+                </div>
+            </div>
+
+            <div class="row" ng-repeat="item in ws.meta">
+                <h2>META: {{item.myType}}</h2>
+                <!--<pre ng-show="item.type" style="background-color:ActiveCaption">{{item.type}} </pre><br />-->
+                <pre ng-show="item.spec" style="background-color:lavender">{{item.spec | prettyJSON}} </pre><br />
+                <pre ng-show="item.computedSpec" style="background-color:lavender">{{item.computedSpec | prettyJSON}} </pre><br />
+                <pre ng-show="item.ex" style="background-color:red">{{item.ex | prettyJSON}} </pre><br />
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <footer>
+        <br />
+        <p>&copy; Apprentice Systems 2014</p>
+    </footer>
+
+</body>
+
+</html>

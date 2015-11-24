@@ -1,0 +1,201 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../io-styles/io-styles.html">
+
+<!--
+Custom HTML element that can be used as input/output for boolean variables.
+
+It displays boolean value as string or icon.
+
+You can toggle value by clicking or pressing space/enter key while focused.
+
+Example:
+
+    <io-boolean></io-boolean>
+    <io-boolean truestr="Yes" falsestr="No"></io-boolean>
+    <io-boolean icon></io-boolean>
+
+@demo demo/index.html Basic Demo
+-->
+
+<dom-module id="io-boolean">
+  <style>
+  :host {
+    @apply(--io-base);
+    cursor: pointer;
+  }
+  :host(:focus) {
+    @apply(--io-focused);
+  }
+  :host([disabled]) {
+    @apply(--io-disabled);
+  }
+  :host([invalid]) {
+    @apply(--io-invalid);
+  }
+  :host > iron-icon {
+    width: 1.3em;
+    height: 1.3em;
+  }
+  </style>
+  <template>
+    <template is="dom-if" if="{{!icon}}">
+      <span>{{_value}}</span>
+    </template>
+    <template is="dom-if" if="{{icon}}">
+      <iron-icon icon="{{_icon}}"></iron-icon>
+    </template>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'io-boolean',
+    properties: {
+      /**
+       * Element's value.
+       */
+      value: {
+        value: false,
+        type: Boolean,
+        notify: true,
+        observer: '_valueChanged'
+      },
+      /**
+       * Disables the element.
+       */
+      disabled: {
+        value: false,
+        type: Boolean,
+        observer: '_disabledChanged',
+        reflectToAttribute: true
+      },
+      /**
+       * True when element value is invalid.
+       */
+      invalid: {
+        value: false,
+        type: Boolean,
+        notify: true,
+        reflectToAttribute: true
+      },
+      /**
+       * String to display when value is true.
+       */
+      truestr: {
+        value: 'true',
+        type: String,
+        observer: '_updateJob'
+      },
+      /**
+       * String to display when value is false.
+       */
+      falsestr: {
+        value: 'false',
+        type: String,
+        observer: '_updateJob'
+      },
+      /**
+       * If set, the value is displayed as icon.
+       */
+      icon: {
+        value: false,
+        type: Boolean
+      },
+      /**
+       * Icon to display when value is true.
+       */
+      trueicon: {
+        value: 'done',
+        type: String,
+        observer: '_updateJob'
+      },
+      /**
+       * Icon to display when value is false.
+       */
+      falseicon: {
+        value: 'clear',
+        type: String,
+        observer: '_updateJob'
+      }
+    },
+    listeners: {
+      'keydown': '_onKeydown',
+      'click': 'toggle',
+    },
+    hostAttributes: {
+      tabindex: 0,
+      role: 'checkbox'
+    },
+    /**
+     * Used to set value by user action.
+     * Fires non-bubbling event io-value-set
+     * @param {boolean} value new value to be set.
+     */
+    setValue: function(value) {
+      if (this.disabled) return;
+      if (value === this.value) return;
+      var oldValue = this.value;
+      this.value = value;
+      /**
+       * This event is fired when value is set by user action.
+       * This is a non-bubbling event.
+       * @event io-value-set
+       * @param {Object} detail value change data
+       * @param {Object} detail.value new value
+       * @param {Object} detail.oldValue old value
+       */
+      this.fire('io-value-set', {value: value, oldValue: oldValue}, {bubbles: false});
+    },
+    /**
+     * Toggles boolean value.
+     */
+    toggle: function() {
+      if (typeof this.value === 'boolean') {
+        this.setValue(!this.value);
+      } else if (this.value === 1) {
+        this.setValue(0);
+      } else if (this.value === 0) {
+        this.setValue(1);
+      } else if (this.invalid) {
+        console.warn('io-boolean: value is not boolean type.');
+      }
+    },
+    _update: function() {
+      this._value = this.value ? this.truestr : this.falsestr;
+      this._icon = this.value ? this.trueicon : this.falseicon;
+      this.invalid = typeof this.value !== 'boolean' &&
+        this.value !== 0 && this.value !== 1; // TODO: a11y
+      if (this.invalid || this.disabled) {
+        this.removeAttribute('tabindex');
+      } else {
+        this.setAttribute('tabindex', 0);
+      }
+    },
+    _updateJob: function() {
+      this.debounce('io-boolean-update', this._update);
+    },
+    _onKeydown: function(event) {
+      // Toggle if space or enter is pressed.
+      if (event.which == 13 || event.which == 32) {
+        event.preventDefault(); // prevent blur
+        this.toggle();
+      }
+    },
+    _disabledChanged: function() {
+      if (this.disabled) {
+        this.setAttribute('aria-disabled', '');
+      } else {
+        this.removeAttribute('aria-disabled');
+      }
+      this._updateJob();
+    },
+    _valueChanged: function() {
+      if (this.value) {
+        this.setAttribute('aria-checked', '');
+      } else {
+        this.removeAttribute('aria-checked');
+      }
+      this._updateJob();
+    }
+  });
+</script>

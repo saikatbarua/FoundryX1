@@ -1,0 +1,139 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../io-menu/io-menu.html">
+<link rel="import" href="../io-styles/io-styles.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+
+<!--
+`<io-options>` Custom Polymer element for option-select input.
+
+Example:
+
+    <io-options value="1"
+        options="[{value: 1, label: 'one'}, {value: 2, label: 'two'}, ,{value: 3, label: 'three'}]">
+    </io-options>
+
+@demo demo/index.html Basic Demo
+-->
+
+<dom-module id="io-options">
+  <style>
+    :host {
+      @apply(--io-base);
+      outline: var(--io-border1);
+      cursor: pointer;
+      padding-left: 0.25em;
+    }
+    :host(:focus) {
+      @apply(--io-focused);
+    }
+    :host > iron-icon {
+      display: inline-block;
+      vertical-align: bottom;
+      width: 1em;
+      height: 1em;
+    }
+  </style>
+  <template>
+    <span id="value" class="io-editor">{{displayValue}}</span>
+    <iron-icon icon="icons:arrow-drop-down"></iron-icon>
+    <io-menu id="menu"
+        options="{{options}}"
+        sorted="{{sorted}}"
+        listener=""
+        position="bottom">
+    </io-menu>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'io-options',
+    properties: {
+      /**
+       * Currently selected value.
+       */
+      value: {
+        observer: '_valueChanged',
+        notify: true
+      },
+      /**
+       * List of options to select from.
+       * Options can be specified as objects with 'value', 'label' and 'icon' properties.
+       * See io-menu for more detailed API documentation.
+       *
+       *     [{label: "One", value: 1},
+       *      {label: "Two", value: 2},
+       *      {label: "Three", value: 3}]
+       */
+      options: {
+        type: Array,
+        observer: '_optionsChanged'
+      },
+      /**
+       * Determines if the option list is sorted.
+       */
+      sorted: {
+        type: Boolean
+      }
+    },
+    hostAttributes: {
+      tabindex: 0
+    },
+    listeners: {
+      'keyup': '_keydownAction',
+      'tap': '_tapAction'
+    },
+    ready: function() {
+      var stopper = function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+      };
+      // TODO: is this necessary?
+      this.addEventListener('click', stopper);
+      this.addEventListener('dblclick', stopper);
+      this.addEventListener('contextmenu', stopper);
+      this.addEventListener('mouseup', stopper);
+      this.addEventListener('mousedown', stopper);
+      this.addEventListener('touchstart', stopper);
+      this.addEventListener('touchend', stopper);
+      this.$.menu._menuGroup.addEventListener('io-menu-option-clicked', this._onOptionClicked.bind(this));
+    },
+    _keydownAction: function(event) {
+      if (this.disabled) return;
+      if (event.which !== 13 && event.which !== 32) return; // enter, spacebar
+      event.stopPropagation();
+      event.preventDefault();
+    },
+    _tapAction: function (event) {
+      if (this.disabled) return;
+      this.$.menu._openGroup(event);
+      event.stopPropagation();
+      event.preventDefault();
+    },
+    _onOptionClicked: function(event) {
+      this.value = event.detail.value;
+    },
+    _valueChanged: function() {
+      this._getDisplayValue();
+    },
+    _optionsChanged: function() {
+      this._getDisplayValue();
+    },
+    _getDisplayValue: function() {
+      if (this.options) {
+        for (var i = 0; i < this.options.length; i++) {
+          if (this.value == this.options[i].value) {
+            this.displayValue = this.options[i].label;
+            return;
+          }
+        }
+      }
+      if (this.value === undefined || this.value === null) {
+        this.displayValue = 'Select';
+      } else if (typeof this.value === 'object' && this.value.constructor) {
+        this.displayValue = this.value.constructor.name;
+      } else {
+        this.displayValue = this.value;
+      }
+    }
+  });
+</script>

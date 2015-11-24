@@ -1,0 +1,25 @@
+<link rel="import" href="../../polymer/polymer.html">
+
+<link rel="import" href="../io-boolean.html">
+
+<dom-module id="demo-app">
+  <template>
+
+    <span class="label">default</span><io-boolean class="demo"></io-boolean><br />
+    <span class="label">custom</span><io-boolean class="demo" truestr="Yes" falsestr="No"></io-boolean><br />
+    <span class="label">icon</span><io-boolean class="demo" icon></io-boolean><br />
+    <span class="label">disabled</span><io-boolean class="demo" disabled></io-boolean><br />
+    <span class="label">invalid</span><io-boolean class="demo" value="{{string}}"></io-boolean><br />
+
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'demo-app',
+    properties: {
+      string: {
+        value: 'str'
+      }
+    }
+  });
+</script>

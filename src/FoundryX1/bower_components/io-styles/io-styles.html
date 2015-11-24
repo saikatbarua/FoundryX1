@@ -1,0 +1,90 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<style is="custom-style">
+
+  :root {
+
+    /* Variables */
+
+    --io-bg1: rgb(245, 245, 245);
+    --io-color1: rgb(12, 12, 12);
+    --io-border1: 1px solid rgba(0, 0, 0, 0.25);
+    --io-shadow1: 0.05em 0.05em 0.25em rgba(0, 0, 0, 0.5);
+
+    --io-menu-spacing: 0.25rem;
+    --io-menu-font-size: 0.75em;
+
+    /* Styles */
+
+    --io-base: {
+      display: inline-block;
+      position: relative;
+      white-space: nowrap;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+
+    --io-focused: {
+      outline: auto 4px rgb(113, 191,  252);
+    }
+
+    --io-disabled: {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    --io-invalid: {
+      color: tomato;
+      cursor: not-allowed;
+    }
+
+    --io-bubble: {
+      padding: 0.125em;
+      border-radius: 0.1em;
+      font-size: 0.75rem;
+      background: var(--io-bg1);
+      box-shadow: var(--io-shadow1);
+      color: var(--io-color1);
+      border: var(--io-border1);
+    }
+
+    --io-menu: {
+      padding: 0.125em 0;
+      border-radius: 0.1em;
+      font-size: var(--io-menu-font-size);
+      background: var(--io-bg1);
+      border: var(--io-border1);
+      box-shadow: var(--io-shadow1);
+    }
+
+    --io-menu-search: {
+      padding: 0.125em;
+      border: var(--io-border1);
+      font-size: 0.75rem;
+      width: calc(100% - 0.5em);
+      margin: 0.25em;
+      margin-top: 0.125em;
+      box-sizing: border-box;
+    }
+
+    --io-menu-option: {
+      padding: calc(var(--io-menu-spacing) / 2) 0;
+    }
+    --io-menu-highlight: {
+      background: rgba(63, 127, 255, 0.5);
+      color: #fff;
+    }
+    --io-menu-focus: {
+      background: rgba(63, 127, 255, 1.0);
+      color: #fff;
+    }
+    --io-menu-separator: {
+      display: block;
+      height: 0px;
+      border-top: var(--io-border1);
+      margin: 0.25em 0 0.05em 0;
+    }
+
+  }
+
+</style>

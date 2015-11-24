@@ -1,0 +1,245 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../io-styles/io-styles.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="io-menu-option.html">
+
+<dom-module id="io-menu-group">
+  <style>
+    :host {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      @apply(--io-menu);
+    }
+    :host([opened]) {
+      display: inline-block;
+      @apply(--layout-vertical);
+    }
+    input {
+      @apply(--io-menu-search);
+    }
+  </style>
+  <template>
+    <template is="dom-if" if="{{search}}">
+      <input type="text" id="searchinput" on-keydown="_onSearchKeyUp" on-focus="_closeSubmenus" />
+    </template>
+    <template is="dom-repeat" items="{{_filteredOptions}}">
+      <io-menu-option
+          options="{{item.options}}"
+          label="{{item.label}}"
+          info="{{item.info}}"
+          icon="{{item.icon}}"
+          action="{{item.action}}"
+          button="{{item.button}}"
+          value="{{item.value}}"
+          disabled="{{item.disabled}}"
+          tooltip="{{item.tooltip}}"
+          help="{{item.help}}"
+          type="{{item.type}}">
+      </io-menu-option>
+    </template>
+  </template>
+</dom-module>
+<script>
+(function() {
+  var x, y, filteredOptions;
+
+  var closeMenuGroups = function(menuGroup) {
+    var menuOptions = menuGroup.querySelectorAll('io-menu-option');
+    for (var i = 0; i < menuOptions.length; i++) {
+      menuOptions[i].opened = false;
+      // TOD: link opened attribute between optiona and submenu
+      if (menuOptions[i].options && menuOptions[i].options._menuGroup) {
+        closeMenuGroups(menuOptions[i].options._menuGroup);
+        menuOptions[i].options._menuGroup.opened = false;
+      }
+    }
+  };
+
+  Polymer({
+    is: 'io-menu-group',
+    properties: {
+      opened: {
+        type: Boolean,
+        reflectToAttribute: true,
+        observer: '_nudge'
+      },
+      x: {
+        type: Number,
+        observer: '_xChanged'
+      },
+      y: {
+        type: Number,
+        observer: '_yChanged'
+      },
+      options: {
+        type: Array,
+        observer: '_optionsChanged'
+      },
+      search: {
+        type: Boolean
+      },
+      //
+      _filteredOptions: {
+        type: Array
+      },
+      _searchString: {
+        type: String,
+        observer: '_searchStringChanged'
+      }
+    },
+    listeners: {
+      'mouseenter': '_onMouseenter',
+      'mouseout': '_onMouseout',
+      'mousemove': '_onMousemove'
+    },
+    ready: function() {
+      this._animate = this.animate.bind(this);
+    },
+    startAnimation: function() {
+      this.playing = true;
+      this.animate();
+    },
+    stopAnimation: function() {
+      this.playing = false;
+    },
+    animate: function() {
+      if (!this.playing) return;
+      this._scroll();
+      requestAnimationFrame(this._animate);
+    },
+    _onMouseenter: function(event) {
+      if (event.target === this) {
+        this.startAnimation();
+      }
+    },
+    _onMousemove: function(event) {
+      x = event.clientX;
+      y = event.clientY;
+    },
+    _onMouseout: function(event) {
+      // TODO: profile. Make efficient.
+      var rect = this.getBoundingClientRect();
+      if (event.clientX <= (rect.left + 1) || event.clientX >= (rect.right - 1) ||
+            event.clientY <= (rect.top + 1) || event.clientY >= (rect.bottom - 1)) {
+        this.stopAnimation();
+      }
+    },
+    _scroll: function() {
+      var rect = this.getBoundingClientRect();
+      var scrollSpeed, overflow;
+      // SCROLL IF CANT FIT WINDOW
+      // TODO: also scroll on key commands
+      if (rect.height > window.innerHeight) {
+        if (y < 100 && rect.top < 0) {
+          scrollSpeed = (100 - y) / 5000;
+          overflow = rect.top;
+          this.y = this.y - Math.ceil(overflow * scrollSpeed) + 1;
+        } else if (y > window.innerHeight - 100 && rect.bottom > window.innerHeight) {
+          scrollSpeed = (100 - (window.innerHeight - y)) / 5000;
+          overflow = (rect.bottom - window.innerHeight);
+          this.y = this.y - Math.ceil(overflow * scrollSpeed) - 1;
+        }
+      }
+    },
+    _nudge: function() {
+      var rect = this.getBoundingClientRect();
+      // TODO: this is to prevent nudge while scrolling. Improve!
+      if (!(y > rect.top && y < rect.bottom && x > rect.left && x < rect.right)) {
+        // nudge up
+        var bottomDist = rect.bottom - window.innerHeight;
+        if (bottomDist > 0) {
+          this.y = window.innerHeight - rect.height;
+        }
+        // nudge left
+        var rightDist = rect.right - window.innerWidth;
+        if (rightDist > 0) {
+          if (this._parent) {
+            var parentRect = this._parent.getBoundingClientRect();
+            this.x = parentRect.left - rect.width;
+          } else {
+            this.x = window.innerWidth - rect.width;
+          }
+        }
+      }
+    },
+    _nudgeJob :function () {
+      this.async(function(){
+        this.debounce('io-menu-nudge', this._nudge);
+      }.bind(this), 1);
+    },
+    _filterOptions: function(options) {
+      var filteredOptions = [];
+      if (this._searchString && options.length) {
+        options.forEach(function(option) {
+          // TODO: use regex
+          if ((option.action || option.value) &&
+              option.label.toLowerCase().search(this._searchString.toLowerCase()) != -1) {
+            filteredOptions.push(option);
+          }
+          if (option.options) {
+            filteredOptions = filteredOptions.concat(this._filterOptions(option.options));
+          }
+        }.bind(this));
+      }
+      return filteredOptions;
+    },
+    _sortOptions: function(options) {
+      return options.concat().sort(function(a, b) {
+        if (a.label.toLowerCase() < b.label.toLowerCase()) {
+          return -1;
+        }
+        if (a.label.toLowerCase() > b.label.toLowerCase()) {
+          return 1;
+        }
+        return 0;
+      });
+    },
+    _closeSubmenus: function() {
+      closeMenuGroups(this);
+    },
+    _xChanged: function() {
+      this.style.left = this.x + 'px';
+      this._nudgeJob();
+    },
+    _yChanged: function() {
+      this.style.top = this.y + 'px';
+      this._nudgeJob();
+    },
+    _optionsChanged: function() {
+      this._filteredOptions = this.options;
+    },
+    _onSearchKeyUp: function(event) {
+      event.stopPropagation();
+
+      var siblings = Array.prototype.slice.call(this.querySelectorAll(
+              'io-menu-option:not([type=separator]):not([disabled]):not([inactive])'));
+      if (event.which == 38) { // UP
+        event.preventDefault();
+        siblings[siblings.length - 1]._openGroup();
+
+      } else if (event.which == 40) { // DOWN
+        event.preventDefault();
+        siblings[0]._openGroup();
+      }
+      requestAnimationFrame(function() {
+        // TODO: prevent long search results from scrolling down.
+        this._searchString = this.$$('input').value;
+      }.bind(this));
+    },
+    _searchStringChanged: function() {
+      filteredOptions = this._filterOptions(this.options);
+      if (filteredOptions.length) {
+        // TODO: bug force dom-repeat to clear icons
+        this._filteredOptions = [];
+        this.async(function() {
+          this._filteredOptions = this._sortOptions(filteredOptions);
+        }.bind(this));
+      } else {
+        this._filteredOptions = this.options;
+      }
+    }
+  });
+}());
+</script>

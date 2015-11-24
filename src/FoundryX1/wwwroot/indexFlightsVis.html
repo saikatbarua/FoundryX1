@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html ng-app='foApp'>
+<head>
+    <meta charset="utf-8" />
+    <title>Network Simulator</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <link href="vendor/vender.css" rel="stylesheet" />
+    <script src="vendor/vender.js"></script>
+    <link href="vendor/vis.css" rel="stylesheet" />
+    <script src="vendor/vis.js"></script>
+
+
+    <script src="foundry/version.js"></script>
+    <script src="foundry/foundry.core.tools.js"></script>
+    <script src="foundry/foundry.core.dto.js"></script>
+    <script src="foundry/foundry.core.node.js"></script>
+    <script src="foundry/foundry.core.link.js"></script>
+
+    <script src="foundry/foundry.core.component.js"></script>
+    <script src="foundry/foundry.code.pubsub.js"></script>
+    <script src="foundry/foundry.core.property.js"></script>
+    <script src="foundry/foundry.core.collection.js"></script>
+
+
+    <script src="foundry/foundry.core.meta.js"></script>
+    <script src="foundry/foundry.core.factory.js"></script>
+    <script src="foundry/foundry.core.factoryrelate.js"></script>
+    <script src="foundry/foundry.core.entitydb.js"></script>
+    <script src="foundry/foundry.core.listops.js"></script>
+
+    <!--http://visjs.org/examples/network/physics/physicsConfiguration.html-->
+    <script src="indexflightvis.js"></script>
+    <script src="dataservice.js"></script>
+    <script src="ontologymodel.js"></script>
+    <script src="georenderservice.js"></script>
+
+    <style type="text/css">
+
+
+        #mynetwork {
+            float: left;
+            width: 1000px;
+            height: 800px;
+            margin: 5px;
+            border: 1px solid lightgray;
+        }
+
+
+    </style>
+
+
+</head>
+<body ng-controller="viewerController as vc">
+    <div  id="mynetwork" class="container">
+
+
+    </div>
+
+
+</body>
+</html>

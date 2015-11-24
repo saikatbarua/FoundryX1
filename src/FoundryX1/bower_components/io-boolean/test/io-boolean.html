@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+
+    <title>io-boolean tests</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+    <link rel="import" href="../../test-fixture/test-fixture.html">
+    <link rel="import" href="../io-boolean.html">
+
+  </head>
+  <body>
+
+    <test-fixture id="bool">
+      <template>
+        <io-boolean value></io-boolean>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="boolIcon">
+      <template>
+        <io-boolean disabled></io-boolean>
+      </template>
+    </test-fixture>
+
+    <script>
+
+      suite('<io-boolean>', function() {
+        var bool, boolIcon;
+
+        setup(function() {
+          bool = fixture('bool');
+          boolIcon = fixture('boolIcon');
+        });
+
+        test('io-boolean[value] has aria-checked attribute', function() {
+          assert.equal(bool.getAttribute('aria-checked'), '', 'has aria-checked attribute');
+        });
+
+
+        test('io-boolean should fire "io-value-set" event when toggled and value should change to false.', function(done) {
+          bool.addEventListener('io-value-set', function(event) {
+            assert.equal(bool.value, false, 'io-boolean value');
+            assert.equal(event.detail.oldValue, true, 'event.detail.oldValue');
+            assert.equal(event.detail.value, false, 'event.detail.value');
+            done();
+          });
+          bool.toggle();
+        });
+
+        test('io-boolean should toggle 1/0 number values', function() {
+          bool.value = 0;
+          bool.toggle();
+          assert.equal(bool.value, 1, 'io-boolean value');
+          bool.toggle();
+          assert.equal(bool.value, 0, 'io-boolean value');
+        });
+
+        test('io-boolean has role="checkbox"', function() {
+          assert.equal(bool.getAttribute('role'), 'checkbox', 'role attribute');
+        });
+
+        test('io-boolean[icon] has role="checkbox"', function() {
+          assert.equal(boolIcon.getAttribute('role'), 'checkbox', 'role attribute');
+        });
+
+        test('io-boolean[icon][disabled] has aria-disabled attribute', function() {
+          assert.equal(boolIcon.getAttribute('aria-disabled'), '', 'aria-disabled attribute');
+        });
+
+      });
+
+    </script>
+
+  </body>
+</html>

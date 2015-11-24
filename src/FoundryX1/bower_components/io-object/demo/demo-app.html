@@ -1,0 +1,46 @@
+<link rel="import" href="../../polymer/polymer.html">
+
+<link rel="import" href="../../io-object/io-object.html">
+
+<dom-module id="demo-app">
+  <template>
+
+    <io-object class="demo" expanded value="{{objvalue}}"></io-object>
+    <io-object class="demo" expanded value="{{arrayvalue}}"></io-object>
+    <io-object class="demo" expanded value="{{arrayvalue}}"></io-object>
+
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'demo-app',
+    properties: {
+      objvalue: {
+        value: {
+          'boolean': true,
+          'number': 1337,
+          'string': 'hello string',
+          'object': {answer: 42},
+          'array': [],
+          'emptyObject': {},
+          'emptyArray': [],
+          'undefined': undefined,
+          'null': null,
+          'func': function() {}
+        },
+        notify: true
+      },
+      arrayvalue: {
+        value: [true, 1337, 'hello string', {answer: 42}, {}, [], undefined, null, function() {}],
+        notify: true
+      }
+    },
+    ready: function () {
+      this.objvalue.array = this.arrayvalue;
+      this.arrayvalue[3] = this.objvalue;
+
+      window.objvalue = this.objvalue;
+      window.arrayvalue = this.arrayvalue;
+    }
+  });
+</script>

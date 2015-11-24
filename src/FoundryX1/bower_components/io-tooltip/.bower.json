@@ -1,0 +1,37 @@
+{
+  "name": "io-tooltip",
+  "version": "1.2.1",
+  "homepage": "https://github.com/arodic/io-tooltip",
+  "authors": [
+    "Aleksandar Rodic <aleksandar.xyz@gmail.com>"
+  ],
+  "description": "Custom Polymer element for tooltips.",
+  "main": "io-tooltip.html",
+  "keywords": [
+    "io-tooltip",
+    "io",
+    "tooltip",
+    "i/o",
+    "io",
+    "ui",
+    "polymer",
+    "element",
+    "web-components"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.2.1"
+  },
+  "_release": "1.2.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.1",
+    "commit": "52abd2de413c27694f432556c5a106f987d1b4f7"
+  },
+  "_source": "git://github.com/arodic/io-tooltip.git",
+  "_target": "~1.2.1",
+  "_originalSource": "arodic/io-tooltip"
+}
