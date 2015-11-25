@@ -373,7 +373,6 @@ Foundry.ws = Foundry.workspace;
         var defaultTemplate = {
             myName: name,
             spec: modelSpec,
-            Subcomponents: {},
         };
 
         if (!space.rootModel) {

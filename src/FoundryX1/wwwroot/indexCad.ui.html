@@ -22,3 +22,72 @@
     </div>
 
 </script>
+
+<script type="text/ng-template" id="shapeTreeButtonItem.html">
+    <button ng-if="shape.hasGroupMembers()" type="button" class="btn btn-default btn-sm pull-left" ng-click="toggleShowSubcomponents(shape)">
+        <span class="glyphicon" ng-class="{'plus': 'glyphicon-plus-sign', 'minus': 'glyphicon-minus-sign', 'none': 'glyphicon-certificate' }[shape.currentToggleSubcomponentsState()]"></span>
+    </button>
+    <!--<button ng-show="shape.hasDetails()" type="button" class="btn btn-sm pull-left" ng-click="toggleShowDetails(shape)">
+        <span class="glyphicon" ng-class="{'open': 'glyphicon-chevron-down', 'close': 'glyphicon-chevron-up', 'none': 'glyphicon-chevron-right' }[shape.currentToggleDetailsState()]"></span>
+    </button>-->
+    <button type="button" class="btn btn-default btn-sm pull-right" ng-click="pinAsRoot(shape)">
+        <span class="glyphicon glyphicon-pushpin"></span>
+    </button>
+</script>
+
+<!--<script type="text/ng-template" id="shapeTreeItemDisplay.html">
+    <span>{{shape.outlineRef()}}</span>
+    <span style="padding-left:10px"></span>
+    <span>{{shape.context.headerText}}</span>
+    <p>
+        <span>{{shape.context.noteText}}</span>
+        <br />
+        <a href="{{shape.context.noteUri}}" target="_blank">link to:{{shape.name}}</a>
+        <br />
+    </p>
+</script>-->
+
+
+<!--<script id="shapeTreeItemEditor.html" type="text/ng-template">
+    <div fo-click class="form-group " style="margin-left:2px">
+        <label for="IDTextSummary" class="control-label">Headline:</label>
+        <input x-webkit-speech class="form-control" id="IDTextSummary" ng-model="shape.context.headerText" placeholder="the note headline" />
+
+        <label for="IDTextNote" class="control-label">Details:</label>
+        <textarea class="form-control" id="IDTextNote" rows="5" ng-model="shape.context.noteText" placeholder="the note text"></textarea>
+
+        <label for="IDTextURI" class="control-label"> <a href="#" target="_blank">Link: </a>(ex. http://www.knowtshare.com)</label>
+        <input class="form-control" id="IDTextURI" ng-model="shape.context.noteUri" placeholder="the note uri" />
+        <img src="" data-bind="src: noteUri, show: hasImageUri" alt="image missing" height="100" />
+        <fo-button ng-click="ok()">hello steve</fo-button>
+        <button ng-click="ok()">hello steve button</button>
+
+    </div>
+</script>-->
+
+<script type="text/ng-template" id="modelSpecItem.html">
+    <div>{{prop}} = {{value}}</div>
+</script>
+
+<script type="text/ng-template" id="modelTreeItem.html">
+
+    <article>
+        <div>
+            <div>id = {{obj.myGuid}}  {{obj.myType}}</div>
+            <ul>
+                <li ng-repeat="(prop,value) in obj.getSpec()" ng-include="'modelSpecItem.html'"></li>
+            </ul>
+        </div>
+        <!--<section ng-click="selectShape(shape);$event.stopPropagation();" class="shapeTreeItem" data-type="{{shape.context.myType}}" data-selected="{{shape.isSelected}}">
+            <div ng-include="'shapeTreeButtonItem.html'"></div>
+            <p ng-if="!shape.isEditing" ng-include="'shapeTreeItemDisplay.html'"> </p>
+            <p ng-if="shape.isEditing" ng-include="'shapeTreeItemEditor.html'"></p>
+            <div style="border-bottom: 1px solid red"></div>
+        </section>-->
+        <ul>
+            <li ng-repeat="obj in obj.mySubcomponents()" ng-include="'modelTreeItem.html'"></li>
+        </ul>
+
+    </article>
+</script>
+

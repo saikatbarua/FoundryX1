@@ -8,25 +8,41 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
     tools.loadTemplate('foundry/foundry.ui.ngdialog.html');
     tools.loadTemplate('indexCad.ui.html');
 
-    app.controller('workspaceController', function (dataService, ontologyLocationService, render3DService, dialogService) {
+    app.controller('workspaceController', function (dataService, render3DService, dialogService) {
 
         var self = this;
-        var locationDB = ontologyLocationService.locationDB;
-        var placeDB = ontologyLocationService.placeDB;
-        var nodeDB = ontologyLocationService.nodeDB;
 
-        self.locationDB = locationDB;
-        self.placeDB = placeDB;
-        self.nodeDB = nodeDB;
+        var space = fo.makeModelWorkspace('steve');
+        self.space = space;
+        var model = space.rootModel;
+        self.model = model;
 
-        var scene = render3DService.init('earth');
+
+        var scene = render3DService.init('cadWorld');
         render3DService.animate();
-        //render3DService.addGlobe(true);
 
-        var EARTH_RADIUS = 637;
-        var radius = EARTH_RADIUS + 20;
+        var block = fo.establishType('cad::block', {
+            width: 10,
+            height: 20,
+            depth: 40,
+            area: function () { return this.width * this.height; },
+            volume: function () { return this.width * this.height * this.depth; },
+        }, fo.makeComponent);
 
-        self.doAdd = function () {
+        var plane = fo.establishType('cad::plane', {
+            width: 10,
+            height: 20,
+            depth: 40,
+        }, fo.makeComponent);
+
+
+        var currentRoot = model;
+
+        self.doAddPlane = function () {
+            var obj = plane.newInstance().unique();
+            model.capture(obj);
+
+
             render3DService.loadModel('707', 'models/707.js')
                 .then(function (def) {
                     var plane = def.create();
@@ -36,6 +52,23 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
                     //plane.rotateOnZ(pitch)
                 })
         }
+
+
+
+        self.doAddBlock = function () {
+            var obj = block.newInstance().unique();
+
+            currentRoot.capture(obj);
+            currentRoot = obj;
+
+
+            var spec = obj.getSpec();
+            render3DService.primitive('block', spec)
+                .then(function (def) {
+                    obj.geom = def.create();
+                })
+        }
+
         self.doExport = function () {
             render3DService.export();
         }
@@ -63,34 +96,7 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
 
 
 
-        function renderModel(list, modelDef) {
-            list.forEach(function (item) {
-                var model = modelDef.create();
-                model.position(latLongToVector3(item.latitude, item.longitude, radius, item.currentAltitude | 0));
 
-                var phi = (item.latitude) * Math.PI / 180;
-                var theta = (item.longitude) * Math.PI / 180;
-
-                model.rotateOnY(theta);
-            });
-
-        }
-
-
-
-        //var key = 1;
-        //for (var lat = 0; lat < 1; lat += 10) {
-        //    for (var lng = 0; lng <= 180; lng += 15) {
-        //        placeDB.newInstance({
-        //            id: key++,
-        //            name: key,
-        //            geoLocation: locationDB.newInstance({
-        //                latitude: lat,
-        //                longitude: lng,
-        //            })
-        //        });
-        //    }
-        //}
 
 
         //render3DService.primitive('block', { width: 20, height: 100, depth: 5 })

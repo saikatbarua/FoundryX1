@@ -45,23 +45,43 @@ gulp.task('venderCSS', function () {
 
 
 
-
-
-
 gulp.task('foundry.core', [], function () {
 
     var fo = {
-        core: ['version.js', 'Foundry/foundry.core.*.js']
+        core: ['version.js', 
+            'foundry.core.dom.js',
+
+            'foundry.core.tools.js',
+            'foundry.core.dto.js',
+            'foundry.core.node.js',
+            'foundry.core.link.js',
+
+            'foundry.core.component.js',
+            'foundry.core.pubsub.js',
+            'foundry.core.property.js',
+            'foundry.core.collection.js',
+
+            'foundry.core.meta.js',
+            'foundry.core.factory.js',
+            'foundry.core.factoryrelate.js',
+            'foundry.core.entitydb.js',
+            'foundry.core.listops.js',
+
+            'foundry.core.workspace.js',
+            'foundry.core.clienthub.js',
+        ]
     };
 
+    var list = fo.core.map(function(item) { return 'wwwroot/Foundry/' + item; });
 
-    console.info(fo.core);
 
-    return gulp.src(fo.core)
+    console.info(list);
+
+    return gulp.src(list)
         .pipe(concat('foundry.core.js'))
         .pipe(gulp.dest(root + '/vendor'))
         .pipe(gulp.dest('dist/vendor'))
-        .pipe(gulp.dest('dist/FoundryJS/'));
+        .pipe(gulp.dest('dist/FoundryJS'));
 });
 
 //

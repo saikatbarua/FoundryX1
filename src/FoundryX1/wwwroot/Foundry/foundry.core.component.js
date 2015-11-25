@@ -166,6 +166,10 @@ Foundry.tools = Foundry.tools || {};
             subcomponents.push(subNode);
         },
 
+        mySubcomponents: function () {
+            return this.subcomponents ? this.subcomponents.elements : [];
+        },
+
         removeSubcomponent: function (component) {
             if (tools.isaComponent(component)) {
                 if (component.myParent === this) {

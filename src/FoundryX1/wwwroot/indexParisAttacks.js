@@ -1,6 +1,6 @@
 ﻿
 
-var foApp = angular.module('paris', []);
+var foApp = angular.module('foApp', ['ui.bootstrap']);
 
 (function (app, fo, tools, leaflet, undefined) {
 
@@ -29,26 +29,38 @@ var foApp = angular.module('paris', []);
             leaflet.marker([45.002073, -109.080842]).addTo(map)
                 .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
 
-            var popup1 = leaflet.popup();
 
             function onMapClick(e) {
-                popup1
-                    .setLatLng(e.latlng)
-                    .setContent("You clicked the map at " + e.latlng.toString())
+
+                var xxx = e;
+
+                var popup1 = leaflet.popup();
+                popup1.setLatLng(e.latlng)
+                    .setContent("You clicked the map at " + e.latlng.toString() + '</b><button class="btn btn-default trigger">Add</button>')
                     .openOn(map);
+
+
             }
 
             map.on('click', onMapClick);
+
+
         }
 
         this.zoomToNode = function (node) {
-            var pos = [node.place.geoLocation.latitude, node.place.geoLocation.longitude];
+            var loc = item.place && item.place.geoLocation;
+            if (!loc) return;
+
+            var pos = [loc.latitude, loc.longitude];
             map.setView(pos);
         }
 
         this.renderNodes = function (list) {
             list.forEach(function (item) {
-                var pos = [item.place.geoLocation.latitude, item.place.geoLocation.longitude];
+                var loc = item.place && item.place.geoLocation;
+                if (!loc) return;
+
+                var pos = [loc.latitude, loc.longitude];
                 map.setView(pos, 13);
                 leaflet.marker(pos).addTo(map).bindPopup(item.description)
             });
@@ -60,10 +72,17 @@ var foApp = angular.module('paris', []);
 
 (function (app, fo, tools, undefined) {
 
-    app.controller('workspaceController', function (dataService, ontologyLocationService, render3DService, render2DMapService) {
+
+    //load templares for dialogs and shapes...
+    tools.loadTemplate('foundry/foundry.ui.ngdialog.html');
+    tools.loadTemplate('indexParisAttacks.ui.html');
+
+    app.controller('workspaceController', function ($rootScope, dataService, ontologyLocationService, render3DService, render2DMapService, dialogService) {
         var self = this;
 
         self.title = 'paris attacks';
+        self.space = fo.makeModelWorkspace('paris');;
+        self.model = self.space.rootModel;
 
         var url = '../mock/parisLocations.json';
 
@@ -121,21 +140,45 @@ var foApp = angular.module('paris', []);
         }, function (reason) {
         });
 
+
+        function editNode(node) {
+            dialogService.doPopupDialog({
+                context: node,
+                headerTemplate: 'saveFileHeader.html',
+                bodyTemplate: 'nodeBody.html',
+                footerTemplate: 'saveFileFooter.html',
+            },
+            {
+                onOK: function ($modalInstance, context) {
+                },
+                onCancel: function ($modalInstance, context) {
+                },
+                onExit: function () {
+                },
+                onReady: function () {
+                }
+            },
+            {
+            });
+
+        }
+
         self.selectedNode = function (item) {
             render2DMapService.zoomToNode(item);
-            var geo = item.place.geoLocation;
+            var geo = item.place && item.place.geoLocation;
+            if (geo) {
+                var pos = render3DService.latLongToVector3(geo.latitude, geo.longitude, 0, 10);
+                render3DService.zoomToPos(pos);
+            }
 
-            var pos = render3DService.latLongToVector3(geo.latitude, geo.longitude, 0, 10);
-            render3DService.zoomToPos(pos);
-            //var string = tools.stringify(item);
-            //alert(string);
+            editNode(item);
         }
 
         self.addNode = function () {
-            nodeDB.newInstance({
+            var node = nodeDB.newInstance({
                 id: nodeDB.items.length + 1,
-                //dateTimeUtc: new Date(),
-               // description: 'description',
+                dateTimeUtc: new Date(),
+                description: 'the description',
                 //place: placeDB.newInstance({
                 //    name: item.name,
                 //    geoLocation: locationDB.newInstance({
@@ -144,6 +187,7 @@ var foApp = angular.module('paris', []);
                 //    })
                 //}),
             });
+            editNode(node);
         };
 
     });

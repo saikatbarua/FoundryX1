@@ -92,7 +92,7 @@
             },
         }
 
-        function modalInstanceController($scope, $modalInstance, context, args, service) {
+        function modalInstanceController($scope, $uibModalInstance, context, args, service) {
             //add all the args to scope  this will make a great way to inject methods and values.
             tools.mixin($scope, args);
 
@@ -102,21 +102,21 @@
             $scope.showFooter = service.dialogFooter ? true : false;
 
             $scope.doOK = function () {
-                service.onOK && service.onOK($modalInstance, context);
-                $modalInstance.close(context);
+                service.onOK && service.onOK($uibModalInstance, context);
+                $uibModalInstance.close(context);
             };
 
             $scope.doCancel = function () {
-                service.onCancel && service.onCancel($modalInstance, context);
-                $modalInstance.dismiss(context);
+                service.onCancel && service.onCancel($uibModalInstance, context);
+                $uibModalInstance.dismiss(context);
             };
 
             $scope.showDetails = false;
             $scope.doMore = function () {
-                service.onMore ? service.onMore($modalInstance, $scope) : $scope.showDetails = !$scope.showDetails;
+                service.onMore ? service.onMore($uibModalInstance, $scope) : $scope.showDetails = !$scope.showDetails;
             };
 
-            service.onInitialize && service.onInitialize($modalInstance, $scope);
+            service.onInitialize && service.onInitialize($uibModalInstance, $scope);
         };
 
 
@@ -152,7 +152,9 @@
 
                 var instance = $modal.open({
                     resolve: {
-                        context: function () { return self.context; },
+                        context: function () {
+                            return self.context;
+                        },
                         args: function () { return args; },
                         service: function () { return self; },
                     },
@@ -178,7 +180,7 @@
             var properties = tools.union(defaultDialogProperties, spec);
             var methods = tools.union(defaultDialogActions, actions);
 
-            var dialog = fo.makeComponent(properties);
+            var dialog = fo.makeNode(properties);
 
             tools.mixin(dialog, methods);
             return dialog;
