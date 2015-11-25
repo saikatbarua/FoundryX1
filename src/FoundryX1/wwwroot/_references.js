@@ -162,6 +162,7 @@
 /// <reference path="FoundrySpec/spike-typeViewFlightModel.js" />
 /// <reference path="FoundrySpec/spike-typeViewLocationModel.js" />
 /// <reference path="FoundrySpec/spike-typeViewMetaModel.js" />
+/// <reference path="foundryspec/testrunner.js" />
 /// <reference path="geoCalculations.js" />
 /// <reference path="geoRender3dService.js" />
 /// <reference path="geoRenderService.js" />

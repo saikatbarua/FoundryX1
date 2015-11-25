@@ -12,7 +12,10 @@ namespace FoundryX1.Controllers
         {
             return Redirect(Url.Content("~/index.html"));
         }
-
+        public ActionResult Test()
+        {
+            return Redirect(Url.Content("~/FoundrySpec/testRunner.html"));
+        }
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
