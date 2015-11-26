@@ -92,12 +92,13 @@
             },
         }
 
-        function modalInstanceController($scope, $uibModalInstance, context, args, service) {
+        function modalInstanceController($scope, $uibModalInstance, context, root, args, service) {
             //add all the args to scope  this will make a great way to inject methods and values.
             tools.mixin($scope, args);
 
             $scope.context = context;
-            $scope.showHeader = service.dialogHeader ? true: false;
+            $scope.root = root;
+            $scope.showHeader = service.dialogHeader ? true : false;
             $scope.showBody = service.dialogBody ? true : false;
             $scope.showFooter = service.dialogFooter ? true : false;
 
@@ -154,6 +155,9 @@
                     resolve: {
                         context: function () {
                             return self.context;
+                        },
+                        root: function () {
+                            return self.root;
                         },
                         args: function () { return args; },
                         service: function () { return self; },

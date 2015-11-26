@@ -22,29 +22,31 @@ Foundry.listOps = Foundry.listOps || {};
             return item.id;
         }
 
-        this.newInstance = function (mixin, subcomponents, parent, onComplete) {
-            var result = this.defaultType.newInstance(mixin, subcomponents, parent, onComplete)
-            var key = this.idFunction(result);
+        this.newInstance = function (mixin, subcomponents, parent, id) {
+            var result = this.defaultType.newInstance(mixin, subcomponents, parent)
+            var key = id || this.idFunction(mixin);
             key && this.setItem(key, result);
             return result;
         }
 
-        this.establishFunction = function (item, id, onCreate) {
-            var key = id || this.idFunction(item);
+        this.modifyOrCreateInstance = function (mixin, subcomponents, parent, id) {
+            var key = id || this.idFunction(mixin);
             var found = this.getItem(key);
-            if ( !found ) {
-                found = ns.newInstance(this.myName, item);
-                if (!key) {
-                    key = found.asReference(); //force guid to be created
-                }
+            if (!found) {
+                found = this.defaultType.newInstance(mixin, subcomponents, parent);
+                key = key || found.asReference(); //force guid to be created
                 this.setItem(key, found);
-                onCreate && onCreate(found);
+            } else {
+                tools.mixin(found, mixin);
             }
             return found;
         }
 
-        this.establishInstance = function (item, id, onCreate) {
-            return this.establishFunction(item, id, onCreate)
+
+        this.establishInstance = function (mixin, id, onCreate) {
+            var result = this.modifyOrCreateInstance(mixin, [], undefined, id, onCreate);
+            onCreate && onCreate(result)
+            return result;
         }
 
         this.findInstance = function (id, onFound) {

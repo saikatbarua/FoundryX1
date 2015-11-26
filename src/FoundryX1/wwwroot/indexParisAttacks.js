@@ -47,7 +47,7 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
 
         }
 
-        this.zoomToNode = function (node) {
+        this.zoomToNode = function (item) {
             var loc = item.place && item.place.geoLocation;
             if (!loc) return;
 
@@ -105,7 +105,7 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
             
             var id = 0;
             data.forEach(function (item) {
-                nodeDB.newInstance({
+                var node = nodeDB.newInstance({
                     id: id++,                  
                     dateTimeUtc: new Date(item.dateTime),
                     description: item.description,
@@ -117,13 +117,15 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
                         })
                     }),
                 });
+                //node.capture(node.place);
+                //node.place.capture(node.place.geoLocation);
             });
 
             render2DMapService.renderNodes(nodeDB.items);
             //render3DService.renderNodes(nodeDB.items);
 
                 //you need more control of geometry primitives
-            render3DService.primitive('block', { width: 1, height: 100, depth: 1})
+            render3DService.loadPrimitive('block', { width: 1, height: 100, depth: 1 })
             .then(function (block) {
 
                 nodeDB.items.forEach(function (item) {
@@ -162,6 +164,9 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
             });
 
         }
+        self.editNode = function (item) {
+            editNode(item);
+        }
 
         self.selectedNode = function (item) {
             render2DMapService.zoomToNode(item);
@@ -170,8 +175,6 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
                 var pos = render3DService.latLongToVector3(geo.latitude, geo.longitude, 0, 10);
                 render3DService.zoomToPos(pos);
             }
-
-            editNode(item);
         }
 
         self.addNode = function () {

@@ -288,6 +288,30 @@ Foundry.tools = Foundry.tools || {};
         },
 
         //this spec should be an honst way to recreate the component
+        getInputs: function () {
+            var inputs = {};
+
+            var properties = tools.asArray(this.propertyManager());
+
+            properties.forEach(function (mp) {
+                var notExist = 'given'.matches(mp.status) ? false : mp.formula !== undefined;
+                if (notExist && !mp.canExport) return;
+
+                var value = mp.value;
+                if (tools.isTyped(value) && 'myType'.matches(mp.name)) {
+                    return;
+                }
+
+                var name = mp.myName;
+                if (value !== undefined) {
+                    inputs[name] = mp;
+                }
+            });
+
+            return inputs;
+        },
+
+        //this spec should be an honst way to recreate the component
         getSpec: function (deep) {
             var spec = this.myType ? { myType: this.myType } : {};
             if (this.myName) spec.myName = this.myName;

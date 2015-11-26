@@ -14,3 +14,23 @@
     </div>
 
 </script>
+
+<script type="text/ng-template" id="nodeView.html">
+
+    <div class="box" ng-click="ws.selectedNode(node)">
+        <h5>{{node.id}} - {{node.dateTimeUtc | date:'MM/dd/yyyy @ h:mma'}}</h5>
+        <button class="btn btn-success" style="float:right"  ng-click="ws.editNode(node)">edit</button>
+        <div ng-repeat="obj in [node.place]" ng-include="'placeView.html'"></div>
+        <div style="margin:10px">{{node.description}}</div>
+    </div>
+
+</script>
+
+<script type="text/ng-template" id="placeView.html">
+        <span><strong>location:</strong><a ng-href="{{'https://www.google.com/?gws_rd=ssl#q=' + obj.name}}"  target="_blank" >{{obj.name}}</a>
+        <span ng-repeat="obj in [obj.geoLocation]" ng-include="'geoLocationView.html'"></span>
+</script>
+
+<script type="text/ng-template" id="geoLocationView.html">
+        <strong>lat: </strong>{{obj.latitude}}  <strong>long: </strong>{{obj.longitude}}
+</script>

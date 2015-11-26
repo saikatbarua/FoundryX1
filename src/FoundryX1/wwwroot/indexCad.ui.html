@@ -66,16 +66,26 @@
 </script>-->
 
 <script type="text/ng-template" id="modelSpecItem.html">
-    <div>{{prop}} = {{value}}</div>
+    <div>{{prop}} = {{mp.value}}</div>
+</script>
+
+<script type="text/ng-template" id="editSpecItem.html">
+    <ul>
+        <li ng-repeat="(prop,mp) in context.getInputs()">
+            <label for="{{prop}}" class="control-label">{{prop}}:</label>
+            <input id="{{prop}}" x-webkit-speech class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop]" placeholder="add stuff" />
+            <button ng-click="root.doChange(prop,mp)" class="btn btn-danger" >change</button>
+        </li>
+    </ul>
 </script>
 
 <script type="text/ng-template" id="modelTreeItem.html">
 
     <article>
-        <div>
+        <div ng-click="ws.doEdit(obj)">
             <div>id = {{obj.myGuid}}  {{obj.myType}}</div>
             <ul>
-                <li ng-repeat="(prop,value) in obj.getSpec()" ng-include="'modelSpecItem.html'"></li>
+                <li ng-repeat="(prop,mp) in obj.getInputs()" ng-include="'modelSpecItem.html'"></li>
             </ul>
         </div>
         <!--<section ng-click="selectShape(shape);$event.stopPropagation();" class="shapeTreeItem" data-type="{{shape.context.myType}}" data-selected="{{shape.isSelected}}">

@@ -29,6 +29,47 @@ var Foundry = Foundry || {};
     var goDown = false;
 
 
+    ////*** Adding the globe ********
+    ////******************************
+
+    //// setting up the defuse map
+    //var matDif = THREE.ImageUtils.loadTexture(staticUrl + "img/world_diffuse.jpg");
+
+    //// setting up the bump map
+    //var mapBump = THREE.ImageUtils.loadTexture(staticUrl + "img/world_bump.jpg");
+    //mapBump.anisotropy = 1;
+    //mapBump.repeat.set(1, 1);
+    //mapBump.offset.set(0, 0)
+    //mapBump.wrapS = mapBump.wrapT = THREE.RepeatWrapping;
+    //mapBump.format = THREE.RGBFormat;
+
+    //// setting up the material
+    //var sphereMaterial = new THREE.MeshPhongMaterial({
+    //    ambient: 0x444444,
+    //    color: 0x777777,
+    //    shininess: 40,
+    //    specular: 0x222222,
+    //    shading: THREE.SmoothShading,
+    //    side: THREE.DoubleSide,
+    //    map: matDif,
+    //    bumpMap: mapBump,
+    //    bumpScale: 10
+    //});
+    //// creaing the mesh
+    //var globe = new THREE.Mesh(new THREE.SphereGeometry(globeRadius,
+    //                                                      32,
+    //                                                      32),
+    //                            sphereMaterial);
+    //globe.receiveShadow = true;
+    //// add the globe to the scene
+    //scene.add(globe);
+
+    // focus the globe on a certain country
+    //var cfoc = country[countryFocus];
+    //globe.rotation.set(cfoc.lat.toRad(), Math.PI - cfoc.lng.toRad(), 0);
+
+
+
 
     //arrow keys pressed
     document.addEventListener("keydown", keyDownTextField, false);
@@ -269,9 +310,11 @@ var Foundry = Foundry || {};
         saveSTL(scene, name || 'scene');
     }
 
-    geo.init = function (id) {
+    geo.init = function (id, x, y, z) {
         camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-        camera.position.z = 1000;
+        camera.position.x = x || 0;
+        camera.position.y = y || 0;
+        camera.position.z = y || 0;
 
         scene = new THREE.Scene();
         renderer = new THREE.WebGLRenderer();
@@ -439,45 +482,61 @@ var Foundry = Foundry || {};
         normal: function (angleX, angleY, angleZ) {
             var mesh = this.mesh;
             mesh.matrix = new THREE.Matrix4();
+            return this;
         },
         rotateXYZ: function (angleX, angleY, angleZ) {
             var mesh = this.mesh;
             mesh.rotation.x = angleX;
             mesh.rotation.y = angleY;
             mesh.rotation.z = angleZ;
+            return this;
         },
         scaleXYZ: function (X, Y, Z) {
             var mesh = this.mesh;
             mesh.scale.set(X, Y, Z);
+            return this;
         },
         rotateOnX: function (angle) {
             var mesh = this.mesh;
             rotateAroundObjectAxis(mesh, axisX, angle);
+            return this;
         },
         rotateOnY: function (angle) {
             var mesh = this.mesh;
             rotateAroundObjectAxis(mesh, axisY, angle);
+            return this;
         },
         rotateOnZ: function (angle) {
             var mesh = this.mesh;
             rotateAroundObjectAxis(mesh, axisZ, angle);
+            return this;
         },
         positionXYZ: function (X, Y, Z) {
             var mesh = this.mesh;
             mesh.position.setX(X);
             mesh.position.setY(Y);
             mesh.position.setZ(Z);
+            return this;
+        },
+        setX: function (dist) {
+            var mesh = this.mesh;
+            mesh.position.setX(dist);
+            return this;
+        },
+        setY: function (dist) {
+            var mesh = this.mesh;
+            mesh.position.setY(dist);
+            return this;
+        },
+        setY: function (dist) {
+            var mesh = this.mesh;
+            mesh.position.setY(dist);
+            return this;
         },
         position: function (pos) {
             this.positionXYZ(pos.x, pos.y, pos.z);
+            return this;
         },
-        spin: function (angle) {
-            this.rotateOnX(angle);
-            //var mesh = this.mesh;
-           // var xAxis = new THREE.Vector3(1,0,0);
-            //rotateAroundObjectAxis(mesh, xAxis, Math.PI / 180);
-            //mesh.rotation.y += 0.02;
-        }
     });
 
     var makeMesh3D = function (properties, subcomponents, parent) {
@@ -498,8 +557,8 @@ var Foundry = Foundry || {};
     fo.tools.mixin(model3D.prototype, {
         create: function (parent) {
             var instance = meshDef.newInstance({ mesh: new THREE.Mesh(this.geometry, this.material) });
-            parent = parent ? parent : scene;
-            parent.add(instance.mesh);
+            var target = parent && parent.mesh ? parent.mesh : scene;
+            target.add(instance.mesh);
             return instance;
         }
     });
@@ -531,9 +590,38 @@ var Foundry = Foundry || {};
 
     // add a simple light
     function addLights() {
-        light = new THREE.DirectionalLight(0x3333ee, 3.5, 500);
+        var light = new THREE.DirectionalLight(0x3333ee, 3.5, 500);
         scene.add(light);
         light.position.set(POS_X, POS_Y, POS_Z);
+
+        //*** Adding the lights
+        var light = new THREE.DirectionalLight(0x999999);
+        light.position.set(-1, 0, 1).normalize();
+        scene.add(light);
+
+        var light = new THREE.DirectionalLight(0x999999);
+        light.position.set(0, 1, -1).normalize();
+        scene.add(light);
+
+        var light = new THREE.DirectionalLight(0x999999);
+        light.position.set(1, 0, -1).normalize();
+        scene.add(light);
+
+        var camPos  = camera.position;
+        var spotLight = new THREE.SpotLight(0xFFFFFF, 2);
+        spotLight.position.set(camPos.x, camPos.y, camPos.z);
+        spotLight.target.position.set(0, 0, 0);
+
+        spotLight.shadowCameraNear = 1;
+        spotLight.shadowCameraFar = 3000;
+        spotLight.shadowCameraFov = 100;
+        spotLight.castShadow = true;
+        spotLight.shadowDarkness = 0.4;
+        spotLight.shadowBias = 0.001;
+        // spotLight.shadowCameraVisible  = true;
+        scene.add(spotLight);
+        ////////////////////
+
     }
     geo.addLights = addLights
 
@@ -705,6 +793,32 @@ var Foundry = Foundry || {};
         return geometry;
     }
 
+    geo.material = function (type, data) {
+        var material;
+        type = data.type ? data.type : type;
+        switch (type) {
+            case 'phong':
+                material = new THREE.MeshPhongMaterial(data);
+                break;
+            case 'lambert':
+                material = new THREE.MeshLambertMaterial(data);
+                break;
+            case 'depth':
+                material = new THREE.MeshDepthMaterial(data);
+                break;
+            case 'normal':
+                material = new THREE.MeshNormalMaterial(data);
+                break;
+            case 'face':
+                material = new THREE.MeshFaceMaterial(data);
+                break;
+            case 'basic':
+                material = new THREE.MeshBasicMaterial(data);          
+                break;
+        }
+        return material;
+    }
+
  
 
 }(Foundry, Scene3D));
@@ -727,6 +841,7 @@ var Foundry = Foundry || {};
         this.export = geo.export;
         this.animate = geo.animate;
         this.addGlobe = geo.addGlobe;
+        this.addLights = geo.addLights;
         this.latLongToVector3 = geo.latLongToVector3;
         this.latLongToAngles = geo.latLongToAngles;
         this.zoomToPos = geo.zoomToPos;
@@ -735,13 +850,27 @@ var Foundry = Foundry || {};
             geo.onNextAnimationFrame = funct;
         }
 
-        //this.renderNodes = function (list) {
-        //    list.forEach(function (item) {
-        //        var pos = [item.place.geoLocation.latitude, item.place.geoLocation.longitude];
-        //        //map.setView(pos, 13);
-        //        //leaflet.marker(pos).addTo(map).bindPopup(item.description)
-        //    });
-        //}
+        //http://stackoverflow.com/questions/26456410/three-js-lines-normal-to-a-sphere
+        function primitive(name, geoSpec, matSpecs) {
+            var material = {
+                color: 0xff0000,
+                wireframe: false
+            };
+
+            //if possable advoid creating duplicate definitions
+            var model = geo.modelDB.modifyOrCreateInstance({
+                myName: name,
+                geometry: geo.primitive(name, geoSpec),
+                material: geo.material('phong', tools.union(material, matSpecs)),
+            }, [], undefined, name);
+
+            return model;
+        }
+
+
+        this.primitive = primitive;
+
+
 
         function loadModel(name, file) {
             var deferred = $q.defer();
@@ -750,7 +879,7 @@ var Foundry = Foundry || {};
                 var model = geo.modelDB.establishInstance({
                     myName: name,
                     geometry: geometry,
-                    material: new THREE.MeshFaceMaterial(materials),
+                    material: geo.material('face', materials),
                 }, name);
                 deferred.resolve(model);
             });
@@ -758,28 +887,18 @@ var Foundry = Foundry || {};
             return deferred.promise;
         }
 
-        //http://stackoverflow.com/questions/26456410/three-js-lines-normal-to-a-sphere
-        function primitive(name, specs) {
+
+        function loadPrimitive(name, geoSpec, matSpecs) {
             var deferred = $q.defer();
-            var material = {
-                color: 0xff0000,
-                wireframe: false
-            };
-
-            var model = geo.modelDB.establishInstance({
-                myName: name,
-                geometry: geo.primitive(name, specs),
-                material: new THREE.MeshBasicMaterial(tools.union(material,specs)),
-            }, name);
-
+            var model = primitive(name, geoSpec, matSpecs)
             deferred.resolve(model);
-
             return deferred.promise;
         }
 
 
+
         this.loadModel = loadModel;
-        this.primitive = primitive;
+        this.loadPrimitive = loadPrimitive;
 
 
     });

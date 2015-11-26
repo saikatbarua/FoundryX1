@@ -264,7 +264,7 @@ var foApp = angular.module('foApp', []);
 
 (function (app, fo, tools, ops, undefined) {
 
-    app.controller('viewerController', function (dataService, ontologyLocationService, render3DService) {
+    app.controller('workspaceController', function (dataService, ontologyLocationService, render3DService) {
 
         var self = this;
         var locationDB = ontologyLocationService.locationDB;
@@ -277,7 +277,7 @@ var foApp = angular.module('foApp', []);
 
         var scene = render3DService.init('earth');
         render3DService.animate();
-        //render3DService.addGlobe(true);
+        var globe = render3DService.addGlobe();
 
         var EARTH_RADIUS = 637;
         var radius = EARTH_RADIUS + 20;
@@ -287,108 +287,429 @@ var foApp = angular.module('foApp', []);
         }
 
 
-        function renderModel(list, modelDef) {
-            list.forEach(function (item) {
-                var model = modelDef.create();
-                model.position(latLongToVector3(item.latitude, item.longitude, radius, item.currentAltitude | 0));
 
-                var phi = (item.latitude) * Math.PI / 180;
-                var theta = (item.longitude) * Math.PI / 180;
 
-                model.rotateOnY(theta);
-            });
+        //function renderModel(list, modelDef) {
+        //    list.forEach(function (item) {
+        //        var model = modelDef.create();
+        //        model.position(latLongToVector3(item.latitude, item.longitude, radius, item.currentAltitude | 0));
 
-        }
+        //        var phi = (item.latitude) * Math.PI / 180;
+        //        var theta = (item.longitude) * Math.PI / 180;
 
-        //tools.forEachKeyValue(country,function (key, item) {
-        //    placeDB.newInstance({
-        //        id: key,
-        //        name: key,
-        //        geoLocation: locationDB.newInstance({
-        //            latitude: item.lat,
-        //            longitude: item.lng,
-        //        })
+        //        model.rotateOnY(theta);
         //    });
 
-        //});
+        //}
 
-        var key = 1;
-        for (var lat = 0; lat < 1; lat += 10) {
-            for (var lng = 0; lng <= 180; lng += 15) {
-                placeDB.newInstance({
-                    id: key++,
-                    name: key,
-                    geoLocation: locationDB.newInstance({
-                        latitude: lat,
-                        longitude: lng,
-                    })
-                });
-            }
-        }
+        tools.forEachKeyValue(country,function (key, item) {
+            placeDB.newInstance({
+                id: key,
+                name: key,
+                geoLocation: locationDB.newInstance({
+                    latitude: item.lat,
+                    longitude: item.lng,
+                })
+            });
+        });
 
+        //var key = 1;
+        //for (var lat = 0; lat < 1; lat += 10) {
+        //    for (var lng = 0; lng <= 180; lng += 15) {
+        //        placeDB.newInstance({
+        //            id: key++,
+        //            name: key,
+        //            geoLocation: locationDB.newInstance({
+        //                latitude: lat,
+        //                longitude: lng,
+        //            })
+        //        });
+        //    }
+        //}
 
-        render3DService.primitive('block', { width: 20, height: 100, depth: 5 })
+        render3DService.addLights();
+
+        var material = {
+            ambient: 0x000000,
+            color: 0xff0000,
+            specular: 0x999999,
+            shininess: 100,
+            shading: THREE.SmoothShading,
+            opacity: 0.8,
+            transparent: true
+        };
+
+        render3DService.loadPrimitive('block', { width: 10, height: 100, depth: 10 })
         .then(function (block) {
 
             placeDB.items.forEach(function (item) {
-
- 
                 var model = block.create();
                 var geo = item.geoLocation;
-                var pos = render3DService.latLongToVector3(geo.latitude, geo.longitude, 0, 0);
+                var pos = render3DService.latLongToVector3(geo.latitude, geo.longitude, EARTH_RADIUS, 50);
+                model.position(pos);
 
-                //var x = Math.PI / 2 - (geo.latitude).toRad();
                 model.rotateOnY(geo.longitude * Math.PI / 180);
                 model.rotateOnZ((270 + geo.latitude) * Math.PI / 180)
-
-                var radius = 20;
-                var angle = geo.longitude * Math.PI / 180;
-
-                model.positionXYZ(radius * Math.cos(angle), radius * Math.sin(angle), 0);
-               // dummyLat.rotation.x = x;
-               // var y = Math.abs(geo.longitude - 180);
-               // dummyLng.rotation.y = y;
-                //model.position(pos);
             });
 
         });
 
+        // The deviation position of the ground from the center
+        var yDeviation = 0;
+        var zDeviation = 0;
+        var xDeviation = 0;
 
-        //render3DService.primitive('block', { width: 5, height: 200, depth: 5})
-        //.then(function (block) {
+        function colorLuminance(hex, lum) {
 
-        //    placeDB.items.forEach(function (item) {
+            // validate hex string
+            hex = String(hex).replace(/[^0-9a-f]/gi, '');
+            if (hex.length < 6) {
+                hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+            }
+            lum = lum || 0;
 
-        //         add dummy object along wich we can rotate the bar for the longitute
-        //        var dummyLng = new THREE.Mesh(
-        //                          new THREE.PlaneGeometry(1, 1, 0, 0),
-        //                          new THREE.MeshLambertMaterial({ color: 0xCCCCCC }));
+            // convert to decimal and change luminosity
+            var rgb = "#", c, i;
+            for (i = 0; i < 3; i++) {
+                c = parseInt(hex.substr(i * 2, 2), 16);
+                c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+                rgb += ("00" + c).substr(c.length);
+            }
 
-        //        scene.add(dummyLng);
+            return rgb;
+        }
 
-        //         add dummy object along wich we can rotate the bar for the latitude
-        //        var dummyLat = new THREE.Mesh(
-        //                          new THREE.PlaneGeometry(1, 1, 0, 0),
-        //                          new THREE.MeshLambertMaterial({ color: 0xCCCCCC }));
+        var ScaleText = function (text, type, pos, color, yStep) {
 
-        //        dummyLng.add(dummyLat);
+            // the 3D object for the text label
+            this.txtobj = null;
 
-        //        var model = block.create(dummyLat);
-        //        var geo = item.geoLocation;
-        //        var pos = render3DService.latLongToVector3(geo.latitude, geo.longitude, 0, 100);
-        //        model.position(pos);
+            // type: can be "val", "col", "row"
+            this.ttype = type;
 
-        //        dummyLng.position.setX(pos.x);
-        //        dummyLng.position.setY(pos.y);
-        //        dummyLng.position.setZ(pos.z);
+            // text
+            this.txt = text;
+
+            // position
+            this.position = pos;
+
+            // the difirance in position according y axis
+            this.yStep = yStep;
+
+            // the color
+            this.color = 0x555555;
+            if (color) this.color = parseInt(color, 16);
+
+            // label vars
+            this.textSize = 30;
+            this.textHeight = 5;
+            this.textFont = "helvetiker";
+            this.letterSize = 7 // this depends on the font
+
+            // function to add the bar to the scene and position it
+            this.addText = function (target) {
+
+                // Create a three.js text geometry
+                var geometry = new THREE.TextGeometry(this.txt, {
+                    size: this.textSize,
+                    height: this.textHeight,
+                    curveSegments: 3,
+                    font: this.textFont,
+                    weight: "bold",
+                    style: "normal",
+                    bevelEnabled: false
+                });
+
+                var material = new THREE.MeshPhongMaterial({ color: this.color, shading: THREE.FlatShading });
+
+                // Positions the text and adds it to the scene
+                this.txtobj = new THREE.Mesh(geometry, material);
+
+                if (this.ttype == "col") {
+                    this.txtobj.position.x = -xDeviation + squareStep / 5;
+                    this.txtobj.position.y = -zDeviation - this.position * squareStep -
+                                             squareStep / 2;
+                } else if (type == "row") {
+                    this.txtobj.rotation.z = Math.PI / 2;
+                    this.txtobj.position.x = xDeviation + this.position * squareStep +
+                                             squareStep / 2;
+                    this.txtobj.position.y = zDeviation - squareStep / 5 -
+                                            this.txt.length *
+                                            (this.textSize - this.letterSize);
+                } else {
+                    this.txtobj.rotation.y = Math.PI / 2;
+                    this.txtobj.position.x = -zDeviation;
+                    this.txtobj.position.z = squareStep / 5 +
+                                              this.txt.length *
+                                              (this.textSize - this.letterSize);
+                    this.txtobj.position.y = yDeviation + this.position * yStep -
+                                             this.textSize / 2;
+                }
+
+                target.add(this.txtobj);
+
+            };
+
+            // function to show the label
+            this.highlightText = function () {
+
+                if (this.hasLabel) {
+                    this.labelobj.visible = true;
+                }
+
+            };
+
+            // function to hide the label
+            this.unhighlightText = function () {
+
+                if (this.hasLabel) {
+                    this.labelobj.visible = false;
+                }
+
+            };
 
 
-        //        var x = Math.PI / 2 - (geo.latitude).toRad();
-        //        dummyLat.rotation.x = x;
-        //        var y = Math.PI + (geo.longitude).toRad();
-        //        dummyLng.rotation.y = y;
-        //        model.rotateXYZ(x,y,0)
-        //    });
+        };
+
+        var BarCube = function (color, x, z, val, valcolor, render, html_label, titles, minScaleVal, scaleDif, valHeight) {
+
+            // The render type - can be light and full
+            this.renderType = render;
+
+            //the 3D cube object
+            this.barobj = null;
+
+            //the 3D stroke (wireframe object) object
+            this.wfobj = null;
+
+            // the 3D object for the text label
+            this.labelobj = null
+
+            // should we set the wireframe
+            this.hasWireframe = true;
+
+            // should it have a label. The HTML one should point to a dom element
+            this.hasLabel = true;
+            this.hasHTMLLabel = html_label;
+
+            // should it cast/receive shadows
+            this.hasShadows = true;
+
+            // the square size (x and z)
+            this.sqsize = 100;
+
+            // position in the quadrant
+            this.posx = x;
+            this.posz = z;
+
+            // value & height
+            this.val = val;
+            this.h = ((val - minScaleVal) / scaleDif) * valHeight;
+            if (this.h == 0) this.h = 0.5;
+
+            // rows and column titles
+            this.titles = titles;
+
+            // main cube colour
+            this.color = parseInt(color, 16);
+            this.htmlcolor = "#" + color;
+            this.lumcolor = colorLuminance(color, 0.5);
+            this.darklumcolor = colorLuminance(color, -0.3);
+            this.valcolor = parseInt(valcolor, 16);
+
+            // label vars
+            this.labelSize = 50;
+            this.labelHeight = 5;
+            this.labelFont = "helvetiker";
+
+            // function to add the bar to the scene and position it
+            this.addBar = function (target) {
+
+                // Simple cube geometry for the bar
+                var geometry = new THREE.CubeGeometry(this.sqsize, this.h, this.sqsize);
+                // Material for the bars with transparency
+                var material = new THREE.MeshPhongMaterial({
+                    ambient: 0x000000,
+                    color: this.color,
+                    specular: 0x999999,
+                    shininess: 100,
+                    shading: THREE.SmoothShading,
+                    opacity: 0.8,
+                    transparent: true
+                });
+
+                //  if we want a lower quality renderer - mainly with canvas renderer
+                if (this.renderType == 'light') {
+                    var material = new THREE.MeshLambertMaterial({
+                        color: this.color,
+                        shading: THREE.FlatShading,
+                        overdraw: true
+                    });
+                    this.hasWireframe = false;
+                    this.hasShadows = false;
+                }
+
+                var squareStep = 10;
+
+                // Creating the 3D object, positioning it and adding it to the scene
+                this.barobj = new THREE.Mesh(geometry, material);
+                // Adds shadows if selected as an option
+                if (this.hasShadows) {
+                    this.barobj.castShadow = true;
+                    this.barobj.receiveShadow = true;
+                }
+                this.barobj.position.x = xDeviation + this.posx * squareStep + squareStep / 2;
+                this.barobj.position.y = yDeviation + this.h / 2;
+                this.barobj.position.z = zDeviation + this.posz * squareStep + squareStep / 2;
+                target.add(this.barobj);
+
+                // If we want to have wireframe (with a lighter colour) we attach 2nd obj
+                if (this.hasWireframe) {
+
+                    // Creates cube with the same size
+                    var geometry = new THREE.CubeGeometry(this.sqsize, this.h, this.sqsize);
+
+                    // Generates a wireframe material
+                    var material = new THREE.MeshBasicMaterial({
+                        color: parseInt(this.lumcolor, 16),
+                        wireframe: true
+                    });
+                    this.wfobj = new THREE.Mesh(geometry, material);
+                    this.wfobj.receiveShadow = true;
+
+                    // Adds the wireframe object to the main one
+                    this.barobj.add(this.wfobj);
+                }
+
+                // If we want to have a label, we add a text object
+                if (this.hasLabel) {
+
+                    var txt = this.val.toString();
+                    var curveSeg = 3;
+                    var material = new THREE.MeshPhongMaterial({
+                        color: this.valcolor,
+                        shading: THREE.FlatShading
+                    });
+
+                    // changing to simple values if lower rendering method selected
+                    if (this.renderType == 'light') {
+                        curveSeg = 1;
+                        material = new THREE.MeshBasicMaterial({ color: this.valcolor });
+                    }
+
+                    // Create a three.js text geometry
+                    var geometry = new THREE.TextGeometry(txt, {
+                        size: this.labelSize,
+                        height: this.labelHeight,
+                        curveSegments: curveSeg,
+                        font: this.labelFont,
+                        weight: "bold",
+                        style: "normal",
+                        bevelEnabled: false
+                    });
+
+                    // Positions the text and adds it to the scene
+                    this.labelobj = new THREE.Mesh(geometry, material);
+                    this.labelobj.position.y += (this.h / 2) + 50;
+                    this.labelobj.position.x -= (this.labelSize * txt.length / 3);
+                    this.labelobj.position.z += 50;
+                    this.labelobj.rotation.y = Math.PI / 4;
+                    // Adds shadows if selected as an option
+                    if (this.hasShadows) {
+                        this.labelobj.castShadow = true;
+                        this.labelobj.receiveShadow = true;
+                    }
+                    this.barobj.add(this.labelobj);
+
+                    // hides the label at the beginning
+                    this.hideLabel();
+
+                }
+
+            };
+
+            // function to show the label
+            this.showLabel = function (posx, posy) {
+
+                // Shows 3D label if set
+                if (this.hasLabel) {
+                    this.labelobj.visible = true;
+                }
+
+                // Shows HTML Label if set - uses jquery for DOM manipulation
+                if (this.hasHTMLLabel) {
+                    this.hasHTMLLabel.html(this.titles.row +
+                                            '<p>' + this.titles.col + ': ' + val + '</p>');
+                    this.hasHTMLLabel.show();
+                    // Back transformation of the coordinates
+                    posx = ((posx + 1) * window.innerWidth / 2);
+                    posy = -((posy - 1) * window.innerHeight / 2);
+                    this.hasHTMLLabel.offset({ left: posx, top: posy });
+                }
+
+            };
+
+            // function to hide the label
+            this.hideLabel = function () {
+
+                // Hides 3D label if set
+                if (this.hasLabel) {
+                    this.labelobj.visible = false;
+                }
+
+                // Hides HTML Label if set - uses jquery for DOM manipulation
+                if (this.hasHTMLLabel) {
+                    this.hasHTMLLabel.hide();
+                }
+
+            };
+
+            this.reposition = function (x, y, z) {
+                this.barobj.position.set(x, y, z);
+            }
+
+            this.reorientation = function (x, y, z) {
+                this.barobj.rotation.set(x, y, z);
+            }
+
+
+        };
+
+        //now with bar cube
+        var i = 0;
+        //placeDB.items.forEach(function (item) {
+        //    var geo = item.geoLocation;
+        //    var pos = render3DService.latLongToVector3(geo.latitude, geo.longitude, EARTH_RADIUS, 50);
+
+        //    var bar = new BarCube(0x00FF00, 0, 1, 100, 0x00FFFF, 'light', undefined, 'titles', 0, 1, 1);
+
+        //    // removeing the 3d label
+        //    bar.hasLabel = false;
+        //    // making the widht of the bar smaller
+        //    bar.sqsize = 10;
+
+        //    // add dummy object along wich we can rotate the bar for the longitute
+        //    bar.dummyLng = new THREE.Mesh(
+        //      new THREE.PlaneGeometry(1, 1, 0, 0),
+        //      new THREE.MeshLambertMaterial({ color: 0xCCCCCC }));
+        //    globe.add(bar.dummyLng);
+
+        //    // add dummy object along wich we can rotate the bar for the latitude
+        //    bar.dummyLat = new THREE.Mesh(
+        //      new THREE.PlaneGeometry(1, 1, 0, 0),
+        //      new THREE.MeshLambertMaterial({ color: 0xCCCCCC }));
+        //    bar.dummyLng.add(bar.dummyLat);
+
+        //    // adding the bar to the scene and positioning it to the earth surface
+        //    bar.addBar(bar.dummyLat);
+        //    bar.reposition(0, EARTH_RADIUS + bar.h / 2, 0);
+        //    // rotating the dummy object so that it snaps to the correct country
+        //    bar.dummyLng.rotation.y = Math.PI + (geo.longitude).toRad();
+        //    bar.dummyLat.rotation.x = Math.PI / 2 - (geo.latitude).toRad();
+        //    // adding the bar to the intersection objects
+        //    //intersobj[bars.length - 1] = bars[bars.length - 1].barobj;
+        //    //intersobj[bars.length - 1].barid = bars.length - 1;
+
 
         //});
 

@@ -650,6 +650,31 @@ var fo = Foundry;
             return result;
         },
 
+        //this spec should be an honst way to recreate the component
+        getInputs: function () {
+            var inputs = {};
+
+            this.Properties.forEach(function (mp) {
+                var notExist = 'given'.matches(mp.status) ? false : mp.formula !== undefined;
+                if (notExist && !mp.canExport) return;
+
+                spec = spec || {};
+                var value = mp.value;
+                if (ns.utils.isaComponent(value) || ns.utils.isaCollection(value)) {
+                    value = value.getSpec(deep);
+                }
+                var name = mp.myName;
+                if (value !== undefined) {
+                    spec[name] = value;
+                }
+                else if (mp.canExport) { //we must have a value if marked as exporting
+                    spec[name] = mp.getValue();
+                }
+            });
+
+            return inputs;
+        },
+
 
         //this spec should be an honst way to recreate the component
         getSpec: function (deep) {

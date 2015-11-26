@@ -23,7 +23,7 @@
     <script src="foundry/foundry.core.link.js"></script>
 
     <script src="foundry/foundry.core.component.js"></script>
-    <script src="foundry/foundry.code.pubsub.js"></script>
+    <script src="foundry/foundry.core.pubsub.js"></script>
     <script src="foundry/foundry.core.property.js"></script>
     <script src="foundry/foundry.core.collection.js"></script>
 
@@ -65,16 +65,16 @@
             <button class="btn btn-default" ng-click="ws.addNode()">Add</button>
             <div ng-repeat="node in ws.nodeDB.items">
                 <div class="box" ng-click="ws.selectedNode(node)">
-                    <div>{{node.id}} - {{node.dateTimeUtc}}</div>
+                    <div>{{node.dateTimeUtc | date:'MM/dd/yyyy @ h:mma'}}</div>
                 </div>
             </div>
         </div>
         <div class="col-lg-5">
-            <div ng-repeat="node in ws.nodeDB.items">
-                <div class="box" ng-click="ws.selectedNode(node)">
+            <div ng-repeat="node in ws.nodeDB.items" ng-include="'nodeView.html'">
+                <!--<div class="box" ng-click="ws.selectedNode(node)">
                     <div>{{node.id}} - {{node.place.name}} - {{node.dateTimeUtc}}</div>
                     <div>{{node.description}}</div>
-                </div>
+                </div>-->
             </div>
             
             <h1>Add timeline here</h1>

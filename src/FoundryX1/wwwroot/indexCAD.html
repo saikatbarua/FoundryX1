@@ -16,7 +16,7 @@
     <script src="foundry/foundry.core.link.js"></script>
 
     <script src="foundry/foundry.core.component.js"></script>
-    <script src="foundry/foundry.code.pubsub.js"></script>
+    <script src="foundry/foundry.core.pubsub.js"></script>
     <script src="foundry/foundry.core.property.js"></script>
     <script src="foundry/foundry.core.collection.js"></script>
 
@@ -30,8 +30,7 @@
     <script src="foundry/foundry.core.workspace.js"></script>
 
     <script src="indexCAD.js"></script>
-    <script src="dataservice.js"></script>
-    <script src="ontologyLocationModel.js"></script>
+    <script src="ontologycadmodel.js"></script>
     <script src="render3dservice.js"></script>
     <script src="filesaver.js"></script>
 
@@ -46,15 +45,21 @@
     </div>
     <div class="row">
         <div class="col-lg-1">
+            <div ng-repeat="obj in ws.cadPrimitives">
+                <button class="btn btn-default" ng-click="ws.doAdd(obj)">Add {{obj | buttonLabel}}</button><br />
+            </div>
 
-            <button class="btn btn-default" ng-click="ws.doAddPlane()">Add Plane</button><br />
-            <button class="btn btn-default" ng-click="ws.doAddBlock()">Add Block</button><br />
+            <div ng-repeat="obj in ws.customPrimitives">
+                <button class="btn btn-default" ng-click="ws.doAdd(obj)">Add {{obj | buttonLabel}}</button><br />
+            </div>
+
             <button class="btn btn-default" ng-click="ws.doExport()">Export STL</button><br />
             <a class="btn btn-default" href="http://www.viewstl.com/" target="_blank">View STL</a><br />
 
+
         </div>
         <div class="col-lg-6">
-            <div id="cadWorld"  style="height:800px">
+            <div id="cadWorld" style="height:800px">
             </div>
         </div>
         <div class="col-lg-5">

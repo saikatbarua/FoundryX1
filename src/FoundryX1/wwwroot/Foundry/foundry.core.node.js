@@ -124,6 +124,10 @@ Foundry.tools = Foundry.tools || {};
             return this;
         },
 
+        getInputs: function () {
+            var inputs = {};
+            return inputs;
+         },
 
         smashProperty: function (name) {
             try {

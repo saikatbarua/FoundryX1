@@ -60,7 +60,7 @@ var foApp = angular.module('foApp', []);
             self.airports = fo.tools.stringify(airportDB.items, undefined, 3);
 
 
-            render3DService.primitive('block', {})
+            render3DService.loadPrimitive('block', {})
             .then(function (block) {
 
                 airportDB.items.forEach(function (item) { 

@@ -4,11 +4,18 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
 
 (function (app, fo, tools, ops, undefined) {
 
+    app.filter('buttonLabel', function () {
+        return function (obj) {
+            var name = tools.getType(obj);
+            return name.capitalizeFirstLetter();
+        };
+    });
+
     //load templares for dialogs and shapes...
     tools.loadTemplate('foundry/foundry.ui.ngdialog.html');
     tools.loadTemplate('indexCad.ui.html');
 
-    app.controller('workspaceController', function (dataService, render3DService, dialogService) {
+    app.controller('workspaceController', function (ontologyCADService, render3DService, dialogService) {
 
         var self = this;
 
@@ -18,10 +25,14 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
         self.model = model;
 
 
-        var scene = render3DService.init('cadWorld');
+        var scene = render3DService.init('cadWorld', 0, 200, 200);
         render3DService.animate();
 
-        var block = fo.establishType('cad::block', {
+        self.cadPrimitives = fo.typeDictionaryWhere(function (key, value) {
+            return key.startsWith('cad::');
+        });
+
+        fo.establishType('local::steps', {
             width: 10,
             height: 20,
             depth: 40,
@@ -29,45 +40,120 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
             volume: function () { return this.width * this.height * this.depth; },
         }, fo.makeComponent);
 
-        var plane = fo.establishType('cad::plane', {
-            width: 10,
-            height: 20,
-            depth: 40,
-        }, fo.makeComponent);
 
+
+
+        self.customPrimitives = fo.typeDictionaryWhere(function (key, value) {
+            return key.startsWith('local::');
+        });
+
+
+        function editPart(item, onOk) {
+            dialogService.doPopupDialog({
+                root: self,
+                context: item,
+                headerTemplate: 'saveFileHeader.html',
+                bodyTemplate: 'editSpecItem.html',
+                footerTemplate: 'saveFileFooter.html',
+            },
+            {
+                onOK: function ($modalInstance, context) {
+                    onOk && onOk(context);
+                },
+                onCancel: function ($modalInstance, context) {
+                },
+                onExit: function () {
+                },
+                onReady: function () {
+                }
+            },
+            {
+            });
+
+        }
+
+        self.doEdit = function (item) {
+            editPart(item, function (context) {
+                //now refresh the model?
+                item.geom;
+
+            });
+        }
+
+
+        self.doChange = function (prop, mp) {
+            var value = mp.value;
+            mp.setValue(value + 10);
+        }
 
         var currentRoot = model;
 
-        self.doAddPlane = function () {
-            var obj = plane.newInstance().unique();
-            model.capture(obj);
-
-
-            render3DService.loadModel('707', 'models/707.js')
-                .then(function (def) {
-                    var plane = def.create();
-                    //var angle = i * Math.PI / 180;
-                    //var pitch = (270 + i) * Math.PI / 180;
-                    //plane.positionXYZ(radius * Math.cos(angle), radius * Math.sin(angle), 0);
-                    //plane.rotateOnZ(pitch)
-                })
-        }
-
-
-
-        self.doAddBlock = function () {
-            var obj = block.newInstance().unique();
-
+        self.doAdd = function (source) {
+            var name = tools.getType(source);
+            var obj = source.newInstance().unique();
             currentRoot.capture(obj);
             currentRoot = obj;
+            
+
+            var prop = obj.establishedManagedProperty('geom', function () {
+                var type = tools.getType(this);
+                var oDependentValue = fo.currentComputingProperty();
+
+                var spec = tools.applyOverKeyValue(this.getInputs(), function (key, mp) {
+                    oDependentValue.addDependency(mp);
+                    return mp.value;
+                });
+                var def = render3DService.primitive(type, spec);
+                var root = this.myParent && this.myParent.geom;
+                var geom = def.create(root);
+                //position relative to root
+                if (root) {
+                    root.capture(geom);
+                    var pos = root.mesh.position;
+                    geom.setX(pos.x + 3 * this.width)
+                    geom.setY(pos.y + 3 * this.height)
+                }
+                return geom;
+            });
+
+            prop.onValueSmash = function (p, newValue, formula, owner) {
+                //ok now delete the mesh gemoetry
+                var mesh = p.mesh;
+                var parent = mesh.parent;
+                parent.remove(mesh);
+            };
+
+            //fo.subscribe('smash', function (p, value) {
+            //    console.log('smh:' + p.myName + ' => ' + value);
+            //});
+            //fo.subscribe('setValue', function (p, value) {
+            //    console.log('set:' + p.myName + ' => ' + value);
+            //});
+            
+            prop.compute();
 
 
-            var spec = obj.getSpec();
-            render3DService.primitive('block', spec)
-                .then(function (def) {
-                    obj.geom = def.create();
-                })
+            //var i = 0;
+            //obj.geom.rotateOnZ((270 + i) * Math.PI / 180)
+
         }
+
+        //self.doAddPlane = function () {
+        //    var obj = ontologyCADService.plane.newInstance().unique();
+        //    model.capture(obj);
+
+
+        //    render3DService.loadModel('707', 'models/707.js')
+        //        .then(function (def) {
+        //            var plane = def.create();
+        //            //var angle = i * Math.PI / 180;
+        //            //var pitch = (270 + i) * Math.PI / 180;
+        //            //plane.positionXYZ(radius * Math.cos(angle), radius * Math.sin(angle), 0);
+        //            //plane.rotateOnZ(pitch)
+        //        })
+        //}
+
+
 
         self.doExport = function () {
             render3DService.export();
@@ -126,43 +212,8 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
         //});
 
 
-        //render3DService.primitive('block', { width: 5, height: 200, depth: 5})
-        //.then(function (block) {
 
-        //    placeDB.items.forEach(function (item) {
-
-        //         add dummy object along wich we can rotate the bar for the longitute
-        //        var dummyLng = new THREE.Mesh(
-        //                          new THREE.PlaneGeometry(1, 1, 0, 0),
-        //                          new THREE.MeshLambertMaterial({ color: 0xCCCCCC }));
-
-        //        scene.add(dummyLng);
-
-        //         add dummy object along wich we can rotate the bar for the latitude
-        //        var dummyLat = new THREE.Mesh(
-        //                          new THREE.PlaneGeometry(1, 1, 0, 0),
-        //                          new THREE.MeshLambertMaterial({ color: 0xCCCCCC }));
-
-        //        dummyLng.add(dummyLat);
-
-        //        var model = block.create(dummyLat);
-        //        var geo = item.geoLocation;
-        //        var pos = render3DService.latLongToVector3(geo.latitude, geo.longitude, 0, 100);
-        //        model.position(pos);
-
-        //        dummyLng.position.setX(pos.x);
-        //        dummyLng.position.setY(pos.y);
-        //        dummyLng.position.setZ(pos.z);
-
-
-        //        var x = Math.PI / 2 - (geo.latitude).toRad();
-        //        dummyLat.rotation.x = x;
-        //        var y = Math.PI + (geo.longitude).toRad();
-        //        dummyLng.rotation.y = y;
-        //        model.rotateXYZ(x,y,0)
-        //    });
-
-        //});
+ 
 
 
     });

@@ -444,6 +444,9 @@ var Foundry = Foundry || {};
     String.prototype.containsString = function (it) {
         return this.indexOf(it) != -1;
     };
+    String.prototype.capitalizeFirstLetter = function () {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    }
 
 
     if (!String.prototype.format) {
