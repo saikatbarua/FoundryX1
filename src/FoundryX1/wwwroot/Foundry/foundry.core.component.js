@@ -287,8 +287,9 @@ Foundry.tools = Foundry.tools || {};
             return spec;
         },
 
+
         //this spec should be an honst way to recreate the component
-        getInputs: function () {
+        getInputProperties: function () {
             var inputs = {};
 
             var properties = tools.asArray(this.propertyManager());

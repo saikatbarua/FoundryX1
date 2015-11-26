@@ -59,8 +59,8 @@ gulp.task('jasmine', ['specs'], function () {
     var config = {
         port: 9400,
         server: {
-            baseDir: ['.'],
-            index: "./wwwroot/FoundrySpec/testRunner.html"
+            baseDir: ['.', 'wwwroot'],
+            index: "FoundrySpec/testRunner.html"
         }
     };
 

@@ -537,6 +537,27 @@ var Foundry = Foundry || {};
             this.positionXYZ(pos.x, pos.y, pos.z);
             return this;
         },
+        getPosition: function () {
+            var mesh = this.mesh;
+            return mesh.position;
+        },
+        getRotation: function () {
+            var mesh = this.mesh;
+            return mesh.rotation;
+        },
+        meshRemove: function () {
+            //ok now delete the mesh gemoetry
+            var mesh = this.mesh;
+            var parent = mesh.parent;
+            parent && parent.remove(mesh);
+            return this;
+        },
+        meshSelect: function () {
+            return this;
+        },
+        meshUnselect: function () {
+            return this;
+        },
     });
 
     var makeMesh3D = function (properties, subcomponents, parent) {

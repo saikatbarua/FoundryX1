@@ -80,12 +80,6 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
             });
         }
 
-
-        self.doChange = function (prop, mp) {
-            var value = mp.value;
-            mp.setValue(value + 10);
-        }
-
         var currentRoot = model;
 
         self.doAdd = function (source) {
@@ -97,30 +91,23 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
 
             var prop = obj.establishedManagedProperty('geom', function () {
                 var type = tools.getType(this);
-                var oDependentValue = fo.currentComputingProperty();
+                var spec = this.getInputSpec(false);
 
-                var spec = tools.applyOverKeyValue(this.getInputs(), function (key, mp) {
-                    oDependentValue.addDependency(mp);
-                    return mp.value;
-                });
                 var def = render3DService.primitive(type, spec);
                 var root = this.myParent && this.myParent.geom;
                 var geom = def.create(root);
+
                 //position relative to root
                 if (root) {
-                    root.capture(geom);
-                    var pos = root.mesh.position;
-                    geom.setX(pos.x + 3 * this.width)
-                    geom.setY(pos.y + 3 * this.height)
+                    var pos = root.getPosition();
+                    geom.setX(pos.x + this.width)
+                    geom.setY(pos.y + this.height)
                 }
                 return geom;
             });
 
-            prop.onValueSmash = function (p, newValue, formula, owner) {
-                //ok now delete the mesh gemoetry
-                var mesh = p.mesh;
-                var parent = mesh.parent;
-                parent.remove(mesh);
+            prop.onValueSmash = function (geom, newValue, formula, owner) {
+                geom.meshRemove()
             };
 
             //fo.subscribe('smash', function (p, value) {

@@ -11,6 +11,12 @@
         volume: function () { return this.width * this.height * this.depth; },
     }, fo.makeComponent);
 
+    fo.meta.establishMetadata('cad::block', {
+        width: { userEdit: true, type: 'number', formula: 20 },
+        height: { userEdit: true, type: 'number', formula: 30 },
+        depth: { userEdit: true, type: 'number', formula: 30 },
+    });
+
    fo.establishType('cad::plane', {
         width: 10,
         height: 20,

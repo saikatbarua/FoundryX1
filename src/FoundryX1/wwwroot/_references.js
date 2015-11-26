@@ -141,6 +141,7 @@
 /// <reference path="FoundrySpec/Specs/spike-dynamic-collection_spec.js" />
 /// <reference path="FoundrySpec/Specs/spike-entitystorage_spike.js" />
 /// <reference path="FoundrySpec/Specs/spike-filtering_spec.js" />
+/// <reference path="foundryspec/specs/spike-input_spec.js" />
 /// <reference path="FoundrySpec/Specs/spike-link_snap_spec.js" />
 /// <reference path="FoundrySpec/Specs/spike-meta_spec.js" />
 /// <reference path="FoundrySpec/Specs/spike-network_spec.js" />

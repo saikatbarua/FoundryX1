@@ -65,16 +65,12 @@
     </div>
 </script>-->
 
-<script type="text/ng-template" id="modelSpecItem.html">
-    <div>{{prop}} = {{mp.value}}</div>
-</script>
 
 <script type="text/ng-template" id="editSpecItem.html">
     <ul>
-        <li ng-repeat="(prop,mp) in context.getInputs()">
-            <label for="{{prop}}" class="control-label">{{prop}}:</label>
-            <input id="{{prop}}" x-webkit-speech class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop]" placeholder="add stuff" />
-            <button ng-click="root.doChange(prop,mp)" class="btn btn-danger" >change</button>
+        <li ng-repeat="prop in context.userInputs()">
+            <label for="{{prop.myName}}" class="control-label">{{prop.myName}}:</label>
+            <input id="{{prop.myName}}" x-webkit-speech class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
         </li>
     </ul>
 </script>
@@ -85,7 +81,9 @@
         <div ng-click="ws.doEdit(obj)">
             <div>id = {{obj.myGuid}}  {{obj.myType}}</div>
             <ul>
-                <li ng-repeat="(prop,mp) in obj.getInputs()" ng-include="'modelSpecItem.html'"></li>
+                <li ng-repeat="prop in obj.userInputs()">
+                    <div>{{prop.myName}} = {{obj[prop.myName]}}</div>
+                </li>
             </ul>
         </div>
         <!--<section ng-click="selectShape(shape);$event.stopPropagation();" class="shapeTreeItem" data-type="{{shape.context.myType}}" data-selected="{{shape.isSelected}}">

@@ -1263,6 +1263,18 @@ Foundry.tools = Foundry.tools || {};
             return this;
         },
 
+        metaData: function () {
+            return fo.meta ? fo.meta.findMetadata(this.myType) : {};
+        },
+
+        userInputs: function () {
+            var inputs = fo.meta ? fo.meta.findUserInputs(this.myType) : [];
+            return inputs;
+        },
+
+        getInputProperties: function () {
+            return {};
+        },
 
         smashProperty: function (name) {
             try {
@@ -1923,6 +1935,31 @@ Foundry.tools = Foundry.tools || {};
                 spec["subcomponents"] = results;
             }
             return spec;
+        },
+
+
+        //this spec should be an honst way to recreate the component
+        getInputProperties: function () {
+            var inputs = {};
+
+            var properties = tools.asArray(this.propertyManager());
+
+            properties.forEach(function (mp) {
+                var notExist = 'given'.matches(mp.status) ? false : mp.formula !== undefined;
+                if (notExist && !mp.canExport) return;
+
+                var value = mp.value;
+                if (tools.isTyped(value) && 'myType'.matches(mp.name)) {
+                    return;
+                }
+
+                var name = mp.myName;
+                if (value !== undefined) {
+                    inputs[name] = mp;
+                }
+            });
+
+            return inputs;
         },
 
         //this spec should be an honst way to recreate the component
@@ -3256,6 +3293,19 @@ Foundry.meta = Foundry.meta || {};
         return result;
     }
 
+    meta.findUserInputs = function (id) {
+        var definedSpec = meta.findMetadata(id);
+        if (!definedSpec) return [];
+
+        var list = tools.mapOverKeyValue(definedSpec, function (key, value) {
+            if (!value.userEdit) return;
+            value.myName = key;
+            return value;
+        });
+
+        return list;
+    }
+
 
 
 }(Foundry, Foundry.meta, Foundry.tools));
@@ -3698,29 +3748,31 @@ Foundry.listOps = Foundry.listOps || {};
             return item.id;
         }
 
-        this.newInstance = function (mixin, subcomponents, parent, onComplete) {
-            var result = this.defaultType.newInstance(mixin, subcomponents, parent, onComplete)
-            var key = this.idFunction(result);
+        this.newInstance = function (mixin, subcomponents, parent, id) {
+            var result = this.defaultType.newInstance(mixin, subcomponents, parent)
+            var key = id || this.idFunction(mixin);
             key && this.setItem(key, result);
             return result;
         }
 
-        this.establishFunction = function (item, id, onCreate) {
-            var key = id || this.idFunction(item);
+        this.modifyOrCreateInstance = function (mixin, subcomponents, parent, id) {
+            var key = id || this.idFunction(mixin);
             var found = this.getItem(key);
-            if ( !found ) {
-                found = ns.newInstance(this.myName, item);
-                if (!key) {
-                    key = found.asReference(); //force guid to be created
-                }
+            if (!found) {
+                found = this.defaultType.newInstance(mixin, subcomponents, parent);
+                key = key || found.asReference(); //force guid to be created
                 this.setItem(key, found);
-                onCreate && onCreate(found);
+            } else {
+                tools.mixin(found, mixin);
             }
             return found;
         }
 
-        this.establishInstance = function (item, id, onCreate) {
-            return this.establishFunction(item, id, onCreate)
+
+        this.establishInstance = function (mixin, id, onCreate) {
+            var result = this.modifyOrCreateInstance(mixin, [], undefined, id, onCreate);
+            onCreate && onCreate(result)
+            return result;
         }
 
         this.findInstance = function (id, onFound) {

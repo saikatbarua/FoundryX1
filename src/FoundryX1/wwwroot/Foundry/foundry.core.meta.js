@@ -172,6 +172,31 @@ Foundry.meta = Foundry.meta || {};
         return result;
     }
 
+    meta.findUserInputs = function (id) {
+        var definedSpec = meta.findMetadata(id);
+        if (!definedSpec) return [];
+
+        var order = 1;
+        var list = tools.mapOverKeyValue(definedSpec, function (key, value) {
+            if (!value.userEdit) return;
+            value.myName = key;
+            value.sortOrder = value.sortOrder ? value.sortOrder : order++;
+            return value;
+        });
+
+        //sort in order of display
+        list = list.sort(function (a, b) { return a.sortOrder - b.sortOrder; });
+
+        //modify array to also use keys 
+        list.forEach(function (item) {
+            if (!list[item.myName]) {
+                list[item.myName] = item;
+            }
+        })
+
+        return list;
+    }
+
 
 
 }(Foundry, Foundry.meta, Foundry.tools));

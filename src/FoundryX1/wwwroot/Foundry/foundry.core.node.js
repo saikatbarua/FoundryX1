@@ -124,10 +124,30 @@ Foundry.tools = Foundry.tools || {};
             return this;
         },
 
-        getInputs: function () {
-            var inputs = {};
+        metaData: function () {
+            return fo.meta ? fo.meta.findMetadata(this.myType) : {};
+        },
+
+        userInputs: function () {
+            var inputs = fo.meta ? fo.meta.findUserInputs(this.myType) : [];
             return inputs;
-         },
+        },
+
+        getInputSpec: function (ignoreDependencies) {
+            var spec = {};
+            var self = this;
+            var oDependentValue = fo.currentComputingProperty();
+            self.userInputs().map(function (input) {
+                var mp = self.getManagedProperty(input.myName)
+                if ( !ignoreDependencies ) { oDependentValue.addDependency(mp) };
+                spec[input.myName] = mp.value;
+            });
+            return spec;
+        },
+
+        getInputProperties: function () {
+            return {};
+        },
 
         smashProperty: function (name) {
             try {
