@@ -139,7 +139,7 @@ Foundry.tools = Foundry.tools || {};
             var oDependentValue = fo.currentComputingProperty();
             self.userInputs().map(function (input) {
                 var mp = self.getManagedProperty(input.myName)
-                if ( !ignoreDependencies ) { oDependentValue.addDependency(mp) };
+                if (!ignoreDependencies && oDependentValue) { oDependentValue.addDependency(mp) };
                 spec[input.myName] = mp.value;
             });
             return spec;

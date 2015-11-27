@@ -1575,6 +1575,7 @@ describe("Foundry: input", function () {
 
         fo.meta.establishMetadata('spike::block', {
             width: { userEdit: true,  type: 'number', formula: 20 },
+            length: { userEdit: true, type: 'number', formula: 20 },
             height: { formula: 30 },
             depth: { type: 'number', formula: 30 },
         });
@@ -1599,8 +1600,9 @@ describe("Foundry: input", function () {
     it("should be able to get inputs", function () {
         var obj = blockType.newInstance();
 
-        var props = obj.getInputs();
+        var props = obj.userInputs();
         expect(props).toBeDefined();
+        expect(props.length).toEqual(2);
         expect(props.width).toBeDefined();
     });
 

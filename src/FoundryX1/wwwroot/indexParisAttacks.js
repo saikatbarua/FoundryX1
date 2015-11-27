@@ -145,10 +145,11 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
 
         function editNode(node) {
             dialogService.doPopupDialog({
+                root: self,
                 context: node,
-                headerTemplate: 'saveFileHeader.html',
-                bodyTemplate: 'nodeBody.html',
-                footerTemplate: 'saveFileFooter.html',
+                headerTemplate: 'editEntityHeader.html',
+                bodyTemplate: 'editEntityBody.html',
+                footerTemplate: 'editEntityFooter.html',
             },
             {
                 onOK: function ($modalInstance, context) {
@@ -162,8 +163,8 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
             },
             {
             });
-
         }
+
         self.editNode = function (item) {
             editNode(item);
         }

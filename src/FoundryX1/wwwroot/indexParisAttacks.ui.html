@@ -1,4 +1,55 @@
-﻿<script id="nodeBody.html" type="text/ng-template">
+﻿
+<script id="editEntityHeader.html" type="text/ng-template">
+    <p>You are editing an entity</p>
+</script>
+
+
+<script id="editEntityFooter.html" type="text/ng-template">
+    <button class='btn btn-success' data-dismiss='modal' ng-click="doOK()">OK</button>
+    <button class='btn btn-default ' data-dismiss='modal' ng-click="doCancel()">Cancel</button>
+</script>
+
+
+<script type="text/ng-template" id="editSpecItem.html">
+    <ul>
+        <li ng-repeat="prop in context.userInputs()">
+            <label for="{{prop.myName}}" class="control-label">{{prop.myName}}:</label>
+            <input id="{{prop.myName}}" x-webkit-speech class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
+        </li>
+    </ul>
+</script>
+
+<script type="text/ng-template" id="editEntityBody.html">
+
+    <div >
+        <div>{{context.myType}}</div>
+
+        <div ng-repeat="prop in context.userInputs()">
+            <div ng-if="prop.isType('string') ">
+                <label for="{{prop.myName}}" class="control-label">{{prop.myName}}:</label>
+                <input id="{{prop.myName}}"class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
+            </div>
+            <div ng-if="prop.isType('datetime') ">
+                <label for="{{prop.myName}}" class="control-label">{{prop.myName}}:</label>
+                <input id="{{prop.myName}}"  class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
+            </div>
+            <div ng-if="prop.isType('number') ">
+                <label for="{{prop.myName}}" class="control-label">{{prop.myName}}:</label>
+                <input id="{{prop.myName}}" class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
+            </div>
+        </div>
+
+    </div>
+
+    <ul>
+        <li ng-repeat="context in context.mySubcomponents()" ng-include="'editEntityBody.html'"></li>
+    </ul>
+
+</script>
+
+
+
+<script id="nodeBody.html" type="text/ng-template">
 
     <div class="form-horizontal" role="form">
         <div class="form-group notePanel-formGroup" style="margin-left:2px">
@@ -8,9 +59,6 @@
 
         <label for="IDTextNote" class="control-label">Details:</label>
         <textarea class="form-control" id="IDTextNote" rows="5" ng-model="context.description" placeholder="the note text"></textarea>
-
-
-
     </div>
 
 </script>
@@ -27,10 +75,38 @@
 </script>
 
 <script type="text/ng-template" id="placeView.html">
-        <span><strong>location:</strong><a ng-href="{{'https://www.google.com/?gws_rd=ssl#q=' + obj.name}}"  target="_blank" >{{obj.name}}</a>
+        <strong>location:</strong><a ng-href="{{'https://www.google.com/?gws_rd=ssl#q=' + obj.name}}"  target="_blank" >{{obj.name}}</a>
         <span ng-repeat="obj in [obj.geoLocation]" ng-include="'geoLocationView.html'"></span>
 </script>
 
 <script type="text/ng-template" id="geoLocationView.html">
         <strong>lat: </strong>{{obj.latitude}}  <strong>long: </strong>{{obj.longitude}}
+</script>
+
+
+<script type="text/ng-template" id="editSpecItem.html">
+    <ul>
+        <li ng-repeat="prop in context.userInputs()">
+            <label for="{{prop.myName}}" class="control-label">{{prop.myName}}:</label>
+            <input id="{{prop.myName}}" x-webkit-speech class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
+        </li>
+    </ul>
+</script>
+
+<script type="text/ng-template" id="modelTreeItem.html">
+
+    <article>
+        <div ng-click="root.doEdit(obj)">
+            <div>id = {{obj.myGuid}}  {{obj.myType}}</div>
+            <ul>
+                <li ng-repeat="prop in obj.userInputs()">
+                    <div>{{prop.myName}} = {{obj[prop.myName]}}</div>
+                </li>
+            </ul>
+        </div>
+        <ul>
+            <li ng-repeat="obj in obj.mySubcomponents()" ng-include="'modelTreeItem.html'"></li>
+        </ul>
+
+    </article>
 </script>

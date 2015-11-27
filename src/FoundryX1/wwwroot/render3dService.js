@@ -550,12 +550,20 @@ var Foundry = Foundry || {};
             var mesh = this.mesh;
             var parent = mesh.parent;
             parent && parent.remove(mesh);
+            delete this.myParent; //protect against leak
             return this;
         },
         meshSelect: function () {
             return this;
         },
         meshUnselect: function () {
+            return this;
+        },
+        onTopOf: function (target) {
+            var parent = this.myParent;
+            var pos = target.getPosition();
+            this.setX(pos.x + parent.width)
+            this.setY(pos.y + parent.height)
             return this;
         },
     });
@@ -576,9 +584,12 @@ var Foundry = Foundry || {};
     };
     //Prototype defines functions using JSON syntax
     fo.tools.mixin(model3D.prototype, {
-        create: function (parent) {
-            var instance = meshDef.newInstance({ mesh: new THREE.Mesh(this.geometry, this.material) });
-            var target = parent && parent.mesh ? parent.mesh : scene;
+        create: function (root, parent) {
+            var instance = meshDef.newInstance({
+                myParent: parent,
+                mesh: new THREE.Mesh(this.geometry, this.material)
+            });
+            var target = root && root.mesh ? root.mesh : scene;
             target.add(instance.mesh);
             return instance;
         }

@@ -165,6 +165,7 @@ Foundry.tools = Foundry.tools || {};
 
     ns.typeDictionaryWhere = function (func) {
         var result = tools.applyOverKeyValue(_specs, function (key, value) {
+            if (!value) return undefined; //removed items are undefined
             return !func || func(key, value) ? value : undefined;
         });
         return result;

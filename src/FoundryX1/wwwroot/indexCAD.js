@@ -95,13 +95,11 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
 
                 var def = render3DService.primitive(type, spec);
                 var root = this.myParent && this.myParent.geom;
-                var geom = def.create(root);
+                var geom = def.create(root, this);
 
                 //position relative to root
                 if (root) {
-                    var pos = root.getPosition();
-                    geom.setX(pos.x + this.width)
-                    geom.setY(pos.y + this.height)
+                    geom.onTopOf(root);
                 }
                 return geom;
             });
@@ -167,40 +165,6 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
             });
         };
 
-
-
-
-
-
-        //render3DService.primitive('block', { width: 20, height: 100, depth: 5 })
-        //.then(function (block) {
-
-        //    placeDB.items.forEach(function (item) {
-
- 
-        //        var model = block.create();
-        //        var geo = item.geoLocation;
-        //        var pos = render3DService.latLongToVector3(geo.latitude, geo.longitude, 0, 0);
-
-        //        //var x = Math.PI / 2 - (geo.latitude).toRad();
-        //        model.rotateOnY(geo.longitude * Math.PI / 180);
-        //        model.rotateOnZ((270 + geo.latitude) * Math.PI / 180)
-
-        //        var radius = 20;
-        //        var angle = geo.longitude * Math.PI / 180;
-
-        //        model.positionXYZ(radius * Math.cos(angle), radius * Math.sin(angle), 0);
-        //       // dummyLat.rotation.x = x;
-        //       // var y = Math.abs(geo.longitude - 180);
-        //       // dummyLng.rotation.y = y;
-        //        //model.position(pos);
-        //    });
-
-        //});
-
-
-
- 
 
 
     });

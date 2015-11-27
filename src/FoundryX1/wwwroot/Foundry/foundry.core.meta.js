@@ -39,6 +39,7 @@ Foundry.meta = Foundry.meta || {};
     meta.metadataDictionaryWhere = function (func) {
         if (!func) return {};
         var result = tools.applyOverKeyValue(_metadata, function (key, value) {
+            if (!value) return undefined; //removed items are undefined
             return !func || func(key, value) ? value : undefined;
         });
         return result;
@@ -172,6 +173,17 @@ Foundry.meta = Foundry.meta || {};
         return result;
     }
 
+    var MetaInput = function (key, order, spec) {
+        tools.mixin(this, spec);
+        this.myName = key;
+        this.sortOrder = this.sortOrder ? this.sortOrder : order;
+        return this;
+    }
+
+    MetaInput.prototype.isType = function (type) {
+        return this.type.matches(type);
+    }
+
     meta.findUserInputs = function (id) {
         var definedSpec = meta.findMetadata(id);
         if (!definedSpec) return [];
@@ -179,9 +191,7 @@ Foundry.meta = Foundry.meta || {};
         var order = 1;
         var list = tools.mapOverKeyValue(definedSpec, function (key, value) {
             if (!value.userEdit) return;
-            value.myName = key;
-            value.sortOrder = value.sortOrder ? value.sortOrder : order++;
-            return value;
+            return new MetaInput(key, order++, value);
         });
 
         //sort in order of display
