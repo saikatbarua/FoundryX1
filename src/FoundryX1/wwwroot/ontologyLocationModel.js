@@ -48,9 +48,9 @@
     });
 
     fo.meta.establishMetadata('VaaS::node', {
-        dateTimeUtc: { userEdit: true, type: 'datetime' },
-        place: { userEdit: true, type: 'VaaS::node' },
-        description: { userEdit: true, type: 'string' },
+        dateTimeUtc: { userEdit: true, type: 'datetime', sortOrder: 1 },
+        place: { userEdit: true, type: 'VaaS::node', sortOrder: 10 },
+        description: { userEdit: true, type: 'text', sortOrder: 2 },
     });
 
 

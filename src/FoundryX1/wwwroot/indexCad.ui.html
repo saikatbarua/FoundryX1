@@ -1,4 +1,26 @@
-﻿<script id="cadBody.html" type="text/ng-template">
+﻿
+<script id="editEntityHeader.html" type="text/ng-template">
+    <p>You are editing an entity</p>
+</script>
+
+
+<script id="editEntityFooter.html" type="text/ng-template">
+    <button class='btn btn-info' data-dismiss='modal' ng-click="doMore()">more</button>
+    <button class='btn btn-success' data-dismiss='modal' ng-click="doOK()">OK</button>
+    <button class='btn btn-default ' data-dismiss='modal' ng-click="doCancel()">Cancel</button>
+</script>
+
+
+<script type="text/ng-template" id="editEntityInputs.html">
+    <ul>
+        <li ng-repeat="prop in context.userInputs()">
+            <label for="{{::prop.myName}}" class="control-label">{{::prop.myName}}:</label>
+            <input id="{{::prop.myName}}" x-webkit-speech class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
+        </li>
+    </ul>
+</script>
+
+<script id="cadBody.html" type="text/ng-template">
 
     <div class="form-horizontal" role="form">
         <div class="form-group notePanel-formGroup" style="margin-left:2px">
@@ -68,9 +90,9 @@
 
 <script type="text/ng-template" id="editSpecItem.html">
     <ul>
-        <li ng-repeat="prop in context.userInputs()">
-            <label for="{{prop.myName}}" class="control-label">{{prop.myName}}:</label>
-            <input id="{{prop.myName}}" x-webkit-speech class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
+        <li ng-repeat="prop in ::context.userInputs()">
+            <!--<label for="{{prop.myName}}" class="control-label">{{prop.myName}}:</label>
+            <input id="{{prop.myName}}" x-webkit-speech class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />-->
         </li>
     </ul>
 </script>
@@ -79,10 +101,10 @@
 
     <article>
         <div ng-click="ws.doEdit(obj)">
-            <div>id = {{obj.myGuid}}  {{obj.myType}}</div>
+            <div>{{obj.myType}}  {{obj.myGuid}}</div>
             <ul>
-                <li ng-repeat="prop in obj.userInputs()">
-                    <div>{{prop.myName}} = {{obj[prop.myName]}}</div>
+                <li ng-repeat="prop in ::obj.userInputs()">
+                    <div>{{::prop.myName}} = {{obj[prop.myName]}}</div>
                 </li>
             </ul>
         </div>
@@ -91,6 +113,8 @@
             <p ng-if="!shape.isEditing" ng-include="'shapeTreeItemDisplay.html'"> </p>
             <p ng-if="shape.isEditing" ng-include="'shapeTreeItemEditor.html'"></p>
             <div style="border-bottom: 1px solid red"></div>
+
+            {{obj[prop.myName]}}
         </section>-->
         <ul>
             <li ng-repeat="obj in obj.mySubcomponents()" ng-include="'modelTreeItem.html'"></li>

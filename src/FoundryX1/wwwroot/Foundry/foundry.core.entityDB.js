@@ -108,7 +108,7 @@ Foundry.listOps = Foundry.listOps || {};
                 return fo.meta.findMetadata(this.myName);
             },
             defaultType: function () {
-                return fo.establishType(this.myName);
+                return fo.findType(this.myName) || fo.establishType(this.myName);
             },
         };
 

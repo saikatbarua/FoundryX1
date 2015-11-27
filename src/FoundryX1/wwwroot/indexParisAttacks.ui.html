@@ -10,32 +10,25 @@
 </script>
 
 
-<script type="text/ng-template" id="editSpecItem.html">
-    <ul>
-        <li ng-repeat="prop in context.userInputs()">
-            <label for="{{prop.myName}}" class="control-label">{{prop.myName}}:</label>
-            <input id="{{prop.myName}}" x-webkit-speech class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
-        </li>
-    </ul>
-</script>
 
 <script type="text/ng-template" id="editEntityBody.html">
 
-    <div >
-        <div>{{context.myType}}</div>
+    <div>
+        <!--<div>{{context.myType}}</div>-->
 
-        <div ng-repeat="prop in context.userInputs()">
-            <div ng-if="prop.isType('string') ">
-                <label for="{{prop.myName}}" class="control-label">{{prop.myName}}:</label>
-                <input id="{{prop.myName}}"class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
+        <div ng-repeat="prop in ::context.userInputs()">
+            <label for="{{::prop.myName}}" class="control-label">{{::prop.myName}}:</label>
+            <div ng-if="::prop.isType('string') ">
+                <input id="{{::prop.myName}}" class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
             </div>
-            <div ng-if="prop.isType('datetime') ">
-                <label for="{{prop.myName}}" class="control-label">{{prop.myName}}:</label>
-                <input id="{{prop.myName}}"  class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
+            <div ng-if="::prop.isType('text') ">
+                <textarea id="{{::prop.myName}}" class="form-control" capture-focus="true" rows="5" ng-model="context[prop.myName]" placeholder="add stuff"></textarea>
             </div>
-            <div ng-if="prop.isType('number') ">
-                <label for="{{prop.myName}}" class="control-label">{{prop.myName}}:</label>
-                <input id="{{prop.myName}}" class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
+            <div ng-if="::prop.isType('datetime') ">
+                <input id="{{::prop.myName}}" class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
+            </div>
+            <div ng-if="::prop.isType('number') ">
+                <input id="{{::prop.myName}}" class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
             </div>
         </div>
 
@@ -67,7 +60,7 @@
 
     <div class="box" ng-click="ws.selectedNode(node)">
         <h5>{{node.id}} - {{node.dateTimeUtc | date:'MM/dd/yyyy @ h:mma'}}</h5>
-        <button class="btn btn-success" style="float:right"  ng-click="ws.editNode(node)">edit</button>
+        <button class="btn btn-success" style="float:right" ng-click="ws.editNode(node)">edit</button>
         <div ng-repeat="obj in [node.place]" ng-include="'placeView.html'"></div>
         <div style="margin:10px">{{node.description}}</div>
     </div>
@@ -75,18 +68,20 @@
 </script>
 
 <script type="text/ng-template" id="placeView.html">
-        <strong>location:</strong><a ng-href="{{'https://www.google.com/?gws_rd=ssl#q=' + obj.name}}"  target="_blank" >{{obj.name}}</a>
-        <span ng-repeat="obj in [obj.geoLocation]" ng-include="'geoLocationView.html'"></span>
+    <strong>location:</strong>
+    <a ng-href="{{'https://www.google.com/?gws_rd=ssl#q=' + obj.name}}" target="_blank">{{obj.name}}</a>
+    <span ng-repeat="obj in [obj.geoLocation]" ng-include="'geoLocationView.html'"></span>
 </script>
 
 <script type="text/ng-template" id="geoLocationView.html">
-        <strong>lat: </strong>{{obj.latitude}}  <strong>long: </strong>{{obj.longitude}}
+    <strong>lat: </strong>{{obj.latitude}}
+    <strong>long: </strong>{{obj.longitude}}
 </script>
 
 
 <script type="text/ng-template" id="editSpecItem.html">
     <ul>
-        <li ng-repeat="prop in context.userInputs()">
+        <li ng-repeat="prop in ::context.userInputs()">
             <label for="{{prop.myName}}" class="control-label">{{prop.myName}}:</label>
             <input id="{{prop.myName}}" x-webkit-speech class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
         </li>
@@ -99,8 +94,8 @@
         <div ng-click="root.doEdit(obj)">
             <div>id = {{obj.myGuid}}  {{obj.myType}}</div>
             <ul>
-                <li ng-repeat="prop in obj.userInputs()">
-                    <div>{{prop.myName}} = {{obj[prop.myName]}}</div>
+                <li ng-repeat="prop in ::obj.userInputs()">
+                    <div>{{::prop.myName}} = {{obj[prop.myName]}}</div>
                 </li>
             </ul>
         </div>

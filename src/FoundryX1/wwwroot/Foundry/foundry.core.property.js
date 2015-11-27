@@ -52,6 +52,11 @@ Foundry.tools = Foundry.tools || {};
         return managed[name] = value;
     }
 
+    function findProperty(parent, name) {
+        var managed = parent._managed;
+        return managed && managed[name];
+    }
+
     var Property = function (owner, name, init) {
         //"use strict";
         if (init == null) { //very special case that makes smash to unselected very easy
@@ -573,7 +578,7 @@ Foundry.tools = Foundry.tools || {};
     ns.Property.capture = setProperty;
 
     ns.Property.getManager = getManager;
-    ns.Property.find = getProperty;
+    ns.Property.find = findProperty;
     ns.makeProperty = function (owner, name, init) {
         return new ns.Property(owner, name, init);
     };

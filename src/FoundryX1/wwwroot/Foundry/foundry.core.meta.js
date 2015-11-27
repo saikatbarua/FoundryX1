@@ -5,12 +5,55 @@ Foundry.meta = Foundry.meta || {};
 //metadata
 (function (ns, meta, tools, undefined) {
 
+    function metaInput(key, order, spec) {
+        var input = {
+            myName: key,
+            sortOrder: spec.sortOrder ? spec.sortOrder : order,
+        };
+        tools.mixin(input, spec);
+
+        input.isType = function (type) {
+            var result = this.type && this.type.matches(type);
+            return result;
+        }
+        return input;
+    }
+
+
+
+
+
     var MetaData = function (spec) {
         tools.mixin(this, spec);
+
         return this;
     }
     MetaData.prototype.extendSpec = function (obj) {
+        delete this._userInputs;
         tools.mixin(this, obj);
+    }
+
+    MetaData.prototype.userInputs = function () {
+        if (this._userInputs) return this._userInputs;
+
+        var order = 1;
+        var list = tools.mapOverKeyValue(this, function (key, value) {
+            if (!value.userEdit) return;
+            return metaInput(key, order++, value);
+        });
+
+        //sort in order of display
+        list = list.sort(function (a, b) { return a.sortOrder - b.sortOrder; });
+
+        //modify array to also use keys 
+        list.forEach(function (item) {
+            if (!list[item.myName]) {
+                list[item.myName] = item;
+            }
+        })
+
+        this._userInputs = list;
+        return this._userInputs;
     }
 
 
@@ -173,38 +216,12 @@ Foundry.meta = Foundry.meta || {};
         return result;
     }
 
-    var MetaInput = function (key, order, spec) {
-        tools.mixin(this, spec);
-        this.myName = key;
-        this.sortOrder = this.sortOrder ? this.sortOrder : order;
-        return this;
-    }
-
-    MetaInput.prototype.isType = function (type) {
-        return this.type.matches(type);
-    }
 
     meta.findUserInputs = function (id) {
         var definedSpec = meta.findMetadata(id);
         if (!definedSpec) return [];
 
-        var order = 1;
-        var list = tools.mapOverKeyValue(definedSpec, function (key, value) {
-            if (!value.userEdit) return;
-            return new MetaInput(key, order++, value);
-        });
-
-        //sort in order of display
-        list = list.sort(function (a, b) { return a.sortOrder - b.sortOrder; });
-
-        //modify array to also use keys 
-        list.forEach(function (item) {
-            if (!list[item.myName]) {
-                list[item.myName] = item;
-            }
-        })
-
-        return list;
+        return definedSpec.userInputs();
     }
 
 

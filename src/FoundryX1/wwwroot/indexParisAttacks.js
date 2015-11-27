@@ -148,6 +148,7 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
                 root: self,
                 context: node,
                 headerTemplate: 'editEntityHeader.html',
+                //bodyTemplate: 'nodeBody.html',
                 bodyTemplate: 'editEntityBody.html',
                 footerTemplate: 'editEntityFooter.html',
             },

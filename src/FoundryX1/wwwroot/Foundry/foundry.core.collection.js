@@ -73,6 +73,11 @@ Foundry.tools = Foundry.tools || {};
         return collections[name];
     }
 
+    function findCollection(parent, name) {
+        var collections = parent._collections;
+        return collections && collections[name];
+    }
+
     var Collection = function (owner, name, init) {
 
         this.myName = name || undefined;
@@ -103,7 +108,7 @@ Foundry.tools = Foundry.tools || {};
     ns.Collection = Collection;
     ns.Collection.getManager = getManager;
     ns.Collection.capture = setCollection;
-    ns.Collection.find = getCollection;
+    ns.Collection.find = findCollection;
 
     ns.makeCollection = function (name, subcomponents, parent) {
         return new ns.Collection(parent, name, subcomponents);

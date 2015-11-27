@@ -52,9 +52,9 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
             dialogService.doPopupDialog({
                 root: self,
                 context: item,
-                headerTemplate: 'saveFileHeader.html',
-                bodyTemplate: 'editSpecItem.html',
-                footerTemplate: 'saveFileFooter.html',
+                headerTemplate: 'editEntityHeader.html',
+                bodyTemplate: 'editEntityInputs.html',
+                footerTemplate: 'editEntityFooter.html',
             },
             {
                 onOK: function ($modalInstance, context) {

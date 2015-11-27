@@ -1272,6 +1272,18 @@ Foundry.tools = Foundry.tools || {};
             return inputs;
         },
 
+        getInputSpec: function (ignoreDependencies) {
+            var spec = {};
+            var self = this;
+            var oDependentValue = fo.currentComputingProperty();
+            self.userInputs().map(function (input) {
+                var mp = self.getManagedProperty(input.myName)
+                if (!ignoreDependencies && oDependentValue) { oDependentValue.addDependency(mp) };
+                spec[input.myName] = mp.value;
+            });
+            return spec;
+        },
+
         getInputProperties: function () {
             return {};
         },
@@ -3160,6 +3172,7 @@ Foundry.meta = Foundry.meta || {};
     meta.metadataDictionaryWhere = function (func) {
         if (!func) return {};
         var result = tools.applyOverKeyValue(_metadata, function (key, value) {
+            if (!value) return undefined; //removed items are undefined
             return !func || func(key, value) ? value : undefined;
         });
         return result;
@@ -3293,15 +3306,36 @@ Foundry.meta = Foundry.meta || {};
         return result;
     }
 
+    var MetaInput = function (key, order, spec) {
+        tools.mixin(this, spec);
+        this.myName = key;
+        this.sortOrder = this.sortOrder ? this.sortOrder : order;
+        return this;
+    }
+
+    MetaInput.prototype.isType = function (type) {
+        return this.type.matches(type);
+    }
+
     meta.findUserInputs = function (id) {
         var definedSpec = meta.findMetadata(id);
         if (!definedSpec) return [];
 
+        var order = 1;
         var list = tools.mapOverKeyValue(definedSpec, function (key, value) {
             if (!value.userEdit) return;
-            value.myName = key;
-            return value;
+            return new MetaInput(key, order++, value);
         });
+
+        //sort in order of display
+        list = list.sort(function (a, b) { return a.sortOrder - b.sortOrder; });
+
+        //modify array to also use keys 
+        list.forEach(function (item) {
+            if (!list[item.myName]) {
+                list[item.myName] = item;
+            }
+        })
 
         return list;
     }
@@ -3477,6 +3511,7 @@ Foundry.tools = Foundry.tools || {};
 
     ns.typeDictionaryWhere = function (func) {
         var result = tools.applyOverKeyValue(_specs, function (key, value) {
+            if (!value) return undefined; //removed items are undefined
             return !func || func(key, value) ? value : undefined;
         });
         return result;
@@ -3673,6 +3708,7 @@ Foundry.tools = Foundry.tools || {};
 
     ns.relationDictionaryWhere = function (func) {
         var result = tools.applyOverKeyValue(_relation, function (key, value) {
+            if (!value) return undefined; //removed items are undefined
             return !func || func(key, value) ? value : undefined;
         });
         return result;
