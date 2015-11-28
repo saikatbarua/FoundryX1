@@ -55,30 +55,35 @@
         .box {
             margin: 10px;
         }
+        .open {
+            margin: 10px;
+            float:right;
+        }
     </style>
 
 </head>
 <body ng-controller="workspaceController as ws">
-    <div class="container well">
+    <div class="well">
         <h1>{{ws.title}}</h1>
+        <span ng-repeat="obj in ws.createOntology" class="open">
+            <button class="btn btn-default" ng-click="ws.doAdd(obj)">Add {{obj | buttonLabel}}</button>
+        </span>
     </div>
     <div class="row">
-        <div class="col-lg-1">
-            <div ng-repeat="obj in ws.createOntology">
-                <button class="btn btn-default" ng-click="ws.doAdd(obj)">Add {{obj | buttonLabel}}</button><br />
-            </div>
+        <!--<div class="col-lg-1">
 
             <div ng-repeat="node in ws.nodeDB.items">
                 <div class="box" ng-click="ws.selectedNode(node)">
                     <div>{{node.dateTimeUtc | date:'MM/dd/yyyy @ h:mma'}}</div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-5">
+        </div>-->
+        <div class="col-lg-6">
+            <div class="box" id="timeLine"></div>
+            <div style="border : solid 2px #ff0000;  padding : 4px;  height : 600px; overflow : auto; ">
+                <div class="box" ng-repeat="node in ws.nodeDB.items" ng-include="ws.computeInclude(node)"></div>
+            </div>
 
-            <div ng-repeat="node in ws.nodeDB.items" ng-include="ws.computeInclude(node)"></div>
-
-            <h1>Add timeline here</h1>
         </div>
         <div class="col-lg-6">
             <div id="map"></div>
@@ -86,9 +91,6 @@
         </div>
 
     </div>
-
-
-
 
 </body>
 </html>

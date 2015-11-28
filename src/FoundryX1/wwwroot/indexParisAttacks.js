@@ -48,7 +48,7 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
         }
 
         this.zoomToNode = function (item) {
-            var loc = item.place && item.place.geoLocation;
+            var loc = item && item.place && item.place.geoLocation;
             if (!loc) return;
 
             var pos = [loc.latitude, loc.longitude];
@@ -68,7 +68,93 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
 
     });
 
-}(foApp, Foundry,  Foundry.tools, L));
+}(foApp, Foundry, Foundry.tools, L));
+
+
+(function (app, fo, tools, ops, time, undefined) {
+
+    app.service('renderTimeLineService', function ($location, $q) {
+        var container;
+
+        function getHttpContext() {
+            if (location) {
+                return location.protocol + "//" + location.host + location.pathname.slice(0, location.pathname.indexOf('/', 1));
+            }
+        };
+
+        this.init = function (id) {
+            // DOM element where the Timeline will be attached
+            container = document.getElementById(id);
+        }
+
+
+        ops.registerGroup('placeName', function(node){
+            return node.place.name;
+        });
+
+
+        this.renderNodes = function (list) {
+            //get unique place names...
+            var names = Object.keys(ops.applyGrouping(list, 'placeName'));
+            var groups = names.map(function (group) {
+                return {
+                    id: names.indexOf(group),
+                    content: group
+                }
+            });
+
+            var i = 0;
+            var timeMap = list.map(function (item) {
+                i += 1;
+                var group = item.place.name;
+                return {
+                    id: i,
+                    source: item,
+                    group: names.indexOf(group),
+                    //content: ' <span style="color:#97B0F8;">(' + i + ')</span>',
+                    start: item.dateTimeUtc,
+                    editable: false,
+                };
+            });
+
+            // Create a DataSet (allows two way data-binding)
+            var items = new time.DataSet(timeMap);
+
+            // Configuration for the Timeline
+            var options = {
+                groupOrder: 'content',  // groupOrder can be a property name or a sorting function
+                stack: false,
+                editable: true,       // true or false
+                template: function (item) {
+                    var text = '"' + item.source.description + '"';
+                    var html = '<p class="bg-primary">' + text + '</p>'
+                    var html = '<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title=' + text +' >[' + item.id + ']</button>';
+
+                   // var html = ' <span style="color:#97B0F8;">[' + item.id + ']</span>'; // generate HTML markup for this item
+                    return html;
+                }
+
+            };
+
+
+            //http://visjs.org/docs/timeline/
+            // Create a Timeline
+            var timeline = new time.Timeline(container);
+            timeline.setOptions(options);
+            timeline.setGroups(groups);
+            timeline.setItems(items);
+
+            timeline.on('select', function (properties) {
+                var node = properties.items.map(function (id) {
+                    return list[id];
+                })[0];
+                fo.publish('nodeSelected', [node]);
+            });
+        }
+
+    });
+
+}(foApp, Foundry, Foundry.tools, Foundry.listOps, vis));
 
 (function (app, fo, tools, undefined) {
 
@@ -83,7 +169,7 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
     tools.loadTemplate('foundry/foundry.ui.ngdialog.html');
     tools.loadTemplate('indexParisAttacks.ui.html');
 
-    app.controller('workspaceController', function ($rootScope, dataService, ontologyLocationService, render3DService, render2DMapService, dialogService) {
+    app.controller('workspaceController', function ($rootScope, dataService, ontologyLocationService, render3DService, render2DMapService, renderTimeLineService, dialogService) {
         var self = this;
 
         self.title = 'paris attacks';
@@ -104,7 +190,8 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
         self.placeDB = placeDB;
         self.nodeDB = nodeDB;
 
-        render2DMapService.init('map')
+        renderTimeLineService.init('timeLine');
+        render2DMapService.init('map');
         render3DService.init('earth');
         render3DService.animate();
 
@@ -127,10 +214,9 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
                         })
                     }),
                 });
-                //node.capture(node.place);
-                //node.place.capture(node.place.geoLocation);
             });
 
+            renderTimeLineService.renderNodes(nodeDB.items);
             render2DMapService.renderNodes(nodeDB.items);
             //render3DService.renderNodes(nodeDB.items);
 
@@ -143,9 +229,7 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
                     var geo = item.place.geoLocation;
                     var pos = render3DService.latLongToVector3(geo.latitude, geo.longitude);
                     model.position(pos);
-                    //var ang = render3DService.latLongToAngles(geo.latitude, geo.longitude);
-                    //model.rotateOnZ(ang[1]);
-                });
+                 });
 
             });
 
@@ -179,14 +263,19 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
             editNode(item);
         }
 
-        self.selectedNode = function (item) {
-            render2DMapService.zoomToNode(item);
-            var geo = item.place && item.place.geoLocation;
+        self.selectedNode = function (node) {
+            render2DMapService.zoomToNode(node);
+            var geo = node && node.place && node.place.geoLocation;
             if (geo) {
                 var pos = render3DService.latLongToVector3(geo.latitude, geo.longitude, 0, 10);
                 render3DService.zoomToPos(pos);
             }
         }
+
+        fo.subscribe('nodeSelected', function (node) {
+            node && self.selectedNode(node);
+        });
+
 
         self.userInputs = function (obj, key) {
             var inputs = obj.userInputs(key);
