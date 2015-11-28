@@ -20,6 +20,8 @@
  */
  
 var Geo = Geo || {};  // Geo namespace, representing static class
+var GeoCalc = Geo;  // Geo namespace, representing static class
+
 
  (function (ns, undefined) {
 

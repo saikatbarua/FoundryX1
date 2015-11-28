@@ -15,18 +15,32 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
     tools.loadTemplate('foundry/foundry.ui.ngdialog.html');
     tools.loadTemplate('indexCad.ui.html');
 
+
+
+
     app.controller('workspaceController', function (ontologyCADService, render3DService, dialogService) {
 
         var self = this;
 
-        var space = fo.makeModelWorkspace('steve');
+        var space = fo.makeModelWorkspace('steve workspace');
         self.space = space;
         var model = space.rootModel;
         self.model = model;
 
 
-        var scene = render3DService.init('cadWorld', 0, 200, 200);
+        render3DService.init('cadWorld');
+
+        render3DService.cameraPosition(0, 200, 200);
         render3DService.animate();
+
+        var viewModel = render3DService.entity.newInstance({
+            myName: 'cadWorld',
+            context: model,
+            geom: function () { return render3DService.rootModel(); },
+        });
+
+        self.viewModel = viewModel;
+
 
         self.cadPrimitives = fo.typeDictionaryWhere(function (key, value) {
             return key.startsWith('cad::');
@@ -86,27 +100,34 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
             var name = tools.getType(source);
             var obj = source.newInstance().unique();
             currentRoot.capture(obj);
-            currentRoot = obj;
-            
+            //currentRoot = obj;
 
-            var prop = obj.establishedManagedProperty('geom', function () {
-                var type = tools.getType(this);
-                var spec = this.getInputSpec(false);
+            //not it is time to create geometry
+            var cadNode = render3DService.entity.newInstance({
+                context: obj,
+            }, [], viewModel);
+            viewModel.addSubcomponent(cadNode);
+            cadNode.geom;
 
-                var def = render3DService.primitive(type, spec);
-                var root = this.myParent && this.myParent.geom;
-                var geom = def.create(root, this);
 
-                //position relative to root
-                if (root) {
-                    geom.onTopOf(root);
-                }
-                return geom;
-            });
+            //var prop = obj.establishedManagedProperty('geom', function () {
+            //    var type = tools.getType(this);
+            //    var spec = this.getInputSpec(false);
 
-            prop.onValueSmash = function (geom, newValue, formula, owner) {
-                geom.meshRemove()
-            };
+            //    var def = render3DService.primitive(type, spec);
+            //    var root = this.myParent && this.myParent.geom;
+            //    var geom = def.create(root, this);
+
+            //    //position relative to root
+            //    if (root) {
+            //        geom.onTopOf(root);
+            //    }
+            //    return geom;
+            //});
+
+            //prop.onValueSmash = function (geom, newValue, formula, owner) {
+            //    geom.meshRemove()
+            //};
 
             //fo.subscribe('smash', function (p, value) {
             //    console.log('smh:' + p.myName + ' => ' + value);
@@ -115,29 +136,13 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
             //    console.log('set:' + p.myName + ' => ' + value);
             //});
             
-            prop.compute();
+            //prop.compute();
 
 
             //var i = 0;
             //obj.geom.rotateOnZ((270 + i) * Math.PI / 180)
 
         }
-
-        //self.doAddPlane = function () {
-        //    var obj = ontologyCADService.plane.newInstance().unique();
-        //    model.capture(obj);
-
-
-        //    render3DService.loadModel('707', 'models/707.js')
-        //        .then(function (def) {
-        //            var plane = def.create();
-        //            //var angle = i * Math.PI / 180;
-        //            //var pitch = (270 + i) * Math.PI / 180;
-        //            //plane.positionXYZ(radius * Math.cos(angle), radius * Math.sin(angle), 0);
-        //            //plane.rotateOnZ(pitch)
-        //        })
-        //}
-
 
 
         self.doExport = function () {
@@ -150,18 +155,6 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
                 headerTemplate: 'saveFileHeader.html',
                 bodyTemplate: 'saveFileBody.html',
                 footerTemplate: 'saveFileFooter.html',
-            },
-            {
-                onOK: function ($modalInstance, context) {
-                },
-                onCancel: function ($modalInstance, context) {
-                },
-                onExit: function () {
-                },
-                onReady: function () {
-                }
-            },
-            {
             });
         };
 

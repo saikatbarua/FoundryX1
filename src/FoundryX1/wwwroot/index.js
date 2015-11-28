@@ -168,16 +168,16 @@ var foApp = angular.module('foApp', []);
 
 
 
+            //{
+            //    appUrl: 'foundryspec/spike-typeview.html',
+            //    imageUrl: 'images/labs/Labs9_150x150.png',
+            //    title: "object definitions",
+            //    appGroup: '03:ONTOLOGY',
+            //},
             {
-                appUrl: 'foundryspec/spike-typeview.html',
+                appUrl: 'ontologyView.html',
                 imageUrl: 'images/labs/Labs9_150x150.png',
-                title: "object definitions",
-                appGroup: '03:ONTOLOGY',
-            },
-            {
-                appUrl: 'foundryspec/spike-typeview.html',
-                imageUrl: 'images/labs/Labs9_150x150.png',
-                title: "object definitions",
+                title: "all ontologies",
                 appGroup: '03:ONTOLOGY',
             },
         ];

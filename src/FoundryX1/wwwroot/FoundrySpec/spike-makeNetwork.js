@@ -161,7 +161,7 @@ foApp.service('dataService', function ($http, $q) {
             self.answer1 = fo.tools.stringify(airportDB.items, undefined, 3);
             self.answer2 = fo.tools.stringify(airplaneDB.items, undefined, 3);
             
-            $rootScope.apply();
+            $rootScope.$apply();
         }, function (reason) {
             alert('error ' + reason);
         });

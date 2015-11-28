@@ -1,4 +1,4 @@
-﻿/// <binding BeforeBuild='foundry.core, venderCSS, venderJS' />
+﻿/// <binding BeforeBuild='foundry.core, venderCSS, venderJS, ontologyJS' />
 /*
 This file in the main entry point for defining Gulp tasks and using Gulp plugins.
 Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
@@ -21,6 +21,8 @@ gulp.task('venderJS', function () {
         'bower_components/angular/**/angular.js',
         'bower_components/angular-bootstrap/ui-bootstrap.js',
         'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+        'bower_components/vis/dist/vis.js',
+
         'bower_components/leaflet/dist/leaflet-src.js',
         //'https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js',
     ];
@@ -38,6 +40,7 @@ gulp.task('venderCSS', function () {
         'bower_components/bootstrap/dist/css/bootstrap.css',
         'bower_components/angular-bootstrap/ui-bootstrap-csp.css',
         'bower_components/font-awesome/css/font-awesome.css',
+        'bower_components/vis/dist/vis.css',
 
         'bower_components/leaflet/dist/leaflet.css',
         //'https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css',
@@ -47,6 +50,17 @@ gulp.task('venderCSS', function () {
     .pipe(concat('vender.css'))
     .pipe(gulp.dest(root + '/vendor'))
     .pipe(gulp.dest('dist/vendor'));
+});
+
+gulp.task('ontologyJS', function () {
+    var list = [
+        'wwwroot/ontology*.js',
+    ];
+
+    gulp.src(list)
+    .pipe(concat('ontologies.js'))
+    .pipe(gulp.dest('wwwroot'))
+    .pipe(gulp.dest('wwwroot/FoundrySpec'));
 });
 
 gulp.task('specs', function () {

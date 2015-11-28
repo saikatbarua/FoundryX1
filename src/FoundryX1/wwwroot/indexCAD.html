@@ -61,9 +61,13 @@
         <div class="col-lg-6">
             <div id="cadWorld" style="height:800px">
             </div>
+            <h3>{{::ws.viewModel.myName}}</h3>
+            <ul>
+                <li ng-repeat="obj in ws.viewModel.mySubcomponents()" ng-include="'modelTreeItem.html'"></li>
+            </ul>
         </div>
         <div class="col-lg-5">
-            <h1>Model Tree {{ws.model.myName}}</h1>
+            <h3>{{::ws.model.myName}}</h3>
             <ul>
                 <li ng-repeat="obj in ws.model.mySubcomponents()" ng-include="'modelTreeItem.html'"></li>
             </ul>

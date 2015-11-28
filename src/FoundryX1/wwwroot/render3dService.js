@@ -7,7 +7,8 @@ var Foundry = Foundry || {};
 
     //Earth radius is the distance from the Earth's center to its surface, about 6,371 kilometers (3,959 mi). 
 
-    var camera, scene, renderer, controls, earth;
+    var camera, scene, renderer, controls;
+    var rootModel;
 
     var EARTH_RADIUS = 637;
 
@@ -310,79 +311,20 @@ var Foundry = Foundry || {};
         saveSTL(scene, name || 'scene');
     }
 
-    geo.init = function (id, x, y, z) {
-        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-        camera.position.x = x || 0;
-        camera.position.y = y || 0;
-        camera.position.z = y || 0;
-
-        scene = new THREE.Scene();
-        renderer = new THREE.WebGLRenderer();
-
-        //http://stackoverflow.com/questions/10341224/render-three-js-into-a-div-element
-        var container = document.getElementById(id);
-        if (container) {
-            camera.aspect = container.offsetWidth / container.offsetHeight;
-
-            renderer.setSize(container.offsetWidth, container.offsetHeight);
-            container.appendChild(renderer.domElement);
-        } else {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.body.appendChild(renderer.domElement);
-        }
-
-        function onWindowResize() {
-            if (container) {
-                camera.aspect = container.offsetWidth / container.offsetHeight;
-                renderer.setSize(container.offsetWidth, container.offsetHeight);
-            } else {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            }
-            camera.updateProjectionMatrix();
-        }
-
-        window.addEventListener('resize', onWindowResize, false);
-
-
-        controls = new THREE.OrbitControls(camera, renderer.domElement);
-        //controls.addEventListener( 'change', render ); // add this only if there is no animation loop (requestAnimationFrame)
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.25;
-        controls.enableZoom = true;
-
-        addLights();
-        addLight();
-        geo.render();
-        return scene;
+    geo.camera = function () {
+        return camera;
     }
 
+    geo.cameraPosition = function (x, y, z) {
+        camera.position.x = x || 0;
+        camera.position.y = y || 0;
+        camera.position.z = z || 0;
+        return camera;
+    }
     //http://stackoverflow.com/questions/21229929/move-camera-to-a-fixed-position-and-axis
     geo.zoomToPos = function (pos) {
         //camera.lookAt(pos);
         camera.position.set(pos.x, pos.y, pos.z);
-    }
-
-    geo.addGlobe = function (noTexture) {
-        var mat2;
-        var spGeo = new THREE.SphereGeometry(EARTH_RADIUS, 50, 50);
-
-        if (!noTexture) {
-            var planetTexture = THREE.ImageUtils.loadTexture("assets/world-big-2-grey.jpg");
-            mat2 = new THREE.MeshPhongMaterial({
-                map: planetTexture,
-                shininess: 0.2
-            });
-        } else {
-            mat2 = new THREE.MeshBasicMaterial({
-                color: 0x11ff11,
-                wireframe: true
-            });
-        }
-
-        var mesh = new THREE.Mesh(spGeo, mat2);
-        scene.add(mesh);
-        return mesh;
     }
 
  
@@ -404,43 +346,13 @@ var Foundry = Foundry || {};
         renderer.render(scene, camera);
     }
 
-    //http://projects.defmech.com/ThreeJSObjectRotationWithQu        
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="rotateStart" type="type"></param>
-    /// <param name="rotateEnd" type="type"></param>
-    /// <returns type=""></returns>
-    function rotateMatrix(rotateStart, rotateEnd) {
-        var axis = new THREE.Vector3(),
-			quaternion = new THREE.Quaternion();
-
-        var angle = Math.acos(rotateStart.dot(rotateEnd) / rotateStart.length() / rotateEnd.length());
-
-        if (angle) {
-            axis.crossVectors(rotateStart, rotateEnd).normalize();
-            angle *= rotationSpeed;
-            quaternion.setFromAxisAngle(axis, angle);
-        }
-        return quaternion;
-    }
 
     // Rotate an object around an arbitrary axis in object space
     var rotObjectMatrix;
     function rotateAroundObjectAxis(object, axis, radians) {
         rotObjectMatrix = new THREE.Matrix4();
         rotObjectMatrix.makeRotationAxis(axis.normalize(), radians);
-
-        // old code for Three.JS pre r54:
-        // object.matrix.multiplySelf(rotObjectMatrix);      // post-multiply
-        // new code for Three.JS r55+:
         object.matrix.multiply(rotObjectMatrix);
-
-        // old code for Three.js pre r49:
-        // object.rotation.getRotationFromMatrix(object.matrix, object.scale);
-        // old code for Three.js r50-r58:
-        // object.rotation.setEulerFromRotationMatrix(object.matrix);
-        // new code for Three.js r59+:
         object.rotation.setFromRotationMatrix(object.matrix);
     }
 
@@ -449,25 +361,11 @@ var Foundry = Foundry || {};
     function rotateAroundWorldAxis(object, axis, radians) {
         rotWorldMatrix = new THREE.Matrix4();
         rotWorldMatrix.makeRotationAxis(axis.normalize(), radians);
-
-        // old code for Three.JS pre r54:
-        //  rotWorldMatrix.multiply(object.matrix);
-        // new code for Three.JS r55+:
         rotWorldMatrix.multiply(object.matrix);                // pre-multiply
-
         object.matrix = rotWorldMatrix;
-
-        // old code for Three.js pre r49:
-        // object.rotation.getRotationFromMatrix(object.matrix, object.scale);
-        // old code for Three.js pre r59:
-        // object.rotation.setEulerFromRotationMatrix(object.matrix);
-        // code for r59+:
         object.rotation.setFromRotationMatrix(object.matrix);
     }
 
-    //So you should call these functions within your anim function (requestAnimFrame callback), resulting in a rotation of 90 degrees on the x-axis:
-    //   var xAxis = new THREE.Vector3(1,0,0);
-    //    rotateAroundWorldAxis(mesh, xAxis, Math.PI / 180);
 
 
     http://chimera.labs.oreilly.com/books/1234000000802/ch04.html#shadows
@@ -572,8 +470,11 @@ var Foundry = Foundry || {};
         return new mesh3D(properties, subcomponents, parent);
     };
 
+    var meshDB = fo.db.getEntityDB('three::mesh');
+    geo.meshDB = meshDB;
+
     var meshDef = fo.establishType('three::mesh', {
-        mesh: 'xxx',
+        mesh: new THREE.Mesh(),
     }, makeMesh3D);
 
 
@@ -586,14 +487,16 @@ var Foundry = Foundry || {};
     fo.tools.mixin(model3D.prototype, {
         create: function (root, parent) {
             var instance = meshDef.newInstance({
-                myParent: parent,
                 mesh: new THREE.Mesh(this.geometry, this.material)
-            });
+            }, [], parent);
             var target = root && root.mesh ? root.mesh : scene;
             target.add(instance.mesh);
             return instance;
-        }
+        },
+
     });
+
+
 
 
     var modelDB = fo.db.getEntityDB('three::model');
@@ -606,6 +509,84 @@ var Foundry = Foundry || {};
         onComplete && onComplete(geo.modelDB.lookup);
         return geo.modelDB.items;
     };
+
+    geo.init = function (id) {
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+        camera.position.z = 1000;
+
+        scene = new THREE.Scene();
+        renderer = new THREE.WebGLRenderer();
+
+        //http://stackoverflow.com/questions/10341224/render-three-js-into-a-div-element
+        var container = document.getElementById(id);
+        if (container) {
+            camera.aspect = container.offsetWidth / container.offsetHeight;
+
+            renderer.setSize(container.offsetWidth, container.offsetHeight);
+            container.appendChild(renderer.domElement);
+        } else {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+        }
+
+        function onWindowResize() {
+            if (container) {
+                camera.aspect = container.offsetWidth / container.offsetHeight;
+                renderer.setSize(container.offsetWidth, container.offsetHeight);
+            } else {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+            camera.updateProjectionMatrix();
+        }
+
+        window.addEventListener('resize', onWindowResize, false);
+
+
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        //controls.addEventListener( 'change', render ); // add this only if there is no animation loop (requestAnimationFrame)
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.25;
+        controls.enableZoom = true;
+
+        addLights();
+        addLight();
+        geo.render();
+
+
+        return scene;
+    }
+
+    geo.rootModel = function() {
+        if (rootModel) return;
+        rootModel = meshDef.newInstance({
+            mesh: function () { return scene; }
+        });
+        return rootModel;
+    }
+
+
+    geo.addGlobe = function (noTexture) {
+        var mat2;
+        var spGeo = new THREE.SphereGeometry(EARTH_RADIUS, 50, 50);
+
+        if (!noTexture) {
+            var planetTexture = THREE.ImageUtils.loadTexture("assets/world-big-2-grey.jpg");
+            mat2 = new THREE.MeshPhongMaterial({
+                map: planetTexture,
+                shininess: 0.2
+            });
+        } else {
+            mat2 = new THREE.MeshBasicMaterial({
+                color: 0x11ff11,
+                wireframe: true
+            });
+        }
+
+        var mesh = new THREE.Mesh(spGeo, mat2);
+        scene.add(mesh);
+        return mesh;
+    }
 
 
     function loadModel(name, file, onComplete) {
@@ -857,7 +838,7 @@ var Foundry = Foundry || {};
 
 
 
-(function (app, tools, geo, undefined) {
+(function (app, fo, tools, geo, undefined) {
 
     app.service('render3DService', function ($location, $q) {
 
@@ -870,6 +851,7 @@ var Foundry = Foundry || {};
         this.THREE = THREE;
 
         this.init = geo.init;
+        this.rootModel = geo.rootModel;
         this.export = geo.export;
         this.animate = geo.animate;
         this.addGlobe = geo.addGlobe;
@@ -877,6 +859,8 @@ var Foundry = Foundry || {};
         this.latLongToVector3 = geo.latLongToVector3;
         this.latLongToAngles = geo.latLongToAngles;
         this.zoomToPos = geo.zoomToPos;
+
+        this.cameraPosition = geo.cameraPosition;
 
         this.setAnimation = function (funct) {
             geo.onNextAnimationFrame = funct;
@@ -932,7 +916,21 @@ var Foundry = Foundry || {};
         this.loadModel = loadModel;
         this.loadPrimitive = loadPrimitive;
 
+        this.entity = fo.establishType('3d::entity', {
+            context: {},
+            geom: function () {
+                var context = this.context;
+                var type = tools.getType(context);
+                var spec = context.getInputSpec(false);
+
+                var def = primitive(type, spec);
+                var root = this.myParent && this.myParent.geom;
+                var geom = def.create(root, this.myParent);
+                return geom;
+            }
+        }, fo.makeComponent);
+
 
     });
 
-}(foApp, Foundry.tools, Scene3D));
+}(foApp, Foundry, Foundry.tools, Scene3D));
