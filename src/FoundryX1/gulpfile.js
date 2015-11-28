@@ -1,4 +1,5 @@
-﻿/*
+﻿/// <binding BeforeBuild='foundry.core, venderCSS, venderJS' />
+/*
 This file in the main entry point for defining Gulp tasks and using Gulp plugins.
 Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 */
@@ -31,10 +32,13 @@ gulp.task('venderJS', function () {
 });
 
 
+
 gulp.task('venderCSS', function () {
     var list = [
         'bower_components/bootstrap/dist/css/bootstrap.css',
         'bower_components/angular-bootstrap/ui-bootstrap-csp.css',
+        'bower_components/font-awesome/css/font-awesome.css',
+
         'bower_components/leaflet/dist/leaflet.css',
         //'https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css',
     ];

@@ -7,8 +7,10 @@ Foundry.meta = Foundry.meta || {};
 
     function metaInput(key, order, spec) {
         var input = {
+          
             myName: key,
             sortOrder: spec.sortOrder ? spec.sortOrder : order,
+            format: 'MM/dd/yyyy @ h:mma',
         };
         tools.mixin(input, spec);
 
@@ -16,6 +18,16 @@ Foundry.meta = Foundry.meta || {};
             var result = this.type && this.type.matches(type);
             return result;
         }
+        input.toggleIsOpen = function () {
+            input.isOpen = !input.isOpen;
+        }
+        input.toggleIsCollapsed = function () {
+            input.isCollapsed = !input.isCollapsed;
+        }
+        input.toggleIsVisible = function () {
+            input.isVisible = !input.isVisible;
+        }
+
         return input;
     }
 
@@ -33,8 +45,10 @@ Foundry.meta = Foundry.meta || {};
         tools.mixin(this, obj);
     }
 
-    MetaData.prototype.userInputs = function () {
-        if (this._userInputs) return this._userInputs;
+    MetaData.prototype.userInputs = function (key) {
+        if (this._userInputs) {
+            return key ? [this._userInputs[key]] : this._userInputs; //always return an array
+        }
 
         var order = 1;
         var list = tools.mapOverKeyValue(this, function (key, value) {
@@ -53,7 +67,7 @@ Foundry.meta = Foundry.meta || {};
         })
 
         this._userInputs = list;
-        return this._userInputs;
+        return key ? [this._userInputs[key]] : this._userInputs; //always return an array
     }
 
 
@@ -217,11 +231,11 @@ Foundry.meta = Foundry.meta || {};
     }
 
 
-    meta.findUserInputs = function (id) {
+    meta.findUserInputs = function (id, key) {
         var definedSpec = meta.findMetadata(id);
         if (!definedSpec) return [];
 
-        return definedSpec.userInputs();
+        return definedSpec.userInputs(key);
     }
 
 

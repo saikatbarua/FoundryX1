@@ -24,8 +24,12 @@
             <div ng-if="::prop.isType('text') ">
                 <textarea id="{{::prop.myName}}" class="form-control" capture-focus="true" rows="5" ng-model="context[prop.myName]" placeholder="add stuff"></textarea>
             </div>
-            <div ng-if="::prop.isType('datetime') ">
+            <div ng-if="::prop.isType('datetime') " class="row">
+
+
+
                 <input id="{{::prop.myName}}" class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
+
             </div>
             <div ng-if="::prop.isType('number') ">
                 <input id="{{::prop.myName}}" class="form-control" style="display:inline" capture-focus="true" ng-model="context[prop.myName]" placeholder="add stuff" />
@@ -56,12 +60,26 @@
 
 </script>
 
+<script type="text/ng-template" id="dateTimeUtcView.html">
+    <h3>show date time</h3>
+    <!--<input type="datetime" class="form-control col-lg-3" uib-datepicker-popup="{{prop.format}}" ng-model="node.dateTimeUtc" is-open="prop.isOpen" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+    <span class="input-group-btn col-lg-1">
+        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="fa fa-angle-right"></i></button>
+    </span>
+    <uib-timepicker class="form-control col-lg-3" ng-model="node.dateTimeUtc" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>-->
+
+</script>
+
+
 <script type="text/ng-template" id="nodeView.html">
 
-    <div class="box" ng-click="ws.selectedNode(node)">
+    <div style="margin-bottom:15px" ng-click="ws.selectedNode(node)">
         <h5>{{node.id}} - {{node.dateTimeUtc | date:'MM/dd/yyyy @ h:mma'}}</h5>
         <button class="btn btn-success" style="float:right" ng-click="ws.editNode(node)">edit</button>
-        <div ng-repeat="obj in [node.place]" ng-include="'placeView.html'"></div>
+
+        <!--<div ng-repeat="prop in ws.userInputs(node, 'dateTimeUtc')" ng-include="ws.computeInclude(node, prop)"></div>-->
+
+        <div ng-repeat="obj in [node.place]" ng-include="ws.computeInclude(node.place, 'place')"></div>
         <div style="margin:10px">{{node.description}}</div>
     </div>
 
@@ -70,7 +88,7 @@
 <script type="text/ng-template" id="placeView.html">
     <strong>location:</strong>
     <a ng-href="{{'https://www.google.com/?gws_rd=ssl#q=' + obj.name}}" target="_blank">{{obj.name}}</a>
-    <span ng-repeat="obj in [obj.geoLocation]" ng-include="'geoLocationView.html'"></span>
+    <span ng-repeat="obj in [obj.geoLocation]" ng-include="ws.computeInclude(obj, 'geoLocation')" ></span>
 </script>
 
 <script type="text/ng-template" id="geoLocationView.html">

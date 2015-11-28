@@ -72,6 +72,12 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
 
 (function (app, fo, tools, undefined) {
 
+    app.filter('buttonLabel', function () {
+        return function (obj) {
+            var name = tools.getType(obj);
+            return name.capitalizeFirstLetter();
+        };
+    });
 
     //load templares for dialogs and shapes...
     tools.loadTemplate('foundry/foundry.ui.ngdialog.html');
@@ -83,6 +89,10 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
         self.title = 'paris attacks';
         self.space = fo.makeModelWorkspace('paris');;
         self.model = self.space.rootModel;
+
+        self.createOntology = fo.typeDictionaryWhere(function (key, value) {
+            return key.startsWith('VaaS::');
+        });
 
         var url = '../mock/parisLocations.json';
 
@@ -148,7 +158,6 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
                 root: self,
                 context: node,
                 headerTemplate: 'editEntityHeader.html',
-                //bodyTemplate: 'nodeBody.html',
                 bodyTemplate: 'editEntityBody.html',
                 footerTemplate: 'editEntityFooter.html',
             },
@@ -179,18 +188,51 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
             }
         }
 
+        self.userInputs = function (obj, key) {
+            var inputs = obj.userInputs(key);
+            return inputs;
+        }
+
+        self.computeInclude = function (obj, key) {
+            var context = key && self.userInputs(obj, key)[0];
+
+            if (obj.isType(self.nodeDB.myName)) {
+                return 'nodeView.html';
+            }
+            if (obj.isType(self.placeDB.myName)) {
+                return 'placeView.html';
+            }
+            if (obj.isType(self.locationDB.myName)) {
+                return 'geoLocationView.html';
+            }
+            return 'dateTimeUtcView.html';
+        }
+
+        self.doAdd = function (source) {
+            var name = tools.getType(source);
+            var obj = source.newInstance().unique();
+            self.doEdit(obj);
+        };
+
+        self.doEdit = function (item) {
+            dialogService.doPopupDialog({
+                root: self,
+                context: item,
+                headerTemplate: 'editEntityHeader.html',
+                bodyTemplate: 'editEntityBody.html',
+                footerTemplate: 'editEntityFooter.html',
+            });
+        };
+
         self.addNode = function () {
             var node = nodeDB.newInstance({
                 id: nodeDB.items.length + 1,
                 dateTimeUtc: new Date(),
                 description: 'the description',
-                //place: placeDB.newInstance({
-                //    name: item.name,
-                //    geoLocation: locationDB.newInstance({
-                //        latitude: item.latitude,
-                //        longitude: item.longitude,
-                //    })
-                //}),
+                place: placeDB.newInstance({
+                    name: 'unknown',
+                    geoLocation: locationDB.newInstance()
+                }),
             });
             editNode(node);
         };

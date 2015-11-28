@@ -64,7 +64,10 @@
     </div>
     <div class="row">
         <div class="col-lg-1">
-            <button class="btn btn-default" ng-click="ws.addNode()">Add</button>
+            <div ng-repeat="obj in ws.createOntology">
+                <button class="btn btn-default" ng-click="ws.doAdd(obj)">Add {{obj | buttonLabel}}</button><br />
+            </div>
+
             <div ng-repeat="node in ws.nodeDB.items">
                 <div class="box" ng-click="ws.selectedNode(node)">
                     <div>{{node.dateTimeUtc | date:'MM/dd/yyyy @ h:mma'}}</div>
@@ -72,19 +75,15 @@
             </div>
         </div>
         <div class="col-lg-5">
-            <div ng-repeat="node in ws.nodeDB.items" ng-include="'nodeView.html'">
-                <!--<div class="box" ng-click="ws.selectedNode(node)">
-                    <div>{{node.id}} - {{node.place.name}} - {{node.dateTimeUtc}}</div>
-                    <div>{{node.description}}</div>
-                </div>-->
-            </div>
-            
+
+            <div ng-repeat="node in ws.nodeDB.items" ng-include="ws.computeInclude(node)"></div>
+
             <h1>Add timeline here</h1>
         </div>
-        <div  class="col-lg-6">
+        <div class="col-lg-6">
             <div id="map"></div>
-            <div id="earth" ></div>
-       </div>
+            <div id="earth"></div>
+        </div>
 
     </div>
 

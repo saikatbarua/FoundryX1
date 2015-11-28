@@ -128,8 +128,8 @@ Foundry.tools = Foundry.tools || {};
             return fo.meta ? fo.meta.findMetadata(this.myType) : {};
         },
 
-        userInputs: function () {
-            var inputs = fo.meta ? fo.meta.findUserInputs(this.myType) : [];
+        userInputs: function (key) {
+            var inputs = fo.meta ? fo.meta.findUserInputs(this.myType, key) : [];
             return inputs;
         },
 

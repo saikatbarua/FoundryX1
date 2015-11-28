@@ -19,7 +19,7 @@ Foundry.listOps = Foundry.listOps || {};
 
 
         this.idFunction = function (item) {
-            return item.id;
+            return item && item.id;
         }
 
         this.newInstance = function (mixin, subcomponents, parent, id) {

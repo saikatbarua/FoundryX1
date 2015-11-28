@@ -1267,8 +1267,8 @@ Foundry.tools = Foundry.tools || {};
             return fo.meta ? fo.meta.findMetadata(this.myType) : {};
         },
 
-        userInputs: function () {
-            var inputs = fo.meta ? fo.meta.findUserInputs(this.myType) : [];
+        userInputs: function (key) {
+            var inputs = fo.meta ? fo.meta.findUserInputs(this.myType, key) : [];
             return inputs;
         },
 
@@ -2157,6 +2157,11 @@ Foundry.tools = Foundry.tools || {};
         return managed[name] = value;
     }
 
+    function findProperty(parent, name) {
+        var managed = parent._managed;
+        return managed && managed[name];
+    }
+
     var Property = function (owner, name, init) {
         //"use strict";
         if (init == null) { //very special case that makes smash to unselected very easy
@@ -2678,7 +2683,7 @@ Foundry.tools = Foundry.tools || {};
     ns.Property.capture = setProperty;
 
     ns.Property.getManager = getManager;
-    ns.Property.find = getProperty;
+    ns.Property.find = findProperty;
     ns.makeProperty = function (owner, name, init) {
         return new ns.Property(owner, name, init);
     };
@@ -2766,6 +2771,11 @@ Foundry.tools = Foundry.tools || {};
         return collections[name];
     }
 
+    function findCollection(parent, name) {
+        var collections = parent._collections;
+        return collections && collections[name];
+    }
+
     var Collection = function (owner, name, init) {
 
         this.myName = name || undefined;
@@ -2796,7 +2806,7 @@ Foundry.tools = Foundry.tools || {};
     ns.Collection = Collection;
     ns.Collection.getManager = getManager;
     ns.Collection.capture = setCollection;
-    ns.Collection.find = getCollection;
+    ns.Collection.find = findCollection;
 
     ns.makeCollection = function (name, subcomponents, parent) {
         return new ns.Collection(parent, name, subcomponents);
@@ -3138,12 +3148,69 @@ Foundry.meta = Foundry.meta || {};
 //metadata
 (function (ns, meta, tools, undefined) {
 
+    function metaInput(key, order, spec) {
+        var input = {
+          
+            myName: key,
+            sortOrder: spec.sortOrder ? spec.sortOrder : order,
+            format: 'MM/dd/yyyy @ h:mma',
+        };
+        tools.mixin(input, spec);
+
+        input.isType = function (type) {
+            var result = this.type && this.type.matches(type);
+            return result;
+        }
+        input.toggleIsOpen = function () {
+            input.isOpen = !input.isOpen;
+        }
+        input.toggleIsCollapsed = function () {
+            input.isCollapsed = !input.isCollapsed;
+        }
+        input.toggleIsVisible = function () {
+            input.isVisible = !input.isVisible;
+        }
+
+        return input;
+    }
+
+
+
+
+
     var MetaData = function (spec) {
         tools.mixin(this, spec);
+
         return this;
     }
     MetaData.prototype.extendSpec = function (obj) {
+        delete this._userInputs;
         tools.mixin(this, obj);
+    }
+
+    MetaData.prototype.userInputs = function (key) {
+        if (this._userInputs) {
+            return key ? [this._userInputs[key]] : this._userInputs; //always return an array
+        }
+
+        var order = 1;
+        var list = tools.mapOverKeyValue(this, function (key, value) {
+            if (!value.userEdit) return;
+            return metaInput(key, order++, value);
+        });
+
+        //sort in order of display
+        list = list.sort(function (a, b) { return a.sortOrder - b.sortOrder; });
+
+        //modify array to also use keys 
+        list.forEach(function (item) {
+            if (!list[item.myName]) {
+                list[item.myName] = item;
+            }
+        })
+
+        this._userInputs = list;
+        return key ? [this._userInputs[key]] : this._userInputs; //always return an array
     }
 
 
@@ -3306,38 +3373,12 @@ Foundry.meta = Foundry.meta || {};
         return result;
     }
 
-    var MetaInput = function (key, order, spec) {
-        tools.mixin(this, spec);
-        this.myName = key;
-        this.sortOrder = this.sortOrder ? this.sortOrder : order;
-        return this;
-    }
 
-    MetaInput.prototype.isType = function (type) {
-        return this.type.matches(type);
-    }
-
-    meta.findUserInputs = function (id) {
+    meta.findUserInputs = function (id, key) {
         var definedSpec = meta.findMetadata(id);
         if (!definedSpec) return [];
 
-        var order = 1;
-        var list = tools.mapOverKeyValue(definedSpec, function (key, value) {
-            if (!value.userEdit) return;
-            return new MetaInput(key, order++, value);
-        });
-
-        //sort in order of display
-        list = list.sort(function (a, b) { return a.sortOrder - b.sortOrder; });
-
-        //modify array to also use keys 
-        list.forEach(function (item) {
-            if (!list[item.myName]) {
-                list[item.myName] = item;
-            }
-        })
-
-        return list;
+        return definedSpec.userInputs(key);
     }
 
 
@@ -3781,7 +3822,7 @@ Foundry.listOps = Foundry.listOps || {};
 
 
         this.idFunction = function (item) {
-            return item.id;
+            return item && item.id;
         }
 
         this.newInstance = function (mixin, subcomponents, parent, id) {
@@ -3870,7 +3911,7 @@ Foundry.listOps = Foundry.listOps || {};
                 return fo.meta.findMetadata(this.myName);
             },
             defaultType: function () {
-                return fo.establishType(this.myName);
+                return fo.findType(this.myName) || fo.establishType(this.myName);
             },
         };
 
