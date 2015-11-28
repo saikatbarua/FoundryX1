@@ -118,12 +118,26 @@ Foundry.tools = Foundry.tools || {};
         return obj && obj.isInstanceOf(Collection);
     };
 
+    //should return a new collection with all but the first;
+    //tools.defineCalculatedProperty(Collection.prototype, 'rest', function () {
+    //    return this.elements.length > 0 ? this.elements[0] : undefined;
+    //});
 
     tools.defineCalculatedProperty(Collection.prototype, 'first', function () { 
         return this.elements.length > 0 ? this.elements[0] : undefined;
     });
+
+    tools.defineCalculatedProperty(Collection.prototype, 'second', function () {
+        return this.elements.length > 1 ? this.elements[1] : undefined;
+    });
+
     tools.defineCalculatedProperty(Collection.prototype, 'last', function () {
         var i = this.elements.length - 1;
+        return i >= 0 ? this.elements[i] : undefined;
+    });
+
+    tools.defineCalculatedProperty(Collection.prototype, 'nearlyLast', function () {
+        var i = this.elements.length - 2;
         return i >= 0 ? this.elements[i] : undefined;
     });
 

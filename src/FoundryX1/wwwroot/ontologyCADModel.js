@@ -1,5 +1,28 @@
 
-
+//<!-- types
+//button
+//checkbox
+//color
+//date
+//datetime
+//datetime-local
+//email
+//file
+//hidden
+//image
+//month
+//number
+//password
+//radio
+//range
+//reset
+//search
+//submit
+//tel
+//text
+//time
+//url
+//week--> 
 
 (function (app, fo, tools, undefined) {
 
@@ -17,12 +40,40 @@
         depth: { userEdit: true, type: 'number', formula: 30 },
     });
 
-   fo.establishType('cad::plane', {
-        width: 10,
+    fo.establishType('cad::cylinder', {
+        radius: 10,
         height: 20,
-        depth: 40,
+        radiusTop: function () { return this.radius; },
+        radiusBottom: function () { return this.radius; },
+        radialSegments: 20,
     }, fo.makeComponent);
 
+    fo.meta.establishMetadata('cad::cylinder', {
+        radius: { userEdit: true, type: 'number', formula: 20 },
+        height: { userEdit: true, type: 'number', formula: 30 },
+    });
+
+    fo.establishType('cad::sphere', {
+        radius: 10,
+        widthSegments: 20,
+        heightSegments: 20,
+    }, fo.makeComponent);
+
+    fo.meta.establishMetadata('cad::sphere', {
+        radius: { userEdit: true, type: 'number', formula: 20 },
+    });
+
+    fo.establishType('cad::hemisphere', {
+        type: 'sphere',
+        radius: 10,
+        phiLength: 20 * Math.PI / 180,
+        widthSegments: 20,
+        heightSegments: 20,
+    }, fo.makeComponent);
+
+    fo.meta.establishMetadata('cad::hemisphere', {
+        radius: { userEdit: true, type: 'number', formula: 20 },
+    });
 
     // angular service directive
    app.service('ontologyCADService', function (render3DService) {
@@ -36,8 +87,6 @@
 
         tools.forEachKeyValue(list, function (key, value) {
             var name = tools.getType(value);
-
-
             self[name] = value;
         });
 

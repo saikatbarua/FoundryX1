@@ -45,6 +45,8 @@
     </div>
     <div class="row">
         <div class="col-lg-1">
+            <button class="btn btn-default" ng-click="ws.doRender()">Render</button><br />
+
             <div ng-repeat="obj in ws.cadPrimitives">
                 <button class="btn btn-default" ng-click="ws.doAdd(obj)">Add {{obj | buttonLabel}}</button><br />
             </div>
@@ -58,21 +60,23 @@
 
 
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-5">
             <div id="cadWorld" style="height:800px">
             </div>
-            <h3>{{::ws.viewModel.myName}}</h3>
-            <ul>
-                <li ng-repeat="obj in ws.viewModel.mySubcomponents()" ng-include="'modelTreeItem.html'"></li>
-            </ul>
+
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-3">
             <h3>{{::ws.model.myName}}</h3>
             <ul>
-                <li ng-repeat="obj in ws.model.mySubcomponents()" ng-include="'modelTreeItem.html'"></li>
+                <li ng-repeat="obj in ws.model.mySubcomponents()" ng-include="ws.computeInclude(obj)"></li>
             </ul>
         </div>
-
+        <div class="col-lg-3">
+            <h3>{{::ws.viewModel.myName}}</h3>
+            <ul>
+                <li ng-repeat="obj in ws.viewModel.mySubcomponents()" ng-include="ws.computeInclude(obj)"></li>
+            </ul>
+        </div>
     </div>
 
 </body>

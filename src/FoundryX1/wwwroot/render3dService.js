@@ -426,9 +426,9 @@ var Foundry = Foundry || {};
             mesh.position.setY(dist);
             return this;
         },
-        setY: function (dist) {
+        setZ: function (dist) {
             var mesh = this.mesh;
-            mesh.position.setY(dist);
+            mesh.position.setZ(dist);
             return this;
         },
         position: function (pos) {
@@ -457,13 +457,7 @@ var Foundry = Foundry || {};
         meshUnselect: function () {
             return this;
         },
-        onTopOf: function (target) {
-            var parent = this.myParent;
-            var pos = target.getPosition();
-            this.setX(pos.x + parent.width)
-            this.setY(pos.y + parent.height)
-            return this;
-        },
+
     });
 
     var makeMesh3D = function (properties, subcomponents, parent) {
@@ -848,6 +842,7 @@ var Foundry = Foundry || {};
             }
         };
 
+        var self = this;
         this.THREE = THREE;
 
         this.init = geo.init;
@@ -916,20 +911,101 @@ var Foundry = Foundry || {};
         this.loadModel = loadModel;
         this.loadPrimitive = loadPrimitive;
 
+        var entityType = fo.defineClass('entity', fo.Component, {
+            context: {},
+            geom: {},
+        });
+
+
+        //Prototype defines functions using JSON syntax
+        fo.tools.mixin(entityType.prototype, {
+            isOnTopOf: function (obj) {
+                var myContext = this.context;
+                var otherContext = obj.context;
+                var pos = obj.geom.getPosition();
+                var geom = this.geom;
+                geom.setX(pos.x + (myContext.width + otherContext.width)/2 - 1)
+                geom.setY(pos.y + (myContext.height + otherContext.height)/2 - 1)
+                return this;
+            },
+            isRotateY: function (obj) {
+                var myContext = this.context;
+                var otherContext = obj.context;
+                var geom = this.geom;
+                geom.rotateOnY(45 * Math.PI / 180);
+
+                return this;
+            },
+            applyOrientationRelationships: function () {
+                var geom = this.geom;
+
+                if (this.isOnTopOf != entityType.prototype.isOnTopOf) {
+                    var obj = this.isOnTopOf.first;
+                    entityType.prototype.isOnTopOf.call(this,obj);
+                }
+                if (this.isRotateY != entityType.prototype.isRotateY) {
+                    var obj = this.isRotateY.first;
+                    entityType.prototype.isRotateY.call(this, obj);
+                }
+                
+                return this;
+            },
+            stats: function () {
+                var prop = this.getManagedProperty('geom');
+                if (prop.status) {
+                    //may be too aggressive and only works if displayed
+                    this.applyOrientationRelationships();
+                    var pos = this.geom.mesh.position;
+                    return { x: pos.x, y: pos.y, z: pos.z, }
+                }
+                return '?';
+            }
+        });
+
+        var makeEntity = function (properties, subcomponents, parent) {
+            var obj = new entityType(properties, subcomponents, parent);
+
+            parent && parent.addSubcomponent(obj);
+            var prop = obj.getManagedProperty('geom');
+            prop.onValueSmash = function (geom, newValue, formula, owner) {
+                geom.meshRemove()
+            };
+            return obj
+        };
+
         this.entity = fo.establishType('3d::entity', {
             context: {},
+            orientationRules: [],
             geom: function () {
                 var context = this.context;
-                var type = tools.getType(context);
+                var type = context.type || tools.getType(context);
                 var spec = context.getInputSpec(false);
 
                 var def = primitive(type, spec);
                 var root = this.myParent && this.myParent.geom;
                 var geom = def.create(root, this.myParent);
+                geom.myName = context.myGuid;
                 return geom;
             }
-        }, fo.makeComponent);
+        }, makeEntity);
 
+        this.createEntity = function (properties, subcomponents, parent) {
+            var obj = this.entity.newInstance(properties, subcomponents, parent);
+            obj.myName = obj.context.myName;
+            return obj;
+        };
+
+
+        function render(target) {
+            target.applyOrientationRelationships();
+            target.subcomponents && target.subcomponents.forEach(function (item) {
+                render(item);
+            })
+        };
+
+        this.render = render;
+
+        this.isLeftOf = fo.establishRelationship('isLeftOf');
 
     });
 

@@ -41,7 +41,7 @@
     }
 
 
-    app.service('dialogService', ['$modal','$templateCache', function ($modal, $templateCache) {
+    app.service('dialogService', ['$uibModal', '$templateCache', function ($uibModal, $templateCache) {
 
         var defaultDialogProperties = {
             context: {
@@ -151,7 +151,7 @@
                     self.onExit && self.onExit(result, false);
                 }
 
-                var instance = $modal.open({
+                var instance = $uibModal.open({
                     resolve: {
                         context: function () {
                             return self.context;

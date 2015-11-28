@@ -53,7 +53,10 @@ Foundry.tools = Foundry.tools || {};
     function establishLink(source, name, target) {
         if (!source || !target) return;
 
+        //in some cases a object may have a prototype method of the
+        //same name
         var link = source[name];
+        link = !tools.isFunction(link) && tools.isaLink(link) && link;
         if (!link) {
             link = new ns.Link({myName: name}, [], source);
         }
@@ -67,7 +70,10 @@ Foundry.tools = Foundry.tools || {};
     function desolveLink(source, name, target) {
         if (!source || !target) return;
 
+        //in some cases a object may have a prototype method of the
+        //same name
         var link = source[name];
+        link = tools.isaLink(source[name]) && link;
         if (link && link.myMembers && link.myMembers.length) {
             link.removeMembers([target]);
         }

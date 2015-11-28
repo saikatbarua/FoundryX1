@@ -33,7 +33,7 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
         render3DService.cameraPosition(0, 200, 200);
         render3DService.animate();
 
-        var viewModel = render3DService.entity.newInstance({
+        var viewModel = render3DService.createEntity({
             myName: 'cadWorld',
             context: model,
             geom: function () { return render3DService.rootModel(); },
@@ -45,6 +45,25 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
         self.cadPrimitives = fo.typeDictionaryWhere(function (key, value) {
             return key.startsWith('cad::');
         });
+
+        self.userInputs = function (obj, key) {
+            var inputs = obj.userInputs(key);
+            return inputs;
+        }
+
+        self.computeInclude = function (obj, key) {
+            var context = key && self.userInputs(obj, key)[0];
+
+            if (obj.isType('3d::entity')) {
+                return 'entityTreeItem.html';
+            }
+
+            return 'modelTreeItem.html';
+        }
+
+        //http://learningthreejs.com/blog/2011/12/10/constructive-solid-geometry-with-csg-js/
+        //http://evanw.github.io/csg.js/
+        //http://stackoverflow.com/questions/26183062/shape-with-single-hole-probably-hole-outside-shape
 
         fo.establishType('local::steps', {
             width: 10,
@@ -62,7 +81,7 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
         });
 
 
-        function editPart(item, onOk) {
+        function editPart(item) {
             dialogService.doPopupDialog({
                 root: self,
                 context: item,
@@ -71,63 +90,50 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
                 footerTemplate: 'editEntityFooter.html',
             },
             {
-                onOK: function ($modalInstance, context) {
-                    onOk && onOk(context);
-                },
-                onCancel: function ($modalInstance, context) {
-                },
                 onExit: function () {
+                    render3DService.render(viewModel);
                 },
-                onReady: function () {
-                }
-            },
-            {
             });
 
         }
 
         self.doEdit = function (item) {
-            editPart(item, function (context) {
-                //now refresh the model?
-                item.geom;
-
-            });
+            editPart(item);
         }
 
         var currentRoot = model;
+        var currentView = viewModel;
 
         self.doAdd = function (source) {
             var name = tools.getType(source);
             var obj = source.newInstance().unique();
             currentRoot.capture(obj);
-            //currentRoot = obj;
+
+            if (currentRoot.subcomponents.nearlyLast) {
+                var previous = currentRoot.subcomponents.nearlyLast;
+                var last = currentRoot.subcomponents.last;
+
+                last.width = 5 + previous.width;
+            }
 
             //not it is time to create geometry
-            var cadNode = render3DService.entity.newInstance({
+            currentView = render3DService.createEntity({
                 context: obj,
             }, [], viewModel);
-            viewModel.addSubcomponent(cadNode);
-            cadNode.geom;
 
 
-            //var prop = obj.establishedManagedProperty('geom', function () {
-            //    var type = tools.getType(this);
-            //    var spec = this.getInputSpec(false);
+            if (viewModel.subcomponents.nearlyLast) {
+                var previous = viewModel.subcomponents.nearlyLast;
+                var last = viewModel.subcomponents.last;
 
-            //    var def = render3DService.primitive(type, spec);
-            //    var root = this.myParent && this.myParent.geom;
-            //    var geom = def.create(root, this);
+                fo.establishLink(last, 'isOnTopOf', previous);
+                fo.establishLink(last, 'isRotateY', previous);
 
-            //    //position relative to root
-            //    if (root) {
-            //        geom.onTopOf(root);
-            //    }
-            //    return geom;
-            //});
+                render3DService.isLeftOf.apply(last, previous);
 
-            //prop.onValueSmash = function (geom, newValue, formula, owner) {
-            //    geom.meshRemove()
-            //};
+            }
+            render3DService.render(viewModel);
+
 
             //fo.subscribe('smash', function (p, value) {
             //    console.log('smh:' + p.myName + ' => ' + value);
@@ -135,15 +141,12 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
             //fo.subscribe('setValue', function (p, value) {
             //    console.log('set:' + p.myName + ' => ' + value);
             //});
-            
-            //prop.compute();
-
-
-            //var i = 0;
-            //obj.geom.rotateOnZ((270 + i) * Math.PI / 180)
 
         }
 
+        self.doRender = function () {
+            render3DService.render(viewModel);
+        }
 
         self.doExport = function () {
             render3DService.export();
