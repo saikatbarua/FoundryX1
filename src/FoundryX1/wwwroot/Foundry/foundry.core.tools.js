@@ -271,6 +271,11 @@ var Foundry = Foundry || {};
             return this * Math.PI / 180;
         }
     }
+    if (typeof (Number.prototype.toDeg) === "undefined") {
+        Number.prototype.toDeg = function () {
+            return this * 180 / Math.PI;
+        }
+    }
 
     Date.prototype.addDays = function (days) {
         var date = new Date(date.getDate() + days);

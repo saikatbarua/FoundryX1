@@ -33,7 +33,7 @@ var foApp = angular.module('foApp', []);
             list.forEach(function (item) {
                 var model = modelDef.create();
 
-                var pos = render3DService.latLongToVector3(item.latitude, item.longitude, EARTH_RADIUS, item.currentAltitude | 0);
+                var pos = render3DService.llToPosition(item.latitude, item.longitude, EARTH_RADIUS, item.currentAltitude | 0);
                 model.position(pos);
 
                 model.rotateOnY(item.longitude * Math.PI / 180);
@@ -66,7 +66,7 @@ var foApp = angular.module('foApp', []);
                 airportDB.items.forEach(function (item) {
                     var model = block.create();
 
-                    var pos = render3DService.latLongToVector3(item.latitude, item.longitude, EARTH_RADIUS, 20);
+                    var pos = render3DService.llToPosition(item.latitude, item.longitude, EARTH_RADIUS, 20);
                     model.position(pos);
                 });
 

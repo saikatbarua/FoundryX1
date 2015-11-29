@@ -5,6 +5,18 @@ var Foundry = Foundry || {};
 
 (function (fo, geo, undefined) {
 
+    // Converts numeric degrees to radians
+    if (typeof (Number.prototype.toRad) === "undefined") {
+        Number.prototype.toRad = function () {
+            return this * Math.PI / 180;
+        }
+    }
+    if (typeof (Number.prototype.toDeg) === "undefined") {
+        Number.prototype.toDeg = function () {
+            return this * 180 / Math.PI;
+        }
+    }
+
     //Earth radius is the distance from the Earth's center to its surface, about 6,371 kilometers (3,959 mi). 
 
     var camera, scene, renderer, controls;
@@ -347,22 +359,52 @@ var Foundry = Foundry || {};
     }
 
 
+    //http://www.johannes-raida.de/tutorials/three.js/tutorial04/tutorial04.htm
+    function applyMeshTransformation(mesh) {
+
+        // apply local matrix on geometry
+        mesh.updateMatrixWorld();
+        mesh.geometry.applyMatrix(mesh.matrixWorld);
+
+        // reset local matrix
+        mesh.position.set(0, 0, 0);
+        mesh.rotation.set(0, 0, 0);
+        mesh.scale.set(1, 1, 1);
+        mesh.updateMatrixWorld();
+    };
+
+    function exportObject(mesh) {
+
+        var objExporter = new THREE.ObjectExporter();
+        var output = JSON.stringify(objExporter.parse(mesh), null, '\t');
+        output = output.replace(/[\n\t]+([\d\.e\-\[\]]+)/g, '$1');
+
+        var blob = new Blob([output], { type: 'text/plain' });
+        var objectURL = window.URL.createObjectURL(blob);
+
+        window.open(objectURL, '_blank');
+
+    };
+
     // Rotate an object around an arbitrary axis in object space
-    var rotObjectMatrix;
+    // this may change the geometry
     function rotateAroundObjectAxis(object, axis, radians) {
-        rotObjectMatrix = new THREE.Matrix4();
+        var rotObjectMatrix = new THREE.Matrix4();
         rotObjectMatrix.makeRotationAxis(axis.normalize(), radians);
+        
         object.matrix.multiply(rotObjectMatrix);
+
         object.rotation.setFromRotationMatrix(object.matrix);
     }
 
-    var rotWorldMatrix;
     // Rotate an object around an arbitrary axis in world space       
     function rotateAroundWorldAxis(object, axis, radians) {
-        rotWorldMatrix = new THREE.Matrix4();
+        var rotWorldMatrix = new THREE.Matrix4();
         rotWorldMatrix.makeRotationAxis(axis.normalize(), radians);
+
         rotWorldMatrix.multiply(object.matrix);                // pre-multiply
         object.matrix = rotWorldMatrix;
+
         object.rotation.setFromRotationMatrix(object.matrix);
     }
 
@@ -373,6 +415,8 @@ var Foundry = Foundry || {};
     var axisX = new THREE.Vector3(1, 0, 0); // CHANGED
     var axisY = new THREE.Vector3(0, 1, 0); // CHANGED
     var axisZ = new THREE.Vector3(0, 0, 1); // CHANGED
+
+
 
     var mesh3D = fo.defineClass('mesh3D', fo.Node, {mesh: '',});
     //Prototype defines functions using JSON syntax
@@ -389,6 +433,11 @@ var Foundry = Foundry || {};
             mesh.rotation.z = angleZ;
             return this;
         },
+        rotateClear: function () {
+            var mesh = this.mesh;
+            mesh.rotation.set(0, 0, 0);
+            return this;
+        },
         scaleXYZ: function (X, Y, Z) {
             var mesh = this.mesh;
             mesh.scale.set(X, Y, Z);
@@ -396,35 +445,40 @@ var Foundry = Foundry || {};
         },
         rotateOnX: function (angle) {
             var mesh = this.mesh;
-            rotateAroundObjectAxis(mesh, axisX, angle);
+            mesh.rotateOnAxis(axisX, angle);
             return this;
         },
         rotateOnY: function (angle) {
             var mesh = this.mesh;
-            rotateAroundObjectAxis(mesh, axisY, angle);
+            mesh.rotateOnAxis(axisY, angle);
             return this;
         },
         rotateOnZ: function (angle) {
             var mesh = this.mesh;
-            rotateAroundObjectAxis(mesh, axisZ, angle);
+            mesh.rotateOnAxis(axisZ, angle);
             return this;
         },
-        rotateToX: function (angle) {
+        //rotateToX: function (angle) {
+        //    var mesh = this.mesh;
+        //    mesh.rotation.x = 0;
+        //    mesh.rotateOnAxis(axisX, angle);
+        //    return this;
+        //},
+        //rotateToY: function (angle) {
+        //    var mesh = this.mesh;
+        //    mesh.rotation.y = 0;
+        //    mesh.rotateOnAxis(axisY, angle);
+        //    return this;
+        //},
+        //rotateToZ: function (angle) {
+        //    var mesh = this.mesh;
+        //    mesh.rotation.z = 0;
+        //    mesh.rotateOnAxis(axisZ, angle);
+        //    return this;
+        //},
+        positionClear: function () {
             var mesh = this.mesh;
-            mesh.rotation._x = 0;
-            rotateAroundObjectAxis(mesh, axisX, angle);
-            return this;
-        },
-        rotateToY: function (angle) {
-            var mesh = this.mesh;
-            mesh.rotation._y = 0;
-            rotateAroundObjectAxis(mesh, axisY, angle);
-            return this;
-        },
-        rotateToZ: function (angle) {
-            var mesh = this.mesh;
-            mesh.rotation._z = 0;
-            rotateAroundObjectAxis(mesh, axisZ, angle);
+            mesh.position.set(0, 0, 0);
             return this;
         },
         positionXYZ: function (X, Y, Z) {
@@ -475,7 +529,11 @@ var Foundry = Foundry || {};
         meshUnselect: function () {
             return this;
         },
-
+        scaleClear: function () {
+            var mesh = this.mesh;
+            mesh.scale.set(1, 1, 1);
+            return this;
+        },
         hide: function () {
             var mesh = this.mesh;
             mesh.visible = false;
@@ -696,8 +754,8 @@ var Foundry = Foundry || {};
         radius = radius ? radius : EARTH_RADIUS;
         heigth = heigth ? heigth : 0;
 
-        var phi = (lat) * Math.PI / 180;
-        var theta = (lon - 180) * Math.PI / 180;
+        var phi = (lat).toRad();
+        var theta = (lon - 180).toRad();
 
         var x = -(radius + heigth) * Math.cos(phi) * Math.cos(theta);
         var y = (radius + heigth) * Math.sin(phi);
@@ -706,16 +764,29 @@ var Foundry = Foundry || {};
         return new THREE.Vector3(x, y, z);
     }
 
-    geo.latLongToAngles = function (lat, lon, radius, heigth) {
-        var phi = (lat) * Math.PI / 180;
-        var theta = (lon - 180) * Math.PI / 180;
+    geo.bearingTo = function (lat1, lon1, lat2, lon2) {
+        var lat1 = lat1.toRad();
+        var lat2 = lat2.toRad();
+        var dLon = (lon2 - lon1).toRad();
 
-        var x = -1 * Math.cos(phi) * Math.cos(theta);
-        var y = Math.sin(phi);
-        var z = Math.cos(phi) * Math.sin(theta);
+        var y = Math.sin(dLon) * Math.cos(lat2);
+        var x = Math.cos(lat1) * Math.sin(lat2) -
+                Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+        var brng = Math.atan2(y, x);
 
-        return [x, y, z];
-    }
+        return (brng.toDeg() + 360) % 360;
+    },
+
+    //geo.latLongToAngles = function (lat, lon, radius, heigth) {
+    //    var phi = (lat) * Math.PI / 180;
+    //    var theta = (lon - 180) * Math.PI / 180;
+
+    //    var x = -1 * Math.cos(phi) * Math.cos(theta);
+    //    var y = Math.sin(phi);
+    //    var z = Math.cos(phi) * Math.sin(theta);
+
+    //    return [x, y, z];
+    //}
 
     geo.primitive = function (type, data) {
         var geometry;
@@ -885,7 +956,8 @@ var Foundry = Foundry || {};
         this.addGlobe = geo.addGlobe;
         this.addLights = geo.addLights;
         this.latLongToVector3 = geo.latLongToVector3;
-        this.latLongToAngles = geo.latLongToAngles;
+        this.llToPosition = geo.latLongToVector3;
+        this.llToBearing = geo.bearingTo;
         this.zoomToPos = geo.zoomToPos;
 
         this.cameraPosition = geo.cameraPosition;

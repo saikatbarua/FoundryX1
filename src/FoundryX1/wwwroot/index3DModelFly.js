@@ -17,28 +17,68 @@ foApp.controller('viewerController', function (dataService, ontologyService, ren
     var planes = [];
     var radius = EARTH_RADIUS + 20;
 
-    var r = 0;
+    
+    //render3DService.setAnimation(function () {
+    //    //var angle = r * Math.PI / 180;
+    //    //var pitch = (270 + r) * Math.PI / 180;
+    //    var list = planes; //[0] ? [planes[0]] : []
+    //    list.forEach(function (item) {
+    //        var delta = item.speed * Math.PI / 180;
+    //        item.angle += delta;
+
+    //        item.positionXYZ(radius * Math.cos(item.angle), radius * Math.sin(item.angle), 0);
+    //        item.rotateOnZ(delta);  //this will acumlate...
+
+    //    });
+    //});
+
+
     render3DService.setAnimation(function () {
-        var angle = r * Math.PI / 180;
-        var pitch = (270 + r) * Math.PI / 180;
-        var list = planes[0] ? [planes[0]] : []
-        list.forEach(function (item) {
-            item.positionXYZ(radius * Math.cos(angle), radius * Math.sin(angle), 0);
-            item.rotateOnZ(Math.PI / 180);  //this will acumlate...
+        var list = planes; 
+        list.forEach(function (plane) {
+            var deltaLat = plane.speed;
+            var deltaLng = plane.speed;
+
+            plane.latitude += deltaLat;
+            plane.longitude += deltaLng;
+
+            var bearing = render3DService.llToBearing(plane.latitude - deltaLat, plane.longitude - deltaLng, plane.latitude, plane.longitude);
+
+
+            var pos = render3DService.llToPosition(plane.latitude, plane.longitude, EARTH_RADIUS, 20);
+            plane.position(pos);
+
+            //these rotations are deltas from the last pos
+            //plane.rotateOnZ(deltaLat * Math.PI / 180).rotateOnY(deltaLng * Math.PI / 180);
+
+            plane
+                .rotateClear()
+                .rotateOnY((plane.longitude).toRad())
+                .rotateOnZ((270 + plane.latitude).toRad());
+
 
         });
-        r = r > 360 ? 0 : r + 1;
     });
 
-
     function positionModel(min, max, def){
-        for (var i = min; i < max; i += 15) {
-            var plane = def.create();
-            var angle = i * Math.PI / 180;
-            var pitch = (270 + i ) * Math.PI / 180;
-            plane.positionXYZ(radius * Math.cos(angle), radius * Math.sin(angle), 0);
-            plane.rotateOnZ(pitch);
-            planes.push(plane);
+        for (var lat = min; lat < max; lat += 15) {
+            for (var lng = 0; lng < 180; lng += 45) {
+
+                var plane = def.create();
+
+                plane.latitude = lat;
+                plane.longitude = lng;
+                plane.speed = .1; //degrees per tick
+
+                var pos = render3DService.llToPosition(plane.latitude, plane.longitude, EARTH_RADIUS, 20);
+                plane
+                    .position(pos)
+                    .rotateClear()
+                    .rotateOnY(plane.longitude.toRad())
+                    .rotateOnZ((270 + plane.latitude).toRad());
+
+                planes.push(plane);
+            }
         }
     }
 

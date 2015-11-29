@@ -345,7 +345,7 @@ var foApp = angular.module('foApp', []);
             placeDB.items.forEach(function (item) {
                 var model = block.create();
                 var geo = item.geoLocation;
-                var pos = render3DService.latLongToVector3(geo.latitude, geo.longitude, EARTH_RADIUS, 50);
+                var pos = render3DService.llToPosition(geo.latitude, geo.longitude, EARTH_RADIUS, 50);
                 model.position(pos);
 
                 model.rotateOnY(geo.longitude * Math.PI / 180);
@@ -679,7 +679,7 @@ var foApp = angular.module('foApp', []);
         var i = 0;
         //placeDB.items.forEach(function (item) {
         //    var geo = item.geoLocation;
-        //    var pos = render3DService.latLongToVector3(geo.latitude, geo.longitude, EARTH_RADIUS, 50);
+        //    var pos = render3DService.llToPosition(geo.latitude, geo.longitude, EARTH_RADIUS, 50);
 
         //    var bar = new BarCube(0x00FF00, 0, 1, 100, 0x00FFFF, 'light', undefined, 'titles', 0, 1, 1);
 

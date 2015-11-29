@@ -143,7 +143,7 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
                 nodeDB.items.forEach(function (item) {
                     var model = block.create();
                     var geo = item.place.geoLocation;
-                    var pos = render3DService.latLongToVector3(geo.latitude, geo.longitude);
+                    var pos = render3DService.llToPosition(geo.latitude, geo.longitude);
                     model.position(pos);
                  });
 
@@ -183,7 +183,7 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
             render2DMapService.zoomToNode(node);
             var geo = node && node.place && node.place.geoLocation;
             if (geo) {
-                var pos = render3DService.latLongToVector3(geo.latitude, geo.longitude, 0, 10);
+                var pos = render3DService.llToPosition(geo.latitude, geo.longitude, 0, 10);
                 render3DService.zoomToPos(pos);
             }
         }
