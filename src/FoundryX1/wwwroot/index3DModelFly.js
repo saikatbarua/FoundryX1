@@ -9,8 +9,7 @@ foApp.controller('viewerController', function (dataService, ontologyService, ren
 
     var EARTH_RADIUS = 637;
 
-    var element = document.getElementById('earth');
-    render3DService.init(element);
+    render3DService.init('earth');
     render3DService.animate();
         
     render3DService.addGlobe();

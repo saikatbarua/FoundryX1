@@ -49,12 +49,12 @@ var foApp = angular.module('foApp', []);
             title: "Paris",
             appGroup: '01:applications',
         },
-        {
-            appUrl: 'indexflightleg.html',
-            imageUrl: 'images/labs/Labs10_150x150.png',
-            title: "Flight Leg",
-            appGroup: '01:applications',
-        },
+        //{
+        //    appUrl: 'indexflightleg.html',  //use this to track dependencis
+        //    imageUrl: 'images/labs/Labs10_150x150.png',
+        //    title: "Flight Leg",
+        //    appGroup: '01:applications',
+        //},
         {
             appUrl: 'indexflights.html',
             imageUrl: 'images/labs/Labs10_150x150.png',
@@ -74,17 +74,23 @@ var foApp = angular.module('foApp', []);
             appGroup: '01:applications',
         },
         {
+            appUrl: 'index3DModelFly.html',
+            imageUrl: 'images/labs/Labs10_150x150.png',
+            title: "3D Fly",
+            appGroup: '01:applications',
+        },
+        {
             appUrl: 'indexParticle.html',
             imageUrl: 'images/labs/Labs10_150x150.png',
             title: "Particle",
             appGroup: '01:applications',
         },
-        {
-            appUrl: 'indexthree.html',
-            imageUrl: 'images/labs/Labs10_150x150.png',
-            title: "Three",
-            appGroup: '01:applications',
-        },
+        //{
+        //    appUrl: 'indexthree.html',
+        //    imageUrl: 'images/labs/Labs10_150x150.png',
+        //    title: "Three",
+        //    appGroup: '01:applications',
+        //},
         {
             appUrl: 'indexCAD.html',
             imageUrl: 'images/labs/Labs10_150x150.png',

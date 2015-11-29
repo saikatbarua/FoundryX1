@@ -409,6 +409,24 @@ var Foundry = Foundry || {};
             rotateAroundObjectAxis(mesh, axisZ, angle);
             return this;
         },
+        rotateToX: function (angle) {
+            var mesh = this.mesh;
+            mesh.rotation._x = 0;
+            rotateAroundObjectAxis(mesh, axisX, angle);
+            return this;
+        },
+        rotateToY: function (angle) {
+            var mesh = this.mesh;
+            mesh.rotation._y = 0;
+            rotateAroundObjectAxis(mesh, axisY, angle);
+            return this;
+        },
+        rotateToZ: function (angle) {
+            var mesh = this.mesh;
+            mesh.rotation._z = 0;
+            rotateAroundObjectAxis(mesh, axisZ, angle);
+            return this;
+        },
         positionXYZ: function (X, Y, Z) {
             var mesh = this.mesh;
             mesh.position.setX(X);
@@ -458,6 +476,21 @@ var Foundry = Foundry || {};
             return this;
         },
 
+        hide: function () {
+            var mesh = this.mesh;
+            mesh.visible = false;
+            return this;
+        },
+        show: function () {
+            var mesh = this.mesh;
+            mesh.visible = true;
+            return this;
+        },
+        toggleShowHide: function () {
+            var mesh = this.mesh;
+            mesh.visible = !mesh.visible;
+            return this;
+        },
     });
 
     var makeMesh3D = function (properties, subcomponents, parent) {

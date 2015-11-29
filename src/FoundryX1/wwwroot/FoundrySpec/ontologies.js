@@ -227,13 +227,24 @@
             var port = this.arrivesAirport && this.arrivesAirport.first
             return port ? [port.longitude, port.latitude] : [0, 0];
         },
-
+        flightGroup: function () {
+            if (this.percentComplete <= 0) {
+                return 'not departed';
+            }
+            if (this.percentComplete >= 1) {
+                return 'has arrived';
+            }
+            return 'enroute';
+        },
         start: function () {
             return geoCalc.makeLatLon(this.startPosition[1], this.startPosition[0]);
         },
         end: function () {
             return geoCalc.makeLatLon(this.endPosition[1], this.endPosition[0]);
         },
+        departureTimeUtc : new Date(),
+        currentTime : new Date(),
+        arrivalTimeUtc: new Date(),
 
         timeTillArrivalInMinutes: function () {
             return this.arrivalTimeUtc && this.currentTime ? this.arrivalTimeUtc.diffToMinutes(this.currentTime) : 0;
@@ -263,7 +274,7 @@
         },
         distance: function () {
             var dist = this.start.distanceTo(this.end);
-            return dist;
+            return parseFloat( dist);
         },
 
         computedPosition: function () {
@@ -313,6 +324,49 @@
         }
     });
 
+    var departs = fo.establishRelationship('spike::departsAirport|spike::hasDepartures');
+    var arrives = fo.establishRelationship('spike::arrivesAirport|spike::hasArrivals');
+
+
+    function createFlightLeg(item) {
+
+        if (item.dprtr_lctn_id == item.arrvl_lctn_id) return;
+
+        var loc = getLongLat(item.dprtr_arprt_geo_pnt_strng);
+        var depart = {
+            id: item.dprtr_lctn_id,
+            name: item.dprtr_arprt,
+            latitude: loc.lat,
+            longitude: loc.lng,
+        };
+
+        var portFrom = airportDB.establishInstance(depart, item.dprtr_lctn_id);
+
+        loc = getLongLat(item.arrvl_arprt_geo_pnt_strng);
+        var arrive = {
+            id: item.arrvl_lctn_id,
+            name: item.arrvl_arprt,
+            latitude: loc.lat,
+            longitude: loc.lng,
+        };
+
+        var portTo = airportDB.establishInstance(arrive, item.arrvl_lctn_id);
+
+        var plane = {
+            id: item.arcrft_id,
+            name: item.flght_nbr,
+            geo: item.crrnt_lctn_pnt_strng,
+            geoPath: item.crrnt_pth_strng,
+            currentAltitude: 8,
+
+        };
+
+        var flight = flightDB.establishInstance(plane, item.arcrft_id);
+
+        departs.apply(flight, portFrom);
+        arrives.apply(flight, portTo);
+
+    }
 
     function createMockFlightObject(item) {
 
@@ -410,6 +464,8 @@
     // angular service directive
     app.service('ontologyFlightService', function () {
         this.createMockFlightObject = createMockFlightObject;
+        this.createFlightLeg = createFlightLeg;
+
         this.createTripLegs = createTripLegs;
 
         this.flightDB = fo.db.getEntityDB('VaaS::flight');

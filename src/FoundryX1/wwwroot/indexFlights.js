@@ -5,59 +5,112 @@ var foApp = angular.module('foApp', []);
 
 (function (app, fo, ops, undefined) {
 
-    app.controller('viewerController', function (dataService, ontologyService, render3DService) {
+    app.controller('workspaceController', function (dataService, ontologyFlightService, render3DService, renderTimeLineService) {
 
-        var url = '../mock/sampleFlights.json';
+        var url = '../mock/flightHeadings.json';
 
+        function randomNumber(min, max) {
+            var result = Math.floor((Math.random() * (max - min)) + min);
+            return result;
+        }
 
-        var airportDB = ontologyService.airportDB;
-        var flightDB = ontologyService.flightDB
+        var airportDB = ontologyFlightService.airportDB;
+        var flightDB = ontologyFlightService.flightDB
  
+        renderTimeLineService.init('timeLine');
 
-        var element = document.getElementById('earth');
-        render3DService.init(element);
-        render3DService.animate();
+        render3DService.init('earth');
         render3DService.addGlobe();
+        render3DService.animate();
 
         var EARTH_RADIUS = 637;
-        var radius = EARTH_RADIUS + 20;
 
         //http://www.smartjava.org/content/render-open-data-3d-world-globe-threejs
-        // convert the positions from a lat, lon to a position on a sphere.
-        function latLongToVector3(lat, lon, radius, height) {
-            var phi = (lat) * Math.PI / 180;
-            var theta = (lon - 180) * Math.PI / 180;
-
-            var x = -(radius + height) * Math.cos(phi) * Math.cos(theta);
-            var y = (radius + height) * Math.sin(phi);
-            var z = (radius + height) * Math.cos(phi) * Math.sin(theta);
-
-            return new THREE.Vector3(x, y, z);
-        }
 
         function renderModel(list, modelDef) {
             list.forEach(function (item) {
                 var model = modelDef.create();
-                model.position(latLongToVector3(item.latitude, item.longitude, radius, item.currentAltitude | 0));
 
-                var phi = (item.latitude) * Math.PI / 180;
-                var theta = (item.longitude) * Math.PI / 180;
+                var pos = render3DService.latLongToVector3(item.latitude, item.longitude, EARTH_RADIUS, 0 * item.currentAltitude | 0);
+                model.position(pos);
 
-                model.rotateOnY(theta);
+                model.rotateOnY(item.longitude * Math.PI / 180);
+                model.rotateOnZ((270 + item.latitude) * Math.PI / 180);
+                item.model = model;
+                if (item.percentComplete <= 0 || item.percentComplete >= 1) {
+                    model.hide();
+                }
             });
 
         }
 
+        var simulationTime = (new Date()).addMinutes(0);
+        function noop() {
+        }
 
+        function flightTimeline() {
+            var finished = true;
+            simulationTime = simulationTime.addMinutes(2);
+            flightDB.items.forEach(function (item) {
+                var model = item.model;
+                if (!model) return;
+                item.currentTime = simulationTime;
+                if (item.percentComplete <= 0) {
+                    model.hide()
+                    finished = false;
+                } else if (item.percentComplete >= 1) {
+                    model.hide()
+                } else {
+                    finished = false;
+                    var loc = item.position;
+                    var pos = render3DService.latLongToVector3(loc[1], loc[0], EARTH_RADIUS, 20);
+                    model.position(pos);
+
+                    //model.rotateToY(loc[0] * Math.PI / 180);
+                    //model.rotateToZ((270 + loc[1]) * Math.PI / 180);
+
+                    model.show()
+                }
+            });
+
+            if (finished) {
+                render3DService.setAnimation(noop);
+            }
+        }
+
+        //render3DService.setAnimation(noop);
+
+        this.doPlay = function () {
+            simulationTime = (new Date()).addMinutes(-90);
+            render3DService.setAnimation(flightTimeline);
+        }
+
+        this.doStart = function () {
+            simulationTime = (new Date()).addMinutes(0);
+            flightTimeline();
+        }
+
+        this.doStep = function () {
+            flightTimeline();
+        }
         dataService.getData(url).then(function (data) {
 
             data.items.forEach(function (item) {
-                ontologyService.createFlightObject1(item);
+                //if (flightDB.items.length > 1) return;
+                ontologyFlightService.createMockFlightObject(item);
             });
 
+            flightDB.items.forEach(function (flight) {
+                flight.departureTimeUtc = (new Date()).addMinutes(randomNumber(-90, 100));
+                flight.currentTime = new Date();
+                flight.arrivalTimeUtc = (new Date()).addMinutes(randomNumber(-10, 400));
+            });
 
             self.flights = fo.tools.stringify(flightDB.items, undefined, 3);
             self.airports = fo.tools.stringify(airportDB.items, undefined, 3);
+
+            renderTimeLineService.renderFlights(flightDB.items);
+
 
 
             render3DService.loadPrimitive('block', {})
@@ -65,7 +118,9 @@ var foApp = angular.module('foApp', []);
 
                 airportDB.items.forEach(function (item) { 
                     var model = block.create();
-                    model.position(latLongToVector3(item.latitude, item.longitude, radius, item.currentAltitude | 0));
+
+                    var pos = render3DService.latLongToVector3(item.latitude, item.longitude, EARTH_RADIUS, 20);
+                    model.position(pos);
                 });
 
             });

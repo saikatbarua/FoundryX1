@@ -5,7 +5,7 @@ var foApp = angular.module('foApp', []);
 
 (function (app, fo, ops, undefined) {
 
-    app.controller('viewerController', function (dataService, ontologyService, render3DService) {
+    app.controller('viewerController', function (dataService, ontologyFlightService, render3DService) {
 
         var url = '../mock/sampleFlights.json';
 
@@ -18,21 +18,36 @@ var foApp = angular.module('foApp', []);
 
         });
 
-        var airportDB = ontologyService.airportDB;
-        var flightDB = ontologyService.flightDB
+        var airportDB = ontologyFlightService.airportDB;
+        var flightDB = ontologyFlightService.flightDB
  
 
-        var element = document.getElementById('earth');
-        render3DService.init(element);
+        render3DService.init('earth');
         render3DService.animate();
 
         render3DService.addGlobe();
+        var EARTH_RADIUS = 637;
+
+
+        function renderModel(list, modelDef) {
+            list.forEach(function (item) {
+                var model = modelDef.create();
+
+                var pos = render3DService.latLongToVector3(item.latitude, item.longitude, EARTH_RADIUS, item.currentAltitude | 0);
+                model.position(pos);
+
+                model.rotateOnY(item.longitude * Math.PI / 180);
+                model.rotateOnZ((270 + item.latitude) * Math.PI / 180)
+
+            });
+
+        }
 
 
         dataService.getData(url).then(function (data) {
 
             data.items.forEach(function (item) {
-                ontologyService.createFlightObject1(item);
+                ontologyFlightService.createFlightLeg(item);
             });
 
 
@@ -45,12 +60,24 @@ var foApp = angular.module('foApp', []);
                 var outStats = ops.applyGrouping(port.hasArrivals, 'outStats');
             });
 
+            render3DService.loadPrimitive('block', {})
+            .then(function (block) {
+
+                airportDB.items.forEach(function (item) {
+                    var model = block.create();
+
+                    var pos = render3DService.latLongToVector3(item.latitude, item.longitude, EARTH_RADIUS, 20);
+                    model.position(pos);
+                });
+
+            });
+
             render3DService.loadModel('707', 'models/707.js')
             .then(function (planeModel) {
 
-                render3DService.renderAirports(airportDB.items);
-                render3DService.renderFlights(flightDB.items);
-                render3DService.renderFlightPaths(flightDB.items);
+
+                renderModel(flightDB.items, planeModel);
+                //render3DService.renderFlightPaths(flightDB.items);
 
             });
 

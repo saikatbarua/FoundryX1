@@ -9,8 +9,27 @@
     <link href="vendor/vender.css" rel="stylesheet" />
     <script src="vendor/vender.js"></script>
 
-    <script src="vendor/foundry.core.js"></script>
+    <script src="foundry/version.js"></script>
+    <script src="foundry/foundry.core.tools.js"></script>
+    <script src="foundry/foundry.core.dto.js"></script>
+    <script src="foundry/foundry.core.node.js"></script>
+    <script src="foundry/foundry.core.link.js"></script>
 
+    <script src="foundry/foundry.core.component.js"></script>
+    <script src="foundry/foundry.core.pubsub.js"></script>
+    <script src="foundry/foundry.core.property.js"></script>
+    <script src="foundry/foundry.core.collection.js"></script>
+
+
+    <script src="foundry/foundry.core.meta.js"></script>
+    <script src="foundry/foundry.core.factory.js"></script>
+    <script src="foundry/foundry.core.factoryrelate.js"></script>
+    <script src="foundry/foundry.core.entitydb.js"></script>
+    <script src="foundry/foundry.core.listops.js"></script>
+
+    <script src="foundry/foundry.core.workspace.js"></script>
+
+    <!--<script src="vendor/foundry.core.js"></script>-->
 
     <script src="indexCountries.js"></script>
     <script src="dataservice.js"></script>
@@ -18,11 +37,32 @@
     <script src="render3dservice.js"></script>
     <script src="filesaver.js"></script>
 
+    <style>
+        #earth {
+            height: 800px;
+            width:1500px
+        }
 
+        .box {
+            margin: 10px;
+        }
+
+    </style>
 
 </head>
-<body ng-controller="workspaceController as ws">
-    <div id="earth"  style="height:800px; width:1500px">
+<body ng-controller="workspaceController as ws" class="container">
+    <div class="well">
+        <h1>{{ws.title}}</h1>
+        <div class="box" id="timeLine"></div>
+
     </div>
+    <div class="row">
+
+        <div id="earth">
+        </div>
+
+    </div>
+
+
 </body>
 </html>

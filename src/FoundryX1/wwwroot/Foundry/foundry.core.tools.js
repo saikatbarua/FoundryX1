@@ -272,6 +272,69 @@ var Foundry = Foundry || {};
         }
     }
 
+    Date.prototype.addDays = function (days) {
+        var date = new Date(date.getDate() + days);
+        return date;
+    }
+
+    Date.prototype.addMinutes = function (minutes) {
+        var date = new Date(this.getTime() + minutes * 60000);
+        return date;
+    }
+
+    Date.prototype.diffToMinutes = function (dt) {
+        if (this > dt) {
+            return Math.abs(this - dt) / 60000;
+        }
+        return -Math.abs(this - dt) / 60000;
+    }
+
+    Date.prototype.diffToSeconds = function (dt) {
+        if (this > dt) {
+            return Math.abs(this - dt) / 1000;
+        }
+        return -Math.abs(this - dt) / 1000;
+    }
+
+    Date.prototype.toMMDDYYYY = function (separator) {
+        var month = this.getMonth() + 1;
+        var day = this.getDay();
+        var year = this.getFullYear();
+
+        if (month < 10) {
+            month = '0' + month;
+        }
+
+        if (day < 10) {
+            day = '0' + day;
+        }
+
+        return month + separator + day + separator + year;
+    }
+
+    Date.prototype.toHHMMAMPM = function (separator) {
+
+        var hours = this.getHours();
+        var minutes = this.getMinutes();
+        var amOrPm = '';
+
+        if (hours > 12) {
+            hours = hours - 12;
+            amOrPm = 'PM';
+        }
+
+        if (hours < 10) {
+            hours = '0' + hours;
+        }
+
+        if (minutes < 10) {
+            minutes = '0' + minutes;
+        }
+
+        return hours + separator + minutes + ' ' + amOrPm;
+    }
+
+
 })();
 
 

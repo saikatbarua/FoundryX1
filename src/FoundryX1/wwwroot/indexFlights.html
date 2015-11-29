@@ -27,17 +27,42 @@
     <script src="foundry/foundry.core.entitydb.js"></script>
     <script src="foundry/foundry.core.listops.js"></script>
 
+    <script src="geocalculations.js"></script>
+
     <script src="indexFlights.js"></script>
     <script src="dataservice.js"></script>
-    <script src="ontologymodel.js"></script>
-    <!--<script src="georender3dservice.js"></script>-->
+    <script src="ontologyflightmodel.js"></script>
     <script src="render3dservice.js"></script>
+    <script src="timelinerenderservice.js"></script>
 
+
+    <style>
+        #earth {
+            /*height: 800px;
+            width:1500px;*/
+        }
+
+        .box {
+            margin: 10px;
+        }
+    </style>
 
 
 </head>
-<body ng-controller="viewerController as vc">
-    <div id="earth" class="container">
+<body ng-controller="workspaceController as ws">
+    <h1>{{ws.title}}</h1>
+    <div class="row" >
+        <div class="col-lg-1">
+            <button class="btn btn-success"  ng-click="ws.doPlay()">Play</button>
+            <button class="btn btn-success" ng-click="ws.doStart()">Start</button>
+            <button class="btn btn-success" ng-click="ws.doStep()">Step</button>
+        </div>
+        <div class="col-lg-11" id="timeLine"></div>
+
+    </div>
+    <div class="row">
+        <div id="earth" style="height:800px">
+        </div>
     </div>
 </body>
 </html>
