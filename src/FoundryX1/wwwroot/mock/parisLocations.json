@@ -1,8 +1,8 @@
 [
   {
     "name": "Stade de France",
-    "latitude": 48.919525,
-    "longitude": 2.361661,
+    "latitude": 48.9244,
+    "longitude": 2.360,
     "dateTime": "11/13/2015 21:20",
     "description": "35 People dead an explosion rocks a soccer match at Stade de France, the country's national stadium in the northern Parisian suburb of Saint-Denis, as the French and German national teams square off. \nThe blast by a suicide bomber using an explosive belt packed with bolts kills the bomber and another person. A Syrian passport of a person born in 1990 would be found near the bomber's body.  "
   },
@@ -15,8 +15,8 @@
   },
   {
     "name": "Stade de France",
-    "latitude": 48.919525,
-    "longitude": 2.361661,
+    "latitude": 48.9244,
+    "longitude": 2.360,
     "dateTime": "11/13/2015 21:30",
     "description": "A suicide bomber detonates an explosive vest near Gate H of the stadium, but only the bomber is killed. An explosive waistcoat, packed with bolts in order to maximize the damage, is identical to the one used in the earlier stadium attack"
   },
@@ -50,8 +50,8 @@
   },
   {
     "name": "Stade de France",
-    "latitude": 48.919525,
-    "longitude": 2.361661,
+    "latitude": 48.9244,
+    "longitude": 2.360,
     "dateTime": "11/13/2015 21:53",
     "description": "third suicide bomber kills himself near the Stade de France"
   },

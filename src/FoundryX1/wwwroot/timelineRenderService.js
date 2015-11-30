@@ -30,15 +30,12 @@
                 }
             });
 
-            var i = 0;
             var timeMap = list.map(function (item) {
-                i += 1;
                 var group = item.place.name;
                 return {
-                    id: i,
+                    id: item.id,
                     source: item,
                     group: names.indexOf(group),
-                    //content: ' <span style="color:#97B0F8;">(' + i + ')</span>',
                     start: item.dateTimeUtc,
                     editable: false,
                 };
@@ -53,9 +50,10 @@
                 stack: false,
                 editable: true,       // true or false
                 template: function (item) {
+                    var label = item.source.id + ')  @ ' + item.source.dateTimeUtc.toLocaleTimeString('en-US');
                     var text = '"' + item.source.description + '"';
-                    var html = '<p class="bg-primary">' + text + '</p>'
-                    var html = '<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title=' + text + ' >[' + item.id + ']</button>';
+                    var html = '<p  data-toggle="tooltip" data-placement="top" title=' + text + ' >' + label + '</p>'
+                    //var html = '<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title=' + text + ' >[' + item.source.id + ']</button>';
 
                     // var html = ' <span style="color:#97B0F8;">[' + item.id + ']</span>'; // generate HTML markup for this item
                     return html;
@@ -72,8 +70,9 @@
             timeline.setItems(items);
 
             timeline.on('select', function (properties) {
-                var node = properties.items.map(function (id) {
-                    return list[id];
+                var itemId = properties.items[0];
+                var node = list.filter(function (item) {
+                    return item.id === itemId;
                 })[0];
                 fo.publish('nodeSelected', [node]);
             });

@@ -165,7 +165,7 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
 
         dataService.getData(url).then(function (data) {
             
-            var id = 0;
+            var id = 1;
             data.forEach(function (item) {
                 var node = nodeDB.newInstance({
                     id: id++,                  
