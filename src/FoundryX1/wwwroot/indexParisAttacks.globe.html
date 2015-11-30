@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html ng-app="foApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <title>paris attacks</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/libs/Cesium/Widgets/widgets.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <link href="vendor/vender.css" rel="stylesheet" />
+    <script src="vendor/vender.js"></script>
+
+    <script src="foundry/version.js"></script>
+    <script src="foundry/foundry.core.tools.js"></script>
+    <script src="foundry/foundry.core.dto.js"></script>
+    <script src="foundry/foundry.core.node.js"></script>
+    <script src="foundry/foundry.core.link.js"></script>
+
+    <script src="foundry/foundry.core.component.js"></script>
+    <script src="foundry/foundry.core.pubsub.js"></script>
+    <script src="foundry/foundry.core.property.js"></script>
+    <script src="foundry/foundry.core.collection.js"></script>
+
+
+    <script src="foundry/foundry.core.meta.js"></script>
+    <script src="foundry/foundry.core.factory.js"></script>
+    <script src="foundry/foundry.core.factoryrelate.js"></script>
+    <script src="foundry/foundry.core.entitydb.js"></script>
+    <script src="foundry/foundry.core.listops.js"></script>
+
+    <script src="foundry/foundry.core.clienthub.js"></script>
+    <script src="foundry/foundry.core.workspace.js"></script>
+
+    <!--<script src="vendor/foundry.core.js"></script>-->
+
+    <script src="indexParisAttacks.globe.js"></script>
+
+    <script src="foundry/foundry.ui.ngdialog.js"></script>
+
+
+
+</head>
+<body ng-controller="workspaceController as ws">
+
+    <div class="row">
+
+        <div class="col-lg-3">
+            <div style="border : solid 2px #ff0000;  padding : 4px;  height : 800px; overflow : auto; ">
+                <div class="box" ng-repeat="node in ws.nodeDB.items" ng-include="ws.computeInclude(node)"></div>
+            </div>
+
+        </div>
+        <div class="col-lg-9">
+            <div id="cesiumContainer"></div>
+        </div>
+
+    </div>
+
+    <!--<script type="text/javascript" src="assets/libs/ui-bootstrap-tpls-0.13.4.js"></script>-->
+    <script type="text/javascript" src="assets/libs/Cesium/cesium.js"></script>
+
+    <script type="text/javascript" src="assets/js/aisGlobe.js"></script>
+    <script src="georenderservice.js"></script>
+    <!--<script src="dataservice.js"></script>-->
+    <script src="ontologyLocationModel.js"></script>
+
+
+</body>
+</html>

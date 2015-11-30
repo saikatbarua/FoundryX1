@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="600" width="900" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 9 6">
+<title id="title4">Flag of Slovakia</title>
+<metadata id="metadata33">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title>Flag of Slovakia</dc:title>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<defs id="defs31">
+<clipPath id="clipPath2834">
+<path id="path2836" d="M294.9,263.25c-84.48,40.69-205.32,121.46-205.32,281.22s7.639,232.42,7.639,232.42h197.68,197.68s7.64-72.66,7.64-232.42-120.84-240.53-205.32-281.22z"/>
+</clipPath>
+</defs>
+<rect id="rect8" style="fill:#ee1c25;" height="6" width="9" y="0" x="0"/>
+<rect id="rect10" style="fill:#0b4ea2;" height="4" width="9" y="0" x="0"/>
+<rect id="rect12" style="fill:#ffffff;" height="2" width="9" y="0" x="0"/>
+<path id="path3055" style="fill-rule:nonzero;fill:#ffffff;" d="M3.1625,4.635c-0.5378-0.2591-1.3071-0.7732-1.3071-1.7903s0.0487-1.4797,0.0487-1.4797h1.2584,1.2585s0.0487,0.4626,0.0487,1.4797-0.7693,1.5312-1.3072,1.7903z"/>
+<g id="g2826" transform="matrix(0.00625,0,0,-0.00625,1.9594445,4.503125)">
+<g id="g3759" transform="matrix(0.93450196,0,0,0.93450196,-83.088871,-245.50672)">
+<path id="path2828" style="fill-rule:nonzero;fill:#ee1c25;" d="M294.9,263.25c-84.48,40.69-205.32,121.46-205.32,281.22s7.639,232.42,7.639,232.42h197.68,197.68s7.64-72.66,7.64-232.42-120.84-240.53-205.32-281.22z"/>
+<g id="g2830">
+<g id="g2832" clip-path="url(#clipPath2834)">
+<path id="path2838" style="fill-rule:nonzero;fill:#ffffff;" d="M312.97,586.36c22.87-0.37,67.5-1.27,107.24,12.03,0,0-1.05-14.22-1.05-30.79,0-16.56,1.05-30.78,1.05-30.78-36.45,12.19-81.46,12.45-107.24,12.12v-88.24h-36.13v88.24c-25.78,0.33-70.79,0.07-107.24-12.12,0,0,1.05,14.22,1.05,30.78,0,16.57-1.05,30.79-1.05,30.79,39.74-13.3,84.36-12.4,107.24-12.03v55.42c-20.85,0.18-50.89-0.81-84.86-12.18,0,0,1.05,14.22,1.05,30.79,0,16.56-1.05,30.78-1.05,30.78,33.92-11.35,63.92-12.36,84.76-12.18-1.07,35.09-11.29,79.33-11.29,79.33s21.04-1.65,29.45-1.65c8.42,0,29.46,1.65,29.46,1.65s-10.23-44.24-11.3-79.33c20.85-0.18,50.85,0.83,84.77,12.18,0,0-1.05-14.22-1.05-30.78,0-16.57,1.05-30.79,1.05-30.79-33.97,11.37-64.01,12.36-84.86,12.18v-55.42z"/>
+<path id="path2840" style="fill-rule:evenodd;fill:#0b4ea2;" d="M291.18,210.84l-175.04,156.02s22.38,72.38,66.05,72.38c34.71,0,47.38-27.99,47.38-27.99s22.79,59,65.33,59c42.55,0,65.34-59,65.34-59s12.66,27.99,47.37,27.99c43.68,0,66.06-72.38,66.06-72.38l-182.49-156.02z"/>
+</g>
+</g>
+</g>
+</g>
+</svg>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="504" width="1008" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 252 126" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<metadata id="metadata78">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<rect id="green_stripes" width="252" fill="#319208" height="126"/>
+<rect id="yellow_stripes" y="18" width="252" fill="#FFD200" height="90"/>
+<rect id="red_stripes" y="36" width="252" fill="#DE2010" height="54"/>
+<rect id="black_stripe" y="54" width="252" fill="#000" height="18"/>
+<path id="path8" d="M4.5826,0l84,63-84,63h-4.583v-126z" fill="#000"/>
+<comment id="comment10">value has to be sqrt(21)</comment>
+<path id="path12" d="M0,0l84,63-84,63" fill="#FFF"/>
+<g id="star" fill="#DE2010">
+<g id="upper_star_part" transform="translate(34,63) scale(32)">
+<g id="g16">
+<polygon id="triangle_ur" points="0,0,0,1,0.75,1" transform="translate(0,-1) rotate(26.26769855)"/>
+<use id="triangle_ul" xlink:href="#triangle_ur" transform="scale(-1,1)"/>
+<polygon id="triangle2_ur" points="0,0,0,1,0.75,1" transform="translate(0,-1) rotate(19.57996077)"/>
+<use id="triangle2_ul" xlink:href="#triangle2_ur" transform="scale(-1,1)"/>
+</g>
+<use id="use22" xlink:href="#triangle_ur" transform="rotate(72)"/>
+<use id="use24" xlink:href="#triangle_ul" transform="rotate(-72)"/>
+<use id="use26" xlink:href="#triangle2_ur" transform="rotate(72)"/>
+<use id="use28" xlink:href="#triangle2_ul" transform="rotate(-72)"/>
+</g>
+<g id="lower_star_part" transform="translate(34,63) scale(27.5)">
+<g id="cone_l">
+<polygon id="triangle_l" points="0,0,0,1,0.5,1" transform="translate(0,-1) rotate(24.22482095)"/>
+<use id="use33" xlink:href="#triangle_l" transform="scale(-1,1)"/>
+</g>
+<use id="use35" xlink:href="#cone_l" transform="rotate(144)"/>
+<use id="use37" xlink:href="#cone_l" transform="rotate(-144)"/>
+</g>
+</g>
+<g id="bird">
+<path id="path40" style="fill:#ffc618;" d="M28.635,55.109c1.977,4.306,2.471,4.588,7.411,6.282,4.941,1.694,18.898,3.299,20.274,3.458-0.9-0.9-16.621-12.545-19.85-14.874s-4.129-3.388-4.129-3.388-2.912-5.241-3.917-6.776c-1.006-1.535-2.859-3.705-5.294-3.705s-3.917,1.429-4.623,3.97c-0.388,0.106-2.47,1.376-2.399,2.682,0.6-0.071,4.376-1.129,5.681,3.141,1.306,4.27,1.377,11.257,0.036,14.716-1.341,3.458-3.424,6.069-3.424,9.104,0,0.424,0.283,1.271,0.989,1.271,0.247,1.341,2.223,10.904,2.223,10.904h28.161l4.473-17.292"/>
+<g id="g42" style="stroke:black;stroke-width:0.21173774;fill:none;">
+<path id="path44" d="M28.635,55.109c1.977,4.306,2.471,4.588,7.411,6.282,4.941,1.694,18.898,3.299,20.274,3.458-0.9-0.9-16.621-12.545-19.85-14.874s-4.129-3.388-4.129-3.388-2.912-5.241-3.917-6.776c-1.006-1.535-2.859-3.705-5.294-3.705s-3.917,1.429-4.623,3.97c-0.388,0.106-2.47,1.376-2.399,2.682,0.6-0.071,4.376-1.129,5.681,3.141,1.306,4.27,1.377,11.257,0.036,14.716-1.341,3.458-3.424,6.069-3.424,9.104,0,0.424,0.283,1.271,0.989,1.271,0.247,1.341,2.223,10.904,2.223,10.904h28.161l4.473-17.292"/>
+<path id="path46" d="M19.39,70.99s5.999-0.353,7.622-0.353,16.734,0.019,25.165,1.968"/>
+<path id="path48" d="M21.508,70.871s-0.601-0.728-0.213-2.175,4.623-5.188,4.623-10.481"/>
+<path id="path50" d="M25.142,70.637s-0.494-2.365,4.905-4.376c1.518-0.459,5.858-2.894,5.999-4.87"/>
+<path id="path52" d="M29.473,66.485s13.243,0.058,23.724,2.176"/>
+<path id="path54" d="M32.793,64.905s4.55,0.156,5.291-0.056c0.741-0.211,2.053-0.762,2.575-2.313"/>
+<path id="path56" d="M35.49,64.959s2.435-1.265,2.911-2.911"/>
+<path id="path58" d="M28.141,81.894s-1.041-7.216-1.252-11.257l2.717,2.594,2.875-2.515,2.471,2.638,2.858-2.425,2.471,2.778,2.83-2.407,2.252,2.619,2.822-2.041,3.355,3.189"/>
+<path id="path60" d="M50.951,77.345c-10.081-1.444-23.571-1.35-23.571-1.35"/>
+<path id="path62" d="M22.694,51.052s8.2-3.918,9.647-4.465"/>
+</g>
+<g id="g64" style="stroke:black;fill:none;" transform="matrix(0.211738,0,0,0.211738,16,36)">
+<polyline id="polyline66" points="52.487,177.09,65.505,188.94,77.267,177.18,89.163,189.44,102.01,178.08,113.84,190.51,127.17,179.5,138.07,192.23,151.34,182.08,165.29,194.4"/>
+<circle id="circle68" cy="154.58" cx="89.425" r="5.1665" d="m 94.591797,154.58398 c 0,2.85339 -2.313123,5.16651 -5.166504,5.16651 -2.853381,0 -5.166504,-2.31312 -5.166504,-5.16651 0,-2.85338 2.313123,-5.1665 5.166504,-5.1665 2.853381,0 5.166504,2.31312 5.166504,5.1665 z"/>
+<circle id="circle70" cy="156.05" cx="111.24" r="5.1665" d="m 116.40332,156.04687 c 0,2.85339 -2.31312,5.16651 -5.1665,5.16651 -2.85338,0 -5.16651,-2.31312 -5.16651,-5.16651 0,-2.85338 2.31313,-5.1665 5.16651,-5.1665 2.85338,0 5.1665,2.31312 5.1665,5.1665 z"/>
+<circle id="circle72" cy="16.5" cx="30.05" r="4" d="m 34.049805,16.5 c 0,2.209139 -1.790861,4 -4,4 -2.209139,0 -4,-1.790861 -4,-4 0,-2.209139 1.790861,-4 4,-4 2.209139,0 4,1.790861 4,4 z"/>
+</g>
+</g>
+</svg>

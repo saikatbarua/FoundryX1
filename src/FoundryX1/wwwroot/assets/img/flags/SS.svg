@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="500" width="1000" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 20 10">
+<metadata id="metadata22">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title>Flag of South Sudan</dc:title>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<title id="title4">Flag of South Sudan</title>
+<rect id="rect6" y="7" width="20" style="fill:#078930;" height="3"/>
+<rect id="rect8" y="3" width="20" style="fill:#FFF;" height="4"/>
+<rect id="rect10" y="0" width="20" style="fill:#000;" height="3"/>
+<rect id="rect12" y="3.5" width="20" style="fill:#DA121A;" height="3"/>
+<polygon id="polygon14" style="fill:#0F47AF;" points="0,0,8.6603,5,0,10"/>
+<path id="path3001" style="fill-rule:evenodd;fill:#fcdd09;" transform="matrix(0.01973645,-0.00323612,0.00323612,0.01973645,5.4965175,-0.86054452)" d="m-148.22,327.06-50.819-24.602-40.729,39.102,7.6944-55.934-49.774-26.652,55.574-9.9668,9.9668-55.574,26.652,49.774,55.934-7.6944-39.102,40.729z"/>
+</svg>

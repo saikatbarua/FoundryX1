@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="1000" width="1500" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-5 -5 30 20" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<metadata id="metadata23">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title>Flag of the People&apos;s Republic of China</dc:title>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<title id="title4">Flag of the People&apos;s Republic of China</title>
+<rect id="rect6" height="20" width="30" y="-5" x="-5" fill="#de2910"/>
+<defs id="defs8">
+<polygon id="s" points="0,-513670,301930,415570,-488530,-158730,488530,-158730,-301930,415570" transform="scale(0.0000019467600073)" fill="#ffde00"/>
+</defs>
+<use id="use11" xlink:href="#s" transform="scale(3)"/>
+<use id="use13" xlink:href="#s" transform="translate(5,-3) rotate(-120.963756)"/>
+<use id="use15" xlink:href="#s" transform="translate(7,-1) rotate(-98.130102)"/>
+<use id="use17" xlink:href="#s" transform="translate(7,2) rotate(-74.054604)"/>
+<use id="use19" xlink:href="#s" transform="translate(5,4) rotate(-51.3401917)"/>
+</svg>

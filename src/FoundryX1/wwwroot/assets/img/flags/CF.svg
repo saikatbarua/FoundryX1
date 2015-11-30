@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="300" width="450" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 1200 800">
+<metadata id="metadata22">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title>Flag of the Central African Republic</dc:title>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<title id="title4">Flag of the Central African Republic</title>
+<rect id="rect6" height="200" width="1200" y="0" x="0" fill="#003082"/>
+<rect id="rect8" height="200" width="1200" y="200" x="0" fill="#FFF"/>
+<rect id="rect10" height="200" width="1200" y="400" x="0" fill="#289728"/>
+<rect id="rect12" height="200" width="1200" y="600" x="0" fill="#FFCE00"/>
+<rect id="rect14" height="800" width="200" y="0" x="500" fill="#D21034"/>
+<polygon id="polygon16" points="0,-1,0.22451,-0.30902,0.95106,-0.30902,0.36327,0.11803,0.58779,0.80902,0,0.38197,-0.58779,0.80902,-0.36327,0.11803,-0.95106,-0.30902,-0.22451,-0.30902" transform="translate(200,108.59425) scale(90)" fill="#FFCE00"/>
+</svg>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="1000" viewBox="0 0 24000 16000" width="1500" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<metadata id="metadata17">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title>Flag of Barbados</dc:title>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<title id="title4">Flag of Barbados</title>
+<rect id="rect6" width="24000" height="16000" fill="#00267f"/>
+<rect id="rect8" width="8000" x="8000" height="16000" fill="#ffc726"/>
+<path id="h" fill="#000" d="M12000,4124c-260,709-525,1447-1092,2012,176-58,484-110,682-105v2982l-842,125c-30-3-40-50-40-114-81-926-300-1704-552-2509-18-110-337-530-91-456,30,4,359,138,307,74-448-464-1103-798-1739-897-56-14-89,14-39,79,844,1299,1550,2832,1544,4651,328,0,1123-194,1452-194v2104h415l95-5876z"/>
+<use id="use11" xlink:href="#h" transform="translate(24000,0) scale(-1,1)"/>
+</svg>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="svg2985" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="100%" width="100%" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<metadata id="metadata2990">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<g id="layer1">
+<path id="path2995" style="stroke-linejoin:miter;fill-rule:evenodd;stroke:#b3b3b3;stroke-linecap:butt;stroke-dasharray:none;stroke-miterlimit:4;stroke-width:1.48736084;fill:#ffffff;" transform="matrix(2.0169954,0,0,2.0169954,-21.91615,-37.646339)" d="m25.987,26.597a7.1889,7.1889,0,1,1,-14.378,0,7.1889,7.1889,0,1,1,14.378,0z"/>
+<text id="text3765" y="26.909716" x="7.4121685" style="font-size:28px;font-weight:bold;writing-mode:lr-tb;letter-spacing:0px;text-anchor:start;font-style:normal;word-spacing:0px;font-stretch:normal;font-variant:normal;text-align:start;font-family:Arial;line-height:125%;fill:#000000;" xml:space="preserve"><tspan id="tspan3767" y="26.909716" x="7.4121685">T</tspan></text>
+</g>
+<path id="path2995-7" d="M32,16a16,16,0,0,1,-32,0,16,16,0,1,1,32,0z" style="fill-rule:evenodd;fill-opacity:0.50196078;fill:#000000;"/>
+</svg>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="600" width="1200" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-35 -30 200 100" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<metadata id="metadata38">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<clipPath id="rect">
+<rect id="rect5" y="-30" x="-35" height="100" width="200"/>
+</clipPath>
+<rect id="rect7" height="100" width="200" y="-30" x="-35" fill="#215b33"/>
+<path id="path9" d="M-35,70v-100h200" fill="#0051ba"/>
+<path id="path11" stroke="#fcd116" stroke-width="9" d="M165-30-35,70" clip-path="url(#rect)"/>
+<g id="star" transform="scale(10)" fill="white">
+<g id="cone">
+<polygon id="triangle" points="0,0,0,1,0.5,1" transform="translate(0,-1) rotate(18)"/>
+<use id="use16" xlink:href="#triangle" transform="scale(-1,1)"/>
+</g>
+<use id="use18" xlink:href="#cone" transform="rotate(72)"/>
+<use id="use20" xlink:href="#cone" transform="rotate(-72)"/>
+<use id="use22" xlink:href="#cone" transform="rotate(144)"/>
+<use id="use24" xlink:href="#cone" transform="rotate(-144)"/>
+</g>
+<use id="use26" xlink:href="#star" transform="rotate(-40.6) translate(26,0) rotate(40.6)"/>
+<use id="use28" xlink:href="#star" transform="rotate(40.6) translate(26,0) rotate(-40.6)"/>
+<use id="use30" xlink:href="#star" transform="rotate(-40.6) translate(-26,0) rotate(40.6)"/>
+<use id="use32" xlink:href="#star" transform="rotate(40.6) translate(-26,0) rotate(-40.6)"/>
+</svg>

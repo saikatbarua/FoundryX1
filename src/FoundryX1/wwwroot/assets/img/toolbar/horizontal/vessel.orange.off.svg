@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg7108"
+   viewBox="0 0 32 32"
+   height="100%"
+   width="100%"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="vessel.orange.off.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1018"
+     id="namedview9"
+     showgrid="false"
+     inkscape:zoom="7.375"
+     inkscape:cx="-0.54237288"
+     inkscape:cy="15.864407"
+     inkscape:window-x="1672"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg7108" />
+  <defs
+     id="defs7110">
+    <linearGradient
+       id="linearGradient3007"
+       y2="8.4363"
+       gradientUnits="userSpaceOnUse"
+       x2="16.291"
+       gradientTransform="matrix(0.98891313,0.00790659,-0.00776573,0.98175062,0.21723908,0.2549588)"
+       y1="21.125"
+       x1="16.413">
+      <stop
+         id="stop3011"
+         style="stop-color:#ff8400;"
+         offset="0" />
+      <stop
+         id="stop3013"
+         style="stop-color:#ffffff;"
+         offset="1" />
+    </linearGradient>
+  </defs>
+  <metadata
+     id="metadata7113">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     id="path2995"
+     style="stroke:#ff8400;fill:url(#linearGradient3007);"
+     d="M0.5,31.5,16.289,0.50005,31.5,31.485c-15.254-4.9644-15.254-4.9644-31,0.015z" />
+  <path
+     d="M 0.57852888,31.557055 16.287546,0.5785391 31.421481,31.542065 C 16.244754,26.581099 16.244754,26.581099 0.57851984,31.557055 Z"
+     style="display:inline;fill:#22241c;fill-opacity:0.50196078;stroke:none"
+     id="path2995-9-1-5-1-1-1-7-8-2-1-3"
+     inkscape:connector-curvature="0" />
+</svg>

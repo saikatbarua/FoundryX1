@@ -34,6 +34,7 @@
     <script src="foundry/foundry.core.entitydb.js"></script>
     <script src="foundry/foundry.core.listops.js"></script>
 
+    <script src="foundry/foundry.core.clienthub.js"></script>
     <script src="foundry/foundry.core.workspace.js"></script>
 
     <!--<script src="vendor/foundry.core.js"></script>-->
@@ -41,7 +42,6 @@
     <script src="indexParisAttacks.js"></script>
     <script src="dataservice.js"></script>
     <script src="ontologyLocationModel.js"></script>
-    <script src="render3dservice.js"></script>
     <script src="timelinerenderservice.js"></script>
 
     <script src="foundry/foundry.ui.ngdialog.js"></script>
@@ -50,9 +50,7 @@
         #map {
             height: 980px;
         }
-        #earth {
-            height: 500px;
-        }
+
         .box {
             margin: 10px;
         }
@@ -66,6 +64,10 @@
 <body ng-controller="workspaceController as ws">
     <div class="well">
         <h1>{{ws.title}}</h1>
+        <button class="btn btn-default" ng-click="ws.doToggleGlobe()">Open Globe</button>
+        <button class="btn btn-default" ng-click="ws.doToggleWordCloud()">Open Word Cloud</button>
+        <button class="btn btn-default" ng-click="ws.doToggleSimulation()">3D</button>
+
         <span ng-repeat="obj in ws.createOntology" class="open">
             <button class="btn btn-default" ng-click="ws.doAdd(obj)">Add {{obj | buttonLabel}}</button>
         </span>
@@ -88,7 +90,6 @@
         </div>
         <div class="col-lg-6">
             <div id="map"></div>
-            <div id="earth"></div>
         </div>
 
     </div>

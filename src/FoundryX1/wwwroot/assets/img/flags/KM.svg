@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" version="1.0" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<metadata id="metadata29">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<rect id="rect4" width="500" fill="#ffc61e" height="300"/>
+<rect id="rect6" y="75" width="500" fill="#fff" height="225"/>
+<rect id="rect8" y="150" width="500" fill="#ce1126" height="150"/>
+<rect id="rect10" y="225" width="500" fill="#3a75c4" height="75"/>
+<path id="path12" d="M0,300l250-150-250-150v300z" fill="#3d8e33"/>
+<circle id="circle14" cy="150" cx="85" r="67.5" fill="#fff"/>
+<circle id="circle16" cy="150" cx="115" r="67.5" fill="#3d8e33"/>
+<path id="star" fill="#fff" d="M88.112,97.825h9.083l2.805-8.637,2.81,8.637h9.08l-7.35,5.335,2.81,8.64-7.35-5.34-7.347,5.34,2.806-8.64-7.347-5.335z"/>
+<use id="use19" y="32.2083" xlink:href="#star"/>
+<use id="use21" y="64.4166" xlink:href="#star"/>
+<use id="use23" y="96.625" xlink:href="#star"/>
+</svg>

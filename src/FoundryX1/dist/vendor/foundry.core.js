@@ -3920,6 +3920,12 @@ Foundry.listOps = Foundry.listOps || {};
             return result;
         }
 
+        this.forceItemInsert = function (item, id) {
+            var key = id || this.idFunction(item);
+            this.setItem(key, item);
+            return item;
+        }
+
         this.modifyOrCreateInstance = function (mixin, subcomponents, parent, id) {
             var key = id || this.idFunction(mixin);
             var found = this.getItem(key);

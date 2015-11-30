@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<metadata id="metadata55">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<clipPath id="cp">
+<path id="path5" d="M0,0v75h350v75h-50zm300,0h-150v200h-150v-50z"/>
+</clipPath>
+<rect id="rect7" width="600" fill="#00247d" height="300"/>
+<path id="path9" stroke="#fff" stroke-width="30" d="M0,0l300,150m0-150l-300,150"/>
+<path id="path11" stroke="#cf142b" stroke-width="20" d="M0,0l300,150m0-150l-300,150" clip-path="url(#cp)"/>
+<path id="path13" stroke="#fff" stroke-width="50" d="M150,0v200m-150-125h350"/>
+<path id="path15" stroke="#cf142b" stroke-width="30" d="M150,0v200m-150-125h350"/>
+<path id="path17" d="M300,0v150h-300v150h600v-300z" fill="#00247d"/>
+<g id="g19" transform="translate(450,150)">
+<g id="s1" fill="#fff" transform="translate(0,-102)">
+<g id="c">
+<path id="t" transform="rotate(18,0,-22.5)" d="M0-22.5v22.5h12"/>
+<use id="use24" xlink:href="#t" transform="scale(-1,1)"/>
+</g>
+<use id="use26" xlink:href="#c" transform="rotate(72)"/>
+<use id="use28" xlink:href="#c" transform="rotate(144)"/>
+<use id="use30" xlink:href="#c" transform="rotate(216)"/>
+<use id="use32" xlink:href="#c" transform="rotate(288)"/>
+</g>
+<g id="s7">
+<use id="use35" xlink:href="#s1" transform="rotate(24)"/>
+<use id="use37" xlink:href="#s1" transform="rotate(48)"/>
+<use id="use39" xlink:href="#s1" transform="rotate(72)"/>
+<use id="use41" xlink:href="#s1" transform="rotate(96)"/>
+<use id="use43" xlink:href="#s1" transform="rotate(120)"/>
+<use id="use45" xlink:href="#s1" transform="rotate(144)"/>
+<use id="use47" xlink:href="#s1" transform="rotate(168)"/>
+</g>
+<use id="use49" xlink:href="#s7" transform="rotate(168)"/>
+</g>
+</svg>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<metadata id="metadata37">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title>Flag of New Caledonia</dc:title>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<title id="title4">Flag of New Caledonia</title>
+<rect id="rect6" width="900" height="450" fill="#009543"/>
+<rect id="rect8" width="900" height="300" fill="#ed4135"/>
+<rect id="rect10" width="900" height="150" fill="#0035ad"/>
+<circle id="circle12" r="147.48" cy="225" stroke="#000" cx="300" stroke-width="5" fill="#fae600"/>
+<path id="path14" stroke="#000" stroke-width="6" d="M275,247h50m-50-37h50m-25-132v252"/>
+<path id="path16" d="M240.62,360.42c60.19,24.58,116.61,1.51,116.61,1.51s-21.3-23.05-32.22-32.05c-10.65-8.78-41.99-8.43-52.68,0-8.93,7.04-34.52,32.97-31.71,30.54z"/>
+<ellipse id="ellipse18" cy="293" cx="300" rx="16.5" ry="24"/>
+<ellipse id="ellipse20" cy="228.5" cx="300" rx="20" ry="12.66"/>
+<ellipse id="ellipse22" cy="170" cx="300" rx="20" ry="20"/>
+<path id="path24" d="M324,95.5c-0.01-0.013,1.73,2.871-1.91,9.44-17.43,31.38-34.92,32.06-38.23,34.76-3.66,2.98-5.21,2.77-5.21,2.77,0.26-2.68,0.51-13.67,0.7-14.73,2.64-14.67,24.79-14.46,42.13-29.48,2.71-2.345,2.51-2.773,2.51-2.773z"/>
+<g id="leaf">
+<path id="path27" d="m265.5,163s3.9144,11.23,4.5,22.5c0.93516,17.997,18.18,18.5,30,18.5v-10c-8.8585,0-16.553-1.3166-23-14.5-3.1804-6.5034-11.5-16.5-11.5-16.5z"/>
+<path id="path29" d="m265,308s6.2964-7.7654,13.662-25.975c3.84-9.5,12.95-15.02,21.34-15.02v-14c-19.028,0-28.15,7.0552-29.113,17.363-1.98,21.18-5.89,37.64-5.89,37.64z"/>
+</g>
+<use id="use31" xlink:href="#leaf" transform="translate(600,0)scale(-1,1)"/>
+</svg>

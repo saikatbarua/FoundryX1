@@ -85,7 +85,7 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
     tools.loadTemplate('foundry/foundry.ui.ngdialog.html');
     tools.loadTemplate('indexParisAttacks.ui.html');
 
-    app.controller('workspaceController', function ($rootScope, dataService, ontologyLocationService, render3DService, render2DMapService, renderTimeLineService, dialogService) {
+    app.controller('workspaceController', function ($rootScope, dataService, ontologyLocationService, render2DMapService, renderTimeLineService, dialogService) {
         var self = this;
 
         self.title = 'paris attacks';
@@ -108,10 +108,59 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
 
         renderTimeLineService.init('timeLine');
         render2DMapService.init('map');
-        render3DService.init('earth');
-        render3DService.animate();
 
-        render3DService.addGlobe();
+        var isOpen;
+        self.doToggleWordCloud = function (target) {
+            if (isOpen) {
+                fo.clientHub.closeWindow();
+                isOpen = undefined;
+            }
+            else {
+                var url = target ? target : "indexParisAttacks.wordCloud.html";
+                isOpen = fo.clientHub.openWindow(url);
+            }
+        }
+
+        self.doToggleGlobe = function (target) {
+            if (isOpen) {
+                fo.clientHub.closeWindow();
+                isOpen = undefined;
+            }
+            else {
+                var url = target ? target : "indexParisAttacks.globe.html";
+                isOpen = fo.clientHub.openWindow(url);
+            }
+        }
+
+        self.doToggleSimulation = function (target) {
+            if (isOpen) {
+                fo.clientHub.closeWindow();
+                isOpen = undefined;
+            }
+            else {
+                var url = target ? target : "indexParisAttacks.simulate.html";
+                isOpen = fo.clientHub.openWindow(url);
+            }
+        }
+        self.doRefresh = function () {
+        };
+
+
+        self.doClearGlobe = function () {
+            fo.clientHub.sendCommand('purge');
+        };
+
+
+        fo.clientHub.registerCommandResponse({
+            requestNodeDB: function (payload) {
+                //fo.clientHub.sendCommand('responceNodeDB', self.nodeDB.items);
+                fo.clientHub.sendCommand('responceNodeDB', self.nodeDB);
+            },
+            filterByPort: function (payload) {
+            },
+            filterByFlight: function (payload) {
+            },
+        });
 
 
         dataService.getData(url).then(function (data) {
@@ -134,20 +183,8 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
 
             renderTimeLineService.renderNodes(nodeDB.items);
             render2DMapService.renderNodes(nodeDB.items);
-            //render3DService.renderNodes(nodeDB.items);
 
-                //you need more control of geometry primitives
-            render3DService.loadPrimitive('block', { width: 1, height: 100, depth: 1 })
-            .then(function (block) {
-
-                nodeDB.items.forEach(function (item) {
-                    var model = block.create();
-                    var geo = item.place.geoLocation;
-                    var pos = render3DService.llToPosition(geo.latitude, geo.longitude);
-                    model.position(pos);
-                 });
-
-            });
+ 
 
         }, function (reason) {
         });
@@ -160,18 +197,6 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
                 headerTemplate: 'editEntityHeader.html',
                 bodyTemplate: 'editEntityBody.html',
                 footerTemplate: 'editEntityFooter.html',
-            },
-            {
-                onOK: function ($modalInstance, context) {
-                },
-                onCancel: function ($modalInstance, context) {
-                },
-                onExit: function () {
-                },
-                onReady: function () {
-                }
-            },
-            {
             });
         }
 
@@ -181,11 +206,6 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
 
         self.selectedNode = function (node) {
             render2DMapService.zoomToNode(node);
-            var geo = node && node.place && node.place.geoLocation;
-            if (geo) {
-                var pos = render3DService.llToPosition(geo.latitude, geo.longitude, 0, 10);
-                render3DService.zoomToPos(pos);
-            }
         }
 
         fo.subscribe('nodeSelected', function (node) {

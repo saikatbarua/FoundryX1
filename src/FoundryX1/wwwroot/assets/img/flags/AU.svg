@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="640" width="1280" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 10080 5040" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<metadata id="metadata36">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<defs id="defs4">
+<clipPath id="c">
+<path id="path7" d="M0,0v1.5h7v1.5h-1zm6,0h-3v3.5h-3v-0.5z"/>
+</clipPath>
+<path id="Star7" d="M0-360,69.421-144.16,281.46-224.46,155.99-35.603,350.97,80.108,125.09,99.758,156.2,324.35,0,160-156.2,324.35-125.09,99.758-350.97,80.108-155.99-35.603-281.46-224.46-69.421-144.16z"/>
+<path id="Star5" d="M0-210,54.86-75.508,199.72-64.894,88.765,28.842,123.43,169.89,0,93.333-123.43,169.89-88.765,28.842-199.72-64.894-54.86-75.508z"/>
+<use id="Cstar" xlink:href="#Star7" transform="scale(2.1)"/>
+</defs>
+<g id="g12" transform="scale(840)">
+<rect id="rect14" width="12" fill="#002776" height="6"/>
+<path id="path16" stroke="#fff" stroke-width="0.6" d="M0,0,6,3m0-3-6,3"/>
+<path id="path18" stroke="#e00034" stroke-width="0.4" d="M0,0,6,3m0-3-6,3" clip-path="url(#c)"/>
+<path id="path20" stroke="#fff" d="M3,0v3.5m-3-2h7"/>
+<path id="path22" stroke="#e00034" stroke-width="0.6" d="M3,0v3.5m-3-2h7"/>
+<path id="path24" d="M0,3h6v-3h2v4h-8z" fill="#002776"/>
+</g>
+<g id="g26" fill="#fff">
+<use id="Comwlth" y="3780" x="2520" xlink:href="#Cstar"/>
+<use id="αCrucis" y="4200" x="7560" xlink:href="#Star7"/>
+<use id="βCrucis" y="2205" x="6300" xlink:href="#Star7"/>
+<use id="γCrucis" y="840" x="7560" xlink:href="#Star7"/>
+<use id="δCrucis" y="1869" x="8680" xlink:href="#Star7"/>
+<use id="εCrucis" y="2730" x="8064" xlink:href="#Star5"/>
+</g>
+</svg>

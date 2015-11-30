@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="svg2993" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="100%" width="100%" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<defs id="defs2995">
+<linearGradient id="linearGradient3023" y2="-15.67" gradientUnits="userSpaceOnUse" y1="-10.632" x2="-19.202" x1="-21.741">
+<stop id="stop5700-1-1" style="stop-color:#ff0000;" offset="0"/>
+<stop id="stop5702-2-4" style="stop-color:#ffffff;" offset="1"/>
+</linearGradient>
+</defs>
+<metadata id="metadata2998">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<rect id="rect3003" style="stroke-linejoin:miter;stroke:#cccccc;stroke-width:1px;stroke-linecap:butt;fill:none;" height="29" width="29" y="1.5" x="1.5"/>
+<g id="g5731-6-1" transform="matrix(0.05748154,-0.34000331,0.34000331,0.05748154,-21.244245,66.535953)">
+<path id="path3835-1-9-0-0" style="fill:#ff0000;fill-rule:nonzero;" transform="matrix(2.6451669,-1.5782358,1.3669102,3.054112,216.35899,75.039304)" d="m-18.039-7.472-4.3267-2.235-4.3267-2.235,4.099-2.6295,4.099-2.6295,0.22775,4.8646z"/>
+<path id="path3835-4-1-84-5-4" style="fill:url(#linearGradient3023);fill-rule:nonzero;" transform="matrix(2.371532,-1.4149719,1.2255073,2.738173,208.86627,74.780254)" d="m-18.039-7.472-4.3267-2.235-4.3267-2.235,4.099-2.6295,4.099-2.6295,0.22775,4.8646z"/>
+</g>
+<text id="text5857-8-3-8" style="font-size:5.51724863px;font-weight:bold;writing-mode:lr-tb;letter-spacing:0px;text-anchor:start;font-style:normal;word-spacing:0px;font-stretch:normal;font-variant:normal;text-align:start;font-family:Arial;line-height:125%;fill:#000000;" xml:space="preserve" transform="matrix(0.16669625,-0.9860083,0.9860083,0.16669625,0,0)" y="16.818821" x="-21.497149"><tspan id="tspan5859-1-34-59" y="16.818821" x="-21.497149">C</tspan></text>
+<g id="g5304-3-3" style="fill:#ffff00;" transform="matrix(0.2164282,0.26844964,-0.26844964,0.2164282,28.157223,-41.367391)">
+<g id="g5299-8-4" style="fill:#ffff00;">
+<g id="g5253-9-1" style="fill:#ffff00;">
+<path id="path3835-1-3-7" style="fill:#ffff00;fill-rule:nonzero;" transform="matrix(2.6451669,-1.5782358,1.3669102,3.054112,175.28756,106.02881)" d="m-18.039-7.472-4.3267-2.235-4.3267-2.235,4.099-2.6295,4.099-2.6295,0.22775,4.8646z"/>
+<path id="path3835-4-1-4-5" style="fill:#ffff00;fill-rule:nonzero;" transform="matrix(2.371532,-1.4149719,1.2255073,2.738173,167.79483,105.76976)" d="m-18.039-7.472-4.3267-2.235-4.3267-2.235,4.099-2.6295,4.099-2.6295,0.22775,4.8646z"/>
+</g>
+</g>
+</g>
+<text id="text5857-8-9-3" style="font-size:5.51724863px;font-weight:bold;writing-mode:lr-tb;letter-spacing:0px;text-anchor:start;font-style:normal;word-spacing:0px;font-stretch:normal;font-variant:normal;text-align:start;font-family:Arial;line-height:125%;fill:#000000;" xml:space="preserve" transform="matrix(0.62764096,0.77850294,-0.77850294,0.62764096,0,0)" y="-10.54893" x="18.780842"><tspan id="tspan5859-1-3-3" y="-10.54893" x="18.780842">O</tspan></text>
+</svg>

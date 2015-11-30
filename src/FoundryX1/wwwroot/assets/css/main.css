@@ -1,0 +1,417 @@
+body {
+	padding-bottom : 0 !important;
+	background-color: #000;
+	width: 100%;
+	height: 100%;
+}
+
+
+.main-container, #cesiumContainer {
+	width: 100%;
+	height: 100%;
+
+}
+
+.vcenter {
+	display: flex;
+	align-items: center;
+}
+
+
+.form-group.vspacer {
+	margin-top: 10px;
+}
+
+
+.form-group.hspacer{
+	margin-right: 30px;
+}
+
+
+.btn-group.hspacer {
+	margin-right: 15px;
+}
+
+.btn-group.vspacer {
+	margin-top: 20px;
+}
+
+.ghost-vessel {
+	background-image: url(../img/toolbar/horizontal/vessel.ghost.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.ghost-vessel.active {
+	background-image: url(../img/toolbar/horizontal/vessel.ghost.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.green-vessel {
+	background-image: url(../img/toolbar/horizontal/vessel.green.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.green-vessel.active {
+	background-image: url(../img/toolbar/horizontal/vessel.green.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.yellow-vessel {
+	background-image: url(../img/toolbar/horizontal/vessel.yellow.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.yellow-vessel.active {
+	background-image: url(../img/toolbar/horizontal/vessel.yellow.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.orange-vessel {
+	background-image: url(../img/toolbar/horizontal/vessel.orange.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.orange-vessel.active {
+	background-image: url(../img/toolbar/horizontal/vessel.orange.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+
+.red-vessel {
+	background-image: url(../img/toolbar/horizontal/vessel.red.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.red-vessel.active {
+	background-image: url(../img/toolbar/horizontal/vessel.red.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.black-vessel {
+	background-image: url(../img/toolbar/horizontal/vessel.black.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.black-vessel.active {
+	background-image: url(../img/toolbar/horizontal/vessel.black.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.ofac-vessel {
+	background-image: url(../img/toolbar/horizontal/ofac.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.ofac-vessel.active {
+	background-image: url(../img/toolbar/horizontal/ofac.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.north-korea-vessel {
+	background-image: url(../img/toolbar/horizontal/north_korea.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.north-korea-vessel.active {
+	background-image: url(../img/toolbar/horizontal/north_korea.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.dob-vessel {
+	background-image: url(../img/toolbar/horizontal/dob.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.dob-vessel.active {
+	background-image: url(../img/toolbar/horizontal/dob.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+
+
+
+.cargo-vessel {
+	background-image: url(../img/toolbar/horizontal/cargo.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.cargo-vessel.active {
+	background-image: url(../img/toolbar/horizontal/cargo.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.tanker-vessel {
+	background-image: url(../img/toolbar/horizontal/tanker.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.tanker-vessel.active {
+	background-image: url(../img/toolbar/horizontal/tanker.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+
+.passenger-vessel {
+	background-image: url(../img/toolbar/horizontal/passenger.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.passenger-vessel.active {
+	background-image: url(../img/toolbar/horizontal/passenger.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+
+.other-vessel {
+	background-image: url(../img/toolbar/horizontal/other.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.other-vessel.active {
+	background-image: url(../img/toolbar/horizontal/other.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+
+
+
+.us-nexus-vessel {
+	background-image: url(../img/toolbar/horizontal/us.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.us-nexus-vessel.active {
+	background-image: url(../img/toolbar/horizontal/us.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+
+.foreign-nexus-vessel {
+	background-image: url(../img/toolbar/horizontal/foreign.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.foreign-nexus-vessel.active {
+	background-image: url(../img/toolbar/horizontal/foreign.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+
+
+
+.sector-overlay  {
+	background-image: url(../img/toolbar/horizontal/sector.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.sector-overlay.active {
+	background-image: url(../img/toolbar/horizontal/sector.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.district-overlay  {
+	background-image: url(../img/toolbar/horizontal/district.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.district-overlay.active {
+	background-image: url(../img/toolbar/horizontal/district.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+
+.moth-overlay  {
+	background-image: url(../img/toolbar/horizontal/moth.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.moth-overlay.active {
+	background-image: url(../img/toolbar/horizontal/moth.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+
+.bing-imagery.active  {
+	background-image: url(../img/toolbar/horizontal/esri.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.bing-imagery {
+	background-image: url(../img/toolbar/horizontal/bing.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.country-boundaries  {
+	background-image: url(../img/toolbar/horizontal/country_boundaries.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.country-boundaries.active {
+	background-image: url(../img/toolbar/horizontal/country_boundaries.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.places-labels {
+	background-image: url(../img/toolbar/horizontal/places_labels.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.places-labels.active {
+	background-image: url(../img/toolbar/horizontal/places_labels.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+
+
+
+.csi-ports  {
+	background-image: url(../img/toolbar/horizontal/csi.off.png);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.csi-ports.active {
+	background-image: url(../img/toolbar/horizontal/csi.png);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.uscg-ports  {
+	background-image: url(../img/toolbar/horizontal/cost_guard.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.uscg-ports.active {
+	background-image: url(../img/toolbar/horizontal/cost_guard.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.daynight  {
+	background-image: url(../img/toolbar/vertical/sun.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.daynight.active {
+	background-image: url(../img/toolbar/vertical/sun.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+
+.spin-globe  {
+	background-image: url(../img/toolbar/vertical/spin.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.spin-globe.active {
+	background-image: url(../img/toolbar/vertical/spin.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+
+
+.show-tracks  {
+	background-image: url(../img/toolbar/vertical/tracks.off.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.show-tracks.active {
+	background-image: url(../img/toolbar/vertical/tracks.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="svg2985" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="100%" width="100%" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<defs id="defs8">
+<linearGradient id="linearGradient3764" y2="8.4363" gradientUnits="userSpaceOnUse" x2="16.291" gradientTransform="matrix(0.98891313,0.00790659,-0.00776573,0.98175062,300.39499,27.47473)" y1="21.125" x1="16.413">
+<stop id="stop3786-2-7-7-0-0-59-7" style="stop-color:#ffff00;" offset="0"/>
+<stop id="stop3788-4-1-6-9-7-51-4" style="stop-color:#ffffff;" offset="1"/>
+</linearGradient>
+</defs>
+<metadata id="metadata2990">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<g id="g3743" transform="matrix(0.93841642,0,0,0.93841642,-280.70639,-24.558161)">
+<path id="path2995-9-1-5-1-1-1-6-6" style="stroke:#ffff00;stroke-width:1.06562495;fill:url(#linearGradient3764);" d="m300.68,58.72,15.789-31,15.211,30.985c-15.254-4.9644-15.254-4.9644-31,0.015z"/>
+<path id="path2995-9-1-5-1-1-1-7-8-2-1" style="fill-opacity:0.50196078;fill:#22241c;" d="m299.13,60.27,17.368-34.1,16.732,34.083c-16.779-5.4608-16.779-5.4608-34.1,0.0165z"/>
+</g>
+</svg>

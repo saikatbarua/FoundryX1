@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="600" width="900" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-225 -114 450 300" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<metadata id="metadata37">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title>Flag of Malawi</dc:title>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<title id="title4">Flag of Malawi</title>
+<rect id="rect6" y="-114" x="-225" height="300" width="450"/>
+<g id="g8" fill="#CE1126">
+<circle id="circle10" r="64.5"/>
+<rect id="rect12" y="-14" x="-225" height="100" width="450"/>
+<g id="r16">
+<g id="r8">
+<g id="r4">
+<g id="r2">
+<path id="r" d="M0-102c-2.2,0-3,3.3-3,6.5,0,8,1,12,3,23.5,2.04-11.5,3-15.6,3-23.5,0-3.3-1-6.5-3-6.5"/>
+<use id="use19" xlink:href="#r" transform="rotate(5)"/>
+</g>
+<use id="use21" xlink:href="#r2" transform="rotate(10)"/>
+</g>
+<use id="use23" xlink:href="#r4" transform="rotate(20)"/>
+</g>
+<use id="use25" xlink:href="#r8" transform="rotate(40)"/>
+</g>
+<use id="use27" xlink:href="#r16" transform="rotate(-80)"/>
+</g>
+<rect id="rect29" y="-21.5" x="-225" height="7.5" width="450"/>
+<rect id="rect31" height="100" width="450" y="86" x="-225" fill="#339E35"/>
+</svg>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" version="1.0" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<metadata id="metadata28">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<rect id="rect4" width="300" fill="#00853f" height="600"/>
+<rect id="rect6" x="300" height="600" fill="#fdef42" width="300"/>
+<rect id="rect8" x="600" height="600" fill="#e31b23" width="300"/>
+<g id="g10" transform="translate(450,300)" fill="#00853f">
+<g id="c">
+<path id="t" transform="rotate(18 0,-100)" d="M0-100v100h50z"/>
+<use id="use14" xlink:href="#t" transform="scale(-1,1)"/>
+</g>
+<use id="use16" xlink:href="#c" transform="rotate(72)"/>
+<use id="use18" xlink:href="#c" transform="rotate(144)"/>
+<use id="use20" xlink:href="#c" transform="rotate(216)"/>
+<use id="use22" xlink:href="#c" transform="rotate(288)"/>
+</g>
+</svg>

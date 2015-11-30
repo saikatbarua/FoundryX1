@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="800px" width="1200px" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 81 54" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<metadata id="metadata24">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<rect id="rect4" width="81" height="54" fill="#4189DD"/>
+<g id="g6" transform="translate(40.5 27) scale(13)">
+<g id="t">
+<polygon id="w" points="0,0,0,1,0.5,1" transform="translate(0 -1) rotate(18)" fill="#fff"/>
+<use id="use10" xlink:href="#w" transform="scale(-1 1)"/>
+</g>
+<use id="use12" xlink:href="#t" transform="rotate(72)"/>
+<use id="use14" xlink:href="#t" transform="rotate(-72)"/>
+<use id="use16" xlink:href="#t" transform="rotate(144)"/>
+<use id="use18" xlink:href="#t" transform="rotate(-144)"/>
+</g>
+</svg>

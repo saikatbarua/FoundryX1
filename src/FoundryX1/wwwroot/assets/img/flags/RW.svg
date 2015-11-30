@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1080 720" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<metadata id="metadata26">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title>Flag of Rwanda</dc:title>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<title id="title4">Flag of Rwanda</title>
+<rect id="rect6" width="1080" fill="#00a1de" height="360"/>
+<rect id="rect8" y="360" width="1080" fill="#fad201" height="180"/>
+<rect id="rect10" y="540" width="1080" fill="#20603d" height="180"/>
+<g id="g12" transform="translate(886.5,188.1)">
+<g id="h">
+<path id="q" fill="#e5be01" d="M116.1,0l-80.408,4.6989,76.448,25.35-78.88-16.272,67.29,44.273-71.989-36.135,53.534,60.18-60.18-53.534,36.135,71.989-44.273-67.29,16.272,78.88-25.35-76.448-4.6989,80.408-1-117.1z"/>
+<use id="use16" xlink:href="#q" transform="scale(1,-1)"/>
+</g>
+<use id="use18" xlink:href="#h" transform="scale(-1,1)"/>
+<circle id="circle20" d="M 34.299999,0 C 34.299999,18.943366 18.943366,34.299999 0,34.299999 -18.943366,34.299999 -34.299999,18.943366 -34.299999,0 c 0,-18.943366 15.356633,-34.299999 34.299999,-34.299999 18.943366,0 34.299999,15.356633 34.299999,34.299999 z" stroke="#00a1de" r="34.3" stroke-width="3.4" fill="#e5be01"/>
+</g>
+</svg>
