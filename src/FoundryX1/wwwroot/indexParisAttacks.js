@@ -71,6 +71,7 @@ var foApp = angular.module('foApp', ['ui.bootstrap']);
 }(foApp, Foundry, Foundry.tools, L));
 
 
+//http://www.msn.com/en-us/news/world/how-the-paris-attackers-honed-their-assault-through-trial-and-error/ar-AAfRGTE?ocid=spartandhp
 
 (function (app, fo, tools, undefined) {
 
