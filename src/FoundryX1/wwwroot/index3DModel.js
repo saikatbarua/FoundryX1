@@ -5,38 +5,101 @@ var foApp = angular.module('foApp', []);
 
 
 
-foApp.controller('viewerController', function (dataService, ontologyService, render3DService) {
+foApp.controller('workspaceController', function (dataService, ontologyService, render3DService) {
 
-    var element = document.getElementById('earth');
-    render3DService.init(element);
+    var plane;
+    var self = this;
+
+    render3DService.init('earth');
+
+    function noop() { };
+
     render3DService.animate();
+    render3DService.setAnimation(noop);
 
-    var plane
+
+    self.title = 'flight actions';
+
+    
+
 
 
     render3DService.loadModel('beech99', 'models/beech99.js')
     .then(function (planeModel) {
 
         plane = planeModel.create();
-        plane.scaleXYZ(5, 5, 5);
-        plane.positionXYZ(0, 0, 0);
-        plane.rotateXYZ(0, 0, 0);
+        self.doStop = function () {
+            render3DService.setAnimation(noop);
+            plane.scaleXYZ(15, 15, 15);
+            plane.positionXYZ(0, 0, 0);
+            plane.rotateXYZ(0, 0, 0);
+        };
 
-        plane = planeModel.create();
-        plane.scaleXYZ(5, 5, 5);
-        plane.positionXYZ(500, 0, 0);
-        plane.rotateXYZ(Math.PI / 2, 0, 0);
+        self.doStop();
 
-        plane = planeModel.create();
-        plane.scaleXYZ(5, 5, 5);
-        plane.positionXYZ(1000, 0, 0);
-        plane.rotateXYZ(0, Math.PI / 2, 0);
 
-        plane = planeModel.create();
-        plane.scaleXYZ(5, 5, 5);
-        plane.positionXYZ(1500, 0, 0);
-        plane.rotateXYZ(0, 0, Math.PI / 2);
+        self.doSpin = function (dir) {
+            var angle = 0;
 
+            func = {
+                x: function() {
+                    plane.rotateXYZ((angle).toRad(), 0, 0);
+                    angle += 1.0;
+                },
+                y: function() {
+                    plane.rotateXYZ(0, (angle).toRad(), 0);
+                    angle += 1.0;
+                },
+                z: function() {
+                    plane.rotateXYZ(0,0,(angle).toRad());
+                    angle += 1.0;
+                },
+            }
+            
+            render3DService.setAnimation(func[dir]);
+        }
+
+        self.doSlide = function (dir) {
+            var delta = 0;
+            var scale = 15;
+
+            func = {
+                left: function () {
+                    plane.positionXYZ(delta, 0, 0);
+                    delta -= 1.0;
+                },
+                right: function () {
+                    plane.positionXYZ(delta, 0, 0);
+                    delta += 1.0;
+                },
+                up: function () {
+                    plane.positionXYZ(0, delta, 0);
+                    delta += 1.0;
+                },
+                down: function () {
+                    plane.positionXYZ(0, delta, 0);
+                    delta -= 1.0;
+                },
+                near: function () {
+                    plane.positionXYZ(0, 0, delta);
+                    delta += 1.0;
+                },
+                far: function () {
+                    plane.positionXYZ(0, 0, delta);
+                    delta -= 1.0;
+                },
+                big: function () {
+                    plane.scaleXYZ(scale, scale, scale);
+                    scale += 1.0;
+                },
+                small: function () {
+                    plane.scaleXYZ(scale, scale, scale);
+                    scale -= 1.0;
+                },
+            }
+
+            render3DService.setAnimation(func[dir]);
+        }
 
     });
 });

@@ -4059,6 +4059,19 @@ Foundry.listOps = Foundry.listOps || {};
 
 (function (ns, db, tools, undefined) {
 
+    // Feature detect + local reference
+    var storage = (function () {
+        var uid = new Date;
+        var result;
+        try {
+            localStorage.setItem(uid, uid);
+            result = localStorage.getItem(uid) == uid;
+            localStorage.removeItem(uid);
+            return result && localStorage;
+        } catch (exception) { }
+    }());
+
+
     var _dictionaries = {};
     function establishDictionary(specId) {
         var found = _dictionaries[specId];
@@ -4109,41 +4122,58 @@ Foundry.listOps = Foundry.listOps || {};
 
 
     db.saveAllEntityDB = function (specId, storageKey, dehydrate) {
-        var lookup = db.getEntityDBLookup(specId);
+        try {
+            if (!storage) {
+                return false;
+            }
+            var lookup = db.getEntityDBLookup(specId);
 
-        if (localStorage) {
-            dehydrate = dehydrate ? dehydrate : function (item) {
-                return item.getSpec ? item.getSpec() : item;
-            };
+            if (storage) {
+                dehydrate = dehydrate ? dehydrate : function (item) {
+                    return item.getSpec ? item.getSpec() : item;
+                };
 
-            var objects = ns.tools.mapOverKeyValue(lookup, function (key, value) {
-                if (value) {
-                    var result = dehydrate(value);
-                    return result;
-                }
-            });
+                var objects = ns.tools.mapOverKeyValue(lookup, function (key, value) {
+                    if (value) {
+                        var result = dehydrate(value);
+                        return result;
+                    }
+                });
 
-            var payload = tools.stringify(objects); //JSON.stringify(objects);
-            localStorage.setItem(storageKey || specId, payload);
-            return true;
-        }
+                var payload = tools.stringify(objects); //JSON.stringify(objects);
+                storage.setItem(storageKey || specId, payload);
+                return true;
+            }
+
+       } catch (e) {
+            return false;
+       }
     }
 
     db.restoreAllEntityDB = function (specId, storageKey, hydrate) {
         if (!ns.isValidNamespaceKey(specId)) return;
-        if (localStorage) {
-            var entityDB = db.getEntityDB(specId);
-            hydrate = hydrate ? hydrate : function (item) {
-                return entityDB.establishInstance(item);
-            };
+        try {
+            if (storage) {
+                return false;
+            }
+            if (storage) {
+                var entityDB = db.getEntityDB(specId);
+                hydrate = hydrate ? hydrate : function (item) {
+                    return entityDB.establishInstance(item);
+                };
 
-            var payload = localStorage.getItem(storageKey || specId) || '[]';
+                var payload = storage.getItem(storageKey || specId) || '[]';
 
-            var objects = JSON.parse(payload);
-            objects.forEach(hydrate);
+                var objects = JSON.parse(payload);
+                objects.forEach(hydrate);
 
-            return true;
+                return true;
+            }
         }
+        catch (e) {
+            return false;
+        }
+
     }
 
     db.deleteEntityDB = function (specId) {
@@ -4862,6 +4892,18 @@ Foundry.ws = Foundry.workspace;
 
 (function (ns, tools, ws, undefined) {
 
+    // Feature detect + local reference
+    var storage = (function () {
+        var uid = new Date;
+        var result;
+        try {
+            localStorage.setItem(uid, uid);
+            result = localStorage.getItem(uid) == uid;
+            localStorage.removeItem(uid);
+            return result && localStorage;
+        } catch (exception) { }
+    }());
+
     var workspaceSpec = {
         isVisible: true,
         rootModel: function () {
@@ -5074,12 +5116,12 @@ Foundry.ws = Foundry.workspace;
             var self = this;
             self.sessionStorageDate = Date.now();
             var key = self.documentName || sessionName || this.localStorageKey;
-            if (localStorage) {
-                localStorage.setItem('currentSession', key);
-                localStorage.setItem(key, key ? syncPayload : '');
+            if (storage) {
+                storage.setItem('currentSession', key);
+                storage.setItem(key, key ? syncPayload : '');
             }
-            if (localStorage) {
-                localStorage.setItem(sessionName || this.localStorageKey, syncPayload);
+            if (storage) {
+                storage.setItem(sessionName || this.localStorageKey, syncPayload);
             }
             onComplete && onComplete();
             fo.publish('workspaceSessionSaved', [self])
@@ -5089,17 +5131,17 @@ Foundry.ws = Foundry.workspace;
             var self = this;
             var syncPayload;
             if (sessionStorage) {
-                if (localStorage) {
-                    var key = localStorage.getItem('currentSession');
-                    syncPayload = key ? localStorage.getItem(key) : undefined;
+                if (storage) {
+                    var key = storage.getItem('currentSession');
+                    syncPayload = key ? storage.getItem(key) : undefined;
 
                     //uncomment this code to flush the local store
-                    //localStorage.setItem(key, '');
-                    //localStorage.setItem('currentSession', '');
-                    //localStorage.setItem(this.localStorageKey, syncPayload);
+                    //storage.setItem(key, '');
+                    //storage.setItem('currentSession', '');
+                    //storage.setItem(this.localStorageKey, syncPayload);
                 }
-                if (localStorage && !syncPayload) {
-                    syncPayload = localStorage.getItem(sessionName || this.localStorageKey);
+                if (storage && !syncPayload) {
+                    syncPayload = storage.getItem(sessionName || this.localStorageKey);
                 }
 
                 try {

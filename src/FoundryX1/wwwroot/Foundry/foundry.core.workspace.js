@@ -5,6 +5,18 @@ Foundry.ws = Foundry.workspace;
 
 (function (ns, tools, ws, undefined) {
 
+    // Feature detect + local reference
+    var storage = (function () {
+        var uid = new Date;
+        var result;
+        try {
+            localStorage.setItem(uid, uid);
+            result = localStorage.getItem(uid) == uid;
+            localStorage.removeItem(uid);
+            return result && localStorage;
+        } catch (exception) { }
+    }());
+
     var workspaceSpec = {
         isVisible: true,
         rootModel: function () {
@@ -217,12 +229,12 @@ Foundry.ws = Foundry.workspace;
             var self = this;
             self.sessionStorageDate = Date.now();
             var key = self.documentName || sessionName || this.localStorageKey;
-            if (localStorage) {
-                localStorage.setItem('currentSession', key);
-                localStorage.setItem(key, key ? syncPayload : '');
+            if (storage) {
+                storage.setItem('currentSession', key);
+                storage.setItem(key, key ? syncPayload : '');
             }
-            if (localStorage) {
-                localStorage.setItem(sessionName || this.localStorageKey, syncPayload);
+            if (storage) {
+                storage.setItem(sessionName || this.localStorageKey, syncPayload);
             }
             onComplete && onComplete();
             fo.publish('workspaceSessionSaved', [self])
@@ -232,17 +244,17 @@ Foundry.ws = Foundry.workspace;
             var self = this;
             var syncPayload;
             if (sessionStorage) {
-                if (localStorage) {
-                    var key = localStorage.getItem('currentSession');
-                    syncPayload = key ? localStorage.getItem(key) : undefined;
+                if (storage) {
+                    var key = storage.getItem('currentSession');
+                    syncPayload = key ? storage.getItem(key) : undefined;
 
                     //uncomment this code to flush the local store
-                    //localStorage.setItem(key, '');
-                    //localStorage.setItem('currentSession', '');
-                    //localStorage.setItem(this.localStorageKey, syncPayload);
+                    //storage.setItem(key, '');
+                    //storage.setItem('currentSession', '');
+                    //storage.setItem(this.localStorageKey, syncPayload);
                 }
-                if (localStorage && !syncPayload) {
-                    syncPayload = localStorage.getItem(sessionName || this.localStorageKey);
+                if (storage && !syncPayload) {
+                    syncPayload = storage.getItem(sessionName || this.localStorageKey);
                 }
 
                 try {

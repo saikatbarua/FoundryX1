@@ -168,6 +168,19 @@ Foundry.listOps = Foundry.listOps || {};
 
 (function (ns, db, tools, undefined) {
 
+    // Feature detect + local reference
+    var storage = (function () {
+        var uid = new Date;
+        var result;
+        try {
+            localStorage.setItem(uid, uid);
+            result = localStorage.getItem(uid) == uid;
+            localStorage.removeItem(uid);
+            return result && localStorage;
+        } catch (exception) { }
+    }());
+
+
     var _dictionaries = {};
     function establishDictionary(specId) {
         var found = _dictionaries[specId];
@@ -218,41 +231,58 @@ Foundry.listOps = Foundry.listOps || {};
 
 
     db.saveAllEntityDB = function (specId, storageKey, dehydrate) {
-        var lookup = db.getEntityDBLookup(specId);
+        try {
+            if (!storage) {
+                return false;
+            }
+            var lookup = db.getEntityDBLookup(specId);
 
-        if (localStorage) {
-            dehydrate = dehydrate ? dehydrate : function (item) {
-                return item.getSpec ? item.getSpec() : item;
-            };
+            if (storage) {
+                dehydrate = dehydrate ? dehydrate : function (item) {
+                    return item.getSpec ? item.getSpec() : item;
+                };
 
-            var objects = ns.tools.mapOverKeyValue(lookup, function (key, value) {
-                if (value) {
-                    var result = dehydrate(value);
-                    return result;
-                }
-            });
+                var objects = ns.tools.mapOverKeyValue(lookup, function (key, value) {
+                    if (value) {
+                        var result = dehydrate(value);
+                        return result;
+                    }
+                });
 
-            var payload = tools.stringify(objects); //JSON.stringify(objects);
-            localStorage.setItem(storageKey || specId, payload);
-            return true;
-        }
+                var payload = tools.stringify(objects); //JSON.stringify(objects);
+                storage.setItem(storageKey || specId, payload);
+                return true;
+            }
+
+       } catch (e) {
+            return false;
+       }
     }
 
     db.restoreAllEntityDB = function (specId, storageKey, hydrate) {
         if (!ns.isValidNamespaceKey(specId)) return;
-        if (localStorage) {
-            var entityDB = db.getEntityDB(specId);
-            hydrate = hydrate ? hydrate : function (item) {
-                return entityDB.establishInstance(item);
-            };
+        try {
+            if (storage) {
+                return false;
+            }
+            if (storage) {
+                var entityDB = db.getEntityDB(specId);
+                hydrate = hydrate ? hydrate : function (item) {
+                    return entityDB.establishInstance(item);
+                };
 
-            var payload = localStorage.getItem(storageKey || specId) || '[]';
+                var payload = storage.getItem(storageKey || specId) || '[]';
 
-            var objects = JSON.parse(payload);
-            objects.forEach(hydrate);
+                var objects = JSON.parse(payload);
+                objects.forEach(hydrate);
 
-            return true;
+                return true;
+            }
         }
+        catch (e) {
+            return false;
+        }
+
     }
 
     db.deleteEntityDB = function (specId) {

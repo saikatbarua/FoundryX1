@@ -36,8 +36,33 @@
 
 
 </head>
-<body ng-controller="viewerController as vc">
-    <div class="container">
+<body ng-controller="workspaceController as ws">
+    <div class="row">
+        <div class="col-lg-3">
+            <h1>{{ws.title}}</h1>
+            <button class="btn btn-default" ng-click="ws.doStop()">stop</button>
+            <br />
+            <button class="btn btn-default" ng-click="ws.doSpin('x')">spin x</button>
+            <button class="btn btn-default" ng-click="ws.doSpin('y')">spin y</button>
+            <button class="btn btn-default" ng-click="ws.doSpin('z')">spin z</button>
+            <br />
+            <button class="btn btn-default" ng-click="ws.doSlide('left')">slide -x (left)</button>
+            <button class="btn btn-default" ng-click="ws.doSlide('right')">slide +x (right)</button>
+            <br />
+            <button class="btn btn-default" ng-click="ws.doSlide('up')">slide +y (up)</button>
+            <button class="btn btn-default" ng-click="ws.doSlide('down')">slide -y (down)</button>
+            <br />
+            <button class="btn btn-default" ng-click="ws.doSlide('near')">slide +z (near)</button>
+            <button class="btn btn-default" ng-click="ws.doSlide('far')">slide -z (far)</button>
+            <br />
+            <button class="btn btn-default" ng-click="ws.doSlide('big')">slide +s (big)</button>
+            <button class="btn btn-default" ng-click="ws.doSlide('small')">slide -s (small)</button>
+            <br />
+        </div>
+        <div class="col-lg-9">
+            <div id="earth" class="container" style="height:800px">
+            </div>
+        </div>
     </div>
 </body>
 </html>
