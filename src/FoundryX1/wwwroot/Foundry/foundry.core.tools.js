@@ -611,8 +611,9 @@ var Foundry = Foundry || {};
             return params;
 		},
 
+	    //https://xhr.spec.whatwg.org/
 		xmlHttpGet: function (url, onComplete, onFailure) {
-		    var xmlHttp = new XMLHttpRequest();
+		    var xmlHttp = new window.XMLHttpRequest();
 		    xmlHttp.onload = function () {
 		        var result = xmlHttp.responseText;
 		        onComplete && onComplete(result, xmlHttp);

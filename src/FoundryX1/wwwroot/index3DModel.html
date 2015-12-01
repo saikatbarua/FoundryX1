@@ -41,23 +41,30 @@
         <div class="col-lg-3">
             <h1>{{ws.title}}</h1>
             <button class="btn btn-default" ng-click="ws.doStop()">stop</button>
-            <br />
+            <button class="btn btn-default" ng-click="ws.doScale('big')">+s (big)</button>
+            <button class="btn btn-default" ng-click="ws.doScale('small')">-s (small)</button>
+            <button class="btn btn-default" ng-click="ws.doSize('enlarge')">(enlarge)</button>
+            <button class="btn btn-default" ng-click="ws.doSize('shrink')">(shrink)</button>
+            <h3>Spin...</h3>
             <button class="btn btn-default" ng-click="ws.doSpin('x')">spin x</button>
             <button class="btn btn-default" ng-click="ws.doSpin('y')">spin y</button>
             <button class="btn btn-default" ng-click="ws.doSpin('z')">spin z</button>
-            <br />
-            <button class="btn btn-default" ng-click="ws.doSlide('left')">slide -x (left)</button>
-            <button class="btn btn-default" ng-click="ws.doSlide('right')">slide +x (right)</button>
-            <br />
-            <button class="btn btn-default" ng-click="ws.doSlide('up')">slide +y (up)</button>
-            <button class="btn btn-default" ng-click="ws.doSlide('down')">slide -y (down)</button>
-            <br />
-            <button class="btn btn-default" ng-click="ws.doSlide('near')">slide +z (near)</button>
-            <button class="btn btn-default" ng-click="ws.doSlide('far')">slide -z (far)</button>
-            <br />
-            <button class="btn btn-default" ng-click="ws.doSlide('big')">slide +s (big)</button>
-            <button class="btn btn-default" ng-click="ws.doSlide('small')">slide -s (small)</button>
-            <br />
+            <h3>Slide...</h3>
+            <button class="btn btn-default" ng-click="ws.doSlide('left')">-x (left)</button>
+            <button class="btn btn-default" ng-click="ws.doSlide('right')">+x (right)</button>
+            <button class="btn btn-default" ng-click="ws.doSlide('up')">+y (up)</button>
+            <button class="btn btn-default" ng-click="ws.doSlide('down')"> -y (down)</button>
+            <button class="btn btn-default" ng-click="ws.doSlide('near')">+z (near)</button>
+            <button class="btn btn-default" ng-click="ws.doSlide('far')">-z (far)</button>
+            <h3>Circle...</h3>
+            <button class="btn btn-default" ng-click="ws.doCircle('left')">(left)</button>
+            <button class="btn btn-default" ng-click="ws.doCircle('right')">(right)</button>
+            <button class="btn btn-default" ng-click="ws.doCircle('up')">(up)</button>
+            <button class="btn btn-default" ng-click="ws.doCircle('down')">(down)</button>
+            <button class="btn btn-default" ng-click="ws.doCircle('near')">(near)</button>
+            <button class="btn btn-default" ng-click="ws.doCircle('far')">(far)</button>
+            <h3>Circle Globe...</h3>
+            <button class="btn btn-default" ng-click="ws.doCircleGlobe('left')">(left)</button>
         </div>
         <div class="col-lg-9">
             <div id="earth" class="container" style="height:800px">

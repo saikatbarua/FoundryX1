@@ -651,7 +651,10 @@ var Foundry = Foundry || {};
     }
 
 
+    var globeMesh;
     geo.addGlobe = function (noTexture) {
+        if (globeMesh) return globeMesh;
+
         var mat2;
         var spGeo = new THREE.SphereGeometry(EARTH_RADIUS, 50, 50);
 
@@ -668,10 +671,18 @@ var Foundry = Foundry || {};
             });
         }
 
-        var mesh = new THREE.Mesh(spGeo, mat2);
-        scene.add(mesh);
-        return mesh;
+        globeMesh = new THREE.Mesh(spGeo, mat2);
+        scene.add(globeMesh);
+        return globeMesh;
     }
+
+    geo.removeGlobe = function () {
+        if (globeMesh) {
+            scene.remove(globeMesh);
+            globeMesh = undefined;
+        }
+    };
+
 
 
     function loadModel(name, file, onComplete) {
@@ -954,6 +965,7 @@ var Foundry = Foundry || {};
         this.export = geo.export;
         this.animate = geo.animate;
         this.addGlobe = geo.addGlobe;
+        this.removeGlobe = geo.removeGlobe;
         this.addLights = geo.addLights;
         this.latLongToVector3 = geo.latLongToVector3;
         this.llToPosition = geo.latLongToVector3;
