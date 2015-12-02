@@ -7,7 +7,7 @@ var foApp = angular.module('foApp', []);
 
 foApp.controller('workspaceController', function (dataService, ontologyService, render3DService) {
 
-    var plane;
+    var plane, craft;
     var self = this;
 
     render3DService.init('earth');
@@ -18,14 +18,16 @@ foApp.controller('workspaceController', function (dataService, ontologyService, 
     render3DService.setAnimation(noop);
 
     var EARTH_RADIUS = 637;
-
-
+    var defaultSize = 15;
 
     self.title = 'flight actions';
 
     self.doSpin = function (dir) {
         var angle = 0;
         render3DService.removeGlobe();
+        craft.visible(false);
+        plane.visible(true);
+
 
         func = {
             x: function () {
@@ -48,6 +50,9 @@ foApp.controller('workspaceController', function (dataService, ontologyService, 
     self.doSlide = function (dir) {
         var delta = 0;
         render3DService.removeGlobe();
+        craft.visible(false);
+        plane.visible(true);
+
 
         func = {
             left: function () {
@@ -79,16 +84,19 @@ foApp.controller('workspaceController', function (dataService, ontologyService, 
         func[dir] && render3DService.setAnimation(func[dir]);
     }
     self.doScale = function (dir) {
-        var scale = 15;
+        var scale = defaultSize;
         render3DService.removeGlobe();
+        craft.visible(false);
+        plane.visible(true);
+
 
         func = {
             big: function () {
-                plane.scaleXYZ(scale, scale, scale);
+                plane.scale(scale);
                 scale += 1.0;
             },
             small: function () {
-                plane.scaleXYZ(scale, scale, scale);
+                plane.scale(scale);
                 scale -= 1.0;
             },
         }
@@ -98,16 +106,19 @@ foApp.controller('workspaceController', function (dataService, ontologyService, 
 
     self.doSize = function (dir) {
         if (plane.size === undefined) {
-            plane.size = 15;
+            plane.size = defaultSize;
         }
+        craft.visible(false);
+        plane.visible(true);
+
 
         func = {
             enlarge: function () {
-                plane.scaleXYZ(plane.size, plane.size, plane.size);
+                plane.scale(plane.size);
                 plane.size += 1.0;
             },
             shrink: function () {
-                plane.scaleXYZ(plane.size, plane.size, plane.size);
+                plane.scale(plane.size);
                 plane.size -= 1.0;
             },
         }
@@ -119,6 +130,8 @@ foApp.controller('workspaceController', function (dataService, ontologyService, 
         var angle = 0;
         var center = { x: 0, y: 0, z: 0 };
         render3DService.removeGlobe();
+        craft.visible(false);
+        plane.visible(true);
 
 
         func = {
@@ -202,20 +215,22 @@ foApp.controller('workspaceController', function (dataService, ontologyService, 
     self.doCircleGlobe = function (dir) {
         var angle = 0;
         var center = { x: 0, y: 0, z: 0 };
-        render3DService.addGlobe(true);
+
+        var radius = EARTH_RADIUS + 20;
+        render3DService.addGlobe(true, EARTH_RADIUS);
+        craft.visible(true);
+        plane.visible(false);
 
 
         func = {
             left: function () {
                 //circle around y axis to the left
-                var radius = EARTH_RADIUS;
-                center = { x: radius, y: 0, z: radius };
-                var rad = (180 + angle).toRad();
-                var x = radius * Math.sin(rad) - center.x;
+                center = { x: 0, y: 0, z: 0 };
+                var rad = (angle).toRad();
+                var x = -radius * Math.sin(rad) + center.x;
                 var z = radius * Math.cos(rad) + center.z;
-                plane.positionXYZ(x, 0, z);
-                plane.rotateXYZ(0, (angle).toRad(), 0);
-
+                craft.positionXYZ(x, 0, z);
+                craft.rotateXYZ((0).toRad(), (angle).toRad(), (0).toRad());
                 angle += 1.0;
             },
             right: function () {
@@ -282,21 +297,23 @@ foApp.controller('workspaceController', function (dataService, ontologyService, 
         func[dir] && render3DService.setAnimation(func[dir]);
     }
 
-    //render3DService.loadModel('beech99', 'models/beech99.js')
     render3DService.loadModel('707', 'models/707.js')
     .then(function (planeModel) {
 
         plane = planeModel.create();
         self.doStop = function () {
             render3DService.setAnimation(noop);
-            plane.scaleXYZ(15, 15, 15);
-            plane.positionXYZ(0, 0, 0);
-            plane.rotateXYZ(0, 0, 0);
+            plane.scale(defaultSize);
         };
 
         self.doStop();
+    });
 
+    render3DService.loadModel('beech99', 'models/beech99.js')
+    .then(function (planeModel) {
 
-
+        craft = planeModel.create();
+        craft.scale(5);
+        craft.visible(false);
     });
 });
