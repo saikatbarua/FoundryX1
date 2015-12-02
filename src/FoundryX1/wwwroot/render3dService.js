@@ -438,6 +438,11 @@ var Foundry = Foundry || {};
             mesh.rotation.set(0, 0, 0);
             return this;
         },
+        scale: function (s) {
+            var mesh = this.mesh;
+            mesh.scale.set(s, s, s);
+            return this;
+        },
         scaleXYZ: function (X, Y, Z) {
             var mesh = this.mesh;
             mesh.scale.set(X, Y, Z);
@@ -458,24 +463,7 @@ var Foundry = Foundry || {};
             mesh.rotateOnAxis(axisZ, angle);
             return this;
         },
-        //rotateToX: function (angle) {
-        //    var mesh = this.mesh;
-        //    mesh.rotation.x = 0;
-        //    mesh.rotateOnAxis(axisX, angle);
-        //    return this;
-        //},
-        //rotateToY: function (angle) {
-        //    var mesh = this.mesh;
-        //    mesh.rotation.y = 0;
-        //    mesh.rotateOnAxis(axisY, angle);
-        //    return this;
-        //},
-        //rotateToZ: function (angle) {
-        //    var mesh = this.mesh;
-        //    mesh.rotation.z = 0;
-        //    mesh.rotateOnAxis(axisZ, angle);
-        //    return this;
-        //},
+
         positionClear: function () {
             var mesh = this.mesh;
             mesh.position.set(0, 0, 0);
@@ -535,18 +523,19 @@ var Foundry = Foundry || {};
             return this;
         },
         hide: function () {
-            var mesh = this.mesh;
-            mesh.visible = false;
-            return this;
+            return this.visible(false);
         },
         show: function () {
-            var mesh = this.mesh;
-            mesh.visible = true;
-            return this;
+            return this.visible(true);
         },
-        toggleShowHide: function () {
+        toggleVisible: function () {
             var mesh = this.mesh;
             mesh.visible = !mesh.visible;
+            return this;
+        },
+        visible: function (value) {
+            var mesh = this.mesh;
+            mesh.visible = value;
             return this;
         },
     });
@@ -652,26 +641,26 @@ var Foundry = Foundry || {};
 
 
     var globeMesh;
-    geo.addGlobe = function (noTexture) {
+    geo.addGlobe = function (noTexture, radius) {
         if (globeMesh) return globeMesh;
 
-        var mat2;
-        var spGeo = new THREE.SphereGeometry(EARTH_RADIUS, 50, 50);
+        var material;
+        var spGeo = new THREE.SphereGeometry(radius || EARTH_RADIUS, 50, 50);
 
         if (!noTexture) {
             var planetTexture = THREE.ImageUtils.loadTexture("assets/world-big-2-grey.jpg");
-            mat2 = new THREE.MeshPhongMaterial({
+            material = new THREE.MeshPhongMaterial({
                 map: planetTexture,
                 shininess: 0.2
             });
         } else {
-            mat2 = new THREE.MeshBasicMaterial({
+            material = new THREE.MeshBasicMaterial({
                 color: 0x11ff11,
                 wireframe: true
             });
         }
 
-        globeMesh = new THREE.Mesh(spGeo, mat2);
+        globeMesh = new THREE.Mesh(spGeo, material);
         scene.add(globeMesh);
         return globeMesh;
     }
