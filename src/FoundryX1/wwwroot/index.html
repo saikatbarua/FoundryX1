@@ -41,6 +41,7 @@
     </header>-->
         <div class="main" ng-controller="workspaceController as labs">
             <div class="container">
+                <h1> Set of Examples </h1>
                 <div ng-repeat="group in labs.groups" class="tile-container">
                     <div ng-click="labs.toggleIsCollapsed(group)" class="app-group-title cursor-pointer">{{group.groupName}}</div>
                     <div ng-hide="group.isCollapsed" class="vaas-launch-tile" data-ng-repeat="item in group.subcomponents">
